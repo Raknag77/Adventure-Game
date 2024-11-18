@@ -485,5 +485,21 @@
         "rarity": "rare"
       }
     }
+  },
+  "enemies": {
+    "undead": {
+      "skeleton":{
+        "name": "Skeleton",
+        "description": "A reanimated skeleton, its bones held together by dark magic. The skeleton moves with an eerie, jerking motion, its empty eye sockets glowing with an unnatural light. ",
+        "stats": {
+            "health": 20,
+            "attack": 5,
+            "defense": 0
+        },
+        "attributes": "undead"
+      }
+
+
+    }
   }
 }

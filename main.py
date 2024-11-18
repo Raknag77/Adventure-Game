@@ -56,6 +56,10 @@ def get_item_type(item_id):
     raise ValueError(f"Item ID '{item_id}' not found in any known category.")
 
 
+class Enemy:
+    def __init__(self):
+        self.stats = Stats()
+
 class Character:
     def __init__(self):
         self.name: Optional[str] = None
@@ -118,25 +122,8 @@ class Character:
             f"Gold: {self.gold}\n"
         )
 
-
-
-
-
-
-
-player = Character()
-skeleton = Character()
-
 inventory = ["excalibur"]
 inventory_count = Counter(inventory)
-
-events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
-char_list = [player]
-enemy_list = [skeleton]
-
-
-
-
 
 def const_choices(input_value):
     input_value = input_value.lower()
@@ -269,7 +256,7 @@ def display_encounter(encounter_name):
 
 
 random_encounter_count = 0
-
+events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
 
 def random_event():
     global random_encounter_count
@@ -287,15 +274,22 @@ def random_event():
     #     display_encounter(random_encounter)
     #     random_encounter_count += 1
 
+player = Character()
+skeleton = Character()
+
+char_list = [player]
+enemy_list = [skeleton]
+
+def crit_hit(character: Character) -> bool:
+    n = random.randint(1, 100)
+    if n < character.critChance * 100:
+        return True
+    return False
+
+def attribute_hit(character: Character, enemy: Character):
+    if character.weapon.attribute == "fire" and enemy.attributes == "ice":
 
 
-# def calculate_dmg(char_list, enemy_list):
-#     n = random.randint(1, 100)
-#     if n < char_list.critChance * 100:
-#         totalDmg = player.critDmg
-#     else:
-#         totalDmg = player.attackDmg
-#     enemy_list.health -= (totalDmg - enemy_list.defence)
 
 
 
