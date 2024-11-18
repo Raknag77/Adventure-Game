@@ -5,7 +5,6 @@ from enums import ItemTypeEnum
 
 from typing import Optional
 
-import time
 
 with open('game_content.json', 'r') as file:
     game_content = json.load(file)
