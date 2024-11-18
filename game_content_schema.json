@@ -1,0 +1,165 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "encounters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "choices": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "response": { "type": "string" },
+                "health": { "type": "integer" },
+                "next": { "type": "string" },
+                "inventory_add": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "combat": {
+                  "oneOf": [
+                    { "type": "string" },
+                    {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  ]
+                },
+                "requirements": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "gold": { "type": "integer" }
+              },
+              "required": ["text", "response", "next"]
+            }
+          }
+        },
+        "required": ["description", "choices"]
+      }
+    },
+    "items": {
+      "type": "object",
+      "properties": {
+        "weapons": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "attackDmg": { "type": "integer" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "attackDmg", "rarity"]
+          }
+        },
+        "helmets": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "defense": { "type": "integer" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "defense", "rarity"]
+          }
+        },
+        "chestpiece": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "defense": { "type": "integer" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "defense", "rarity"]
+          }
+        },
+        "leggings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "defense": { "type": "integer" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "defense", "rarity"]
+          }
+        },
+        "boots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "defense": { "type": "integer" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "defense", "rarity"]
+          }
+        },
+        "charms": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "rarity"]
+          }
+        },
+        "rings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "defense": { "type": "integer" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "defense", "rarity"]
+          }
+        },
+        "material": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "rarity": { "type": "string" }
+            },
+            "required": ["name", "description", "rarity"]
+          }
+        }
+      },
+      "required": [
+        "weapons",
+        "helmets",
+        "chestpiece",
+        "leggings",
+        "boots",
+        "charms",
+        "rings",
+        "material"
+      ]
+    }
+  },
+  "required": ["encounters", "items"]
+}

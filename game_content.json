@@ -1,0 +1,489 @@
+{
+  "encounters": {
+    "farmer_help": {
+      "description": "You walk down the road, the sun beating down on your shoulders. The quiet of the countryside is almost unnerving after the bustle of the last town. A few minutes pass, and soon you notice a figure ahead—an older man, dressed in a faded shirt and worn trousers, his face weathered by years of outdoor labor. He is hunched over in a small garden, carefully planting something in the rich, dark earth. The sound of birds chirping and insects buzzing fills the air.\n\nAs you approach, the man looks up, his expression unreadable. He wipes his brow with the back of his hand, and gives you a slow, deliberate nod.\n\nFarmer: \"Not many folks pass by these parts. What brings you here, traveler?\" ",
+      "choices": {
+        "1": {
+          "text": "Ask about the farm.",
+          "response": "This farm looks small but well-kept. How long have you been working here?\n\n\"All my life,\" the farmer replies humbly. \"Raised on this very land, and I'll likely die here too. It's a good life, if you don't mind the solitude.\"",
+          "health": 2,
+          "next": "random_encounter"
+        },
+        "2": {
+          "text": "Offer to help.",
+          "response": "Well now, that's a rare offer. A good many folks wouldn't think to help an old man like me. I could use a bit of it, though.\n\nThese old bones aren't as fast as they used to be, and this farm's more work than it seems.\n\nIf you're up for it, there's a well not far from here. You could fetch a couple of buckets of water for me, and I'll put you up for the night in exchange.\n\nNo need to keep traveling after sundown, eh? You can rest easy here.\n\n\"Sounds good. I'll go fetch the water.\"\n\n\"That's the spirit! Follow the path there, just past the barn.\n\nIt's a bit of a trek, but the well's deep and clear. Bring back a couple of buckets, and I'll have dinner ready by the time you get back.\n\nYou make your way to the well, the air growing quieter as you walk. After drawing two buckets of cool, clear water, you notice something half-buried in the underbrush. You kneel down and uncover an old, faded cloth pouch. Inside, you find a few small, smooth pebbles and a bit of worn string—nothing of real value, just odds and ends, as if someone had forgotten or discarded them.\n\nA sudden rustle from the trees catches your attention, and you quickly tuck the pouch into your bag, feeling an odd unease. You gather the buckets and head back toward the farmstead.\n\nYou return to the barn, water in hand, and the smell of stew wafts through the air. The farmer greets you with a nod, taking the buckets from you and leading you to the table.\n\n\"Right on time. Dinner's about ready, and you're welcome to stay the night. No need to keep traveling after dark.\"\n\nYou sit down to a simple meal of stew and bread, the warmth of the fire and the hearty food filling you with a sense of comfort.\n\n\"Not many folks come this way. It's quiet out here. Sometimes too quiet. But no need to worry about that. You've done me a good turn today, and I'm glad for the company.\"\n\nAfter the meal, the farmer leads you to a bedroll by the hearth. The fire crackles softly, and you feel the weight of the journey fall away as you settle in for the night. The pouch in your bag is still there, but its meaning remains unclear, leaving a small flicker of curiosity before sleep takes over.",
+          "inventory_add": [
+            "smooth pebbles",
+            "string"
+          ],
+          "next": "random_encounter"
+        },
+        "3": {
+          "text": "Ask about the road ahead.",
+          "response": "The farmer looks up thoughtfully. \"Well, if you keep heading that way, you'll come across an old mill. Folks say it's haunted. I'd steer clear of it if I were you, but if you are set on going, watch your back.\"",
+          "next": "haunted_mill"
+        }
+      }
+    },
+    "haunted_mill": {
+      "description": "As you continue on with your journet, you find yourself standing before an old, decrepit mill. The wood is rotting, and the air is thick with an eerie silence. Something about it feels... off. There's a locked door on the front, and the windows are boarded up.",
+      "choices": {
+        "1": {
+          "text": "Explore the mill",
+          "response": "You decide to approach the mill. The door is locked, but you can hear faint noises coming from inside.",
+          "next": "locked_door"
+        },
+        "2": {
+          "text": "Leave the mill",
+          "response": "You decide that the mill is best left unexplored and continue down the road.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "locked_door": {
+      "description": "The door is old, its wood rotting with age. It creaks as you push on it, but it doesn't budge. You could try breaking it down, give up, or look for another way in.",
+      "choices": {
+        "1": {
+          "text": "Break the door down",
+          "response": "You muster all your strength and break the door down. The air inside is heavy with dust and the smell of decay. As you step inside, an ominous presence fills the room.",
+          "next": "skeleton_room"
+        },
+        "2": {
+          "text": "Give up",
+          "response": "You walk away from the mill, feeling a sense of unease. Maybe it's best not to push your luck.",
+          "next": "random_encounter"
+        },
+        "3": {
+          "text": "Look for another way in",
+          "response": "You walk around the mill trying to locate a different way in, somewhere close by in the grass you see a small copper ring. As you keep exploring around the mill, you find a small, broken window and crawl inside, carefully avoiding the sharp glass.",
+          "inventory_add": [
+            "copper_ring"
+          ],
+          "next": "skeleton_room"
+        }
+      }
+    },
+    "skeleton_room": {
+      "description": "Inside the mill, you find a small room. A skeleton lies on the floor, its only piece of clothing being a pair of black leather boots. The room is cold and damp, and you can feel the presence of something watching you.",
+      "choices": {
+        "1": {
+          "text": "Take the boots",
+          "response": "As soon as you grab the boots, the skeleton's eyes glow! The room grows colder, and a ghostly entity rises from the shadows!",
+          "inventory_add": [
+            "black_leather_boots"
+          ],
+          "combat": "You must fight the ghostly entity!",
+          "next": "random_encounter"
+        },
+        "2": {
+          "text": "Leave the item and go back",
+          "response": "You leave the item alone and quickly exit the mill. The unease lingers, but you're glad to be out.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "silver_stag_tale": {
+      "description": "The sun is setting as you step into The White Horse, a cozy tavern in Stonehaven. The warmth of the fire welcomes you inside, and the smell of hearty food and spiced wine fills the air. At the bar, a friendly barmaid named Mira greets you. She offers you a drink but, after a few moments, her tone becomes serious.\n\nMira: \"Something strange is happening around here lately... It's a tale that's been passed down for generations, and you might think it's all just superstition, but I swear there's truth to it. They say that on certain nights, a silver stag appears in the forest. A beautiful creature, with fur like shimmering moonlight, and eyes that hold secrets of the world. But be warned, those who have gone looking for it... they never return quite the same. Some even say the stag holds power—grants wishes or curses those who seek it.\"",
+      "choices": {
+        "1": {
+          "text": "Search for the Silver Stag",
+          "response": "A silver stag, you say? Sounds like an interesting challenge.",
+          "next": "search_for_stag"
+        },
+        "2": {
+          "text": "Dismiss the Tale",
+          "response": "I think I'll stick to something a little less... supernatural.",
+          "next": "random_encounter"
+        },
+        "3": {
+          "text": "Ask for More Details",
+          "response": "Tell me more about the silver stag. Has anyone else seen it?",
+          "next": "ask_for_more_details"
+        }
+      }
+    },
+    "search_for_stag": {
+      "description": "You decide to head into the forest, hoping to find the elusive stag. The whispers of the tavern still linger in your mind as you venture down the trail, the shadows of the trees growing deeper with each step.",
+      "choices": {
+        "1": {
+          "text": "Meet the Stag and Perform the Trial",
+          "response": "The stag appears, waiting for you. It looks at you with ancient eyes, its gaze piercing your very soul. You must prove your worth.",
+          "next": "trial_encounter"
+        },
+        "2": {
+          "text": "Attempt to Kill the Stag",
+          "response": "You decide to try and kill the stag, seeing it as a challenge.",
+          "next": "kill_stag_encounter"
+        }
+      }
+    },
+    "ask_for_more_details": {
+      "description": "Mira looks around cautiously, her voice dropping to a whisper.\n\nMira: \n\"Well, I'll tell you what I know, but you've got to promise to be careful. It's not just the stag... there's more to this forest. A long time ago, there was an ancient ritual, a kind of communion with the forest's spirit, to keep the balance. But the ritual was lost over time, and now, those who seek the stag might be searching for more than they realize. They say that to perform the ritual correctly, you might need to sell your soul.\" You decide to head into the forest, hoping to find the elusive stag. The whispers of the tavern still linger in your mind as you venture down the trail, the shadows of the trees growing deeper with each step.",
+      "choices": {
+        "1": {
+          "text": "Meet the Stag and Perform the Trial",
+          "response": "The stag appears, waiting for you. It looks at you with ancient eyes, its gaze piercing your very soul. You must prove your worth.",
+          "next": "trial_encounter"
+        },
+        "2": {
+          "text": "Attempt to Kill the Stag",
+          "response": "You decide to try and kill the stag, seeing it as a challenge.",
+          "next": "kill_stag_encounter"
+        },
+        "3": {
+          "text": "Perform the Ritual",
+          "response": "You decide to perform the ancient ritual of communion with the forest spirit.",
+          "requirements": [
+            "bundle_of_sage",
+            "wood_charm"
+          ],
+          "next": "perform_ritual"
+        },
+        "4": {
+          "text": "If You Have Soul Essence, Perform an Advanced Ritual",
+          "response": "You consider using your Soul Essence to perform an advanced version of the ritual, which could grant you power—or risk losing yourself in the process.",
+          "requirements": [
+            "soul_essence"
+          ],
+          "next": "perform_advanced_ritual"
+        }
+      }
+    },
+    "perform_ritual": {
+      "description": "You kneel in the clearing, the silver stag watching intently as though weighing your intent. You take out the ingredients the barkeep described: a bundle of sage, a small crystal vial filled with clear water, and a carved wooden charm shaped like an antler. The air grows heavy as you light the sage, letting the fragrant smoke rise into the canopy.\n\nAs the smoke thickens, you chant the words taught to you by the barkeep:\n\n\"Oh guardian of the wild, hear my plea,\nThrough leaf and root, I call to thee.\nFrom silver moon to ancient grove,\nReveal the truths only spirits know.\"\n\nThe clearing begins to glow faintly, the stag lowering its antlers toward you. A soft voice, resonating in your mind and heart, speaks:\n\n\"Seeker, you have shown respect to the old ways. Ask your question, and it shall be answered.\" \n\nYou sense the forest's presence enveloping you, waiting for your response.",
+      "choices": {
+        "1": {
+          "text": "Ask for the stag's blessing.",
+          "response": "You bow your head and request the stag's blessing. The stag steps forward, lowering its head, and with a graceful movement, breaks off a small shard of its antler. It gently places the fragment in your palm. As you grasp it, a surge of energy courses through you, filling you with vitality and clarity.",
+          "inventory_add": [
+            "silver_antler_shard"
+          ],
+          "next": "random_encounter"
+        },
+        "2": {
+          "text": "Ask for the location of hidden treasure.",
+          "response": "You ask about hidden riches within the forest. The stag tilts its head, its eyes gleaming with knowing. It stamps its hoof once, and a small wisp of light appears, darting through the trees. You follow it to a hidden hollow, where a chest lies buried beneath a blanket of moss.\n\nInside, you find ancient coins, a couple of gemstones, and a small silver ring with intricate carvings.",
+          "inventory_add": [
+            "sapphire",
+            "emerald",
+            "silver_ring"
+          ],
+          "gold": 100,
+          "next": "random_encounter"
+        },
+        "3": {
+          "text": "Ask for the forest's power.",
+          "response": "You request the forest's ancient power. With a graceful nod, the Stag lowers its head, its antlers glowing with an ethereal light, and from the depths of the forest's heart, it presents Verdant, a bow symbolizing the ancient power of the woods, now entrusted to you.",
+          "inventory_add": [
+            "Verdant"
+          ],
+          "next": "random_encounter"
+        }
+      }
+    },
+    "perform_advanced_ritual": {
+      "description": "You venture into the forest, ready to perform the advanced ritual using your Soul Essence. The forest feels different, more alive, and as you gather the required items, you feel an eerie connection to the spirits of the woods. Once you have everything, you head to the sacred glade to perform the advanced ritual.",
+      "choices": {
+        "1": {
+          "text": "Perform the Advanced Ritual",
+          "response": "You perform the advanced ritual, with the power of your Soul Essence. The consequences could be more severe—or more rewarding.",
+          "next": "advanced_ritual_outcome"
+        },
+        "2": {
+          "text": "Ask for the location of hidden treasure.",
+          "response": "You ask about hidden riches within the forest. The stag tilts its head, its eyes gleaming with knowing. It stamps its hoof once, and a small wisp of light appears, darting through the trees. You follow it to a hidden hollow, where a chest lies buried beneath a blanket of moss.\n\nInside, you find a pristine enchanted dagger, its blade forged from a rare metal that hums with the power of the forest, and a cloak woven from moonlight and shadow, granting you the ability to blend into the surroundings as if part of the very woodland itself. These gifts are not merely material—they are tokens of the forest's deepest magic, a reward for your valor..",
+          "inventory_add": [
+            "pristine_dagger",
+            "moonlight_cloak"
+          ],
+          "next": "random_encounter"
+        },
+        "3": {
+          "text": "Ask for the forest's secrets.",
+          "response": "You request the forest's ancient secrets. The stag regards you solemnly before speaking in your mind:\n\n\"The trees whisper of paths lost to time. Seek the elder oak near the waterfall, and listen to its song. But beware—the deeper truths carry great risk.\"\n\nYou sense a surge of knowledge, visions of hidden groves and forgotten ruins flashing through your mind. You have gained the Knowledge of the Forest.",
+          "inventory_add": [
+            "Knowledge of the Forest"
+          ],
+          "next": "random_encounter"
+        }
+      }
+    },
+    "trial_encounter": {
+      "description": "The silver stag stands before you, its glowing eyes fixed on you with unwavering focus. Without a word, it raises its head, and from the surrounding mist, dark figures begin to materialize—wraith-like guardians summoned to test your strength. Their hollow eyes lock onto you, and a cold chill fills the air. Stag: (its voice echoing in your mind): \"Only those who prove their worth can pass. Defeat my guardians, or turn back.\"",
+      "choices": {
+        "1": {
+          "text": "Prove Your Worth in the Trial",
+          "response": "You take the stag's challenge, determined to prove yourself.",
+          "combat": [
+            "wraith",
+            "wraith"
+          ],
+          "next": "trial_outcome"
+        },
+        "2": {
+          "text": "Turn back",
+          "response": "You give in to fear as you are faced with this majestic ethereal creature.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "kill_stag_encounter": {
+      "description": "You raise your weapon against the stag. Its eyes flash with a mix of sorrow and ancient power. Before you can strike, the stag vanishes into the trees, leaving you with only the sense that you've lost something important.",
+      "choices": {
+        "1": {
+          "text": "Return to the Tavern",
+          "response": "You feel a heavy weight in your heart, but you decide to return to the tavern.",
+          "next": "tavern_return"
+        }
+      }
+    },
+    "ritual_outcome": {
+      "description": "The ritual unfolds in front of you. The forest's power surges through you, filling you with energy—or draining you, depending on your actions. What you gain or lose from this experience will shape your future.",
+      "choices": {
+        "1": {
+          "text": "Leave the Forest",
+          "response": "The ritual is complete, and you leave the forest with the feeling that something has changed within you.",
+          "next": "tavern_return"
+        }
+      }
+    },
+    "advanced_ritual_outcome": {
+      "description": "The power of the advanced ritual overwhelms you, the Soul Essence binding with the forest's power. Something ancient stirs in the woods. Your fate is now tied to the forest's will.",
+      "choices": {
+        "1": {
+          "text": "Leave the Forest",
+          "response": "You leave the forest, the echoes of the ritual still reverberating through your being.",
+          "next": "tavern_return"
+        }
+      }
+    },
+    "trial_outcome": {
+      "description": "You have defeated the wraiths and succeeded in completing the Stag's trial. It steps towards you, its stance more passive than before. Stag: \"For your success you shall be rewarded with a treasure from the forgotten realm.\" A blinding white light appears above you and you feel a small thump at your feet. You pick up a small deep blue ring, with white stones encircling its circumference. Looking up from your spoils, you can see the stag turn and disappear into the thick foliage of the forest.",
+      "choices": {
+        "1": {
+          "text": "Leave the Forest",
+          "response": "You leave the forest, in awe of the astonishing power you have observed",
+          "inventory_add": [
+            "forgotten_ring"
+          ],
+          "next": "tavern_return"
+        }
+      }
+    },
+    "tavern_return": {
+      "description": "You return to the tavern, the firelight welcoming you back. But the stories of the stag still haunt your thoughts, and you know that your journey has only just begun.",
+      "choices": {
+        "1": {
+          "text": "Relax and Rest",
+          "response": "You sit down by the fire, resting for the night as the memories of your encounter linger in your mind.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "abandoned_church": {
+      "description": "As you walk along the empty road, the sun begins to dip low in the sky, casting long shadows across the barren landscape. After hours of travel with no signs of civilization, you come across a strange sight—a tall, old church standing alone in the middle of nowhere. It looks out of place, the crumbling stone walls covered in ivy and moss. The tall spire reaches up into the sky, and the stained-glass windows, though cracked, still show faint traces of their former vibrant colors. There are no other buildings in sight, and the surrounding grounds are eerily quiet, save for the wind whispering through the trees. The large wooden doors of the church stand slightly ajar, as if inviting you in. A feeling of unease settles over you, but something about the place calls you forward, drawing you closer to its shadowed interior.",
+      "choices": {
+        "1": {
+          "text": "Enter the church",
+          "response": "You push open the heavy wooden doors and step inside. The air inside is musty, and the faint smell of incense lingers, as if the church had once been in use long ago. The grand interior is dimly lit, with dust motes floating lazily in the shafts of light that filter through the broken windows.",
+          "next": "read_book"
+        },
+        "2": {
+          "text": "Investigate the surrounding grounds.",
+          "response": "You walk around the perimeter of the church, scanning the overgrown yard.",
+          "next": "investigate_abandoned_crypt"
+        },
+        "3": {
+          "text": "Leave the church behind you",
+          "response": "You decide not to disturb the peace of this place and continue on your way.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "read_book": {
+      "description": "At the far end of the room, an altar stands, draped in tattered cloths. As you approach the altar, you notice a large, worn book lying on it—its pages yellowed with age.",
+      "choices": {
+        "1": {
+          "text": "Read the book",
+          "response": "You open the heavy tome, its pages creaking under your touch. The words inside are written in an ancient, almost forgotten language, but some of the text is still legible. ",
+          "next": "read_book_further"
+        },
+        "2": {
+          "text": "Leave the Church",
+          "response": "You quickly back away from the altar, feeling a sense of dread building in your chest. The whispers cease as soon as you step out of the church, but the eerie feeling lingers. The doors slam shut behind you, leaving you standing in the stillness of the yard. For a moment, you consider leaving, but something urges you to explore the grounds further.",
+          "next": "investigate_abandoned_grounds"
+        }
+      }
+    },
+    "investigate_abandoned_grounds": {
+      "description": "The grounds are scattered with old tombstones, their engravings faded beyond recognition. Some of the gravestones are broken or tilted at odd angles, and a few look as though they've been disturbed recently. There's an unsettling feeling here, as though the dead may not rest easy. At the edge of the yard, you notice an odd stone structure—perhaps a crypt or a mausoleum. It's partially buried under vines, but you can make out the faint shape of a door.",
+      "choices": {
+        "1": {
+          "text": "Explore the crypt.",
+          "response": "You make you way towards the ruined crypt",
+          "next": "investigate_abandoned_crypt"
+        },
+        "2": {
+          "text": "Leave the grounds entirely",
+          "response": "You make your way out of the old church grounds, deciding it is best to not investigate the eerie place further.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "read_book_further": {
+      "description": "You feel a strange compulsion to continue reading, even as the whispers grow louder. The book describes how Drakthul was bound within the church's foundation, its power sealed away by an ancient order. However, the ritual that sealed it also made the church a place of great power, drawing those sensitive to magic. The last entry in the book is cryptic: \"Drakthul waits beneath the altar. It seeks a soul to awaken it.\"",
+      "choices": {
+        "1": {
+          "text": "Investigate the altar.",
+          "response": "When you turn, the altar appears different—an unnatural darkness is creeping from the cracks in the floor, swirling around the base of the altar. The whispers turn into a guttural growl, and the air becomes thick with the presence of something malevolent.",
+          "next": "drakthul_altar"
+        },
+        "2": {
+          "text": "Leave the church immediately.",
+          "response": "You quickly back away from the altar, feeling a sense of dread building in your chest. The whispers cease as soon as you step out of the church, but the eerie feeling lingers. The doors slam shut behind you, leaving you standing in the stillness of the yard. For a moment, you consider leaving, but something urges you to explore the grounds further.",
+          "next": "investigate_abandoned_grounds"
+        }
+      }
+    },
+    "investigate_abandoned_crypt": {
+      "description": "The stone door to the crypt creaks open, revealing a narrow, dark passage leading down into the earth. The air is thick and stale, with the smell of mildew and decay. At the end of the passage is a small chamber, filled with sarcophagi and stone coffins. One of the coffins lies partially open, as if disturbed recently. As you examine the crypt, you notice strange symbols etched into the walls. In the center of the room, an ornate stone pedestal holds a dusty, old key.",
+      "choices": {
+        "1": {
+          "text": "Take the key.",
+          "response": "Suddenly, a cold gust of wind blows through the crypt, and the chamber trembles. A low growl rumbles from the shadows, and the faint outlines of figures begin to materialize, their eyes glowing faintly in the dark.",
+          "inventory_add": [
+            "shackled_choir_key"
+          ],
+          "combat": [
+            "skeleton"
+          ],
+          "next": "random_encounter"
+        },
+        "2": {
+          "text": "Leave the crypt",
+          "response": "You step away from the crypt, the heavy air around it lifting slightly as you leave. The shadows of the surrounding trees stretch longer, quietly reclaiming the ground.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "drakthul_altar": {
+      "description": "You step closer to the altar, drawn to the swirling darkness beneath it. As you touch the stone surface, the ground trembles, and the darkness pulses violently. A voice—low and guttural—echoes through the church: \"You have awakened me...\"",
+      "choices": {
+        "1": {
+          "text": "Attempt to seal the altar once more.",
+          "response": "Suddenly, the church shakes violently, as though something beneath it stirs. The shadows ripple and writhe, coiling around you, their icy tendrils brushing your skin. The air grows heavy with an oppressive power, and the whispers swell into a deafening roar. Despite the mounting dread, you stand your ground, drawn by the undeniable pull of the altar's malevolent energy. The church is no longer a sanctuary but a vortex of unleashed power, its curse now fully awakened and beyond control.",
+          "combat": [
+            "drakthul"
+          ],
+          "next": "darkthul_altar_outcome"
+        },
+        "2": {
+          "text": "Flee the church immediately.",
+          "response": "Overwhelmed by the suffocating darkness and the roar of unseen whispers, you turn and flee, the echoing sound of your footsteps swallowed by the chaos behind you.",
+          "next": "random_encounter"
+        }
+      }
+    },
+    "drakthul_altar_outcome": {
+      "description": "You stand victorious, the oppressive darkness slowly fading as the altar's power wanes. The shadows that once threatened to consume you retreat, their grip on the church weakening. The ground stops trembling, and the ominous voice falls silent. The curse, though powerful, has been broken. As the last remnants of darkness dissipate, you notice the gleam of silver chains, newly formed from the very shadows that once sought to drag you into the earth. The church, though scarred, is no longer a place of torment. You've banished the ancient evil that lurked beneath, restoring a fragile peace.",
+      "choices": {
+        "1": {
+          "text": "Leave the church, having conquered evil.",
+          "response": "As you leave the ruins behind, you know the battle has been won, but the price of meddling with such dark forces may linger forever.",
+          "inventory_add": [
+            "silver_chains"
+          ],
+          "next": "random_encounter"
+        }
+      }
+    }
+  },
+  "items": {
+    "weapons": {
+      "common_sword": {
+        "name": "Sword",
+        "description": "A simple, well-used sword with a steel blade and a leather-wrapped hilt. It shows signs of wear but remains sharp and balanced, reliable for basic combat. A practical weapon for any adventurer.",
+        "attackDmg": 10,
+        "rarity": "common"
+      },
+      "common_lance": {
+        "name": "Lance",
+        "description": "A sturdy, well-balanced lance with a long wooden shaft and a steel tip. The wood is worn from use, but it remains strong and reliable. The blade is simple, practical, and effective for mounted combat or thrusting. A dependable weapon, ideal for soldiers or adventurers seeking a reliable polearm.",
+        "attackDmg": 10,
+        "rarity": "common"
+      },
+      "common_mace": {
+        "name": "Mace",
+        "description": "A heavy, blunt mace with a steel head and a wooden handle. The mace is well-crafted and sturdy, designed for crushing blows and armored opponents. The weight of the mace gives it considerable impact, making it a formidable weapon in close combat. A reliable choice for warriors or knights facing heavily armored foes.",
+        "attackDmg": 0,
+        "rarity": "common"
+      },
+      "excalibur": {
+        "name": "Excalibur",
+        "description": "The legendary sword of unmatched power. Its blade gleams with a radiant, otherworldly light, etched with ancient runes. The hilt is adorned with gold and precious gems, radiating an aura of divine authority. This is no ordinary weapon—its strike is destined to change the course of history.",
+        "attackDmg": 750,
+        "rarity": "legendary"
+      }
+    },
+    "helmets": {
+      "thorn_crown": {
+        "name": "Thorn Crown",
+        "description": "A round wreath made of thorns bloodied by a saviour.",
+        "defense": 5,
+        "rarity": "legendary"
+      }
+    },
+    "chestpiece": {
+      "leather_tunic": {
+        "name": "Leather Tunic",
+        "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.",
+        "defense": 5,
+        "rarity": "common"
+      }
+    },
+    "leggings": {
+      "leather_pants": {
+        "name": "Leather Pants",
+        "description": "A pair of sturdy leather pants, reinforced with metal rivets and patches. The leather is thick and durable, offering protection against cuts and scrapes. The pants are comfortable and flexible, ideal for travel or light combat.",
+        "defense": 10,
+        "rarity": "common"
+      }
+    },
+    "boots": {
+      "black_leather_boots": {
+        "name" : "Black Leather Boots",
+        "description": "A pair of sturdy black boots, made of thick leather and reinforced with metal buckles. The soles are rugged and durable, providing good traction on various terrains. The boots are comfortable and well-made, ideal for long journeys or combat.",
+        "defense": 5,
+        "rarity": "common"
+      }
+    },
+    "charms": {
+      "wood_charm": {
+        "name": "Wooden Charm",
+        "description": "A small wooden charm carved in the shape of a stag. It is smooth to the touch, with intricate details etched into the wood. The charm radiates a faint, comforting energy, as if connected to the natural world.",
+        "rarity": "common"
+      }
+    },
+    "rings": {
+      "copper_ring": {
+        "name": "Copper Ring",
+        "description": "A small ring made of copper",
+        "defense": 1,
+        "rarity": "common"
+      },
+      "silver_ring": {
+        "name": "Silver Ring",
+        "description": "A small ring made of silver",
+        "defense": 3,
+        "rarity": "rare"
+      }
+    },
+    "material": {
+      "soul_essence": {
+        "name": "Soul Essence",
+        "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.",
+        "rarity": "rare"
+      }
+    }
+  }
+}
