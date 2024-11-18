@@ -5,7 +5,6 @@ from enums import ItemTypeEnum
 
 from typing import Optional
 
-import time
 
 with open('game_content.json', 'r') as file:
     game_content = json.load(file)
@@ -57,8 +56,17 @@ def get_item_type(item_id):
 
 
 class Enemy:
-    def __init__(self):
-        self.stats = Stats()
+    def __init__(self,category,enemy_type):
+        enemy_data = game_content["enemies"][category][enemy_type]
+
+        self.name = enemy_data["name"]
+        self.description = enemy_data["description"]
+        self.stats = Stats(**enemy_data["stats"])
+        self.attributes = enemy_data["attributes"]
+
+    def __repr__(self):
+        return (f"Enemy(name={self.name}, description={self.description},",
+                f"stats={self.stats}, attributes={self.attributes})")
 
 class Character:
     def __init__(self):
@@ -275,10 +283,7 @@ def random_event():
     #     random_encounter_count += 1
 
 player = Character()
-skeleton = Character()
-
-char_list = [player]
-enemy_list = [skeleton]
+skeleton = Enemy("enemies", "undead")
 
 def crit_hit(character: Character) -> bool:
     n = random.randint(1, 100)
@@ -286,9 +291,89 @@ def crit_hit(character: Character) -> bool:
         return True
     return False
 
-def attribute_hit(character: Character, enemy: Character):
+def attribute_hit(character: Character, enemy: Enemy):
     if character.weapon.attribute == "fire" and enemy.attributes == "ice":
-
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "fire" and enemy.attributes == "undead":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "fire" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "fire" and enemy.attributes == "cursed":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "fire" and enemy.attributes == "water":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "ice" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "ice" and enemy.attributes == "water":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "ice" and enemy.attributes == "fire":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "ice" and enemy.attributes == "lightning":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "ice" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "holy" and enemy.attributes == "undead":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "holy" and enemy.attributes == "cursed":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "holy" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "water" and enemy.attributes == "fire":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "water" and enemy.attributes == "ice":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "water" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "water" and enemy.attributes == "lightning":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "lightning" and enemy.attributes == "water":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "lightning" and enemy.attributes == "ice":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "lightning" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "lightning" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "cursed" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "cursed" and enemy.attributes == "holy":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "cursed" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "necrotic" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "necrotic" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "necrotic" and enemy.attributes == "holy":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "physical" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "physical" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "physical" and enemy.attributes == "lightning":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "natural" and enemy.attributes == "water":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "natural" and enemy.attributes == "fire":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "natural" and enemy.attributes == "physical":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "natural" and enemy.attributes == "arcane":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "physical":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "natural":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "undead":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "ice":
+        character.attackDmg = character.attackDmg * 2
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "holy":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "lightning":
+        character.attackDmg = character.attackDmg * 0.5
+    elif character.weapon.attribute == "arcane" and enemy.attributes == "cursed":
+        character.attackDmg = character.attackDmg * 0.5
 
 
 
