@@ -226,11 +226,7 @@ def display_encounter(encounter_name):
             if "inventory_add" in choice_details:
                 new_items = choice_details["inventory_add"]
                 for item_id in new_items:
-
-                    # Add the item ID to the inventory (not the Item object)
                     inventory.append(item_id)
-
-                    # Print the added items
                     print(
                         f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id)))) for item_id in inventory[-len(new_items):]])} to inventory.")
 
@@ -251,11 +247,13 @@ def display_encounter(encounter_name):
             # if "combat" in choice_details:
             # print(choice_details["combat"]) # Combat logic here
             # break # Return to encounter after combat
+
             if "health" in choice_details:
                 player.health += choice_details["health"]
                 if player.health <= 0:
                     print("You have died.")
                     break
+
             if "gold" in choice_details:
                 player.gold += choice_details["gold"]
                 print(f"You have gained {choice_details['gold']} gold.")
@@ -288,7 +286,7 @@ def random_event():
     #     random_encounter_count += 1
 
 player = Character()
-skeleton = Enemy("enemies", EnemyTypeEnum.UNDEAD.value)
+skeleton = Enemy("skeleton", EnemyTypeEnum.UNDEAD)
 
 def crit_hit(character: Character) -> bool:
     n = random.randint(1, 100)
@@ -394,7 +392,7 @@ def attribute_hit(character: Character, enemy: Enemy):
 
 def main():
 
-    print(skeleton)
+    #print(skeleton)
 
     starting_story_1 = """
 You stood before the Adventurers' Guild, heart racing with excitement. 
@@ -456,11 +454,10 @@ the lance excels in keeping enemies at bay and delivering powerful blows from a 
             # Assign a weapon as an Item object
             player.weapon = Item("common_sword", ItemTypeEnum.WEAPON)  # Use the 'Item' class to handle a weapon
         elif choice == "no":
-            print()
+            return
         else:
-            print("Invalid input, defaulting to sword.")
-            player.weapon = Item("common_sword", ItemTypeEnum.WEAPON)
-            print()
+            print("Invalid input, please choose again.")
+            return
 
     elif starting_weapon_choice == "lance":
         print(common_lance_description)
@@ -469,10 +466,13 @@ the lance excels in keeping enemies at bay and delivering powerful blows from a 
             # Assign a weapon as an Item object
             player.weapon = Item("common_lance", ItemTypeEnum.WEAPON)
         elif choice == "no":
-            print()
+            return
         else:
             print("Invalid input, please choose again.")
-            print()
+            return
+    else:
+        print("Invalid input, please choose again.")
+        return
 
     random_event()
 

@@ -493,11 +493,26 @@
         "description": "A reanimated skeleton, its bones held together by dark magic. The skeleton moves with an eerie, jerking motion, its empty eye sockets glowing with an unnatural light. ",
         "stats": {
             "health": 20,
-            "attack": 5,
-            "defense": 0
+            "attackDmg": 5,
+            "defense": 0,
+            "critChance": 0.0
         },
-        "attributes": "undead"
+        "attributes": "Undead"
+      },
+    "beast": {
+      "timber_wolf": {
+        "name": "Timber Wolf",
+        "description": "Untamed puppy",
+        "stats": {
+            "health": 20,
+            "attackDmg": 7,
+            "defense": 2,
+            "critChance": 0.1
+        },
+        "attributes": "Natural"
+
       }
+    }
 
 
     }
