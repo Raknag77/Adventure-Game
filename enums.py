@@ -17,3 +17,7 @@ class ItemTypeEnum(Enum):
     CHARM = CHARMS
     RING = RINGS
     MATERIAL = MATERIALS
+
+class EnemyTypeEnum(Enum):
+    UNDEAD = "undead"
+

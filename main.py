@@ -2,9 +2,8 @@ import random
 from collections import Counter
 import json
 from enums import ItemTypeEnum
-
+from enums import EnemyTypeEnum
 from typing import Optional
-
 
 with open('game_content.json', 'r') as file:
     game_content = json.load(file)
@@ -31,7 +30,9 @@ class Item:
         self.description = game_content["items"][item_type.value][item_id]["description"]
         self.stats = Stats(
             attackDmg=game_content["items"][self.item_type.value][self._id].get("attackDmg", 0),
-            defense=game_content["items"][self.item_type.value][self._id].get("defense", 0)
+            defense=game_content["items"][self.item_type.value][self._id].get("defense", 0),
+            health=game_content["items"][self.item_type.value][self._id].get("health", 0),
+            critChance=game_content["items"][self.item_type.value][self._id].get("critChance", 0)
         )
         self.attribute = game_content["items"][item_type.value][item_id].get("attribute")
         self.rarity = game_content["items"][item_type.value][item_id]["rarity"]
@@ -39,8 +40,8 @@ class Item:
     def __repr__(self):
         # For simplicity, you can adjust this representation to show name, rarity, and damage/defense
         if self.item_type == ItemTypeEnum.WEAPON:
-            return f"{self.name} (Attack Damage: {self.stats.attackDmg}, Attribute {self.attribute}, Rarity: {self.rarity})"
-        return f"{self.name} (Defense: {self.stats.defense}, Attribute {self.attribute}, Rarity: {self.rarity})"
+            return f"{self.name} (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance} Attribute {self.attribute}, Rarity: {self.rarity})"
+        return f"{self.name} (Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute {self.attribute}, Rarity: {self.rarity})"
 
     def get_id(self):
         return self._id
@@ -56,13 +57,20 @@ def get_item_type(item_id):
 
 
 class Enemy:
-    def __init__(self,category,enemy_type):
-        enemy_data = game_content["enemies"][category][enemy_type]
+    def __init__(self, enemy_id: str, enemy_type: EnemyTypeEnum):
+        # enemy_data = game_content["enemies"][category][enemy_type]
 
-        self.name = enemy_data["name"]
-        self.description = enemy_data["description"]
-        self.stats = Stats(**enemy_data["stats"])
-        self.attributes = enemy_data["attributes"]
+        self._id = enemy_id
+        self.enemy_type = enemy_type
+        self.name = game_content["enemies"][enemy_type.value][enemy_id]["name"]
+        self.description = game_content["enemies"][enemy_type.value][enemy_id]["description"]
+        self.stats = Stats(
+            attackDmg=game_content["enemies"][self.enemy_type.value][self._id].get("attackDmg", 0),
+            defense=game_content["enemies"][self.enemy_type.value][self._id].get("defense", 0),
+            health=game_content["enemies"][self.enemy_type.value][self._id].get("health", 0),
+            critChance=game_content["enemies"][self.enemy_type.value][self._id].get("critChance", 0)
+        )
+        self.attributes =  game_content["enemies"][enemy_type.value][enemy_id]["attributes"]
 
     def __repr__(self):
         return (f"Enemy(name={self.name}, description={self.description},",
@@ -283,7 +291,7 @@ def random_event():
     #     random_encounter_count += 1
 
 player = Character()
-skeleton = Enemy("enemies", "undead")
+skeleton = Enemy("enemies", )
 
 def crit_hit(character: Character) -> bool:
     n = random.randint(1, 100)
@@ -375,6 +383,9 @@ def attribute_hit(character: Character, enemy: Enemy):
     elif character.weapon.attribute == "arcane" and enemy.attributes == "cursed":
         character.attackDmg = character.attackDmg * 0.5
 
+# def calculateDmg(character: Character, enemy: Enemy):
+#     while player.health > 0 or enemy.health > 0:
+
 
 
 
@@ -385,6 +396,9 @@ def attribute_hit(character: Character, enemy: Enemy):
 
 
 def main():
+
+    print(skeleton)
+
     starting_story_1 = """
 You stood before the Adventurers' Guild, heart racing with excitement. 
 You pushed open the heavy wooden doors and stepped into a room bathed in warm, amber light. 
