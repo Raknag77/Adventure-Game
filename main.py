@@ -1,8 +1,8 @@
 import random
 from collections import Counter
 import json
-from enums import ItemTypeEnum
-from enums import EnemyTypeEnum
+from game_enums import ItemTypeEnum
+from game_enums import EnemyTypeEnum
 from typing import Optional
 
 with open('game_content.json', 'r') as file:
@@ -38,7 +38,6 @@ class Item:
         self.rarity = game_content["items"][item_type.value][item_id]["rarity"]
 
     def __repr__(self):
-        # For simplicity, you can adjust this representation to show name, rarity, and damage/defense
         if self.item_type == ItemTypeEnum.WEAPON:
             return f"{self.name} (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance} Attribute {self.attribute}, Rarity: {self.rarity})"
         return f"{self.name} (Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute {self.attribute}, Rarity: {self.rarity})"
@@ -58,8 +57,6 @@ def get_item_type(item_id):
 
 class Enemy:
     def __init__(self, enemy_id: str, enemy_type: EnemyTypeEnum):
-        # enemy_data = game_content["enemies"][category][enemy_type]
-
         self._id = enemy_id
         self.enemy_type = enemy_type
         self.name = game_content["enemies"][enemy_type.value][enemy_id]["name"]
@@ -123,13 +120,13 @@ class Character:
         return (
             f"Character Info:\n"
             f"Name: {self.name}\n"
-            f"Weapon: {self.weapon.name if self.weapon else 'None'}\n"  # Safe access to a weapon
-            f"Head: {self.helmet}\n"
-            f"Top: {self.chestpiece}\n"
-            f"Bottom: {self.leggings}\n"
-            f"Feet: {self.boots}\n"
-            f"Charm: {self.charm}\n"
-            f"Ring: {self.ring.name if self.ring else 'None'}\n"  # Safe access to ring
+            f"Weapon: {self.weapon.name if self.weapon else 'None'}\n"  
+            f"Head: {self.helmet.name if self.helmet else 'None'}\n"
+            f"Top: {self.chestpiece.name if self.chestpiece else 'None'}\n"
+            f"Bottom: {self.leggings.name if self.leggings else 'None'}\n"
+            f"Feet: {self.boots.name if self.boots else 'None'}\n"
+            f"Charm: {self.charm.name if self.charm else 'None'}\n"
+            f"Ring: {self.ring.name if self.ring else 'None'}\n"
             f"Health: {self.health}\n"
             f"Defence: {self.defence}\n"
             f"Attack Damage: {self.attackDmg}\n"
@@ -291,7 +288,7 @@ def random_event():
     #     random_encounter_count += 1
 
 player = Character()
-skeleton = Enemy("enemies", )
+skeleton = Enemy("enemies", EnemyTypeEnum.UNDEAD.value)
 
 def crit_hit(character: Character) -> bool:
     n = random.randint(1, 100)
