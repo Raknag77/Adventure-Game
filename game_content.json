@@ -13,7 +13,7 @@
           "text": "Offer to help.",
           "response": "Well now, that's a rare offer. A good many folks wouldn't think to help an old man like me. I could use a bit of it, though.\n\nThese old bones aren't as fast as they used to be, and this farm's more work than it seems.\n\nIf you're up for it, there's a well not far from here. You could fetch a couple of buckets of water for me, and I'll put you up for the night in exchange.\n\nNo need to keep traveling after sundown, eh? You can rest easy here.\n\n\"Sounds good. I'll go fetch the water.\"\n\n\"That's the spirit! Follow the path there, just past the barn.\n\nIt's a bit of a trek, but the well's deep and clear. Bring back a couple of buckets, and I'll have dinner ready by the time you get back.\n\nYou make your way to the well, the air growing quieter as you walk. After drawing two buckets of cool, clear water, you notice something half-buried in the underbrush. You kneel down and uncover an old, faded cloth pouch. Inside, you find a few small, smooth pebbles and a bit of worn string—nothing of real value, just odds and ends, as if someone had forgotten or discarded them.\n\nA sudden rustle from the trees catches your attention, and you quickly tuck the pouch into your bag, feeling an odd unease. You gather the buckets and head back toward the farmstead.\n\nYou return to the barn, water in hand, and the smell of stew wafts through the air. The farmer greets you with a nod, taking the buckets from you and leading you to the table.\n\n\"Right on time. Dinner's about ready, and you're welcome to stay the night. No need to keep traveling after dark.\"\n\nYou sit down to a simple meal of stew and bread, the warmth of the fire and the hearty food filling you with a sense of comfort.\n\n\"Not many folks come this way. It's quiet out here. Sometimes too quiet. But no need to worry about that. You've done me a good turn today, and I'm glad for the company.\"\n\nAfter the meal, the farmer leads you to a bedroll by the hearth. The fire crackles softly, and you feel the weight of the journey fall away as you settle in for the night. The pouch in your bag is still there, but its meaning remains unclear, leaving a small flicker of curiosity before sleep takes over.",
           "inventory_add": [
-            "smooth pebbles",
+            "smooth_pebbles",
             "string"
           ],
           "next": "random_encounter"
@@ -439,7 +439,7 @@
         "rarity": "legendary"
       }
     },
-    "chestpiece": {
+    "chestpieces": {
       "leather_tunic": {
         "name": "Leather Tunic",
         "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.",
@@ -484,7 +484,7 @@
         "rarity": "rare"
       }
     },
-    "material": {
+    "materials": {
       "soul_essence": {
         "name": "Soul Essence",
         "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.",
