@@ -56,7 +56,7 @@ def get_item_type(item_id):
     # If the item is not found in any category, raise an error
     raise ValueError(f"Item ID '{item_id}' not found in any known category.")
 
-def get_enemy_type(enemy_name):
+def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
     # Print the structure of game_content["enemies"] to check its format
     print("Enemies Dictionary:", game_content["enemies"])
 
@@ -67,7 +67,7 @@ def get_enemy_type(enemy_name):
         # Ensure enemy_name is a key in the category's dictionary (case-insensitive)
         if enemy_name.lower() in [key.lower() for key in enemies.keys()]:
             print(f"Enemy '{enemy_name}' found in category '{category}'")
-            return category  # Return the category if the enemy is found
+            return EnemyTypeEnum(category)  # Return the category if the enemy is found
 
     print(f"Enemy '{enemy_name}' not found!")
     return None  # Return None if no match is found
@@ -276,8 +276,7 @@ def display_encounter(encounter_name):
                 enemy_name = choice_details["combat"]  # This should be a string like "skeleton"
                 enemy_type = get_enemy_type(enemy_name)  # Returns the category like "undead"
 
-                # Fetch the enemy object
-                enemy = game_content["enemies"].get(enemy_type, {}).get(enemy_name)
+                enemy = Enemy(enemy_name, enemy_type)
 
                 if enemy:
                     combat(player, enemy)  # Proceed with combat if the enemy is found
@@ -407,7 +406,7 @@ print(player)
 # print(f"Damage deal: {damage_dealt}")
 # print(f"Enemy's remaining health: {skeleton.stats.health}")
 
-def combat(character, enemy):
+def combat(character: Character, enemy: Enemy) -> None:
     while character.health > 1 and enemy.stats.health > 1:
         damage_taken = calculate_damage_taken(enemy, character)
         damage_dealt = calculate_damage_dealt(character, enemy)
