@@ -1,6 +1,8 @@
 import random
 from collections import Counter
 import json
+from logging import critical
+
 from game_enums import ItemTypeEnum
 from game_enums import EnemyTypeEnum
 from typing import Optional
@@ -54,6 +56,25 @@ def get_item_type(item_id):
     # If the item is not found in any category, raise an error
     raise ValueError(f"Item ID '{item_id}' not found in any known category.")
 
+def get_enemy_type(enemy_name):
+    # Print the structure of game_content["enemies"] to check its format
+    print("Enemies Dictionary:", game_content["enemies"])
+
+    # Iterate through categories in game_content["enemies"]
+    for category, enemies in game_content["enemies"].items():
+        print(f"Checking category '{category}' with enemies: {enemies}")
+
+        # Ensure enemy_name is a key in the category's dictionary (case-insensitive)
+        if enemy_name.lower() in [key.lower() for key in enemies.keys()]:
+            print(f"Enemy '{enemy_name}' found in category '{category}'")
+            return category  # Return the category if the enemy is found
+
+    print(f"Enemy '{enemy_name}' not found!")
+    return None  # Return None if no match is found
+
+
+
+
 
 class Enemy:
     def __init__(self, enemy_id: str, enemy_type: EnemyTypeEnum):
@@ -62,16 +83,24 @@ class Enemy:
         self.name = game_content["enemies"][enemy_type.value][enemy_id]["name"]
         self.description = game_content["enemies"][enemy_type.value][enemy_id]["description"]
         self.stats = Stats(
-            attackDmg=game_content["enemies"][self.enemy_type.value][self._id].get("attackDmg", 0),
-            defense=game_content["enemies"][self.enemy_type.value][self._id].get("defense", 0),
-            health=game_content["enemies"][self.enemy_type.value][self._id].get("health", 0),
-            critChance=game_content["enemies"][self.enemy_type.value][self._id].get("critChance", 0)
+            attackDmg=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("attackDmg", 0),
+            defense=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("defense", 0),
+            health=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("health", 0),
+            critChance=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("critChance", 0)
         )
         self.attributes =  game_content["enemies"][enemy_type.value][enemy_id]["attributes"]
 
     def __repr__(self):
-        return (f"Enemy(name={self.name}, description={self.description},",
-                f"stats={self.stats}, attributes={self.attributes})")
+        return (
+            f"  name: {self.name},\n"
+            f"  description: {self.description},\n"
+            f"  defense: {self.stats.defense},\n"
+            f"  health: {self.stats.health},\n"
+            f"  attackDmg: {self.stats.attackDmg},\n"
+            f"  critChance: {self.stats.critChance},\n"
+            f"  attributes: {self.attributes}\n"
+        )
+
 
 class Character:
     def __init__(self):
@@ -84,7 +113,7 @@ class Character:
         self.charm: Optional[Item] = None
         self.ring: Optional[Item] = None
 
-        self.defence: int = 0
+        self.defense: int = 0
         self._health: int = 50
         self.base_health: int = 50
         self.attackDmg: int = 10
@@ -112,7 +141,9 @@ class Character:
     @health.setter
     def health(self, new_health: int):
         self._health = new_health
-        print(f"Health is now: {self.health}")
+        print(f"Health is now: {self._health}")
+
+
 
 
 
@@ -128,7 +159,7 @@ class Character:
             f"Charm: {self.charm.name if self.charm else 'None'}\n"
             f"Ring: {self.ring.name if self.ring else 'None'}\n"
             f"Health: {self.health}\n"
-            f"Defence: {self.defence}\n"
+            f"defense: {self.defense}\n"
             f"Attack Damage: {self.attackDmg}\n"
             f"Critical Damage: {self.critDmg}\n"
             f"Critical Chance: {self.critChance * 100}%\n"
@@ -198,7 +229,6 @@ def const_choices(input_value):
         print("Invalid input. Please choose again.")
         print()
 
-
 def display_encounter(encounter_name):
     encounters = game_content["encounters"]
     if encounter_name not in encounters:
@@ -242,11 +272,18 @@ def display_encounter(encounter_name):
                     print(f"Lost {item} from inventory.")
                     inventory.remove(item)
 
-            #### Handle combat or progress ####
+            if "combat" in choice_details:
+                enemy_name = choice_details["combat"]  # This should be a string like "skeleton"
+                enemy_type = get_enemy_type(enemy_name)  # Returns the category like "undead"
 
-            # if "combat" in choice_details:
-            # print(choice_details["combat"]) # Combat logic here
-            # break # Return to encounter after combat
+                # Fetch the enemy object
+                enemy = game_content["enemies"].get(enemy_type, {}).get(enemy_name)
+
+                if enemy:
+                    combat(player, enemy)  # Proceed with combat if the enemy is found
+                else:
+                    print(f"Enemy {enemy_name} not found!")
+                break
 
             if "health" in choice_details:
                 player.health += choice_details["health"]
@@ -264,7 +301,6 @@ def display_encounter(encounter_name):
                 break
         else:
             print("Invalid choice. Please try again.")
-
 
 random_encounter_count = 0
 events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
@@ -288,101 +324,106 @@ def random_event():
 player = Character()
 skeleton = Enemy("skeleton", EnemyTypeEnum.UNDEAD)
 
-def crit_hit(character: Character) -> bool:
+def crit_hit(character) -> bool:
     n = random.randint(1, 100)
     if n < character.critChance * 100:
         return True
     return False
+def crit_enemy_hit(enemy) -> bool:
+    n = random.randint(1, 100)
+    if n < enemy.stats.critChance * 100:
+        return True
+    return False
 
-def attribute_hit(character: Character, enemy: Enemy):
-    if character.weapon.attribute == "fire" and enemy.attributes == "ice":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "fire" and enemy.attributes == "undead":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "fire" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "fire" and enemy.attributes == "cursed":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "fire" and enemy.attributes == "water":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "ice" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "ice" and enemy.attributes == "water":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "ice" and enemy.attributes == "fire":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "ice" and enemy.attributes == "lightning":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "ice" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "holy" and enemy.attributes == "undead":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "holy" and enemy.attributes == "cursed":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "holy" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "water" and enemy.attributes == "fire":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "water" and enemy.attributes == "ice":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "water" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "water" and enemy.attributes == "lightning":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "lightning" and enemy.attributes == "water":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "lightning" and enemy.attributes == "ice":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "lightning" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "lightning" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "cursed" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "cursed" and enemy.attributes == "holy":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "cursed" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "necrotic" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "necrotic" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "necrotic" and enemy.attributes == "holy":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "physical" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "physical" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "physical" and enemy.attributes == "lightning":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "natural" and enemy.attributes == "water":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "natural" and enemy.attributes == "fire":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "natural" and enemy.attributes == "physical":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "natural" and enemy.attributes == "arcane":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "physical":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "natural":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "undead":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "ice":
-        character.attackDmg = character.attackDmg * 2
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "holy":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "lightning":
-        character.attackDmg = character.attackDmg * 0.5
-    elif character.weapon.attribute == "arcane" and enemy.attributes == "cursed":
-        character.attackDmg = character.attackDmg * 0.5
-
-# def calculateDmg(character: Character, enemy: Enemy):
-#     while player.health > 0 or enemy.health > 0:
+def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
+    if character.weapon is None or character.weapon.attribute is None:
+        return False
+    strong_combinations = {
+        "fire": ["ice", "undead", "natural", "cursed"],
+        "ice": ["natural", "lightning"],
+        "holy": ["undead", "cursed"],
+        "water": ["fire"],
+        "lightning": ["water", "natural", "arcane"],
+        "cursed": ["natural", "arcane"],
+        "necrotic": ["natural", "water"],
+        "physical": ["lightning"],
+        "natural": ["water", "physical"],
+        "arcane": ["physical", "natural", "undead", "ice"]
+    }
+    return enemy.attributes in strong_combinations.get(character.weapon.attribute, [])
 
 
+def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
+    if character.weapon is None or character.weapon.attribute is None:
+        return False
+    weak_combinations = {
+        "fire": ["water"],
+        "ice": ["fire","arcane"],
+        "holy": ["arcane"],
+        "water": ["lightning", "natural","undead"],
+        "lightning": ["ice"],
+        "cursed": ["holy"],
+        "necrotic": ["arcane", "holy"],
+        "physical": ["arcane", "natural"],
+        "natural": ["fire", "arcane","undead","ice"],
+        "arcane": ["holy", "lightning", "cursed"]
+    }
+    return enemy.attributes in weak_combinations.get(character.weapon.attribute, [])
 
+def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
+    if character.weapon is None or character.weapon.attribute is None:
+        return 1
+
+    if is_attribute_strong(character, enemy):
+        return 2
+    elif is_attribute_weak(character, enemy):
+        return 0.5
+    return 1
+
+def calculate_damage_dealt(character: Character, enemy: Enemy):
+    modifier = apply_weapon_attribute_effect(character, enemy)
+    crit_modifier = crit_hit(character)
+    if crit_modifier:
+        damage = (modifier * character.attackDmg * 2) - enemy.stats.defense
+    else:
+        damage = (modifier * character.attackDmg) - enemy.stats.defense
+    damage = max(damage, 0)
+    return damage
+
+def calculate_damage_taken(enemy: Enemy, character: Character):
+    crit_modifier = crit_enemy_hit(enemy)
+    if crit_modifier:
+        damage = (enemy.stats.attackDmg * 2) - character.defense
+    else:
+        damage = enemy.stats.attackDmg - character.defense
+    damage = max(damage,0)
+    return damage
+
+print(skeleton)
+print(player)
+
+# print(f"Damage deal: {damage_taken}")
+# print(f"Player health after attack: {player.health}")
+# print(f"Damage deal: {damage_dealt}")
+# print(f"Enemy's remaining health: {skeleton.stats.health}")
+
+def combat(character, enemy):
+    while character.health > 1 and enemy.stats.health > 1:
+        damage_taken = calculate_damage_taken(enemy, character)
+        damage_dealt = calculate_damage_dealt(character, enemy)
+        enemy.stats.health -= damage_dealt
+        print(f"Damage dealt: {damage_dealt}")
+        print(f"Enemy's remaining health: {enemy.stats.health}")
+        character.health -= damage_taken
+        print(f"Damage taken: {damage_taken}")
+
+    if character.health <= 0:
+        print(f"{character.name} is dead.")
+    else:
+        print(f"{enemy.name} is dead.")
+
+
+combat(player,skeleton)
 
 # if "excalibur" in inventory:
 #     print(\n"ACHIEVEMENT: You have found the legendary sword Excalibur!\n")

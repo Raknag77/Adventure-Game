@@ -72,7 +72,7 @@
           "inventory_add": [
             "black_leather_boots"
           ],
-          "combat": "You must fight the ghostly entity!",
+          "combat": "skeleton",
           "next": "random_encounter"
         },
         "2": {
@@ -511,7 +511,7 @@
             "health": 20,
             "attackDmg": 5,
             "defense": 0,
-            "critChance": 0.0
+            "critChance": 0.01
         },
         "attributes": "Undead"
       },
