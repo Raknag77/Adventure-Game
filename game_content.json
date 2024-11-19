@@ -415,8 +415,14 @@
       "common_mace": {
         "name": "Mace",
         "description": "A heavy, blunt mace with a steel head and a wooden handle. The mace is well-crafted and sturdy, designed for crushing blows and armored opponents. The weight of the mace gives it considerable impact, making it a formidable weapon in close combat. A reliable choice for warriors or knights facing heavily armored foes.",
-        "attackDmg": 0,
+        "attackDmg": 20,
         "rarity": "common"
+      },
+      "verdant": {
+        "name": "Bow of Verdant",
+        "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.",
+        "attackDmg": 150,
+        "rarity": "exquisite"
       },
       "excalibur": {
         "name": "Excalibur",
@@ -483,6 +489,16 @@
         "name": "Soul Essence",
         "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.",
         "rarity": "rare"
+      },
+      "smooth_pebbles": {
+        "name": "Smooth Pebbles",
+        "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.",
+        "rarity": "rare"
+      },
+      "string": {
+        "name": "String",
+        "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.",
+        "rarity": "common"
       }
     }
   },
