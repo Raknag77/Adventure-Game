@@ -21,5 +21,3 @@ class ItemTypeEnum(Enum):
 class EnemyTypeEnum(Enum):
     UNDEAD = "undead"
     BEAST = "beast"
-    ELF = "elf"
-

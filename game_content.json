@@ -122,7 +122,7 @@
       }
     },
     "haunted_mill": {
-      "description": "As you continue on with your journet, you find yourself standing before an old, decrepit mill. The wood is rotting, and the air is thick with an eerie silence. Something about it feels... off. There's a locked door on the front, and the windows are boarded up.",
+      "description": "As you continue on with your journey, you find yourself standing before an old, decrepit mill. The wood is rotting, and the air is thick with an eerie silence. Something about it feels... off. There's a locked door on the front, and the windows are boarded up.",
       "choices": {
         "1": {
           "text": "Explore the mill",
@@ -574,6 +574,13 @@
         "description": "A small wooden charm carved in the shape of a stag. It is smooth to the touch, with intricate details etched into the wood. The charm radiates a faint, comforting energy, as if connected to the natural world.",
         "rarity": "common",
         "price": 2
+      },
+      "silver_chains": {
+        "name": "Silver Chains",
+        "description": "",
+        "rarity": "rare",
+        "price": 50,
+        "skills": "weakness"
       }
     },
     "rings": {
@@ -650,6 +657,17 @@
             "attackDmg": 15,
             "defense": 10,
             "critChance": 0.05
+        },
+        "attributes": "undead"
+      },
+      "drakthul": {
+        "name": "Drakthul",
+        "description": "",
+        "stats": {
+          "health": 250,
+          "attackDmg": 250,
+          "defense": 50,
+          "critChance": 0.04
         },
         "attributes": "undead"
       },
