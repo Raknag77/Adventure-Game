@@ -1,6 +1,8 @@
 import random
 from collections import Counter
 import json
+from operator import truediv
+
 from game_enums import ItemTypeEnum
 from game_enums import EnemyTypeEnum
 from typing import Optional
@@ -37,15 +39,16 @@ class Item:
         )
         self.attribute = game_content["items"][item_type.value][item_id].get("attribute")
         self.rarity = game_content["items"][item_type.value][item_id]["rarity"]
+        self.skills = game_content["items"][item_type.value][item_id].get("skills")
 
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
-            return f"{self.name}- (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance}, Attribute: {self.attribute}, Rarity: {self.rarity})"
+            return f"{self.name}- (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance}, Attribute: {self.attribute}, Rarity: {self.rarity}, Skills: {self.skills})"
         if self.item_type == ItemTypeEnum.CHARM or self.item_type == ItemTypeEnum.RING:
-            return f"{self.name}- (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance},Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute: {self.attribute}, Rarity: {self.rarity})"
+            return f"{self.name}- (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance},Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute: {self.attribute}, Rarity: {self.rarity}, Skills: {self.skills})"
         if self.item_type == ItemTypeEnum.MATERIAL:
             return f"{self.name}- Attribute: {self.attribute}, Rarity: {self.rarity})"
-        return f"{self.name}- (Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute: {self.attribute}, Rarity: {self.rarity})"
+        return f"{self.name}- (Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute: {self.attribute}, Rarity: {self.rarity}, Skills: {self.skills})"
 
     def get_id(self):
         return self._id
@@ -155,7 +158,7 @@ class Character:
             f"Gold: {self.gold}\n"
         )
 
-
+player = Character()
 
 def equipment_tab():
     print("This is your current equipment:\n")
@@ -176,14 +179,12 @@ def equipment_tab():
             print("You do not own this weapon. Please choose again.")
             return
         else:
-            # Create an Item object for the selected weapon
             equip_weapon = Item(equip_weapon_id, ItemTypeEnum.WEAPON)
             print(f"You switched {player.weapon.name} for {equip_weapon.name}.")
 
-            # Add an old weapon back to inventory and equip new one
             inventory.append(player.weapon.get_id())
-            player.weapon = equip_weapon  # Equip a new weapon (as an Item object)
-            inventory.remove(equip_weapon_id)  # Remove the selected weapon from inventory
+            player.weapon = equip_weapon
+            inventory.remove(equip_weapon_id)
     elif equip_tab == "2":
         owned_helmets = [item for item in inventory if item in game_content["items"]["helmets"]]
         print("Owned helmets:", owned_helmets)
@@ -296,7 +297,6 @@ def display_encounter(encounter_name):
         print("No such encounter found!")
         return
 
-    # Load the encounter details
     encounter = encounters[encounter_name]
     print(encounter["description"])
     print("\nChoices:")
@@ -334,13 +334,13 @@ def display_encounter(encounter_name):
                     inventory.remove(item)
 
             if "combat" in choice_details:
-                enemy_name = choice_details["combat"]  # This should be a string like "skeleton"
-                enemy_type = get_enemy_type(enemy_name)  # Returns the category like "undead"
+                enemy_name = choice_details["combat"]
+                enemy_type = get_enemy_type(enemy_name)
 
                 enemy = Enemy(enemy_name, enemy_type)
 
                 if enemy:
-                    combat(player, enemy)  # Proceed with combat if the enemy is found
+                    combat(player, enemy)
                 else:
                     print(f"Enemy {enemy_name} not found!")
                 break
@@ -381,8 +381,6 @@ def random_event():
     #     display_encounter(random_encounter)
     #     random_encounter_count += 1
 
-player = Character()
-skeleton = Enemy("skeleton", EnemyTypeEnum.UNDEAD)
 
 def crit_hit(character) -> bool:
     critChance = (character.critChance +
@@ -400,9 +398,28 @@ def crit_enemy_hit(enemy) -> bool:
         return True
     return False
 
+def check_pierce(character: Character):
+    if character.weapon is not None and character.weapon.skills == "pierce":
+        return True
+    elif character.charm is not None and character.charm.skills == "pierce":
+        return True
+    elif character.ring is not None and character.ring.skills == "pierce":
+        return True
+    return False
+
+def check_doublehit(character: Character):
+    if character.weapon is not None and character.weapon.skills == "doublehit":
+        return True
+    elif character.charm is not None and character.charm.skills == "doublehit":
+        return True
+    elif character.ring is not None and character.ring.skills == "doublehit":
+        return True
+    return False
+
 def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
         return False
+
     strong_combinations = {
         "fire": ["ice", "undead", "natural", "cursed"],
         "ice": ["natural", "lightning"],
@@ -415,7 +432,14 @@ def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
         "natural": ["water", "physical"],
         "arcane": ["physical", "natural", "undead", "ice"]
     }
-    return enemy.attributes in strong_combinations.get(character.weapon.attribute, [])
+
+    if isinstance(enemy.attributes, (list, set)):
+        result = any(attr in strong_combinations.get(character.weapon.attribute, []) for attr in enemy.attributes)
+    else:
+        result = enemy.attributes in strong_combinations.get(character.weapon.attribute, [])
+
+    print(f"is_attribute_strong result: {result}")
+    return result
 
 def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
@@ -432,20 +456,30 @@ def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
         "natural": ["fire", "arcane","undead","ice"],
         "arcane": ["holy", "lightning", "cursed"]
     }
-    return enemy.attributes in weak_combinations.get(character.weapon.attribute, [])
+    if isinstance(enemy.attributes, (list, set)):
+        result = any(attr in weak_combinations.get(character.weapon.attribute, []) for attr in enemy.attributes)
+    else:
+        result = enemy.attributes in weak_combinations.get(character.weapon.attribute, [])
+
+    print(f"is_attribute_weak result: {result}")
+    return result
 
 def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
     if character.weapon is None or character.weapon.attribute is None:
         return 1
 
-    if is_attribute_strong(character, enemy):
+    is_strong = is_attribute_strong(character, enemy)
+    is_weak = is_attribute_weak(character, enemy)
+
+    if is_strong:
         return 2
-    elif is_attribute_weak(character, enemy):
+    elif is_weak:
         return 0.5
     return 1
 
-
 def calculate_damage_dealt(character: Character, enemy: Enemy):
+    pierce = check_pierce(character)
+    doublehit = check_doublehit(character)
     modifier = apply_weapon_attribute_effect(character, enemy)
     crit_modifier = crit_hit(character)
     attackDmg = (character.attackDmg +
@@ -453,8 +487,31 @@ def calculate_damage_dealt(character: Character, enemy: Enemy):
                  character.ring.stats.attackDmg if character.charm is not None else 0  +
                  character.charm.stats.attackDmg if character.ring is not None else 0
                  )
+
+    # print(f"Character weapon attribute: {character.weapon.attribute}")
+    # print(f"Enemy attributes: {enemy.attributes}")
+    # print(f"Base attack damage: {attackDmg}")
+    # print(f"Crit modifier: {crit_modifier}")
+    # print(f"Attribute modifier: {modifier}")
+    # print(f"Pierce check: {pierce}")
+    # print(f"Enemy defense: {enemy.stats.defense}")
+
+
+
     if crit_modifier:
         damage = (modifier * attackDmg * 2) - enemy.stats.defense
+    elif crit_modifier and pierce:
+        damage = (modifier * attackDmg * 2)
+    elif pierce:
+        damage = (modifier * attackDmg)
+    elif crit_modifier and doublehit:
+        damage = ((modifier * attackDmg * 2) - enemy.stats.defense) * 2
+    elif pierce and doublehit:
+        damage = (modifier * attackDmg) * 2
+    elif doublehit:
+        damage = ((modifier * attackDmg) - enemy.stats.defense) * 2
+    elif crit_modifier and pierce and doublehit:
+        damage = (modifier * attackDmg * 2) * 2
     else:
         damage = (modifier * attackDmg) - enemy.stats.defense
     damage = max(damage, 0)
@@ -469,26 +526,29 @@ def calculate_damage_taken(enemy: Enemy, character: Character):
     damage = max(damage,0)
     return damage
 
-print(skeleton)
-print(player)
-
 def combat(character: Character, enemy: Enemy) -> None:
     while character.health > 0 and enemy.stats.health > 0:
         damage_taken = calculate_damage_taken(enemy, character)
         damage_dealt = calculate_damage_dealt(character, enemy)
+
         enemy.stats.health -= damage_dealt
         print(f"Damage dealt: {damage_dealt}")
         print(f"Enemy's remaining health: {enemy.stats.health}")
+        if enemy.stats.health < 0:
+            enemy.stats.health = 0
+            break
+
         character.health -= damage_taken
         print(f"Damage taken: {damage_taken}")
+        if character.health < 0:
+            character.health = 0
+            break
 
     if character.health <= 0:
         print(f"{character.name} is dead.")
     else:
+        character._health = character.base_health
         print(f"{enemy.name} is dead.")
-
-
-combat(player,skeleton)
 
 # if "excalibur" in inventory:
 #     print(\n"ACHIEVEMENT: You have found the legendary sword Excalibur!\n")
@@ -497,9 +557,6 @@ combat(player,skeleton)
 
 
 def main():
-
-    #print(skeleton)
-
     starting_story_1 = """
 You stood before the Adventurers' Guild, heart racing with excitement. 
 You pushed open the heavy wooden doors and stepped into a room bathed in warm, amber light. 
@@ -532,19 +589,9 @@ The true strength lies within."
 Two weapons stole your eyes however, a sword and a lance. You felt that your journey should begin with this first choice.
 """
 
-    common_sword_description = """ 
-A versatile weapon, the sword offers a balance of speed and power.
-It excels in close combat with quick strikes, effective parries, and swift counters. 
-Ideal for players who prefer agility and adaptability, 
-the sword is perfect for fast, fluid combat where precision and reaction are key.
-"""
+    common_sword_description = game_content["items"]["weapons"]["common_sword"]["description"]
+    common_lance_description = game_content["items"]["weapons"]["common_lance"]["description"]
 
-    common_lance_description = """ 
-The lance is a long-reaching weapon designed for powerful thrusts and charging attacks. 
-While slower in close combat, its extended reach lets you control distance and strike from afar. 
-Ideal for players who value strength and tactical positioning, 
-the lance excels in keeping enemies at bay and delivering powerful blows from a safe range.
-"""
     print(starting_story_1)
     player.name = input("What is your name? ").lower().title()
 
@@ -557,8 +604,8 @@ the lance excels in keeping enemies at bay and delivering powerful blows from a 
         print(common_sword_description)
         choice = input("Do you pick up this weapon? ")
         if choice == "yes":
-            # Assign a weapon as an Item object
-            player.weapon = Item("common_sword", ItemTypeEnum.WEAPON)  # Use the 'Item' class to handle a weapon
+            player.weapon = Item("common_sword", ItemTypeEnum.WEAPON)
+            print(f"You have picked up the Sword. Player's weapon: {player.weapon}")
         elif choice == "no":
             return
         else:
@@ -569,8 +616,8 @@ the lance excels in keeping enemies at bay and delivering powerful blows from a 
         print(common_lance_description)
         choice = input("Do you pick up this weapon? ")
         if choice == "yes":
-            # Assign a weapon as an Item object
             player.weapon = Item("common_lance", ItemTypeEnum.WEAPON)
+            print(f"You have picked up the Lance. Player's weapon: {player.weapon}")
         elif choice == "no":
             return
         else:
