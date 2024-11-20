@@ -3,7 +3,7 @@ from enum import Enum
 class ItemTypeEnum(Enum):
     WEAPONS = "weapons"
     HELMETS = "helmets"
-    CHESTPIECES = "chestpiece"
+    CHESTPIECES = "chestpieces"
     LEGGINGS = "leggings"
     BOOTS = "boots"
     CHARMS = "charms"

@@ -1,16 +1,16 @@
 {
   "encounters": {
     "adventure_guild": {
-      "description": "",
+      "description": "The guild hall hums with the quiet buzz of purpose, a crossroads for adventurers seeking refuge, work, or the thrill of discovery. The air is rich with the mingling scents of firewood, leather, and faint traces of spices from distant lands. A large stone hearth dominates one side of the room, its crackling fire casting flickering shadows that dance along the wooden beams.\nBehind the counter stands Elara, the guild's innkeeper and owner, her silver hair catching the firelight like threads of moonlight. Her sharp green eyes seem to miss nothing, her presence calm yet commanding, as though the hall itself bends to her quiet authority.\nOpposite the fire, a job board leans slightly under the weight of countless pinned notices, their edges curled and inked words hinting at danger, rewards, or mystery. Nearby, the shopkeeper's stall is a burst of controlled chaos—shelves crowded with glimmering potions, polished weapons, and peculiar trinkets that beg for closer inspection.\nPerched on a counter, a sleek gray tabby cat surveys the scene through half-closed eyes, its contented purr blending seamlessly into the warmth of the hall. Here, decisions linger in every glance—whether to browse, rest, or step boldly into the unknown.\n\n",
       "choices": {
         "1": {
           "text": "Approach the Job Board.",
-          "response": "You step forward, looking over the board’s offerings once more. There are quests of all kinds, from delivering a package to uncovering hidden treasures.\n",
+          "response": "You step forward, looking over the board's offerings once more. There are quests of all kinds, from delivering a package to uncovering hidden treasures.\n",
           "next": "guild_job_board"
         },
         "2": {
           "text": "Visit the Shop.",
-          "response": "You glance over at the shopkeeper’s stall near the hearth, where an array of weapons, potions, and odd trinkets are displayed. The shopkeeper, a burly man with a gruff voice, notices you approaching.\n",
+          "response": "You glance over at the shopkeeper's stall near the hearth, where an array of weapons, potions, and odd trinkets are displayed. The shopkeeper, a burly man with a gruff voice, notices you approaching.\n",
           "next": "guild_shop"
         },
         "3": {
@@ -25,13 +25,13 @@
         },
         "5": {
           "text": "Leave the Inn.",
-          "response": "You take a final glance at the inn’s warm atmosphere before turning to leave. The open doors beckon once more.\n",
+          "response": "You take a final glance at the inn's warm atmosphere before turning to leave. The open doors beckon once more.\n",
           "next": "random_encounter"
         }
       }
     },
     "guild_job_board": {
-      "description": "The job board is a haphazard collection of parchment, some neatly pinned while others flutter in the breeze. It’s a mix of quests, from high-paying noble tasks to more desperate notices. A few letters are crisp and formal, offering riches for dangerous errands, while others are scrawled in haste, detailing missing persons or local beasts that need slaying. Some requests are modest, like helping with harvests or fixing a fence, while others hint at far more dangerous or mysterious work. Each paper offers a new potential adventure, waiting to be claimed by whoever dares to answer.\n",
+      "description": "The job board is a haphazard collection of parchment, some neatly pinned while others flutter in the breeze. It's a mix of quests, from high-paying noble tasks to more desperate notices. A few letters are crisp and formal, offering riches for dangerous errands, while others are scrawled in haste, detailing missing persons or local beasts that need slaying. Some requests are modest, like helping with harvests or fixing a fence, while others hint at far more dangerous or mysterious work. Each paper offers a new potential adventure, waiting to be claimed by whoever dares to answer.\nWarning this will lead to a new event. If you still have unfinished business at the guild turn back.\n",
       "choices": {
         "1":{
           "text": "\"I'll take a closer look at the new quests posted.\"\n",
@@ -47,17 +47,17 @@
       }
     },
     "guild_shop": {
-      "description": "The shop is a cozy nook, its shelves lined with an eclectic mix of items: glimmering potions, rusty weapons, and strange trinkets from distant lands. The air is thick with the scent of herbs and leather, and the flickering light from the nearby hearth casts a warm glow on the polished counters. The shopkeeper, a burly man with a sharp eye for detail, watches you closely as you browse. Each item seems to tell a story, whether it’s a finely crafted sword or an old map that’s seen better days. There’s something here for every traveler, from the most humble to the most daring.",
+      "description": "The shop is a cozy nook, its shelves lined with an eclectic mix of items: glimmering potions, rusty weapons, and strange trinkets from distant lands. The air is thick with the scent of herbs and leather, and the flickering light from the nearby hearth casts a warm glow on the polished counters. The shopkeeper, a burly man with a sharp eye for detail, watches you closely as you browse. Each item seems to tell a story, whether it's a finely crafted sword or an old map that's seen better days. There's something here for every traveler, from the most humble to the most daring.",
       "choices": {
         "1": {
           "text": "\"What do you have for sale today?\"\n",
-          "response": "Shopkeeper: Blades, potions, maps, and a few trinkets. If you don’t see what you need, just ask, I might have something in the back.",
+          "response": "Shopkeeper: Blades, potions, maps, and a few trinkets. If you don't see what you need, just ask, I might have something in the back.\n",
           "shop": "shop",
           "next": "guild_shop"
         },
         "2": {
           "text": "\"I'm not looking for anything right now. Just browsing.\"\n",
-          "response": "Shopkeeper: Aye, most come in just for a look. But when you need something, you’ll remember where to find me",
+          "response": "Shopkeeper: Aye, most come in just for a look. But when you need something, you'll remember where to find me",
           "next": "adventure_guild"
         },
         "3": {
@@ -71,13 +71,13 @@
       "description": "The fireplace crackles with warmth, its flames dancing in shades of orange and gold. The hearth is large, made of rough stone, and the fire casts flickering shadows across the room. The scent of burning wood fills the air, blending with the rich, earthy smell of the room. A young woman in a simple white sundress stands near the fire, her movements graceful as she tends to the flames. She adjusts a log with a metal poker, the light catching her hair, which falls in soft waves around her shoulders. Her presence adds a calm serenity to the scene, as if the fire is her domain, and the room seems warmer for it.",
       "choices": {
         "1": {
-          "text": "\"I'll take a seat here, warm my bones. It’s been a long journey.\"\n",
-          "response": "You settle into one of the worn but comfortable chairs near the fireplace, letting the warmth of the flames wash over you. The fire crackles, its heat soothing your tired muscles. The soft murmur of the inn’s quiet atmosphere surrounds you, the peacefulness of the moment almost tempting you to drift off. After a while, you rise, refreshed and ready, and step towards the entrance hall.\n",
+          "text": "\"I'll take a seat here, warm my bones. It's been a long journey.\"\n",
+          "response": "You settle into one of the worn but comfortable chairs near the fireplace, letting the warmth of the flames wash over you. The fire crackles, its heat soothing your tired muscles. The soft murmur of the inn's quiet atmosphere surrounds you, the peacefulness of the moment almost tempting you to drift off. After a while, you rise, refreshed and ready, and step towards the entrance hall.\n",
           "next": "adventure_guild"
         },
         "2": {
-          "text": "\"I’d prefer a bed upstairs. Time to call it a night.\"\n",
-          "response": "With a final glance at the flickering fire, you rise and make your way toward the staircase. The innkeeper nods as you pass, pointing to a door near the top of the stairs.\nInnkeeper: \"Rest well!\"\n You climb the creaky steps, the warmth of the hearth fading as you reach the quiet solitude of your room. After a restful night, you wake refreshed and descend back into the entrance hall, where new opportunities await.\n",
+          "text": "\"I'd prefer a bed upstairs. Time to call it a night.\"\n",
+          "response": "With a final glance at the flickering fire, you rise and make your way toward the staircase. Elara nods as you pass, pointing to a door near the top of the stairs.\nElara: \"Rest well!\"\n You climb the creaky steps, the warmth of the hearth fading as you reach the quiet solitude of your room. After a restful night, you wake refreshed and descend back into the entrance hall, where new opportunities await.\n",
           "next": "adventure_guild"
         }
       }
@@ -85,7 +85,16 @@
     "guild_cat": {
       "description": "The sleek grey cat lies peacefully on a decorative cushion atop the counter, its soft fur glistening in the warm glow of the fireplace. Light gray stripes run down its back, while its white paws and belly rise and fall with each slow, contented breath. Its ears are perked slightly, attuned to the subtle sounds of the room, yet its relaxed posture exudes pure comfort and trust. The ornate cushion beneath it, adorned with intricate patterns, gives the scene an air of quiet elegance. As you approach, the cat opens one golden eye, watching you with mild curiosity before curling back into its tranquil slumber.",
       "choices": {
-
+        "1": {
+          "text": "Pet the cat.",
+          "response": "You reach out gently, and the tabby cat perks up, its golden eyes locking onto yours for a moment. As your fingers scratch behind its ears, it lets out a soft purr, leaning into your touch. The warmth of its fur and the steady vibration of its purring are oddly comforting, a small but welcome reprieve from the day's burdens. After a moment, the cat stretches lazily, then settles back onto its cushion, seemingly pleased with the attention. With a faint smile, you turn back to the entrance hall.",
+          "next": "adventure_guild"
+        },
+        "2": {
+          "text": "No time for pets today.",
+          "response": "The cat's golden eyes flick up at you as you pass, but it seems content to remain lounging on its ornate cushion. ",
+          "next": "adventure_guild"
+        }
       }
     },
     "farmer_help": {
@@ -95,7 +104,7 @@
           "text": "Ask about the farm.",
           "response": "This farm looks small but well-kept. How long have you been working here?\n\n\"All my life,\" the farmer replies humbly. \"Raised on this very land, and I'll likely die here too. It's a good life, if you don't mind the solitude.\"",
           "health": 2,
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "2": {
           "text": "Offer to help.",
@@ -104,7 +113,7 @@
             "smooth_pebbles",
             "string"
           ],
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "3": {
           "text": "Ask about the road ahead.",
@@ -124,7 +133,7 @@
         "2": {
           "text": "Leave the mill",
           "response": "You decide that the mill is best left unexplored and continue down the road.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -139,7 +148,7 @@
         "2": {
           "text": "Give up",
           "response": "You walk away from the mill, feeling a sense of unease. Maybe it's best not to push your luck.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "3": {
           "text": "Look for another way in",
@@ -161,12 +170,12 @@
             "black_leather_boots"
           ],
           "combat": "skeleton",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "2": {
           "text": "Leave the item and go back",
           "response": "You leave the item alone and quickly exit the mill. The unease lingers, but you're glad to be out.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -181,7 +190,7 @@
         "2": {
           "text": "Dismiss the Tale",
           "response": "I think I'll stick to something a little less... supernatural.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "3": {
           "text": "Ask for More Details",
@@ -246,7 +255,7 @@
           "inventory_add": [
             "silver_antler_shard"
           ],
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "2": {
           "text": "Ask for the location of hidden treasure.",
@@ -257,7 +266,7 @@
             "silver_ring"
           ],
           "gold": 100,
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "3": {
           "text": "Ask for the forest's power.",
@@ -265,7 +274,7 @@
           "inventory_add": [
             "Verdant"
           ],
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -284,7 +293,7 @@
             "pristine_dagger",
             "moonlight_cloak"
           ],
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "3": {
           "text": "Ask for the forest's secrets.",
@@ -292,7 +301,7 @@
           "inventory_add": [
             "Knowledge of the Forest"
           ],
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -308,7 +317,7 @@
         "2": {
           "text": "Turn back",
           "response": "You give in to fear as you are faced with this majestic ethereal creature.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -361,7 +370,7 @@
         "1": {
           "text": "Relax and Rest",
           "response": "You sit down by the fire, resting for the night as the memories of your encounter linger in your mind.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -381,7 +390,7 @@
         "3": {
           "text": "Leave the church behind you",
           "response": "You decide not to disturb the peace of this place and continue on your way.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -411,7 +420,7 @@
         "2": {
           "text": "Leave the grounds entirely",
           "response": "You make your way out of the old church grounds, deciding it is best to not investigate the eerie place further.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -440,12 +449,12 @@
             "shackled_choir_key"
           ],
           "combat": "skeleton",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         },
         "2": {
           "text": "Leave the crypt",
           "response": "You step away from the crypt, the heavy air around it lifting slightly as you leave. The shadows of the surrounding trees stretch longer, quietly reclaiming the ground.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -463,7 +472,7 @@
         "2": {
           "text": "Flee the church immediately.",
           "response": "Overwhelmed by the suffocating darkness and the roar of unseen whispers, you turn and flee, the echoing sound of your footsteps swallowed by the chaos behind you.",
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     },
@@ -476,7 +485,7 @@
           "inventory_add": [
             "silver_chains"
           ],
-          "next": "random_encounter"
+          "next": "adventure_guild"
         }
       }
     }
@@ -488,6 +497,7 @@
         "description": "A simple, well-used sword with a steel blade and a leather-wrapped hilt. It shows signs of wear but remains sharp and balanced, reliable for basic combat. A practical weapon for any adventurer.",
         "attackDmg": 10,
         "rarity": "common",
+        "price": 2,
         "attribute": "holy",
         "skills": "pierce"
       },
@@ -495,19 +505,22 @@
         "name": "Lance",
         "description": "A sturdy, well-balanced lance with a long wooden shaft and a steel tip. The wood is worn from use, but it remains strong and reliable. The blade is simple, practical, and effective for mounted combat or thrusting. A dependable weapon, ideal for soldiers or adventurers seeking a reliable polearm.",
         "attackDmg": 10,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 2
       },
       "common_mace": {
         "name": "Mace",
         "description": "A heavy, blunt mace with a steel head and a wooden handle. The mace is well-crafted and sturdy, designed for crushing blows and armored opponents. The weight of the mace gives it considerable impact, making it a formidable weapon in close combat. A reliable choice for warriors or knights facing heavily armored foes.",
         "attackDmg": 20,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 2
       },
       "verdant": {
         "name": "Bow of Verdant",
         "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.",
         "attackDmg": 150,
         "rarity": "exquisite",
+        "price": 80,
         "attribute": "natural"
       },
       "excalibur": {
@@ -515,6 +528,7 @@
         "description": "The legendary sword of unmatched power. Its blade gleams with a radiant, otherworldly light, etched with ancient runes. The hilt is adorned with gold and precious gems, radiating an aura of divine authority. This is no ordinary weapon—its strike is destined to change the course of history.",
         "attackDmg": 750,
         "rarity": "legendary",
+        "price": 1000000000,
         "attribute": "holy"
       }
     },
@@ -523,7 +537,9 @@
         "name": "Thorn Crown",
         "description": "A round wreath made of thorns bloodied by a saviour.",
         "defense": 5,
-        "rarity": "legendary"
+        "rarity": "legendary",
+        "price": 200000,
+        "attribute": "holy"
       }
     },
     "chestpieces": {
@@ -531,7 +547,8 @@
         "name": "Leather Tunic",
         "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.",
         "defense": 5,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 5
       }
     },
     "leggings": {
@@ -539,7 +556,8 @@
         "name": "Leather Pants",
         "description": "A pair of sturdy leather pants, reinforced with metal rivets and patches. The leather is thick and durable, offering protection against cuts and scrapes. The pants are comfortable and flexible, ideal for travel or light combat.",
         "defense": 10,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 5
       }
     },
     "boots": {
@@ -547,14 +565,16 @@
         "name" : "Black Leather Boots",
         "description": "A pair of sturdy black boots, made of thick leather and reinforced with metal buckles. The soles are rugged and durable, providing good traction on various terrains. The boots are comfortable and well-made, ideal for long journeys or combat.",
         "defense": 5,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 2
       }
     },
     "charms": {
       "wood_charm": {
         "name": "Wooden Charm",
         "description": "A small wooden charm carved in the shape of a stag. It is smooth to the touch, with intricate details etched into the wood. The charm radiates a faint, comforting energy, as if connected to the natural world.",
-        "rarity": "common"
+        "rarity": "common",
+        "price": 2
       }
     },
     "rings": {
@@ -562,20 +582,23 @@
         "name": "Copper Ring",
         "description": "A small ring made of copper",
         "defense": 1,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 1
       },
       "silver_ring": {
         "name": "Silver Ring",
         "description": "A small ring made of silver",
         "defense": 3,
-        "rarity": "common"
+        "rarity": "common",
+        "price": 2
       },
       "forgotten_ring": {
         "name": "Forgotten Ring",
-        "description": "A small, deep blue ring, its surface smooth and cold to the touch. White stones encircle its circumference, their faint glow barely visible, as though they’ve dimmed over time. This ring feels ancient, its presence heavy with the weight of forgotten history. Its origin is unknown, but whispers speak of a Forgotten Realm, a place lost to time and memory, where powerful artifacts like this were forged.",
+        "description": "A small, deep blue ring, its surface smooth and cold to the touch. White stones encircle its circumference, their faint glow barely visible, as though they've dimmed over time. This ring feels ancient, its presence heavy with the weight of forgotten history. Its origin is unknown, but whispers speak of a Forgotten Realm, a place lost to time and memory, where powerful artifacts like this were forged.",
         "defense": 10,
         "attackDmg": 10,
         "rarity": "exquisite",
+        "price": 200,
         "attributes": "necrotic",
         "skills": "pierce"
       }
@@ -584,22 +607,26 @@
       "soul_essence": {
         "name": "Soul Essence",
         "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.",
-        "rarity": "rare"
+        "rarity": "rare",
+        "price": 50
       },
       "smooth_pebbles": {
         "name": "Smooth Pebbles",
         "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.",
-        "rarity": "common"
+        "rarity": "common",
+        "price": 10
       },
       "string": {
         "name": "String",
         "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.",
-        "rarity": "common"
+        "rarity": "common",
+        "price": 2
       },
       "shackled_choir_key": {
         "name": "Shackled Choir key",
-        "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It’s said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.",
-        "rarity": "rare"
+        "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.",
+        "rarity": "rare",
+        "price": 200
       }
     }
   },
