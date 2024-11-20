@@ -103,7 +103,6 @@
         "1": {
           "text": "Ask about the farm.",
           "response": "This farm looks small but well-kept. How long have you been working here?\n\n\"All my life,\" the farmer replies humbly. \"Raised on this very land, and I'll likely die here too. It's a good life, if you don't mind the solitude.\"",
-          "health": 2,
           "next": "adventure_guild"
         },
         "2": {

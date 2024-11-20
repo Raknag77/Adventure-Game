@@ -348,6 +348,8 @@ def random_event():
         display_encounter(random_encounter)
         random_encounter_count += 1
 
+
+
     # anchor_event_1()
     #
     # while random_encounter_count < 30:
