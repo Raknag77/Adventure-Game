@@ -1,32 +1,58 @@
 {"items": {
     "weapons": {
-      "common_sword": {
+      "iron_sword": {
         "name": "Sword",
         "description": "A simple, well-used sword with a steel blade and a leather-wrapped hilt. It shows signs of wear but remains sharp and balanced, reliable for basic combat. A practical weapon for any adventurer.",
         "stats": {
-          "attackDmg": 10
+          "attackDmg": 10,
+          "agility": 2
         },
         "rarity": "common",
-        "price": 2,
+        "price": 3,
         "attribute": "physical"
       },
-      "common_lance": {
+      "iron_lance": {
         "name": "Lance",
         "description": "A sturdy, well-balanced lance with a long wooden shaft and a steel tip. The wood is worn from use, but it remains strong and reliable. The blade is simple, practical, and effective for mounted combat or thrusting. A dependable weapon, ideal for soldiers or adventurers seeking a reliable polearm.",
         "stats": {
-          "attackDmg": 10
+          "attackDmg": 15,
+          "critChance": 0.02
         },
         "rarity": "common",
-        "price": 2
+        "price": 3,
+        "attribute": "physical"
       },
-      "common_mace": {
+      "iron_mace": {
         "name": "Mace",
         "description": "A heavy, blunt mace with a steel head and a wooden handle. The mace is well-crafted and sturdy, designed for crushing blows and armored opponents. The weight of the mace gives it considerable impact, making it a formidable weapon in close combat. A reliable choice for warriors or knights facing heavily armored foes.",
         "stats": {
           "attackDmg": 20
         },
         "rarity": "common",
-        "price": 2
+        "price": 3,
+        "attribute": "physical"
+      },
+      "iron_dagger": {
+        "name": "Iron Dagger",
+        "description": "A sturdier, well-balanced dagger with a sharp blade. It’s good for close combat or as a utility tool for cutting through ropes or small objects.",
+        "stats": {
+          "attackDmg": 7,
+          "agility": 2,
+          "critChance": 0.01
+        },
+        "rarity": "common",
+        "price": 2,
+        "attribute": "physical"
+      },
+      "wooden_torch": {
+        "name": "Wooden Torch",
+        "description": "A simple, unlit torch made from a stick wrapped in cloth. It can be lit to provide light for a short duration or used to start fires.",
+        "stats": {
+          "attackDmg": 8
+        },
+        "rarity": "common",
+        "price": 1,
+        "attribute": "fire"
       },
       "verdant": {
         "name": "Bow of Verdant",
@@ -69,7 +95,18 @@
           "defense": 5
         },
         "rarity": "common",
-        "price": 5
+        "price": 5,
+        "attribute": "physical"
+      },
+      "flameforged_breastplate": {
+        "name": "Flameforged Breastplate",
+        "description": "A chestpiece of molten metal, glowing with a faint, fiery aura. Etched with flame-like patterns, it offers protection against fire while radiating warmth and strength. The heat seems to linger in the metal, enhancing the wearer’s resilience.",
+        "stats": {
+          "defense": 24,
+          "health": 12
+        },
+        "rarity": "rare",
+        "attribute": "fire"
       }
     },
     "leggings": {
@@ -80,7 +117,8 @@
           "defense": 10
         },
         "rarity": "common",
-        "price": 5
+        "price": 5,
+        "attribute": "physical"
       }
     },
     "boots": {
@@ -91,7 +129,8 @@
           "defense": 5
         },
         "rarity": "common",
-        "price": 2
+        "price": 2,
+        "attribute": "physical"
       }
     },
     "charms": {
@@ -99,14 +138,26 @@
         "name": "Wooden Charm",
         "description": "A small wooden charm carved in the shape of a stag. It is smooth to the touch, with intricate details etched into the wood. The charm radiates a faint, comforting energy, as if connected to the natural world.",
         "rarity": "common",
-        "price": 2
+        "price": 2,
+        "attribute": "natural"
       },
       "silver_chains": {
         "name": "Silver Chains",
-        "description": "",
+        "description": "Cold, tarnished silver chains, their links faintly glowing with an ethereal light. They feel unnervingly heavy, as if carrying the weight of a lingering spirit, and strange markings pulse across their surface, fading in and out of sight.",
         "rarity": "rare",
         "price": 50,
+        "attribute": "necrotic",
         "skills": "weakness"
+      },
+      "silver_cross": {
+        "name": "Silver Cross",
+        "description": "A delicate, polished cross made of fine silver, its surface gleaming with a soft, reflective sheen. Intricate engravings trace the edges, depicting symbols of protection and faith.",
+        "stats": {
+          "health": 10
+        },
+        "rarity": "common",
+        "price": 10,
+        "attribute": "holy"
       }
     },
     "rings": {
@@ -166,6 +217,12 @@
         "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.",
         "rarity": "rare",
         "price": 200
+      },
+      "obsidian": {
+        "name": "Obsidian",
+        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.",
+        "rarity": "rare",
+        "price": 30
       }
     }
   }

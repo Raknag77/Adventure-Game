@@ -371,6 +371,7 @@
         "1": {
           "text": "Relax and Rest",
           "response": "You sit down by the fire, resting for the night as the memories of your encounter linger in your mind.",
+          "health": 5,
           "next": "adventure_guild"
         }
       }
@@ -465,9 +466,7 @@
         "1": {
           "text": "Attempt to seal the altar once more.",
           "response": "Suddenly, the church shakes violently, as though something beneath it stirs. The shadows ripple and writhe, coiling around you, their icy tendrils brushing your skin. The air grows heavy with an oppressive power, and the whispers swell into a deafening roar. Despite the mounting dread, you stand your ground, drawn by the undeniable pull of the altar's malevolent energy. The church is no longer a sanctuary but a vortex of unleashed power, its curse now fully awakened and beyond control.",
-          "combat": [
-            "drakthul"
-          ],
+          "combat": "drakthul",
           "next": "darkthul_altar_outcome"
         },
         "2": {
@@ -489,6 +488,115 @@
           "next": "adventure_guild"
         }
       }
+    },
+    "burnt_forest": {
+            "description": "You step into the remains of a forest, the air heavy with the acrid scent of ash. Blackened tree trunks rise around you like charred skeletons, their brittle remains crunching underfoot. The silence is deafening, broken only by the faint whisper of wind through the ruins.\nIn the distance, a faint shape emerges from the haze, a solitary shrine, untouched by the devastation, standing like a ghostly sentinel amidst the destruction.\n",
+            "choices": {
+                "1": {
+                  "text": "Explore the charred forest.",
+                  "response": "You decide to explore the forest.\n",
+                  "next": "charred_forest_exploration"
+                },
+                "2": {
+                  "text": "Leave the forest.",
+                  "response": "You decide to leave the forest behind.\n",
+                  "next": "adventure_guild"
+                },
+                "3": {
+                  "text": "Walk towards the shrine.",
+                  "response": "You walk toward the mysterious shrine.\n",
+                  "next": "burnt_shrine"
+                }
+            }
+        },
+    "charred_forest_exploration": {
+            "description": "Walking through a burnt forest feels like crossing an ancient, forgotten world. The trees, stripped of their leaves and covered in soot. The scent of smoke still lingers in the air, mixing with the earthy scent of charred wood. The ground is soft, powdery with ash, and every step seems to stir up a ghostly silence. In the distance, a small burrow is nestled at the base of a burnt tree, a quiet reminder that, despite the destruction, life still finds a way to shelter itself.\n",
+            "choices": {
+                "1": {
+                  "text": "Explore the burrow.",
+                  "response": "You crouch down and crawl into the burrow.\n",
+                  "next": "burnt_burrow"
+                },
+                "2": {
+                  "text": "Explore the shrine.",
+                  "response": "You turn toward the shrine in the distance.\n",
+                  "next": "burnt_shrine"
+                }
+            }
+        },
+    "burnt_burrow": {
+            "description": "The burrow is tucked away beneath the gnarled roots of a charred tree, the entrance framed by dark, twisted wood. The ground around it is soft, the earth disturbed, and small paw prints lead in and out, suggesting frequent visits. Inside, the space is cramped but cozy, lined with dried leaves and soft moss. As you crouch down to peer inside, something catches your eye—a small, worn wooden charm, intricately carved with delicate swirls, resting near the entrance. A few gold coins glint softly in the dim light, their surface tarnished but still bright enough to catch your attention.\n",
+            "choices": {
+                "1": {
+                  "text": "Take the items.",
+                  "response": "You collect the coins and the charm.\n",
+                  "inventory_add": "wood_charm",
+                  "gold": 2,
+                  "next": "burnt_shrine"
+                },
+                "2": {
+                  "text": "Leave the items and explore the shrine.",
+                  "response": "You leave the items untouched and head toward the shrine.\n",
+                  "next": "burnt_shrine"
+                }
+            }
+        },
+    "burnt_shrine": {
+            "description": "The shrine is a small, weathered stone alcove, its edges covered in soot and ash from the surrounding burn. At the center, there's a painting of a human figure—dressed in simple, tattered robes—offering something to a divine figure depicted in flames. The god is rendered in vivid, fiery colors, with swirling orange and red hues surrounding their form, creating a halo of intense light. The human figure is kneeling, eyes lowered, holding out a small bundle of herbs and flowers, which smolder with wisps of smoke. The painting captures a moment of devotion and reverence, despite the harsh conditions of the forest. The heat from the nearby fire offering seems to shimmer against the painting's surface, adding to the mystical aura of the scene.\n",
+            "choices": {
+                "1": {
+                  "text": "Pay your offerings to the god.",
+                  "response": "You decide to make an offering to the god.\n",
+                  "next": "fire_offering"
+                },
+                "2": {
+                  "text": "Ramshackle the shrine for any loot left behind.",
+                  "response": "You search the shrine and find a little gold and a silver cross.\n",
+                  "inventory_add": "silver_cross",
+                  "gold": 10,
+                  "next": "adventure_guild"
+                },
+                "3": {
+                  "text": "Turn around and leave.",
+                  "response": "You decide to leave the shrine behind.\n",
+                  "next": "adventure_guild"
+                }
+            }
+        },
+    "fire_offering": {
+            "description":
+                "You decide to build a bonfire from the surrounding wood. Now, you must decide the time for your offering.",
+            "choices": {
+                "1": {
+                  "text": "Dusk.",
+                  "response": "You decide to wait until dawn. As the first light of dawn touches the remains of the fire, the smoke clears to reveal a wooden torch.\n",
+                  "inventory_add": "wooden_torch",
+                  "next": "adventure_guild"
+                },
+                "2": {
+                  "text": "Noon.",
+                  "response": "You decide to wait until noon. As the flames of the offering reach their peak, the fire intensifies and a breastplate with intricate details materializes from the embers, its molten surface glowing faintly, as if it had been shaped by the very heat of the ritual.\n",
+                  "inventory_add": "flameforged_breastplate",
+                  "next": "adventure_guild"
+                },
+                "3": {
+                  "text": "Late afternoon.",
+                  "response": "You decide to wait until later in the afternoon. As the last embers of the offering die down, a shard of obsidian emerges from the ashes, its dark surface gleaming with an unnatural sheen, as if forged by the very flames that consumed the offering.\n",
+                  "inventory_add": "obsidian",
+                  "next": "adventure_guild"
+                },
+                "4": {
+                  "text": "Dawn.",
+                  "response": "You decide to wait until dusk. As the sun dips below the horizon and the last embers of the offering flicker in the fire, the flames rise higher, and from the heart of the blaze, an iron dagger materializes, its blade forged from the fire itself, still glowing faintly with heat.\n",
+                  "inventory_add": "iron_dagger",
+                  "next": "adventure_guild"
+                },
+                "5": {
+                  "text": "Midnight.",
+                  "response": "You decide to wait until midnight. The fire flickers out with a cold hiss, leaving the air heavy and still. Instead of a blessing, the shadows grow deeper, and an unsettling silence fills the clearing. The offering has been rejected, and a dark presence seems to linger in the air.\n",
+                  "next": "adventure_guild"
+                }
+            }
+        }
     }
-  }
 }

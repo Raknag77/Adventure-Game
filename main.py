@@ -7,17 +7,17 @@ from typing import List, Optional
 
 from game_content_typing import GameContentType
 
-with open('game_content.json', 'r') as file:
-    game_content: GameContentType = json.load(file)
-with open('encounter_data.json', 'r') as file:
+# with open('game_content.json', 'r') as file:
+#     game_content: GameContentType = json.load(file)
+with open('Content/encounter_data.json', 'r') as file:
     encounter_data = json.load(file)
-with open('item_data.json', 'r') as file:
+with open('Content/item_data.json', 'r') as file:
         item_data = json.load(file)
-with open('enemy_data.json', 'r') as file:
+with open('Content/enemy_data.json', 'r') as file:
     enemy_data = json.load(file)
 
 random_encounter_count = 0
-events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
+events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest"]
 
 inventory = ["excalibur"]
 inventory_count = Counter(inventory)
@@ -135,7 +135,6 @@ class Enemy:
             f"  attributes: {self.attributes}\n"
         )
 
-
 class Character:
     def __init__(self):
         self.name: Optional[str] = None
@@ -148,7 +147,7 @@ class Character:
         self.ring: Optional[Item] = None
 
         self.stats = Stats(
-            50, 0, 100, 10, 0.01
+            50, 0, 1, 10, 0.01
         )
         self.base_health: int = 50
         self.gold: int = 1000
@@ -193,7 +192,6 @@ class Character:
         )
         self.stats.health = temp_health
         return return_string
-
 
 player = Character()
 
@@ -545,7 +543,7 @@ def calculate_damage_taken(enemy: Enemy, character: Character):
     return damage
 
 
-def combat(character: Character, enemy: Enemy) -> None:
+def combat(character: Character, enemy: Enemy) -> bool:
     while character.health > 0 and enemy.stats.health > 0:
         dodge = evasion(character)
         damage_taken = calculate_damage_taken(enemy, character)
@@ -566,13 +564,14 @@ def combat(character: Character, enemy: Enemy) -> None:
         if character.health < 0:
             character.health = 0
             break
+        pass
 
     if character.health <= 0:
         print(f"{character.name} is dead.")
+        return False  # Return False if the player dies
     else:
-        character._health = character.base_health
         print(f"{enemy.name} is dead.")
-
+        return True  # Return True if combat is won
 
 # if "excalibur" in inventory:
 #     print(\n"ACHIEVEMENT: You have found the legendary sword Excalibur!\n")
@@ -623,15 +622,10 @@ def display_encounter(encounter_name):
 
             if "combat" in choice_details:
                 enemy_name = choice_details["combat"]
-                enemy_type = get_enemy_type(enemy_name)
-
-                enemy = Enemy(enemy_name, enemy_type)
-
-                if enemy:
-                    combat(player, enemy)
-                else:
-                    print(f"Enemy {enemy_name} not found!")
-                break
+                combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
+                if not combat_result:
+                    print("Game over.")
+                    return
 
             if "shop" in choice_details:
                 shop(player)
@@ -640,7 +634,7 @@ def display_encounter(encounter_name):
                 job_board()
 
             if "health" in choice_details:
-                player.health += choice_details["health"]
+                player.stats.health += choice_details["health"]
                 if player.health <= 0:
                     print("You have died.")
                     break
@@ -650,6 +644,7 @@ def display_encounter(encounter_name):
                 print(f"You have gained {choice_details['gold']} gold.")
 
             if "next" in choice_details:
+                print(f"Moving to the next encounter: {choice_details['next']}")
                 display_encounter(choice_details["next"])
                 break
         else:
@@ -671,7 +666,6 @@ You turned to see an elf with silver hair and piercing green eyes. Her smile was
 
 You introduced yourself, feeling a surge of excitement.
 """
-
     starting_story_2 = """
 "A fine name," she replied. "Follow me, and I’ll show you where your journey begins."
 
@@ -688,24 +682,19 @@ The true strength lies within."
 
 Two weapons stole your eyes however, a sword and a lance. You felt that your journey should begin with this first choice.
 """
-    player.ring = Item("copper_ring", ItemTypeEnum.RING)
-
-    common_sword_description = item_data["items"]["weapons"]["common_sword"]["description"]
-    common_lance_description = item_data["items"]["weapons"]["common_lance"]["description"]
-
+    player.ring = Item("copper_ring",ItemTypeEnum.RING)
     print(starting_story_1)
     player.name = input("What is your name? ").lower().title()
-
     print(player)
 
     print(starting_story_2)
     starting_weapon_choice = input("Choose your weapon: sword or lance? ").lower()
 
     if starting_weapon_choice == "sword":
-        print(common_sword_description)
+        print(item_data["items"]["weapons"]["iron_sword"]["description"])
         choice = input("Do you pick up this weapon? ")
         if choice == "yes":
-            player.weapon = Item("common_sword", ItemTypeEnum.WEAPON)
+            player.weapon = Item("iron_sword", ItemTypeEnum.WEAPON)
             print(f"You have picked up the Sword. Player's weapon: {player.weapon}")
         elif choice == "no":
             return
@@ -714,10 +703,10 @@ Two weapons stole your eyes however, a sword and a lance. You felt that your jou
             return
 
     elif starting_weapon_choice == "lance":
-        print(common_lance_description)
+        print(item_data["items"]["weapons"]["iron_lance"]["description"])
         choice = input("Do you pick up this weapon? ")
         if choice == "yes":
-            player.weapon = Item("common_lance", ItemTypeEnum.WEAPON)
+            player.weapon = Item("iron_lance", ItemTypeEnum.WEAPON)
             print(f"You have picked up the Lance. Player's weapon: {player.weapon}")
         elif choice == "no":
             return
