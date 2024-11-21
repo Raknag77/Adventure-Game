@@ -25,6 +25,7 @@ class Stats(TypedDict, total=False):
     health: int
     attackDmg: int
     defense: int
+    agility: int
     critChance: int
 
 

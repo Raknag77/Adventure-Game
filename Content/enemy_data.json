@@ -1,0 +1,52 @@
+{
+"enemies": {
+    "undead": {
+      "skeleton": {
+        "name": "Skeleton",
+        "description": "A reanimated skeleton, its bones held together by dark magic. The skeleton moves with an eerie, jerking motion, its empty eye sockets glowing with an unnatural light. ",
+        "stats": {
+          "health": 20,
+          "attackDmg": 5,
+          "defense": 0,
+          "critChance": 0.01
+        },
+        "attributes": "undead"
+      },
+      "wraith": {
+        "name": "Wraith",
+        "description": "A wraith is a spectral, shadowy figure cloaked in flowing darkness. Its glowing eyes pierce the void, and its presence chills the air, draining warmth and light. Gliding silently, it embodies despair and vengeance, cursed to wander endlessly, often wielding ghostly claws or powers to sap life from the living.",
+        "stats": {
+          "health": 30,
+          "attackDmg": 15,
+          "defense": 10,
+          "critChance": 0.05
+        },
+        "attributes": "undead"
+      },
+      "drakthul": {
+        "name": "Drakthul",
+        "description": "",
+        "stats": {
+          "health": 250,
+          "attackDmg": 250,
+          "defense": 50,
+          "critChance": 0.04
+        },
+        "attributes": "undead"
+      }
+    },
+    "beast": {
+      "timber_wolf": {
+        "name": "Timber Wolf",
+        "description": "Untamed puppy",
+        "stats": {
+          "health": 20,
+          "attackDmg": 7,
+          "defense": 2,
+          "critChance": 0.1
+        },
+        "attributes": "Natural"
+      }
+    }
+  }
+}

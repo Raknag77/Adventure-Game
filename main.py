@@ -1,6 +1,3 @@
-# TODO: Add luck stat
-# TODO: Add evasion for combat
-
 import random
 from collections import Counter
 import json
@@ -12,6 +9,12 @@ from game_content_typing import GameContentType
 
 with open('game_content.json', 'r') as file:
     game_content: GameContentType = json.load(file)
+with open('encounter_data.json', 'r') as file:
+    encounter_data = json.load(file)
+with open('item_data.json', 'r') as file:
+        item_data = json.load(file)
+with open('enemy_data.json', 'r') as file:
+    enemy_data = json.load(file)
 
 random_encounter_count = 0
 events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
@@ -19,17 +22,30 @@ events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
 inventory = ["excalibur"]
 inventory_count = Counter(inventory)
 
+
 class Stats:
     def __init__(self,
                  health: int = 0,
                  defense: int = 0,
+                 agility: int = 0,
                  attackDmg: int = 0,
                  critChance: float = 0.00,
                  ):
         self.health = health
         self.defense = defense
+        self.agility = agility
         self.attackDmg = attackDmg
         self.critChance = critChance
+
+    def __str__(self):
+        return (
+            f"Health: {self.health}\n"
+            f"Defense: {self.defense}\n"
+            f"Agility: {self.agility}\n"
+            f"Attack Damage: {self.attackDmg}\n"
+            f"Critical Chance: {self.critChance * 100}%"
+        )
+
 
 class Item:
     def __init__(self, item_id: str, item_type: ItemTypeEnum):
@@ -37,41 +53,64 @@ class Item:
         self.item_type = item_type
 
         item_type_value: ItemTypeLiteral = item_type.value
-        self.name = game_content["items"][item_type_value][item_id]["name"]
-        self.description = game_content["items"][item_type_value][item_id]["description"]
-        self.stats = Stats(**game_content["items"][item_type_value][self._id].get("stats", {}))
-        self.attribute = game_content["items"][item_type_value][item_id].get("attribute")
-        self.rarity = game_content["items"][item_type_value][item_id]["rarity"]
-        self.price = game_content["items"][item_type_value][item_id].get("price")
-        self.skills = game_content["items"][item_type_value][item_id].get("skills")
+        self.name = item_data["items"][item_type_value][item_id]["name"]
+        self.description = item_data["items"][item_type_value][item_id]["description"]
+        self.stats = Stats(**item_data["items"][item_type_value][self._id].get("stats", {}))
+        self.attribute = item_data["items"][item_type_value][item_id].get("attribute")
+        self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
+        self.price = item_data["items"][item_type_value][item_id].get("price")
+        self.skills = item_data["items"][item_type_value][item_id].get("skills")
 
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
-            return f"{self.name}- (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance}, Attribute: {self.attribute}, Rarity: {self.rarity}, Skills: {self.skills}, Price: {self.price} gold)"
+            return (f"{self.name}- Price: {self.price} gold\n"
+                    f"      Attack Damage: {self.stats.attackDmg}\n"
+                    f"      Critical Chance: {self.stats.critChance}\n"
+                    f"      Attribute: {self.attribute}\n"
+                    f"      Rarity: {self.rarity}\n"
+                    f"      Skills: {self.skills}\n")
         if self.item_type == ItemTypeEnum.CHARM or self.item_type == ItemTypeEnum.RING:
-            return f"{self.name}- (Attack Damage: {self.stats.attackDmg}, Critical Chance: {self.stats.critChance},Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute: {self.attribute}, Rarity: {self.rarity}, Skills: {self.skills}, Price: {self.price} gold)"
+            return (f"{self.name}- Price: {self.price} gold\n"
+                    f"      Attack Damage: {self.stats.attackDmg}\n"
+                    f"      Critical Chance: {self.stats.critChance}\n"
+                    f"      Health: {self.stats.health}\n"
+                    f"      Agility: {self.stats.agility}\n"
+                    f"      Defense: {self.stats.defense}\n"
+                    f"      Attribute: {self.attribute}\n"
+                    f"      Rarity: {self.rarity}\n"
+                    f"      Skills: {self.skills}\n")
         if self.item_type == ItemTypeEnum.MATERIAL:
-            return f"{self.name}- Attribute: {self.attribute}, Rarity: {self.rarity}, Price: {self.price} gold)"
-        return f"{self.name}- (Health: {self.stats.health}, Defense: {self.stats.defense}, Attribute: {self.attribute}, Rarity: {self.rarity}, Skills: {self.skills}, Price: {self.price} gold)"
+            return (f"{self.name}- Price: {self.price} gold\n"
+                    f"      Attribute: {self.attribute}\n"
+                    f"      Rarity: {self.rarity}\n")
+        return (f"{self.name}- Price: {self.price} gold\n"
+                f"      Health: {self.stats.health}\n"
+                f"      Defense: {self.stats.defense}\n"
+                f"      Agility: {self.stats.agility}\n"
+                f"      Attribute: {self.attribute}\n"
+                f"      Rarity: {self.rarity}\n"
+                f"      Skills: {self.skills}\n")
 
     def get_id(self):
         return self._id
 
+
 def get_item_type(item_id):
     # Check each category for the item_id
-    for category, items in game_content["items"].items():
+    for category, items in item_data["items"].items():
         if item_id in items:  # If item_id exists in the category
             return category  # Return the category (item_type) where the item_id was found
     # If the item is not found in any category, raise an error
     raise ValueError(f"Item ID '{item_id}' not found in any known category.")
 
-def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
 
-    for category, enemies in game_content["enemies"].items():
+def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
+    for category, enemies in enemy_data["enemies"].items():
         if enemy_name.lower() in [key.lower() for key in enemies.keys()]:
             return EnemyTypeEnum(category)
     print(f"Enemy '{enemy_name}' not found!")
     return None
+
 
 class Enemy:
     def __init__(self, enemy_id: str, enemy_type: EnemyTypeEnum):
@@ -79,21 +118,23 @@ class Enemy:
         self.enemy_type = enemy_type
 
         enemy_type_value: EnemyTypeLiteral = enemy_type.value
-        self.name = game_content["enemies"][enemy_type_value][enemy_id]["name"]
-        self.description = game_content["enemies"][enemy_type_value][enemy_id]["description"]
-        self.stats = Stats(**game_content["enemies"][enemy_type_value][enemy_id].get("stats", {}))
-        self.attributes =  game_content["enemies"][enemy_type_value][enemy_id]["attributes"]
+        self.name = enemy_data["enemies"][enemy_type_value][enemy_id]["name"]
+        self.description = enemy_data["enemies"][enemy_type_value][enemy_id]["description"]
+        self.stats = Stats(**enemy_data["enemies"][enemy_type_value][enemy_id].get("stats", {}))
+        self.attributes = enemy_data["enemies"][enemy_type_value][enemy_id]["attributes"]
 
     def __repr__(self):
         return (
             f"  name: {self.name},\n"
             f"  description: {self.description},\n"
             f"  defense: {self.stats.defense},\n"
+            f"  agility: {self.stats.agility},\n"
             f"  health: {self.stats.health},\n"
             f"  attackDmg: {self.stats.attackDmg},\n"
             f"  critChance: {self.stats.critChance},\n"
             f"  attributes: {self.attributes}\n"
         )
+
 
 class Character:
     def __init__(self):
@@ -106,12 +147,10 @@ class Character:
         self.charm: Optional[Item] = None
         self.ring: Optional[Item] = None
 
-        self.defense: int = 0
-        self._health: int = 50
+        self.stats = Stats(
+            50, 0, 100, 10, 0.01
+        )
         self.base_health: int = 50
-        self.attackDmg: int = 10
-        self.critDmg: int = self.attackDmg * 2
-        self.critChance: float = 0.01
         self.gold: int = 1000
 
     @property
@@ -129,37 +168,35 @@ class Character:
             bonus_health += self.charm.stats.health
         if self.ring:
             bonus_health += self.ring.stats.health
-        return self._health + bonus_health
+        return self.stats.health + bonus_health
 
     @health.setter
     def health(self, new_health: int):
-        self._health = new_health
-        print(f"Health is now: {self._health}")
-
-
-
-
+        self.stats.health = new_health
+        print(f"Health is now: {self.stats.health}")
 
     def __str__(self):
-        return (
+        temp_health = self.stats.health
+        self.stats.health = self.health
+        return_string = (
             f"Character Info:\n"
             f"Name: {self.name}\n"
-            f"Weapon: {self.weapon.name if self.weapon else 'None'}\n"  
+            f"Weapon: {self.weapon.name if self.weapon else 'None'}\n"
             f"Head: {self.helmet.name if self.helmet else 'None'}\n"
             f"Top: {self.chestpiece.name if self.chestpiece else 'None'}\n"
             f"Bottom: {self.leggings.name if self.leggings else 'None'}\n"
             f"Feet: {self.boots.name if self.boots else 'None'}\n"
             f"Charm: {self.charm.name if self.charm else 'None'}\n"
             f"Ring: {self.ring.name if self.ring else 'None'}\n"
-            f"Health: {self.health}\n"
-            f"defense: {self.defense}\n"
-            f"Attack Damage: {self.attackDmg}\n"
-            f"Critical Damage: {self.critDmg}\n"
-            f"Critical Chance: {self.critChance * 100}%\n"
+            f"{self.stats}\n"
             f"Gold: {self.gold}\n"
         )
+        self.stats.health = temp_health
+        return return_string
+
 
 player = Character()
+
 
 def equipment_tab():
     print("This is your current equipment:\n")
@@ -173,7 +210,7 @@ def equipment_tab():
                       "Press [7] to change your ring\n"
                       )
     if equip_tab == "1":
-        owned_weapons = [item for item in inventory if item in game_content["items"]["weapons"]]
+        owned_weapons = [item for item in inventory if item in item_data["items"]["weapons"]]
         print("Owned weapons:", owned_weapons)
         equip_weapon_id = input("Select a weapon you wish to equip.\n")
         if equip_weapon_id not in owned_weapons:
@@ -187,7 +224,7 @@ def equipment_tab():
             player.weapon = equip_weapon
             inventory.remove(equip_weapon_id)
     elif equip_tab == "2":
-        owned_helmets = [item for item in inventory if item in game_content["items"]["helmets"]]
+        owned_helmets = [item for item in inventory if item in item_data["items"]["helmets"]]
         print("Owned helmets:", owned_helmets)
         equip_helmets_id = input("Select a helmet you wish to equip.\n")
         if equip_helmets_id not in owned_helmets:
@@ -201,7 +238,7 @@ def equipment_tab():
             player.helmet = equip_helmet
             inventory.remove(equip_helmets_id)
     elif equip_tab == "3":
-        owned_chestpieces = [item for item in inventory if item in game_content["items"]["chestpieces"]]
+        owned_chestpieces = [item for item in inventory if item in item_data["items"]["chestpieces"]]
         print("Owned chestpieces:", owned_chestpieces)
         equip_chestpiece_id = input("Select a chestpiece you wish to equip.\n")
         if equip_chestpiece_id not in owned_chestpieces:
@@ -215,7 +252,7 @@ def equipment_tab():
             player.chestpiece = equip_chestpiece
             inventory.remove(equip_chestpiece_id)
     elif equip_tab == "4":
-        owned_leggings = [item for item in inventory if item in game_content["items"]["leggings"]]
+        owned_leggings = [item for item in inventory if item in item_data["items"]["leggings"]]
         print("Owned leggings:", owned_leggings)
         equip_leggings_id = input("Select a legging you wish to equip.\n")
         if equip_leggings_id not in owned_leggings:
@@ -229,7 +266,7 @@ def equipment_tab():
             player.leggings = equip_leggings
             inventory.remove(equip_leggings_id)
     elif equip_tab == "5":
-        owned_boots = [item for item in inventory if item in game_content["items"]["boots"]]
+        owned_boots = [item for item in inventory if item in item_data["items"]["boots"]]
         print("Owned boots:", owned_boots)
         equip_boots_id = input("Select a pair of boots you wish to equip.\n")
         if equip_boots_id not in owned_boots:
@@ -243,7 +280,7 @@ def equipment_tab():
             player.boots = equip_boots
             inventory.remove(equip_boots_id)
     elif equip_tab == "6":
-        owned_charms = [item for item in inventory if item in game_content["items"]["charms"]]
+        owned_charms = [item for item in inventory if item in item_data["items"]["charms"]]
         print("Owned charms:", owned_charms)
         equip_charm_id = input("Select a charm you wish to equip.\n")
         if equip_charm_id not in owned_charms:
@@ -257,7 +294,7 @@ def equipment_tab():
             player.charm = equip_charm
             inventory.remove(equip_charm_id)
     elif equip_tab == "7":
-        owned_rings = [item for item in inventory if item in game_content["items"]["rings"]]
+        owned_rings = [item for item in inventory if item in item_data["items"]["rings"]]
         print("Owned rings:", owned_rings)
         equip_ring_id = input("Select a ring you wish to equip.\n")
         if equip_ring_id not in owned_rings:
@@ -274,14 +311,15 @@ def equipment_tab():
         print("Invalid input, returning.")
         return
 
+
 def const_choices(input_value):
     input_value = input_value.lower()
 
     if input_value == "i":
         print("Here is your Inventory: ")
-        for item_type in game_content["items"].keys():
+        for item_type in item_data["items"].keys():
             item_type: ItemTypeLiteral
-            for item_id in game_content["items"][item_type].keys():
+            for item_id in item_data["items"][item_type].keys():
                 if item_id in inventory:
                     print(Item(item_id, ItemTypeEnum(item_type)))
         print()
@@ -293,14 +331,15 @@ def const_choices(input_value):
         print("Invalid input. Please choose again.")
         print()
 
+
 def shop(character: Character):
     shop_items: List[Item] = []
 
     # randomly select 3 random items from any random category
     for i in range(3):
-        random_item_category: ItemTypeLiteral = random.choice(list(game_content["items"].keys()))
+        random_item_category: ItemTypeLiteral = random.choice(list(item_data["items"].keys()))
         random_item_id = random.choice(
-            list(game_content["items"][random_item_category].keys()))
+            list(item_data["items"][random_item_category].keys()))
         item_type_value = get_item_type(random_item_id)
         shop_item = Item(random_item_id, ItemTypeEnum(item_type_value))
         shop_items.append(shop_item)
@@ -325,6 +364,7 @@ def shop(character: Character):
         character.gold -= selected_shop_item.price
         inventory.append(selected_shop_item.get_id())
 
+
 def job_board():
     random_encounter_id = random.choice(events)
     display_encounter(random_encounter_id)
@@ -338,8 +378,6 @@ def random_event():
         display_encounter(random_encounter)
         random_encounter_count += 1
 
-
-
     # anchor_event_1()
     #
     # while random_encounter_count < 30:
@@ -349,22 +387,38 @@ def random_event():
     #     random_encounter_count += 1
 
 
+def evasion(character) -> bool:
+    agility = (
+            character.stats.agility +
+            (character.weapon.stats.agility if character.weapon is not None else 0) +
+            (character.charm.stats.agility if character.charm is not None else 0) +
+            (character.ring.stats.agility if character.ring is not None else 0)
+            )
+    n = random.randint(1, 100)
+    if n < agility:
+        return True
+    return False
+
+
 def crit_hit(character) -> bool:
-    critChance = (character.critChance +
-                  character.weapon.stats.critChance if character.weapon is not None else 0 +
-                  character.charm.stats.critChance if character.charm is not None else 0 +
-                  character.ring.stats.critChance if character.ring is not None else 0
+    critChance = (
+            character.stats.critChance +
+            (character.weapon.stats.critChance if character.weapon is not None else 0) +
+            (character.charm.stats.critChance if character.charm is not None else 0) +
+            (character.ring.stats.critChance if character.ring is not None else 0)
                   )
     n = random.randint(1, 100)
     if n < critChance * 100:
         return True
     return False
 
+
 def crit_enemy_hit(enemy) -> bool:
     n = random.randint(1, 100)
     if n < enemy.stats.critChance * 100:
         return True
     return False
+
 
 def check_pierce(character: Character):
     if character.weapon is not None and character.weapon.skills == "pierce":
@@ -375,6 +429,7 @@ def check_pierce(character: Character):
         return True
     return False
 
+
 def check_doublehit(character: Character):
     if character.weapon is not None and character.weapon.skills == "doublehit":
         return True
@@ -384,10 +439,10 @@ def check_doublehit(character: Character):
         return True
     return False
 
+
 def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
         return False
-
 
     strong_combinations = {
         "fire": ["ice", "undead", "natural", "cursed"],
@@ -409,6 +464,7 @@ def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
 
     print(f"is_attribute_strong result: {result}")
     return result
+
 
 def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
@@ -433,6 +489,7 @@ def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
     print(f"is_attribute_weak result: {result}")
     return result
 
+
 def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
     if character.weapon is None or character.weapon.attribute is None:
         return 1
@@ -446,16 +503,18 @@ def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
         return 0.5
     return 1
 
+
 def calculate_damage_dealt(character: Character, enemy: Enemy):
     pierce = check_pierce(character)
     doublehit = check_doublehit(character)
     modifier = apply_weapon_attribute_effect(character, enemy)
     crit_modifier = crit_hit(character)
-    attackDmg = (character.attackDmg +
-                 character.weapon.stats.attackDmg if character.weapon is not None else 0 +
-                                                                                       character.ring.stats.attackDmg if character.charm is not None else 0 +
-                                                                                                                                                          character.charm.stats.attackDmg if character.ring is not None else 0
-                 )
+    attackDmg = (
+            character.stats.attackDmg +
+            (character.weapon.stats.attackDmg if character.weapon is not None else 0) +
+            (character.charm.stats.attackDmg if character.charm is not None else 0) +
+            (character.ring.stats.attackDmg if character.ring is not None else 0)
+    )
     if crit_modifier:
         damage = (modifier * attackDmg * 2) - enemy.stats.defense
     elif crit_modifier and pierce:
@@ -475,18 +534,24 @@ def calculate_damage_dealt(character: Character, enemy: Enemy):
     damage = max(damage, 0)
     return damage
 
+
 def calculate_damage_taken(enemy: Enemy, character: Character):
     crit_modifier = crit_enemy_hit(enemy)
     if crit_modifier:
-        damage = (enemy.stats.attackDmg * 2) - character.defense
+        damage = (enemy.stats.attackDmg * 2) - character.stats.defense
     else:
-        damage = enemy.stats.attackDmg - character.defense
-    damage = max(damage,0)
+        damage = enemy.stats.attackDmg - character.stats.defense
+    damage = max(damage, 0)
     return damage
+
 
 def combat(character: Character, enemy: Enemy) -> None:
     while character.health > 0 and enemy.stats.health > 0:
+        dodge = evasion(character)
         damage_taken = calculate_damage_taken(enemy, character)
+        if dodge:
+            damage_taken = 0
+
         damage_dealt = calculate_damage_dealt(character, enemy)
 
         enemy.stats.health -= damage_dealt
@@ -508,86 +573,88 @@ def combat(character: Character, enemy: Enemy) -> None:
         character._health = character.base_health
         print(f"{enemy.name} is dead.")
 
+
 # if "excalibur" in inventory:
 #     print(\n"ACHIEVEMENT: You have found the legendary sword Excalibur!\n")
 #     print("You have gained 1000 gold.")
 #     player.gold += 1000
 
 def display_encounter(encounter_name):
-        encounters = game_content["encounters"]
-        if encounter_name not in encounters:
-            print("No such encounter found!")
-            return
+    encounters = encounter_data["encounters"]
+    if encounter_name not in encounters:
+        print("No such encounter found!")
+        return
 
-        encounter = encounters[encounter_name]
-        print(encounter["description"])
-        print("\nChoices:")
+    encounter = encounters[encounter_name]
+    print(encounter["description"])
+    print("\nChoices:")
 
-        for key, _choice in encounter["choices"].items():
-            print(f"[{key}] {_choice['text']}")
+    for key, _choice in encounter["choices"].items():
+        print(f"[{key}] {_choice['text']}")
 
-        while True:
-            player_choice = input("What do you do? ")
-            if player_choice in ["i", "e"]:
-                const_choices(player_choice)
-                continue
+    while True:
+        player_choice = input("What do you do? ")
+        if player_choice in ["i", "e"]:
+            const_choices(player_choice)
+            continue
 
-            if player_choice in encounter["choices"]:
-                choice_details = encounter["choices"][player_choice]
-                print("\n" + choice_details["response"])
+        if player_choice in encounter["choices"]:
+            choice_details = encounter["choices"][player_choice]
+            print("\n" + choice_details["response"])
 
-                if "inventory_add" in choice_details:
-                    new_items = choice_details["inventory_add"]
-                    for item_id in new_items:
-                        inventory.append(item_id)
-                        print(
-                            f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id)))) for item_id in inventory[-len(new_items):]])} to inventory.")
+            if "inventory_add" in choice_details:
+                new_items = choice_details["inventory_add"]
+                for item_id in new_items:
+                    inventory.append(item_id)
+                    print(
+                        f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id)))) for item_id in inventory[-len(new_items):]])} to inventory.")
 
-                if "requirements" in choice_details:
-                    required_items = choice_details["requirements"]
-                    missing_items = [item for item in required_items if item not in inventory]
+            if "requirements" in choice_details:
+                required_items = choice_details["requirements"]
+                missing_items = [item for item in required_items if item not in inventory]
 
-                    if missing_items:
-                        print(f"You do not have {', '.join(missing_items)} in your inventory.")
-                        continue
+                if missing_items:
+                    print(f"You do not have {', '.join(missing_items)} in your inventory.")
+                    continue
 
-                    for item in required_items:
-                        print(f"Lost {item} from inventory.")
-                        inventory.remove(item)
+                for item in required_items:
+                    print(f"Lost {item} from inventory.")
+                    inventory.remove(item)
 
-                if "combat" in choice_details:
-                    enemy_name = choice_details["combat"]
-                    enemy_type = get_enemy_type(enemy_name)
+            if "combat" in choice_details:
+                enemy_name = choice_details["combat"]
+                enemy_type = get_enemy_type(enemy_name)
 
-                    enemy = Enemy(enemy_name, enemy_type)
+                enemy = Enemy(enemy_name, enemy_type)
 
-                    if enemy:
-                        combat(player, enemy)
-                    else:
-                        print(f"Enemy {enemy_name} not found!")
+                if enemy:
+                    combat(player, enemy)
+                else:
+                    print(f"Enemy {enemy_name} not found!")
+                break
+
+            if "shop" in choice_details:
+                shop(player)
+
+            if "job" in choice_details:
+                job_board()
+
+            if "health" in choice_details:
+                player.health += choice_details["health"]
+                if player.health <= 0:
+                    print("You have died.")
                     break
 
-                if "shop" in choice_details:
-                    shop(player)
+            if "gold" in choice_details:
+                player.gold += choice_details["gold"]
+                print(f"You have gained {choice_details['gold']} gold.")
 
-                if "job" in choice_details:
-                    job_board()
+            if "next" in choice_details:
+                display_encounter(choice_details["next"])
+                break
+        else:
+            print("Invalid choice. Please try again.")
 
-                if "health" in choice_details:
-                    player.health += choice_details["health"]
-                    if player.health <= 0:
-                        print("You have died.")
-                        break
-
-                if "gold" in choice_details:
-                    player.gold += choice_details["gold"]
-                    print(f"You have gained {choice_details['gold']} gold.")
-
-                if "next" in choice_details:
-                    display_encounter(choice_details["next"])
-                    break
-            else:
-                print("Invalid choice. Please try again.")
 
 def main():
     starting_story_1 = """
@@ -621,9 +688,10 @@ The true strength lies within."
 
 Two weapons stole your eyes however, a sword and a lance. You felt that your journey should begin with this first choice.
 """
+    player.ring = Item("copper_ring", ItemTypeEnum.RING)
 
-    common_sword_description = game_content["items"]["weapons"]["common_sword"]["description"]
-    common_lance_description = game_content["items"]["weapons"]["common_lance"]["description"]
+    common_sword_description = item_data["items"]["weapons"]["common_sword"]["description"]
+    common_lance_description = item_data["items"]["weapons"]["common_lance"]["description"]
 
     print(starting_story_1)
     player.name = input("What is your name? ").lower().title()
@@ -661,5 +729,6 @@ Two weapons stole your eyes however, a sword and a lance. You felt that your jou
         return
 
     random_event()
+
 
 main()
