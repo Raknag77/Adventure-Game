@@ -1,14 +1,17 @@
+# TODO: Add luck stat
+# TODO: Add evasion for combat
+
 import random
 from collections import Counter
 import json
-from operator import truediv
 
-from game_enums import ItemTypeEnum
-from game_enums import EnemyTypeEnum
-from typing import Optional
+from game_enums import EnemyTypeLiteral, ItemTypeEnum, EnemyTypeEnum, ItemTypeLiteral
+from typing import List, Optional
+
+from game_content_typing import GameContentType
 
 with open('game_content.json', 'r') as file:
-    game_content = json.load(file)
+    game_content: GameContentType = json.load(file)
 
 random_encounter_count = 0
 events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church"]
@@ -32,18 +35,15 @@ class Item:
     def __init__(self, item_id: str, item_type: ItemTypeEnum):
         self._id = item_id
         self.item_type = item_type
-        self.name = game_content["items"][item_type.value][item_id]["name"]
-        self.description = game_content["items"][item_type.value][item_id]["description"]
-        self.stats = Stats(
-            attackDmg=game_content["items"][self.item_type.value][self._id].get("attackDmg", 0),
-            defense=game_content["items"][self.item_type.value][self._id].get("defense", 0),
-            health=game_content["items"][self.item_type.value][self._id].get("health", 0),
-            critChance=game_content["items"][self.item_type.value][self._id].get("critChance", 0)
-        )
-        self.attribute = game_content["items"][item_type.value][item_id].get("attribute")
-        self.rarity = game_content["items"][item_type.value][item_id]["rarity"]
-        self.price = game_content["items"][item_type.value][item_id].get("price")
-        self.skills = game_content["items"][item_type.value][item_id].get("skills")
+
+        item_type_value: ItemTypeLiteral = item_type.value
+        self.name = game_content["items"][item_type_value][item_id]["name"]
+        self.description = game_content["items"][item_type_value][item_id]["description"]
+        self.stats = Stats(**game_content["items"][item_type_value][self._id].get("stats", {}))
+        self.attribute = game_content["items"][item_type_value][item_id].get("attribute")
+        self.rarity = game_content["items"][item_type_value][item_id]["rarity"]
+        self.price = game_content["items"][item_type_value][item_id].get("price")
+        self.skills = game_content["items"][item_type_value][item_id].get("skills")
 
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
@@ -77,15 +77,12 @@ class Enemy:
     def __init__(self, enemy_id: str, enemy_type: EnemyTypeEnum):
         self._id = enemy_id
         self.enemy_type = enemy_type
-        self.name = game_content["enemies"][enemy_type.value][enemy_id]["name"]
-        self.description = game_content["enemies"][enemy_type.value][enemy_id]["description"]
-        self.stats = Stats(
-            attackDmg=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("attackDmg", 0),
-            defense=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("defense", 0),
-            health=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("health", 0),
-            critChance=game_content["enemies"][self.enemy_type.value][self._id].get("stats",{}).get("critChance", 0)
-        )
-        self.attributes =  game_content["enemies"][enemy_type.value][enemy_id]["attributes"]
+
+        enemy_type_value: EnemyTypeLiteral = enemy_type.value
+        self.name = game_content["enemies"][enemy_type_value][enemy_id]["name"]
+        self.description = game_content["enemies"][enemy_type_value][enemy_id]["description"]
+        self.stats = Stats(**game_content["enemies"][enemy_type_value][enemy_id].get("stats", {}))
+        self.attributes =  game_content["enemies"][enemy_type_value][enemy_id]["attributes"]
 
     def __repr__(self):
         return (
@@ -283,6 +280,7 @@ def const_choices(input_value):
     if input_value == "i":
         print("Here is your Inventory: ")
         for item_type in game_content["items"].keys():
+            item_type: ItemTypeLiteral
             for item_id in game_content["items"][item_type].keys():
                 if item_id in inventory:
                     print(Item(item_id, ItemTypeEnum(item_type)))
@@ -296,44 +294,36 @@ def const_choices(input_value):
         print()
 
 def shop(character: Character):
-    random_item_id = random.choice(
-        list(game_content["items"][random.choice(list(game_content["items"].keys()))].keys()))
-    random_item_id_2 = random.choice(
-        list(game_content["items"][random.choice(list(game_content["items"].keys()))].keys()))
-    random_item_id_3 = random.choice(
-        list(game_content["items"][random.choice(list(game_content["items"].keys()))].keys()))
+    shop_items: List[Item] = []
 
-    item_type_value = get_item_type(random_item_id)
-    item_type_value_2 = get_item_type(random_item_id_2)
-    item_type_value_3 = get_item_type(random_item_id_3)
+    # randomly select 3 random items from any random category
+    for i in range(3):
+        random_item_category: ItemTypeLiteral = random.choice(list(game_content["items"].keys()))
+        random_item_id = random.choice(
+            list(game_content["items"][random_item_category].keys()))
+        item_type_value = get_item_type(random_item_id)
+        shop_item = Item(random_item_id, ItemTypeEnum(item_type_value))
+        shop_items.append(shop_item)
 
-    shop_item_1 = Item(random_item_id, ItemTypeEnum(item_type_value))
-    shop_item_2 = Item(random_item_id_2, ItemTypeEnum(item_type_value_2))
-    shop_item_3 = Item(random_item_id_3, ItemTypeEnum(item_type_value_3))
-
-    print(shop_item_1)
-    print(shop_item_2)
-    print(shop_item_3)
+        # Print the selected items
+        print(shop_item)
 
     purchase = input("Select an item you wish to purchase!\n")
-    if purchase == "1":
-        if character.gold > shop_item_1.price:
-            print(f"You have purchased {shop_item_1}!")
-            character.gold -= shop_item_1.price
-            inventory.append(random_item_id)
-    elif purchase == "2":
-        if character.gold > shop_item_2.price:
-            print(f"You have purchased {shop_item_2}!")
-            character.gold -= shop_item_2.price
-            inventory.append(random_item_id_2)
-    elif purchase == "3":
-        if character.gold > shop_item_3.price:
-            print(f"You have purchased {shop_item_3}!")
-            character.gold -= shop_item_3.price
-            inventory.append(random_item_id_3)
-    else:
-        print("Invalid input returning.")
+
+    # check if the user input is in any of the shop items
+    if purchase.strip().lower() not in ["1", "2", "3"]:
+        print("Invalid input, returning.")
         return
+
+    # convert the user input to an index to access the selected item from the shop_items list
+    purchase_number = int(purchase) - 1
+    selected_shop_item = shop_items[purchase_number]
+
+    # check if the user has enough gold to purchase the selected item
+    if character.gold > selected_shop_item.price:
+        print(f"You have purchased {selected_shop_item}!")
+        character.gold -= selected_shop_item.price
+        inventory.append(selected_shop_item.get_id())
 
 def job_board():
     random_encounter_id = random.choice(events)

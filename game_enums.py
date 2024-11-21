@@ -1,4 +1,6 @@
 from enum import Enum
+from typing import Literal
+
 
 class ItemTypeEnum(Enum):
     WEAPONS = "weapons"
@@ -21,3 +23,22 @@ class ItemTypeEnum(Enum):
 class EnemyTypeEnum(Enum):
     UNDEAD = "undead"
     BEAST = "beast"
+
+
+#  ======================== Literals ========================
+
+EnemyTypeLiteral = Literal[
+    "undead",
+    "beast"
+]
+
+ItemTypeLiteral = Literal[
+    "weapons",
+    "helmets",
+    "chestpieces",
+    "leggings",
+    "boots",
+    "charms",
+    "rings",
+    "materials"
+]
