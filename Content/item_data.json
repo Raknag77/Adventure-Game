@@ -223,6 +223,12 @@
         "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.",
         "rarity": "rare",
         "price": 30
+      },
+      "bone": {
+        "name": "Bone",
+        "description": "A bone from a deceased corpse used to make up a skeleton.",
+        "rarity": "common",
+        "price": 1
       }
     }
   }

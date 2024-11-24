@@ -30,12 +30,14 @@ class Stats:
                  agility: int = 0,
                  attackDmg: int = 0,
                  critChance: float = 0.00,
+                 luck:int = 0
                  ):
         self.health = health
         self.defense = defense
         self.agility = agility
         self.attackDmg = attackDmg
         self.critChance = critChance
+        self.luck = luck
 
     def __str__(self):
         return (
@@ -44,6 +46,7 @@ class Stats:
             f"Agility: {self.agility}\n"
             f"Attack Damage: {self.attackDmg}\n"
             f"Critical Chance: {self.critChance * 100}%"
+            f"Luck: {self.luck}\n"
         )
 
 
@@ -74,8 +77,9 @@ class Item:
                     f"      Attack Damage: {self.stats.attackDmg}\n"
                     f"      Critical Chance: {self.stats.critChance}\n"
                     f"      Health: {self.stats.health}\n"
-                    f"      Agility: {self.stats.agility}\n"
                     f"      Defense: {self.stats.defense}\n"
+                    f"      Agility: {self.stats.agility}\n"
+                    f"      Luck: {self.stats.luck}\n"
                     f"      Attribute: {self.attribute}\n"
                     f"      Rarity: {self.rarity}\n"
                     f"      Skills: {self.skills}\n")
@@ -147,7 +151,7 @@ class Character:
         self.ring: Optional[Item] = None
 
         self.stats = Stats(
-            50, 0, 1, 10, 0.01
+            50, 0, 1, 10, 0.01,0
         )
         self.base_health: int = 50
         self.gold: int = 1000
@@ -361,11 +365,17 @@ def shop(character: Character):
         print(f"You have purchased {selected_shop_item}!")
         character.gold -= selected_shop_item.price
         inventory.append(selected_shop_item.get_id())
+    else:
+        print("You do not have enough money to purchase this item!")
 
 
 def job_board():
-    random_encounter_id = random.choice(events)
-    display_encounter(random_encounter_id)
+    category_name = random.choice(list(enemy_data['enemies'].keys()))
+    category = enemy_data['enemies'][category_name]
+    enemy_attacker = random.choice(list(category.values()))
+    print(f"A nearby village is attacked by{enemy_attacker}.")
+    combat(player,enemy_attacker)
+    print("Village is saved!")
 
 
 def random_event():
@@ -383,6 +393,53 @@ def random_event():
     #     events.remove(random_encounter)
     #     display_encounter(random_encounter)
     #     random_encounter_count += 1
+
+
+def loot(character, enemy):
+    loot_data = None
+    for category in enemy_data['enemies'].values():
+        if enemy in category:
+            loot_data = category[enemy].get('loot', None)
+            break
+
+    if loot_data:
+        for item in loot_data:
+            item_name = item['item']
+            item_rarity = item['rarity']
+
+            if item_rarity == "common":
+                common_loot_chance = random.randint(1, 100)
+                if common_loot_chance < 75 + character.stats.luck:
+                    inventory.append(item_name)
+                    print(f"Loot added: {item_name}")
+                else:
+                    print(f"No loot found on {item_name}.")
+            elif item_rarity == "rare":
+                rare_loot_chance = random.randint(1, 100)
+                if rare_loot_chance < 40 + character.stats.luck:
+                    inventory.append(item_name)
+                    print(f"Loot added: {item_name}")
+                else:
+                    print(f"No loot found on {item_name}.")
+            elif item_rarity == "exquisite":
+                exquisite_loot_chance = random.randint(1, 100)
+                if exquisite_loot_chance < 15 + character.stats.luck:
+                    inventory.append(item_name)
+                    print(f"Loot added: {item_name}")
+                else:
+                    print(f"No loot found on {item_name}.")
+            elif item_rarity == "legendary":
+                legendary_loot_chance = random.randint(1, 100)
+                if legendary_loot_chance < 1 + character.stats.luck:
+                    inventory.append(item_name)
+                    print(f"Loot added: {item_name}")
+                else:
+                    print(f"No loot found on {item_name}.")
+            else:
+                print(f"No loot found on {item_name}.")
+
+    else:
+        print(f"No loot found on {enemy}")
 
 
 def evasion(character) -> bool:
@@ -621,11 +678,20 @@ def display_encounter(encounter_name):
                     inventory.remove(item)
 
             if "combat" in choice_details:
-                enemy_name = choice_details["combat"]
-                combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
-                if not combat_result:
-                    print("Game over.")
-                    return
+                if isinstance(choice_details["combat"], list):
+                    for enemy_name in choice_details["combat"]:
+                        combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
+                        if not combat_result:
+                            print("Game over.")
+                            return
+                        loot(player,enemy_name)
+                else:
+                    enemy_name = choice_details["combat"]
+                    combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
+                    if not combat_result:
+                        print("Game over.")
+                        return
+                    loot(player, enemy_name)
 
             if "shop" in choice_details:
                 shop(player)
@@ -644,7 +710,6 @@ def display_encounter(encounter_name):
                 print(f"You have gained {choice_details['gold']} gold.")
 
             if "next" in choice_details:
-                print(f"Moving to the next encounter: {choice_details['next']}")
                 display_encounter(choice_details["next"])
                 break
         else:

@@ -312,7 +312,7 @@
         "1": {
           "text": "Prove Your Worth in the Trial",
           "response": "You take the stag's challenge, determined to prove yourself.",
-          "combat": "wraith",
+          "combat": ["wraith","wraith"],
           "next": "trial_outcome"
         },
         "2": {

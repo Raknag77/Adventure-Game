@@ -10,7 +10,11 @@
           "defense": 0,
           "critChance": 0.01
         },
-        "attributes": "undead"
+        "attributes": "undead",
+        "loot": [
+    {"item": "bone", "rarity": "common"},
+    {"item": "string", "rarity": "common"}
+]
       },
       "wraith": {
         "name": "Wraith",
