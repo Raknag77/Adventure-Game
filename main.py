@@ -45,7 +45,7 @@ class Stats:
             f"Defense: {self.defense}\n"
             f"Agility: {self.agility}\n"
             f"Attack Damage: {self.attackDmg}\n"
-            f"Critical Chance: {self.critChance * 100}%"
+            f"Critical Chance: {self.critChance * 100}%\n"
             f"Luck: {self.luck}\n"
         )
 
@@ -113,19 +113,15 @@ def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
     return None
 
 def get_random_enemy_instance():
-    # Choose a random enemy category (enemy type)
     category_name = random.choice(list(enemy_data['enemies'].keys()))
 
-    # Choose a random enemy ID from the category
     category = enemy_data['enemies'][category_name]
     enemy_id = random.choice(list(category.keys()))
 
-    # Create an Enemy instance using the class
-    enemy_type_enum = EnemyTypeEnum[category_name.upper()]  # Assuming EnemyTypeEnum uses uppercase keys
+    enemy_type_enum = EnemyTypeEnum[category_name.upper()]
     enemy_instance = Enemy(enemy_id=enemy_id, enemy_type=enemy_type_enum)
 
     return enemy_instance
-
 
 class Enemy:
     def __init__(self, enemy_id: str, enemy_type: EnemyTypeEnum):
@@ -343,58 +339,6 @@ def const_choices(input_value):
         print("Invalid input. Please choose again.")
         print()
 
-def shop(character: Character):
-    shop_items: List[Item] = []
-
-    for i in range(3):
-        random_item_category: ItemTypeLiteral = random.choice(list(item_data["items"].keys()))
-        random_item_id = random.choice(
-            list(item_data["items"][random_item_category].keys()))
-        item_type_value = get_item_type(random_item_id)
-        shop_item = Item(random_item_id, ItemTypeEnum(item_type_value))
-        shop_items.append(shop_item)
-
-        print(shop_item)
-
-    purchase = input("Select an item you wish to purchase!\n")
-
-    if purchase.strip().lower() not in ["1", "2", "3"]:
-        print("Invalid input, returning.")
-        return
-
-    purchase_number = int(purchase) - 1
-    selected_shop_item = shop_items[purchase_number]
-
-    if character.gold > selected_shop_item.price:
-        print(f"You have purchased {selected_shop_item}!")
-        character.gold -= selected_shop_item.price
-        inventory.append(selected_shop_item.get_id())
-    else:
-        print("You do not have enough money to purchase this item!")
-
-def job_board():
-    enemy_instance = get_random_enemy_instance()
-    print(f"Randomly selected enemy:\n{enemy_instance}")
-
-    # Pass the enemy into the combat function
-    combat(player, enemy_instance)
-
-def random_event():
-    global random_encounter_count
-    while random_encounter_count < 15:
-        random_encounter = random.choice(events)
-        events.remove(random_encounter)
-        display_encounter(random_encounter)
-        random_encounter_count += 1
-
-    # anchor_event_1()
-    #
-    # while random_encounter_count < 30:
-    #     random_encounter = random.choice(events)
-    #     events.remove(random_encounter)
-    #     display_encounter(random_encounter)
-    #     random_encounter_count += 1
-
 def loot(character, enemy):
     loot_data = None
     for category in enemy_data['enemies'].values():
@@ -440,6 +384,68 @@ def loot(character, enemy):
 
     else:
         print(f"No loot found on {enemy}")
+
+def shop(character: Character):
+    shop_items: List[Item] = []
+
+    for i in range(3):
+        random_item_category: ItemTypeLiteral = random.choice(list(item_data["items"].keys()))
+        random_item_id = random.choice(
+            list(item_data["items"][random_item_category].keys()))
+        item_type_value = get_item_type(random_item_id)
+        shop_item = Item(random_item_id, ItemTypeEnum(item_type_value))
+        shop_items.append(shop_item)
+
+        print(shop_item)
+
+    purchase = input("Select an item you wish to purchase!\n")
+
+    if purchase.strip().lower() not in ["1", "2", "3"]:
+        print("Invalid input, returning.")
+        return
+
+    purchase_number = int(purchase) - 1
+    selected_shop_item = shop_items[purchase_number]
+
+    if character.gold > selected_shop_item.price:
+        print(f"You have purchased {selected_shop_item}!")
+        character.gold -= selected_shop_item.price
+        inventory.append(selected_shop_item.get_id())
+    else:
+        print("You do not have enough money to purchase this item!")
+
+def job_board():
+    enemy_instance = get_random_enemy_instance()
+    print(f"Nearby village is being attacked by \n{enemy_instance.name}.")
+    combat_result = combat(player, enemy_instance)
+
+    if not combat_result:  # Player lost
+        print("Game over! Reload your save or try again.")
+        # Add logic for game-over scenario here (e.g., restart, quit, or reload).
+    else:  # Player won
+        print("Searching for loot...")
+        loot = loot(player,enemy_instance)  # Example function
+        if loot:
+            print(f"You found: {loot}")
+        else:
+            print(f"No loot found on {enemy_instance.name}.")
+
+
+def random_event():
+    global random_encounter_count
+    while random_encounter_count < 15:
+        random_encounter = random.choice(events)
+        events.remove(random_encounter)
+        display_encounter(random_encounter)
+        random_encounter_count += 1
+
+    # anchor_event_1()
+    #
+    # while random_encounter_count < 30:
+    #     random_encounter = random.choice(events)
+    #     events.remove(random_encounter)
+    #     display_encounter(random_encounter)
+    #     random_encounter_count += 1
 
 def evasion(character) -> bool:
     agility = (
@@ -589,8 +595,11 @@ def calculate_damage_taken(enemy: Enemy, character: Character):
     damage = max(damage, 0)
     return damage
 
-def combat(character: Character, enemy: Enemy) -> bool:
+def combat(character, enemy):
     while character.health > 0 and enemy.stats.health > 0:
+        # Store health before taking damage
+        player_health_before = character.health
+
         dodge = evasion(character)
         damage_taken = calculate_damage_taken(enemy, character)
         if dodge:
@@ -598,26 +607,38 @@ def combat(character: Character, enemy: Enemy) -> bool:
 
         damage_dealt = calculate_damage_dealt(character, enemy)
 
+        # Enemy takes damage
         enemy.stats.health -= damage_dealt
+        if enemy.stats.health < 0:
+            enemy.stats.health = 0  # Clamp to zero
         print(f"Damage dealt: {damage_dealt}")
         print(f"Enemy's remaining health: {enemy.stats.health}")
-        if enemy.stats.health < 0:
-            enemy.stats.health = 0
+        if enemy.stats.health == 0:  # Enemy is dead
+            print(f"{enemy.name} is dead.")
             break
 
+        # Player takes damage
         character.health -= damage_taken
-        print(f"Damage taken: {damage_taken}")
         if character.health < 0:
-            character.health = 0
-            break
-        pass
+            character.health = 0  # Clamp to zero
+        print(f"Damage taken: {damage_taken}")
+        print(f"{character.name}'s remaining health: {character.health}")
 
-    if character.health <= 0:
-        print(f"{character.name} is dead.")
-        return False  # Return False if the player dies
+        # If the player's health drops to 0 or below, exit the loop
+        if character.health == 0 or character.health < player_health_before:
+            print(f"{character.name} is dead.")
+            break
+
+    # Reset player health after combat (for any external healing items or buffs)
+    player.stats.health = player.base_health
+
+    # Determine the result of the combat
+    if character.health == 0:
+        print("You have lost the battle.")
+        return False  # Player lost
     else:
-        print(f"{enemy.name} is dead.")
-        return True  # Return True if combat is won
+        print("You have won the battle!")
+        return True  # Player won
 
 # if "excalibur" in inventory:
 #     print(\n"ACHIEVEMENT: You have found the legendary sword Excalibur!\n")
@@ -670,10 +691,14 @@ def display_encounter(encounter_name):
                 if isinstance(choice_details["combat"], list):
                     for enemy_name in choice_details["combat"]:
                         combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
-                        if not combat_result:
-                            print("Game over.")
-                            return
-                        loot(player,enemy_name)
+                        if combat_result:  # Player won the combat
+                            loot_items = loot(player, enemy_name)
+                            if loot_items:
+                                print(f"You found: {loot_items}")
+                            else:
+                                print(f"No loot found on {enemy_name.name}.")
+                        else:  # Player lost
+                            print("Game over! Reload your save or try again.")
                 else:
                     enemy_name = choice_details["combat"]
                     combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
@@ -706,71 +731,90 @@ def display_encounter(encounter_name):
 
 def main():
     starting_story_1 = """
-You stood before the Adventurers' Guild, heart racing with excitement. 
-You pushed open the heavy wooden doors and stepped into a room bathed in warm, amber light. 
-The air smelled of leather and firewood, and a crackling fireplace to your right cast shadows across the walls. 
-To your left, a job board was covered in parchment quests, from humble tasks to mysterious adventures.
+You stood before the Adventurers' Guild, heart racing with excitement. The guild, a symbol of unity in a world divided by kingdoms and races, was a beacon of hope for many. 
+The heavy wooden doors creaked as you pushed them open, revealing a room bathed in warm, amber light. The air smelled of leather and firewood, and a crackling fireplace to your right cast shadows across walls lined with banners of past conquests.
+
+To your left, a towering job board was covered in parchment quests: some humble tasks, others calling for brave souls to confront ancient threats. Scribbled across one quest was mention of "The Abyssal Horde," and another spoke of tensions brewing in the Eternal Grove of the Wildkin.
 
 "New here, are you?" a calm, melodic voice said from behind you.
 
-You turned to see an elf with silver hair and piercing green eyes. Her smile was warm yet graceful. 
+You turned to see an elf with silver hair and piercing green eyes. Her smile was warm yet guarded, carrying the wisdom of someone who had seen much of the world. 
 "Welcome to the Adventurers' Guild," she said, extending a slender hand. 
-"I am Elara, and it’s my pleasure to greet those who are taking their first steps toward adventure. May I ask for your name?"
+"I am Elara Caelindra, your guide. And if that name sounds familiar, it’s because my family still rules in the Eternal Grove. But today, I serve all who wish to rise above the chaos."
 
-You introduced yourself, feeling a surge of excitement.
+Her voice grew softer as she studied your face. "Many come here seeking glory. But beyond these walls, there is a world on the brink of breaking. Tell me... what is your name?"\n
 """
-    starting_story_2 = """
-"A fine name," she replied. "Follow me, and I’ll show you where your journey begins."
 
-Elara led you down a narrow stairway, the sounds of the guild fading behind them. 
-At the bottom, you entered the armory, a room lined with racks of swords, shields, bows, and staves, 
-each weapon catching the warm glow of wall sconces.
+    starting_story_2 = """
+"A fine name," Elara replied, her smile widening slightly. "Follow me, and I’ll show you where your journey begins."
+
+Elara led you through the guild, passing rows of adventurers hunched over maps and scribbled plans. As you descended a narrow stairway, the sounds of the guild faded, replaced by the clinking of metal and the hiss of sharpening stones. The armory lay ahead, a room lined with racks of swords, shields, bows, and staves, each gleaming in the warm glow of wall sconces.
 
 "Every adventurer needs a weapon they can trust," Elara said, gesturing to the selection. 
-"Take your time, look around, and choose what speaks to you."
+"Whether you dream of battling demons in the Abyssal Bastion, seeking ancient relics in the Stoneforged Halls, or forging peace among the Wildkin tribes, your journey begins here."
 
-You examined each weapon carefully, feeling their weight and balance, while Elara watched with a gentle smile. 
-"Whatever you choose," she said, "remember that this weapon is only an extension of your spirit. 
-The true strength lies within."
+You examined the weapons carefully, running your fingers along the edges of blades and the hafts of staves. Elara watched with a knowing expression. 
+"Choose wisely," she said. "For this weapon will be more than a tool—it will be a reflection of the strength within you. Remember, the true battle lies not in the steel you wield, but in the choices you make."
 
-Two weapons stole your eyes however, a sword and a lance. You felt that your journey should begin with this first choice.
+Two weapons caught your eye: a sword, balanced and precise, and a lance, long and steadfast. You felt that your journey should begin with this first choice.\n
 """
+
     player.ring = Item("copper_ring",ItemTypeEnum.RING)
     print(starting_story_1)
     player.name = input("What is your name? ").lower().title()
     print(player)
 
     print(starting_story_2)
-    starting_weapon_choice = input("Choose your weapon: sword or lance? ").lower()
 
-    if starting_weapon_choice == "sword":
-        print(item_data["items"]["weapons"]["iron_sword"]["description"])
-        choice = input("Do you pick up this weapon? ")
-        if choice == "yes":
-            player.weapon = Item("iron_sword", ItemTypeEnum.WEAPON)
-            print(f"You have picked up the Sword. Player's weapon: {player.weapon}")
-        elif choice == "no":
-            return
+    while True:
+        starting_weapon_choice = input("Do you choose the sword or the lance? ").lower()
+
+        if starting_weapon_choice == "sword":
+            print(item_data["items"]["weapons"]["iron_sword"]["description"])
+
+            while True:
+                choice = input("Do you pick up this weapon? (yes/no) ").lower()
+                if choice == "yes":
+                    player.weapon = Item("iron_sword", ItemTypeEnum.WEAPON)
+                    print(f"You have picked up the Sword. Player's weapon: {player.weapon}")
+                    exit_choice = True  # Flag to break the outer loop
+                    break  # Exit the inner loop
+                elif choice == "no":
+                    print("You decide not to pick up the Sword. Choose again.")
+                    break  # Exit the inner loop and return to weapon selection
+                else:
+                    print("Invalid input, please choose 'yes' or 'no'.")
+
+            if "exit_choice" in locals() and exit_choice:
+                break  # Exit the outer loop after choosing a weapon
+
+        elif starting_weapon_choice == "lance":
+            print(item_data["items"]["weapons"]["iron_lance"]["description"])
+
+            while True:
+                choice = input("Do you pick up this weapon? (yes/no) ").lower()
+                if choice == "yes":
+                    player.weapon = Item("iron_lance", ItemTypeEnum.WEAPON)
+                    print(f"You have picked up the Lance. Player's weapon: {player.weapon}")
+                    exit_choice = True  # Flag to break the outer loop
+                    break  # Exit the inner loop
+                elif choice == "no":
+                    print("You decide not to pick up the Lance. Choose again.")
+                    break  # Exit the inner loop and return to weapon selection
+                else:
+                    print("Invalid input, please choose 'yes' or 'no'.")
+
+            if "exit_choice" in locals() and exit_choice:
+                break  # Exit the outer loop after choosing a weapon
+
         else:
-            print("Invalid input, please choose again.")
-            return
+            print("Invalid input, please choose 'sword' or 'lance'.")
 
-    elif starting_weapon_choice == "lance":
-        print(item_data["items"]["weapons"]["iron_lance"]["description"])
-        choice = input("Do you pick up this weapon? ")
-        if choice == "yes":
-            player.weapon = Item("iron_lance", ItemTypeEnum.WEAPON)
-            print(f"You have picked up the Lance. Player's weapon: {player.weapon}")
-        elif choice == "no":
-            return
-        else:
-            print("Invalid input, please choose again.")
-            return
-    else:
-        print("Invalid input, please choose again.")
-        return
+    while player.stats.health>0:
+        random_event()
+    print("You have died!!")
+    return
 
-    random_event()
 
 
 main()

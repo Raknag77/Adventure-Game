@@ -1,7 +1,7 @@
 {
   "encounters": {
     "adventure_guild": {
-      "description": "The guild hall hums with the quiet buzz of purpose, a crossroads for adventurers seeking refuge, work, or the thrill of discovery. The air is rich with the mingling scents of firewood, leather, and faint traces of spices from distant lands. A large stone hearth dominates one side of the room, its crackling fire casting flickering shadows that dance along the wooden beams.\nBehind the counter stands Elara, the guild's innkeeper and owner, her silver hair catching the firelight like threads of moonlight. Her sharp green eyes seem to miss nothing, her presence calm yet commanding, as though the hall itself bends to her quiet authority.\nOpposite the fire, a job board leans slightly under the weight of countless pinned notices, their edges curled and inked words hinting at danger, rewards, or mystery. Nearby, the shopkeeper's stall is a burst of controlled chaos—shelves crowded with glimmering potions, polished weapons, and peculiar trinkets that beg for closer inspection.\nPerched on a counter, a sleek gray tabby cat surveys the scene through half-closed eyes, its contented purr blending seamlessly into the warmth of the hall. Here, decisions linger in every glance—whether to browse, rest, or step boldly into the unknown.\n\n",
+      "description": "\n\nThe guild hall hums with the quiet buzz of purpose, a crossroads for adventurers seeking refuge, work, or the thrill of discovery. The air is rich with the mingling scents of firewood, leather, and faint traces of spices from distant lands. A large stone hearth dominates one side of the room, its crackling fire casting flickering shadows that dance along the wooden beams.\nBehind the counter stands Elara, the guild's innkeeper and owner, her silver hair catching the firelight like threads of moonlight. Her sharp green eyes seem to miss nothing, her presence calm yet commanding, as though the hall itself bends to her quiet authority.\nOpposite the fire, a job board leans slightly under the weight of countless pinned notices, their edges curled and inked words hinting at danger, rewards, or mystery. Nearby, the shopkeeper's stall is a burst of controlled chaos—shelves crowded with glimmering potions, polished weapons, and peculiar trinkets that beg for closer inspection.\nPerched on a counter, a sleek gray tabby cat surveys the scene through half-closed eyes, its contented purr blending seamlessly into the warmth of the hall. Here, decisions linger in every glance—whether to browse, rest, or step boldly into the unknown.\n\n",
       "choices": {
         "1": {
           "text": "Approach the Job Board.",
@@ -530,7 +530,7 @@
                 "1": {
                   "text": "Take the items.",
                   "response": "You collect the coins and the charm.\n",
-                  "inventory_add": "wood_charm",
+                  "inventory_add": ["wood_charm"],
                   "gold": 2,
                   "next": "burnt_shrine"
                 },
@@ -552,7 +552,7 @@
                 "2": {
                   "text": "Ramshackle the shrine for any loot left behind.",
                   "response": "You search the shrine and find a little gold and a silver cross.\n",
-                  "inventory_add": "silver_cross",
+                  "inventory_add": ["silver_cross"],
                   "gold": 10,
                   "next": "adventure_guild"
                 },
@@ -570,25 +570,25 @@
                 "1": {
                   "text": "Dusk.",
                   "response": "You decide to wait until dawn. As the first light of dawn touches the remains of the fire, the smoke clears to reveal a wooden torch.\n",
-                  "inventory_add": "wooden_torch",
+                  "inventory_add": ["wooden_torch"],
                   "next": "adventure_guild"
                 },
                 "2": {
                   "text": "Noon.",
                   "response": "You decide to wait until noon. As the flames of the offering reach their peak, the fire intensifies and a breastplate with intricate details materializes from the embers, its molten surface glowing faintly, as if it had been shaped by the very heat of the ritual.\n",
-                  "inventory_add": "flameforged_breastplate",
+                  "inventory_add": ["flameforged_breastplate"],
                   "next": "adventure_guild"
                 },
                 "3": {
                   "text": "Late afternoon.",
                   "response": "You decide to wait until later in the afternoon. As the last embers of the offering die down, a shard of obsidian emerges from the ashes, its dark surface gleaming with an unnatural sheen, as if forged by the very flames that consumed the offering.\n",
-                  "inventory_add": "obsidian",
+                  "inventory_add": ["obsidian"],
                   "next": "adventure_guild"
                 },
                 "4": {
                   "text": "Dawn.",
                   "response": "You decide to wait until dusk. As the sun dips below the horizon and the last embers of the offering flicker in the fire, the flames rise higher, and from the heart of the blaze, an iron dagger materializes, its blade forged from the fire itself, still glowing faintly with heat.\n",
-                  "inventory_add": "iron_dagger",
+                  "inventory_add": ["iron_dagger"],
                   "next": "adventure_guild"
                 },
                 "5": {
