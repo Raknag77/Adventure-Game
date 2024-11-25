@@ -49,7 +49,6 @@ class Stats:
             f"Luck: {self.luck}\n"
         )
 
-
 class Item:
     def __init__(self, item_id: str, item_type: ItemTypeEnum):
         self._id = item_id
@@ -98,7 +97,6 @@ class Item:
     def get_id(self):
         return self._id
 
-
 def get_item_type(item_id):
     # Check each category for the item_id
     for category, items in item_data["items"].items():
@@ -107,13 +105,26 @@ def get_item_type(item_id):
     # If the item is not found in any category, raise an error
     raise ValueError(f"Item ID '{item_id}' not found in any known category.")
 
-
 def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
     for category, enemies in enemy_data["enemies"].items():
         if enemy_name.lower() in [key.lower() for key in enemies.keys()]:
             return EnemyTypeEnum(category)
     print(f"Enemy '{enemy_name}' not found!")
     return None
+
+def get_random_enemy_instance():
+    # Choose a random enemy category (enemy type)
+    category_name = random.choice(list(enemy_data['enemies'].keys()))
+
+    # Choose a random enemy ID from the category
+    category = enemy_data['enemies'][category_name]
+    enemy_id = random.choice(list(category.keys()))
+
+    # Create an Enemy instance using the class
+    enemy_type_enum = EnemyTypeEnum[category_name.upper()]  # Assuming EnemyTypeEnum uses uppercase keys
+    enemy_instance = Enemy(enemy_id=enemy_id, enemy_type=enemy_type_enum)
+
+    return enemy_instance
 
 
 class Enemy:
@@ -313,7 +324,6 @@ def equipment_tab():
         print("Invalid input, returning.")
         return
 
-
 def const_choices(input_value):
     input_value = input_value.lower()
 
@@ -333,11 +343,9 @@ def const_choices(input_value):
         print("Invalid input. Please choose again.")
         print()
 
-
 def shop(character: Character):
     shop_items: List[Item] = []
 
-    # randomly select 3 random items from any random category
     for i in range(3):
         random_item_category: ItemTypeLiteral = random.choice(list(item_data["items"].keys()))
         random_item_id = random.choice(
@@ -346,21 +354,17 @@ def shop(character: Character):
         shop_item = Item(random_item_id, ItemTypeEnum(item_type_value))
         shop_items.append(shop_item)
 
-        # Print the selected items
         print(shop_item)
 
     purchase = input("Select an item you wish to purchase!\n")
 
-    # check if the user input is in any of the shop items
     if purchase.strip().lower() not in ["1", "2", "3"]:
         print("Invalid input, returning.")
         return
 
-    # convert the user input to an index to access the selected item from the shop_items list
     purchase_number = int(purchase) - 1
     selected_shop_item = shop_items[purchase_number]
 
-    # check if the user has enough gold to purchase the selected item
     if character.gold > selected_shop_item.price:
         print(f"You have purchased {selected_shop_item}!")
         character.gold -= selected_shop_item.price
@@ -368,15 +372,12 @@ def shop(character: Character):
     else:
         print("You do not have enough money to purchase this item!")
 
-
 def job_board():
-    category_name = random.choice(list(enemy_data['enemies'].keys()))
-    category = enemy_data['enemies'][category_name]
-    enemy_attacker = random.choice(list(category.values()))
-    print(f"A nearby village is attacked by{enemy_attacker}.")
-    combat(player,enemy_attacker)
-    print("Village is saved!")
+    enemy_instance = get_random_enemy_instance()
+    print(f"Randomly selected enemy:\n{enemy_instance}")
 
+    # Pass the enemy into the combat function
+    combat(player, enemy_instance)
 
 def random_event():
     global random_encounter_count
@@ -393,7 +394,6 @@ def random_event():
     #     events.remove(random_encounter)
     #     display_encounter(random_encounter)
     #     random_encounter_count += 1
-
 
 def loot(character, enemy):
     loot_data = None
@@ -441,7 +441,6 @@ def loot(character, enemy):
     else:
         print(f"No loot found on {enemy}")
 
-
 def evasion(character) -> bool:
     agility = (
             character.stats.agility +
@@ -453,7 +452,6 @@ def evasion(character) -> bool:
     if n < agility:
         return True
     return False
-
 
 def crit_hit(character) -> bool:
     critChance = (
@@ -467,13 +465,11 @@ def crit_hit(character) -> bool:
         return True
     return False
 
-
 def crit_enemy_hit(enemy) -> bool:
     n = random.randint(1, 100)
     if n < enemy.stats.critChance * 100:
         return True
     return False
-
 
 def check_pierce(character: Character):
     if character.weapon is not None and character.weapon.skills == "pierce":
@@ -484,7 +480,6 @@ def check_pierce(character: Character):
         return True
     return False
 
-
 def check_doublehit(character: Character):
     if character.weapon is not None and character.weapon.skills == "doublehit":
         return True
@@ -493,7 +488,6 @@ def check_doublehit(character: Character):
     elif character.ring is not None and character.ring.skills == "doublehit":
         return True
     return False
-
 
 def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
@@ -520,7 +514,6 @@ def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
     print(f"is_attribute_strong result: {result}")
     return result
 
-
 def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
         return False
@@ -544,7 +537,6 @@ def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
     print(f"is_attribute_weak result: {result}")
     return result
 
-
 def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
     if character.weapon is None or character.weapon.attribute is None:
         return 1
@@ -557,7 +549,6 @@ def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
     elif is_weak:
         return 0.5
     return 1
-
 
 def calculate_damage_dealt(character: Character, enemy: Enemy):
     pierce = check_pierce(character)
@@ -589,7 +580,6 @@ def calculate_damage_dealt(character: Character, enemy: Enemy):
     damage = max(damage, 0)
     return damage
 
-
 def calculate_damage_taken(enemy: Enemy, character: Character):
     crit_modifier = crit_enemy_hit(enemy)
     if crit_modifier:
@@ -598,7 +588,6 @@ def calculate_damage_taken(enemy: Enemy, character: Character):
         damage = enemy.stats.attackDmg - character.stats.defense
     damage = max(damage, 0)
     return damage
-
 
 def combat(character: Character, enemy: Enemy) -> bool:
     while character.health > 0 and enemy.stats.health > 0:
@@ -714,7 +703,6 @@ def display_encounter(encounter_name):
                 break
         else:
             print("Invalid choice. Please try again.")
-
 
 def main():
     starting_story_1 = """
