@@ -424,7 +424,7 @@ def job_board():
         # Add logic for game-over scenario here (e.g., restart, quit, or reload).
     else:  # Player won
         print("Searching for loot...")
-        loot = loot(player,enemy_instance)  # Example function
+        loot(player,enemy_instance)
         if loot:
             print(f"You found: {loot}")
         else:
@@ -692,7 +692,7 @@ def display_encounter(encounter_name):
                     for enemy_name in choice_details["combat"]:
                         combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
                         if combat_result:  # Player won the combat
-                            loot_items = loot(player, enemy_name)
+                            loot(player, enemy_name)
                             if loot_items:
                                 print(f"You found: {loot_items}")
                             else:
