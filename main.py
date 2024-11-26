@@ -20,8 +20,6 @@ random_encounter_count = 0
 events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest"]
 
 inventory = ["excalibur"]
-inventory_count = Counter(inventory)
-
 
 class Stats:
     def __init__(self,
@@ -183,7 +181,10 @@ class Character:
     @health.setter
     def health(self, new_health: int):
         self.stats.health = new_health
-        print(f"Health is now: {self.stats.health}")
+        print(f"Base Health (without bonuses) is now: {self.stats.health}")
+
+    def reset_health(self):
+        self.current_health = self.health
 
     def __str__(self):
         temp_health = self.stats.health
@@ -324,12 +325,19 @@ def const_choices(input_value):
     input_value = input_value.lower()
 
     if input_value == "i":
-        print("Here is your Inventory: ")
+        print("Here is your Inventory:")
+
+        inventory_counts = Counter(inventory)
+
         for item_type in item_data["items"].keys():
-            item_type: ItemTypeLiteral
-            for item_id in item_data["items"][item_type].keys():
-                if item_id in inventory:
-                    print(Item(item_id, ItemTypeEnum(item_type)))
+            for item_id, item_data_entry in item_data["items"][item_type].items():
+                if item_id in inventory_counts:
+                    item_instance = Item(item_id, ItemTypeEnum(item_type))
+                    count = inventory_counts[item_id]
+                    print(f"{item_instance} (x{count})")
+
+        if not inventory_counts:
+            print("Your inventory is empty.")
         print()
 
     elif input_value == "e":
@@ -430,7 +438,6 @@ def job_board():
         else:
             print(f"No loot found on {enemy_instance.name}.")
 
-
 def random_event():
     global random_encounter_count
     while random_encounter_count < 15:
@@ -446,6 +453,8 @@ def random_event():
     #     events.remove(random_encounter)
     #     display_encounter(random_encounter)
     #     random_encounter_count += 1
+
+
 
 def evasion(character) -> bool:
     agility = (
@@ -595,50 +604,44 @@ def calculate_damage_taken(enemy: Enemy, character: Character):
     damage = max(damage, 0)
     return damage
 
-def combat(character, enemy):
-    while character.health > 0 and enemy.stats.health > 0:
-        # Store health before taking damage
-        player_health_before = character.health
 
+def combat(character, enemy):
+    # Ensure combat starts with current health initialized
+    character.current_health = character.health
+    print(f"{character.name}'s starting health: {character.current_health}")
+
+    while character.current_health > 0 and enemy.stats.health > 0:
         dodge = evasion(character)
         damage_taken = calculate_damage_taken(enemy, character)
         if dodge:
             damage_taken = 0
 
         damage_dealt = calculate_damage_dealt(character, enemy)
-
-        # Enemy takes damage
         enemy.stats.health -= damage_dealt
-        if enemy.stats.health < 0:
-            enemy.stats.health = 0  # Clamp to zero
-        print(f"Damage dealt: {damage_dealt}")
-        print(f"Enemy's remaining health: {enemy.stats.health}")
-        if enemy.stats.health == 0:  # Enemy is dead
+        print(f"Damage dealt to {enemy.name}: {damage_dealt}")
+        print(f"{enemy.name}'s remaining health: {max(enemy.stats.health, 0)}")
+
+        if enemy.stats.health <= 0:
             print(f"{enemy.name} is dead.")
             break
 
-        # Player takes damage
-        character.health -= damage_taken
-        if character.health < 0:
-            character.health = 0  # Clamp to zero
+        character.current_health -= damage_taken
         print(f"Damage taken: {damage_taken}")
-        print(f"{character.name}'s remaining health: {character.health}")
+        print(f"{character.name}'s remaining health: {max(character.current_health, 0)}")
 
-        # If the player's health drops to 0 or below, exit the loop
-        if character.health == 0 or character.health < player_health_before:
+        if character.current_health <= 0:
             print(f"{character.name} is dead.")
             break
 
-    # Reset player health after combat (for any external healing items or buffs)
-    player.stats.health = player.base_health
-
-    # Determine the result of the combat
-    if character.health == 0:
-        print("You have lost the battle.")
-        return False  # Player lost
+    # Post-combat handling
+    if character.current_health <= 0:
+        print("Game over! Reload your save or try again.")
+        return False
     else:
+        character.reset_health()
         print("You have won the battle!")
-        return True  # Player won
+        return True
+
 
 # if "excalibur" in inventory:
 #     print(\n"ACHIEVEMENT: You have found the legendary sword Excalibur!\n")
@@ -693,18 +696,15 @@ def display_encounter(encounter_name):
                         combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
                         if combat_result:  # Player won the combat
                             loot(player, enemy_name)
-                            if loot_items:
-                                print(f"You found: {loot_items}")
-                            else:
-                                print(f"No loot found on {enemy_name.name}.")
                         else:  # Player lost
                             print("Game over! Reload your save or try again.")
+                            exit()
                 else:
                     enemy_name = choice_details["combat"]
                     combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
                     if not combat_result:
                         print("Game over.")
-                        return
+                        exit()
                     loot(player, enemy_name)
 
             if "shop" in choice_details:
