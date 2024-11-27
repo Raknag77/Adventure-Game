@@ -564,39 +564,58 @@
             }
         },
     "fire_offering": {
-            "description":
-                "You decide to build a bonfire from the surrounding wood. Now, you must decide the time for your offering.",
-            "choices": {
-                "1": {
-                  "text": "Dusk.",
-                  "response": "You decide to wait until dawn. As the first light of dawn touches the remains of the fire, the smoke clears to reveal a wooden torch.\n",
-                  "inventory_add": ["wooden_torch"],
-                  "next": "adventure_guild"
-                },
-                "2": {
-                  "text": "Noon.",
-                  "response": "You decide to wait until noon. As the flames of the offering reach their peak, the fire intensifies and a breastplate with intricate details materializes from the embers, its molten surface glowing faintly, as if it had been shaped by the very heat of the ritual.\n",
-                  "inventory_add": ["flameforged_breastplate"],
-                  "next": "adventure_guild"
-                },
-                "3": {
-                  "text": "Late afternoon.",
-                  "response": "You decide to wait until later in the afternoon. As the last embers of the offering die down, a shard of obsidian emerges from the ashes, its dark surface gleaming with an unnatural sheen, as if forged by the very flames that consumed the offering.\n",
-                  "inventory_add": ["obsidian"],
-                  "next": "adventure_guild"
-                },
-                "4": {
-                  "text": "Dawn.",
-                  "response": "You decide to wait until dusk. As the sun dips below the horizon and the last embers of the offering flicker in the fire, the flames rise higher, and from the heart of the blaze, an iron dagger materializes, its blade forged from the fire itself, still glowing faintly with heat.\n",
-                  "inventory_add": ["iron_dagger"],
-                  "next": "adventure_guild"
-                },
-                "5": {
-                  "text": "Midnight.",
-                  "response": "You decide to wait until midnight. The fire flickers out with a cold hiss, leaving the air heavy and still. Instead of a blessing, the shadows grow deeper, and an unsettling silence fills the clearing. The offering has been rejected, and a dark presence seems to linger in the air.\n",
-                  "next": "adventure_guild"
-                }
+        "description":
+            "You decide to build a bonfire from the surrounding wood. Now, you must decide the time for your offering.",
+        "choices": {
+            "1": {
+              "text": "Dusk.",
+              "response": "You decide to wait until dawn. As the first light of dawn touches the remains of the fire, the smoke clears to reveal a wooden torch.\n",
+              "inventory_add": ["wooden_torch"],
+              "next": "adventure_guild"
+            },
+            "2": {
+              "text": "Noon.",
+              "response": "You decide to wait until noon. As the flames of the offering reach their peak, the fire intensifies and a breastplate with intricate details materializes from the embers, its molten surface glowing faintly, as if it had been shaped by the very heat of the ritual.\n",
+              "inventory_add": ["flameforged_breastplate"],
+              "next": "adventure_guild"
+            },
+            "3": {
+              "text": "Late afternoon.",
+              "response": "You decide to wait until later in the afternoon. As the last embers of the offering die down, a shard of obsidian emerges from the ashes, its dark surface gleaming with an unnatural sheen, as if forged by the very flames that consumed the offering.\n",
+              "inventory_add": ["obsidian"],
+              "next": "adventure_guild"
+            },
+            "4": {
+              "text": "Dawn.",
+              "response": "You decide to wait until dusk. As the sun dips below the horizon and the last embers of the offering flicker in the fire, the flames rise higher, and from the heart of the blaze, an iron dagger materializes, its blade forged from the fire itself, still glowing faintly with heat.\n",
+              "inventory_add": ["iron_dagger"],
+              "next": "adventure_guild"
+            },
+            "5": {
+              "text": "Midnight.",
+              "response": "You decide to wait until midnight. The fire flickers out with a cold hiss, leaving the air heavy and still. Instead of a blessing, the shadows grow deeper, and an unsettling silence fills the clearing. The offering has been rejected, and a dark presence seems to linger in the air.\n",
+              "next": "adventure_guild"
             }
         }
+        },
+    "stonehaven_goblin_camp": {
+      "description": "You arrive in Stonehaven, a bustling mining town nestled in the shadow of the mountains. As they wander through the cobbled streets, they are approached by a stern-looking guard in the mayor's colors.\n\"You're an adventurer, aren't you?\" he asks. \"Mayor Garrek has a task of utmost importance and little time to waste. Follow me.\"\nInside the mayor's chambers, the room is dominated by a large oak desk, maps and ledgers strewn across its surface. Mayor Garrek, a stout man with a bristling beard, looks up, his face lined with worry.\n\nMayor Garrek: \"Adventurer, our town is under siege—not by an army, but by those blasted goblins. They've set up a camp in the woods just north of here and have been raiding our caravans. We can't send the militia; they're already stretched too thin guarding the mines. That's where you come in.\"",
+      "choices": {
+        "1": {
+          "text": "Accept the Quest.",
+          "response": "Garrek's expression softens with relief. He retrieves a crudely drawn map from his desk and hands it to you.\nMayor Garrek:\"This will lead you to their camp. Be careful; goblins may be small, but they’re cunning. If there is a chieftain among them, he won’t go down easily. Deal with them, and I’ll see to it that you’re properly rewarded.\"\n",
+          "inventory_add": "stonehaven_goblin_camp_map",
+          "next": "stonehaven_goblin_camp_outskirts"
+        },
+        "2": {
+          "text": "Refuse the Quest.",
+          "response": "The mayor watches you as you make your way back towards the door, and as you are about to leave the room he calls you back.\n Mayor Garrek:\"It seems I will have to make this quest more worthwhile for you. I will increase its reward, and even allow you to choose an item from our humble but precious vault. That is how desperate I am.\"\n",
+          "next": "higher_offer_stonehaven"
+        }
+      }
+    },
+    "higher_offer_stonehaven": {
+      "description"
+    }
     }
 }
