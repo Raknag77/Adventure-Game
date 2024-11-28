@@ -1,8 +1,9 @@
 import tkinter as tk
 from tkinter.font import Font
-from typing import Union
+from typing import overload, Union, Protocol
 from dataclasses import dataclass
 from enum import Enum
+import threading
 
 
 class AreaType(Enum):
@@ -10,12 +11,36 @@ class AreaType(Enum):
     INSTRUCTION = "instruction"
 
 
+
+class Stringable(Protocol):
+    def __str__(self) -> str:
+        """Return a string representation of the object."""
+        ...
+
 @dataclass
 class Message:
-    text: str
+    _text: str
     animated: bool = False
     speed: Union[float] = None
     type: AreaType = AreaType.TEXT
+
+    @overload
+    def __init__(self, text: str, animated: bool = False, speed: Union[float, None] = None, _type: AreaType = AreaType.TEXT):
+        ...
+
+    @overload
+    def __init__(self, text: Stringable, animated: bool = False, speed: Union[float, None] = None, _type: AreaType = AreaType.TEXT):
+        ...
+
+    def __init__(self, text, animated=False, speed=None, _type=AreaType.TEXT):
+        self._text = str(text)
+        self.animated = animated
+        self.speed = speed
+        self.type = _type
+
+    @property
+    def text(self) -> str:
+        return self._text
 
 
 class CustomConsole:
@@ -32,6 +57,9 @@ class CustomConsole:
         self._is_printing_instruction: bool = False
         self._normal_queue: list[Message] = []
         self._instruction_queue: list[Message] = []
+        self._skip_animation: bool = False  # Skip animation flag
+        self._user_input = None  # Holds user input
+        self._input_ready_var = tk.BooleanVar(value=False)  # Variable to signal that the input is ready
 
         # Custom font
         self.console_font = Font(family="Courier New", size=12)
@@ -47,6 +75,19 @@ class CustomConsole:
         )
         self.text_area.pack(fill="both", expand=True, padx=5, pady=(5, 40))
 
+        # Input box
+        self.input_box = tk.Entry(
+            self.root,
+            bg="black",  # Match the background color
+            fg="white",  # Text color
+            font=self.console_font,  # Match the font style
+            insertbackground="black",  # Cursor color
+            disabledbackground="black",  # Background colour when disabled
+            state="disabled"  # Initially disabled
+        )
+        self.input_box.pack(fill="x", padx=5, pady=(5, 5), ipady=5)  # Fill horizontally and adjust height
+        self.input_box.bind("<Return>", self._submit_input)
+
         # Instruction area
         self.instruction_area = tk.Text(
             self.root,
@@ -58,8 +99,64 @@ class CustomConsole:
         )
         self.instruction_area.pack(fill="x", pady=5, expand=True)
 
+        # Input tag styling for "You: your_input"
+        self.text_area.tag_configure("user_input", foreground="green")
+
         # Input handler
         self.root.bind("<KeyPress>", self.key_listener)
+
+        # Block keyboard and mouse input for text box and instructions box
+        self.text_area.bind("<Key>", lambda e: "break")  # Block keyboard input
+        self.text_area.bind("<Button-1>", lambda e: "break")  # Block mouse clicks
+
+        # Block user input for the instruction area
+        self.instruction_area.bind("<Key>", lambda e: "break")
+        self.instruction_area.bind("<Button-1>", lambda e: "break")
+
+    def input(self, prompt: str) -> str:
+        """Block the input function until the user provides input."""
+
+        # Print the prompt
+        self.print("+GM: " + prompt)
+
+        # Wait for all animations to finish before activating the input box
+        while self._is_printing_normal or self._is_printing_instruction:
+            print("Waiting for animations to finish...")
+            self.root.update_idletasks()  # Process pending tasks
+            self.root.update()  # Keep the GUI responsive
+
+        self.input_box.configure(state="normal")  # Enable the input box
+        self.input_box.focus_set()  # Focus the input box
+
+        # Block the loop until the input is provided
+        self._input_ready_var.set(False)  # Reset the variable
+        while not self._input_ready_var.get():
+            self.root.update_idletasks()  # Process pending tasks
+            self.root.update()  # Keep the GUI responsive
+
+        # Return the user's input
+        return self._user_input
+
+    def _submit_input(self, event: tk.Event):
+        """Handle input submission."""
+        user_input = self.input_box.get().strip()
+
+        # Handle empty input with a default value
+        if not user_input:
+            user_input = ""
+
+        # Insert the user's input into the text area
+        self.text_area.configure(state="normal")
+        self.text_area.insert("end", f"You: {user_input}\n", "user_input")
+        self.text_area.see("end")
+        self.text_area.configure(state="disabled")
+
+        # Clear and disable the input box
+        self.input_box.delete(0, "end")
+        self.input_box.configure(state="disabled")
+
+        # Notify that the input is ready
+        self._user_input = user_input
 
     @property
     def target_time(self) -> float:
@@ -96,14 +193,26 @@ class CustomConsole:
         # Calculate delay per character to fit within the target time
         dynamic_speed = min(self._target_time / max(len(message.text), 1), self.animation_speed)
 
-        def print_next_char(remaining_text: str):
+        animation_done = threading.Event()
+
+        def print_next_char(remaining_text: Union[str, Stringable]):
             if not remaining_text:  # If the message is fully printed
                 area.insert("end", "\n")
                 area.configure(state="disabled")
                 setattr(self, is_printing_flag, False)
                 self._remove_message_from_queue(message.type)
+                animation_done.set()  # Signal that the animation is done
                 return
 
+            if self._skip_animation:
+                area.insert("end", remaining_text)
+                area.see("end")
+                area.configure(state="disabled")
+                setattr(self, is_printing_flag, False)
+                self._remove_message_from_queue(message.type)
+                animation_done.set()  # Signal that the animation is done
+                self._skip_animation = False
+                return
             # Print the next character
             area.insert("end", remaining_text[0])
             area.see("end")
@@ -111,6 +220,7 @@ class CustomConsole:
             self.root.after(int(dynamic_speed * 1000), lambda: print_next_char(remaining_text[1:]))
 
         print_next_char(message.text)
+        animation_done.wait()  # Wait for the animation to finish
 
     def _remove_message_from_queue(self, message_type: AreaType):
         """Remove a processed message from the appropriate queue."""
@@ -121,16 +231,24 @@ class CustomConsole:
             self._instruction_queue.pop(0)
             self._process_next_message(self.instruction_area, self._instruction_queue, "_is_printing_instruction")
 
-    def print(self, message: str, animated: bool = True, speed: Union[float, None] = None):
+    def print(self,
+              message: Union[str, Stringable],
+              animated: bool = True,
+              speed: Union[float, None] = None
+              ):
         """Print a message to the console, optionally animating it."""
         self._normal_queue.append(Message(text=message, animated=animated, speed=speed or self.animation_speed))
         if not self._is_printing_normal:
             self._is_printing_normal = True
             self._process_next_message(self.text_area, self._normal_queue, "_is_printing_normal")
 
-    def print_instruction(self, message: str, animated: bool = False, speed: Union[float, None] = None):
-        """Print a message to the instructions area, optionally animating it."""
-        self._instruction_queue.append(Message(text=message, animated=animated, speed=speed or self.animation_speed, type=AreaType.INSTRUCTION))
+    def print_instruction(self,
+                          message: Union[str, Stringable],
+                          animated: bool = False,
+                          speed: Union[float, None] = None
+                          ):
+        """Print a message to the instruction area, optionally animating it."""
+        self._instruction_queue.append(Message(message, animated, speed or self.animation_speed, AreaType.INSTRUCTION))
         if not self._is_printing_instruction:
             self._is_printing_instruction = True
             self._process_next_message(self.instruction_area, self._instruction_queue, "_is_printing_instruction")
@@ -152,6 +270,8 @@ class CustomConsole:
 
     def key_listener(self, event: tk.Event):
         """Handle key press events."""
+        if event.keysym == "space" and (self._is_printing_normal or self._is_printing_instruction):
+            self._skip_animation = True
         if event.char == "q":  # Quit on 'q'
             self.print("Exiting... Goodbye!", animated=True)
             self.print_instruction("Closing...", animated=True)
@@ -159,8 +279,6 @@ class CustomConsole:
         elif event.char == "c":  # Clear the console on 'c'
             self.clear(AreaType.TEXT)
             self.clear(AreaType.INSTRUCTION)
-        else:
-            self.print(f"Key pressed: {event.char}", animated=True)
 
 
 
@@ -172,10 +290,3 @@ if __name__ == "__main__":
     console.print_instruction("Press 'q' to quit!", animated=True)
     root.mainloop()
 
-
-# if __name__ == "__main__":
-#     root = tkinter.Tk()
-#     root.title("Adventure Game")
-#     console = CustomConsole(root)
-#     Thread(target=main, daemon=True).start()  # Start the Tkinter main event loop in a separate thread
-#     root.mainloop()
