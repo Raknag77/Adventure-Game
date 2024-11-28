@@ -604,7 +604,6 @@
         "1": {
           "text": "Accept the Quest.",
           "response": "Garrek's expression softens with relief. He retrieves a crudely drawn map from his desk and hands it to you.\nMayor Garrek:\"This will lead you to their camp. Be careful; goblins may be small, but they’re cunning. If there is a chieftain among them, he won’t go down easily. Deal with them, and I’ll see to it that you’re properly rewarded.\"\n",
-          "inventory_add": "stonehaven_goblin_camp_map",
           "next": "stonehaven_goblin_camp_outskirts"
         },
         "2": {
@@ -615,7 +614,149 @@
       }
     },
     "higher_offer_stonehaven": {
-      "description"
+      "description": "Mayor Garrek, desperate to protect Stonehaven, sweetens the deal. You are offered not only increased gold but the chance to choose a rare treasure from the town's vault if you accept the quest.\n",
+      "choices": {
+        "1": {
+          "text": "Accept the quest with the higher reward.",
+          "response": "You nod firmly, sealing your agreement.\nMayor Garrek: \"Stonehaven thanks you, adventurer. The goblin camp lies to the northeast. Return to me when the deed is done.\"\n",
+          "next": "stonehaven_goblin_camp_outskirts"
+        },
+        "2": {
+          "text": "Refuse, even with the higher reward.",
+          "response": "You shake your head, even with the offer of greater riches. Garrek sighs deeply, his disappointment evident.\nMayor Garrek: \"So be it. May the gods protect us...\"\nYou leave Stonehaven, knowing the town must fend for itself.",
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "stonehaven_goblin_camp_outskirts": {
+      "description": "The air grows tense as you near the goblin camp. Twisted trees loom overhead, their branches clawing at the gray sky. The acrid smell of smoke and decay hangs thick, mingled with the faint sound of guttural voices and raucous laughter.\nCrude bone totems mark the boundary, and a rickety wooden palisade surrounds the camp, dotted with gaps and poorly built watchtowers. Beyond the walls, flickering firelight reveals the shadowy outlines of goblins bustling about in chaotic disarray.\n You take a moment to decide on the best approach to complete this quest.\n",
+      "choices": {
+        "1": {
+        "text": "Stealth approach",
+        "response": "You decide to sneak into the camp.\n",
+        "next": "stonehave_camp_stealth"
+        },
+        "2": {
+          "text": "Direct approach",
+          "response": "You decide to enter through the front gates.\n",
+          "next": "stonehaven_camp_front_gate"
+        },
+        "3": {
+          "text": "Diplomatic approach",
+          "response": "You walk towards the front gate holding a white flag, wondering if they recognise this sign.\n",
+          "next": "stonehaven_camp_meeting"
+        }
+      }
+    },
+    "stonehave_camp_stealth": {
+      "description": "You crouch low, moving carefully through the shadows cast by flickering firelight. The goblins’ guttural chatter and the clinking of crude weapons mask your footsteps. You spot guards stationed near gaps in the palisade, their attention flickering between laziness and vigilance. One misstep could spell disaster.\nThree possible routes lead into the camp.\n",
+      "choices": {
+        "1": {
+          "text": "The narrow ridge",
+          "response": "Loose stones clatter down the slope, and a goblin looks up. You are spotted and the goblins overwhelm you and bring you to the chieftain's barrack.\n",
+          "next": "failed_stealth"
+        },
+        "2": {
+          "text": "The dense thicket",
+          "response": "You push through the thorny brush, careful to avoid making noise. The goblins don’t seem to notice your movements.\n",
+          "next": "stonehave_camp_stealth_2"
+        },
+        "3": {
+          "text": "The creek bed",
+          "response": "You stumble on slick rocks, splashing loudly. You are spotted and the goblins overwhelm you and bring you to the chieftain's barrack.\n",
+          "next": "failed_stealth"
+        }
+      }
+    },
+    "stonehave_camp_stealth_2": {
+      "description": "As you close in, you spot two goblins chatting near the campfire. Another patrol circles the area. You need to pick the right distraction to slip by.\n",
+      "choices": {
+      "1": {
+        "text": "Throw a rock to distract them",
+        "response": "The goblins hear the noise but investigate cautiously, catching sight of you as you move. You are dragged back towards the chieftain's hut.\n",
+        "next": "failed_stealth"
+      },
+      "2": {
+        "text": "Stay motionless and hidden until the patrol cycles away.",
+        "response": "You stay still and silent, watching as the patrol moves away. The path ahead is clear.\n",
+        "next": "stonehave_camp_stealth_3"
+      },
+      "3": {
+        "text": "Mimic the sound of an animal to lure them away.",
+        "response": "They look toward the sound but remain suspicious, increasing their alertness and spotting you when you move. You are dragged back towards the chieftain's hut.\n",
+        "next": "failed_stealth"
+      }
     }
+  },
+    "stonehave_camp_stealth_3": {
+      "description": "You’ve made it close to the heart of the camp, where the Goblin Chieftain’s tent stands. However, one last obstacle lies in your path—a lone goblin stands guard.\n",
+      "choices": {
+        "1": {
+          "text": "Sneak up and take him Out silently.",
+          "response": "You creep up behind the goblin, dispatching them silently. The path to the Chieftain is open.\n",
+          "next": "stealth_success"
+        },
+        "2": {
+          "text": "Wait for him to move away.",
+          "response": "The goblin lingers, growing suspicious of your presence. The goblin calls for reinforcements, and the alarm is raised.",
+          "next": "failed_stealth"
+        },
+        "3": {
+          "text": "Divert his attention with a noise.",
+          "response": "The goblin alerts others when they hear the sound, reinforcements arrive and knock you out.\n",
+          "next": "failed_stealth"
+        }
+      }
+    },
+    "failed_stealth": {
+      "description": "The moment you’re shoved into the Chieftain’s hut, the door slams shut behind you with a heavy thud. The inside is dimly lit by the flickering glow of a fire in a stone pit, casting eerie shadows on the walls. Goblin warriors stand at attention, their eyes glinting with curiosity and malice.\n\nAt the far end of the hut sits Gruknar, the Goblin Chieftain, towering in his furs and armor. He raises a hand, signaling for the guards to release you. The goblins step back, their hands still on their weapons, watching the scene unfold with interest.\n\nGoblin Chieftain (Gruknar):\n\"You’re brave, human... or foolish. Tell me, why are you sneaking around my camp?\"\n",
+      "choices": {
+        "1": {
+          "text": "Bluff with confidence",
+          "response": "Player: \"I was sent by the mayor of Stonehaven to negotiate. I come with an offer.\"\n",
+          "next": "stonehaven_camp_offer"
+        },
+        "2": {
+          "text": "Plead for mercy",
+          "response": "Player: \"Please, I didn’t mean to intrude. I’ll leave. Just spare me.\"\nGoblin Chieftain: \"Mercy? We goblins don’t give mercy, human. But I may have use for you.\"",
+          "next": "stonehaven_camp_execution"
+        },
+        "3": {
+          "text": "Challenge the Chieftain’s authority",
+          "response": "Player: \"You think you can control me? Let me go, or I’ll make you regret it!\"\n",
+          "next": "Gruknar_duel"
+        }
+      }
+    },
+    "stealth_success": {
+      "description": "By the time you reach the Chieftain’s hut, you've managed to incapacitate several sentries without raising the alarm. The camp is quieter now, and the goblins are none the wiser to the danger lurking in their midst.\nYou enter the Chieftain’s hut undetected, finding Gruknar deep in thought, surrounded by maps and weapons. The goblin looks up in surprise but quickly masks his shock with a grin.\n\nGoblin Chieftain (Gruknar):\n\"You! Impressive... but foolish. You’ve come here to kill me, yes?\"\nA tense silence fills the air as Gruknar stands, gripping his flaming axe.\n",
+      "choices": {
+        "1": {
+          "text": "Challenge him to combat.",
+          "response": "You challange the Chieftain to a duel.\n",
+          "next": "Gruknar_duel"
+        },
+        "2": {
+          "text": "Persuade the Chieftain to leave. A little gold should do the trick.\n",
+          "response": "Player:\"I can offer you a fair amount of gold for you to relocate to a less populated area.\"\n",
+          "gold": -50,
+          "next": "Gruknar_taken_offer"
+        }
+      }
+    },
+    "stonehaven_camp_front_gate": {
+      "description": "ou make your way toward the goblin camp, the night air thick with the smell of smoke and the sounds of distant laughter and shouting. As you near the entrance to the camp, you spot several goblin sentries standing at attention, their eyes scanning the surrounding woods for intruders. There’s no hiding now—they’ve seen you, and they’re ready to fight.\n",
+      "choices": {
+        "1": {
+          "text": "Charge forward.",
+          "response": "Without hesitation, you draw your weapon and charge forward, your boots crunching on the dry ground as you break from cover and charge directly into the heart of the goblin camp. Your sudden approach sends shockwaves through the camp, and within moments, several goblins are rushing to meet you, weapons drawn and war cries echoing into the night.\n"
+          "combat": ["goblin_guard","goblin_guard","goblin_archer","goblin_archer","goblin_barbarian"],
+          "next": "combat_success"
+        }
+      }
+    },
+    "combat_success": {
+      "description": ""
     }
+}
 }
