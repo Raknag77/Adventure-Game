@@ -696,9 +696,14 @@ def display_encounter(encounter_name):
                         combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
                         if combat_result:  # Player won the combat
                             loot(player, enemy_name)
-                        else:  # Player lost
-                            print("Game over! Reload your save or try again.")
-                            exit()
+                        else:
+                            if "dmessage" in choice_details:
+                                print("dmessage")
+                                print("Game over! Reload your save or try again.")
+                                exit()
+                            else:
+                                print("Game over! Reload your save or try again.")
+                                exit()
                 else:
                     enemy_name = choice_details["combat"]
                     combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))

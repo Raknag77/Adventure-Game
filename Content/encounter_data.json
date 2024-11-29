@@ -728,6 +728,17 @@
         }
       }
     },
+    "stonehaven_camp_execution": {
+      "description": "You are dragged towards a high post near the centre of the camp. The fear of what is coming is making you shiver in the warm summer weather. You feel yourself being impaled into a giant stake, the pain so insufferable you go numb.\n",
+      "choices": {
+        "1": {
+          "text": "Pray.",
+          "response": "You say your last prayer as you feel death cling to you.\n",
+          "death": "",
+          "next": ""
+        }
+      }
+    },
     "stealth_success": {
       "description": "By the time you reach the Chieftain’s hut, you've managed to incapacitate several sentries without raising the alarm. The camp is quieter now, and the goblins are none the wiser to the danger lurking in their midst.\nYou enter the Chieftain’s hut undetected, finding Gruknar deep in thought, surrounded by maps and weapons. The goblin looks up in surprise but quickly masks his shock with a grin.\n\nGoblin Chieftain (Gruknar):\n\"You! Impressive... but foolish. You’ve come here to kill me, yes?\"\nA tense silence fills the air as Gruknar stands, gripping his flaming axe.\n",
       "choices": {
@@ -739,24 +750,93 @@
         "2": {
           "text": "Persuade the Chieftain to leave. A little gold should do the trick.\n",
           "response": "Player:\"I can offer you a fair amount of gold for you to relocate to a less populated area.\"\n",
-          "gold": -50,
           "next": "Gruknar_taken_offer"
         }
       }
     },
     "stonehaven_camp_front_gate": {
-      "description": "ou make your way toward the goblin camp, the night air thick with the smell of smoke and the sounds of distant laughter and shouting. As you near the entrance to the camp, you spot several goblin sentries standing at attention, their eyes scanning the surrounding woods for intruders. There’s no hiding now—they’ve seen you, and they’re ready to fight.\n",
+      "description": "You make your way toward the goblin camp, the night air thick with the smell of smoke and the sounds of distant laughter and shouting. As you near the entrance to the camp, you spot several goblin sentries standing at attention, their eyes scanning the surrounding woods for intruders. There’s no hiding now—they’ve seen you, and they’re ready to fight.\n",
       "choices": {
         "1": {
           "text": "Charge forward.",
-          "response": "Without hesitation, you draw your weapon and charge forward, your boots crunching on the dry ground as you break from cover and charge directly into the heart of the goblin camp. Your sudden approach sends shockwaves through the camp, and within moments, several goblins are rushing to meet you, weapons drawn and war cries echoing into the night.\n"
+          "response": "Without hesitation, you draw your weapon and charge forward, your boots crunching on the dry ground as you break from cover and charge directly into the heart of the goblin camp. Your sudden approach sends shockwaves through the camp, and within moments, several goblins are rushing to meet you, weapons drawn and war cries echoing into the night.\n",
           "combat": ["goblin_guard","goblin_guard","goblin_archer","goblin_archer","goblin_barbarian"],
           "next": "combat_success"
         }
       }
     },
     "combat_success": {
-      "description": ""
+      "description": "After defeating the initial wave of goblins, the camp falls eerily silent. As the last of the goblins retreat into the forest, a deep, guttural laugh echoes from the largest tent in the camp. The flap parts, and Gruknar, the Goblin Chieftain, emerges. Towering over his kin, he’s clad in a patchwork of stolen armor and wields a massive, flaming axe that glows ominously in the dim light of the campfires.\nGoblin Chieftain (Gruknar): \"Impressive, human. You’ve got guts. But if you think you can walk in here and take what’s mine, you’ve got another thing coming. Let’s settle this...like warriors.\"\n",
+      "choices": {
+       "1": {
+         "text": "Challenge him to a duel.",
+         "response": "You agree to the Chieftain's duel, walking up towards him as he readies his axe.\n",
+         "next": "Gruknar_duel"
+       },
+       "2": {
+         "text": "Avoid bloodshed and attempt to strike a deal with the goblin leader.",
+         "response": "Goblin Chieftain (Gruknar): \"A deal, you say? Hmph. I’m listening, human, but I ain’t letting you walk away empty-handed.\"\n",
+         "next": "Gruknar_taken_offer"
+       },
+       "3": {
+         "text": "Attempt to intimidate the Goblin Chieftain.",
+         "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we’ll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You’re left to loot the camp without further resistance.\n",
+         "inventory_add": ["goblin_chestplate","goblin_dagger","goblin_helmet"],
+         "next": "stonehaven_camp_death_outcome"
+       }
+      }
+    },
+    "stonehaven_camp_meeting": {
+      "decription": "You stride into the camp openly, hands raised to show you mean no harm. The goblins, initially startled, quickly form a defensive ring, their crude weapons aimed at you. From the largest tent, a guttural voice bellows:\nGoblin Chieftain (Gruknar): \"Who dares walk into my camp uninvited? Speak quickly before I carve you into pieces!\"\nA towering goblin steps out, his flaming axe resting casually on his shoulder. His yellow eyes narrow as he sizes you up.\n",
+      "choices": {
+        "1": {
+          "text": "Offer the goblins a deal.",
+          "response": "Player:\"I can offer you a fair amount of gold for you to relocate to a less populated area.\"\n",
+          "next": "Gruknar_taken_offer"
+        },
+        "2": {
+          "text": "Attack Gruknar without warning.",
+          "response": "Without warning you strike at the Chieftain's throat, and manage to kill him somehow. In their grief the rest of the goblins attack you.\n",
+          "combat": ["goblin_guard","goblin_archer","goblin_guard","goblin_barbarian","goblin_archer"],
+          "next": "combat_outcome"
+        }
+      }
+    },
+    "Gruknar_taken_offer": {
+      "description": "Goblin Chieftain (Gruknar):\"I will take a fair amount of gold to move away.\"\n",
+      "choices": {
+        "1": {
+          "text": "Pay off the goblins.",
+          "response": "You hand over a small pouch of gold to the chieftain.Goblin Chieftain (Gruknar):\"I like the look of your gold human, we will leave the forest by daylight tomorrow. We goblins keep our word, unlike those human leaders you follow. I will give you a small token of peace, to help you in the future, let other goblin tribes know you are a fair human.\"\n",
+          "inventory_add": "goblin_peace_offering",
+          "gold": -50,
+          "next": "stonehaven_camp_offer_outcome"
+        }
+      }
+    },
+    "Gruknar_duel": {
+      "description": "The goblins form a wide circle around you and Gruknar, jeering and pounding their weapons against the ground in a steady rhythm. The air is thick with the stench of smoke and sweat, and the flickering light of the campfires casts long, shifting shadows across the crude battleground.\nGruknar steps forward, his flaming axe igniting with a roar as he swings it in a show of strength. His yellow eyes gleam with savage delight, and his sharp teeth glint as he grins menacingly.\nGoblin Chieftain (Gruknar): \"You wanted a fight, human? You’ll regret crossing me. Let’s see if you’re as brave as your words!\"\n",
+      "choices": {
+        "1": {
+          "text": "Duel",
+          "response": "You charge towards the Chieftain, hoping to win.\n",
+          "combat": "goblin_chieftain_gruknar",
+          "dmessage": "Goblin Chieftain (Gruknar):\"Hah! You’re strong, human, but not strong enough!\"\n",
+          "next": "duel_outcome"
+        }
+      }
+    },
+    "combat_outcome": {
+      "description": "Bodies of goblin warriors and shamans are strewn across the clearing, and the acrid scent of burning tents fills the air. The ground beneath your feet is scorched and littered with discarded weapons.\nAmid the wreckage, a few surviving goblins cower, their eyes wide with fear. They dare not attack, instead retreating into the shadows of the forest.\nYou stand victorious, bloodied but triumphant. As you survey the aftermath, your gaze falls upon the chieftain’s hut—a crude structure of bone and hide, still intact. A faint growl emanates from within, and you know the fight isn’t over yet.\n",
+      "choices": {
+        "1": {
+          "text": "Loot the camp",
+          "response": "You walk through the camp picking up anything that look useful. As you walk back towards the Chieftain's corpse you pick up his weapon and notice an interesting ring in his pocket.",
+          "inventory_add": ["flaming_axe","goblin_chieftain_ring","goblin_dagger","goblin_warhelm"],
+          "gold": 23,
+          "next": "stonehaven_camp_death_outcome"
+        }
+      }
     }
-}
+  }
 }
