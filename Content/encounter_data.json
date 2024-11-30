@@ -614,17 +614,40 @@
       }
     },
     "higher_offer_stonehaven": {
-      "description": "Mayor Garrek, desperate to protect Stonehaven, sweetens the deal. You are offered not only increased gold but the chance to choose a rare treasure from the town's vault if you accept the quest.\n",
+      "description": "Mayor Garrek, desperate to protect Stonehaven, sweetens the deal. You are the chance to choose a rare treasure from the town's vault if you accept the quest.\n",
       "choices": {
         "1": {
           "text": "Accept the quest with the higher reward.",
           "response": "You nod firmly, sealing your agreement.\nMayor Garrek: \"Stonehaven thanks you, adventurer. The goblin camp lies to the northeast. Return to me when the deed is done.\"\n",
-          "next": "stonehaven_goblin_camp_outskirts"
+          "next": "stonehaven_higher_reward"
         },
         "2": {
           "text": "Refuse, even with the higher reward.",
           "response": "You shake your head, even with the offer of greater riches. Garrek sighs deeply, his disappointment evident.\nMayor Garrek: \"So be it. May the gods protect us...\"\nYou leave Stonehaven, knowing the town must fend for itself.",
           "next": "adventure_guild"
+        }
+      }
+    },
+    "stonehaven_higher_reward": {
+      "description": "You follow the mayor’s guard down a narrow staircase leading to a small, dimly lit vault beneath the town hall. The air is cool and musty, and the faint sound of footsteps echoes off the stone walls. The guard stops in front of an unassuming wooden chest, secured with a heavy lock.\nGuard: \"The mayor has authorized you to take your pick from here. Choose wisely, as this is all he has to offer for your troubles.\"\nThe vault is filled with a few scattered items—gold coins, a handful of weapons, and a small collection of rare trinkets.\n",
+      "choices": {
+        "1": {
+          "text": "Some gold coins.",
+          "response": "You pick up some gold coins from a pile near the entrance.\n",
+          "gold": 25,
+          "next": "stonehaven_goblin_camp_outskirts"
+        },
+        "2": {
+          "text": "A sturdy looking pickaxe.",
+          "response": "You wonder why a pickaxe would be in the town's vault, nontheless its a good tool to have.",
+          "inventory_add": "pickaxe",
+          "next": "stonehaven_goblin_camp_outskirts"
+        },
+        "3": {
+          "text": "A silver medallion with a fox depicted on it.",
+          "response": "You open a small box within which lies a silver medallion with the image of a fox in mid-leap, surrounded by runes that shimmer faintly, on a bed of velvet.",
+          "inventory_add": "fox_grace_medallion",
+          "next": "stonehaven_goblin_camp_outskirts"
         }
       }
     },
@@ -830,11 +853,45 @@
       "description": "Bodies of goblin warriors and shamans are strewn across the clearing, and the acrid scent of burning tents fills the air. The ground beneath your feet is scorched and littered with discarded weapons.\nAmid the wreckage, a few surviving goblins cower, their eyes wide with fear. They dare not attack, instead retreating into the shadows of the forest.\nYou stand victorious, bloodied but triumphant. As you survey the aftermath, your gaze falls upon the chieftain’s hut—a crude structure of bone and hide, still intact. A faint growl emanates from within, and you know the fight isn’t over yet.\n",
       "choices": {
         "1": {
-          "text": "Loot the camp",
-          "response": "You walk through the camp picking up anything that look useful. As you walk back towards the Chieftain's corpse you pick up his weapon and notice an interesting ring in his pocket.",
-          "inventory_add": ["flaming_axe","goblin_chieftain_ring","goblin_dagger","goblin_warhelm"],
+          "text": "Loot the camp.",
+          "response": "You walk through the camp picking up anything that look useful. As you walk back towards the Chieftain's corpse you pick up his weapon and notice a ring in his pocket. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+          "inventory_add": ["goblin_dagger","goblin_warhelm","flaming_axe","goblin_chieftain_ring","tome_of_abyss"],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
+        }
+      }
+    },
+    "duel_outcome": {
+      "description": "With one final strike, you end Gruknar’s life. The goblins watch in stunned silence before dropping their weapons and fleeing into the woods.\nThe Goblin Chieftain’s reign of terror is over, and with his death, the camp is dismantled. The threat to Stonehaven is no more.\n",
+      "choices": {
+        "1": {
+          "text": "Loot the camp.",
+          "response": "You walk through the camp picking up anything that look useful. As you walk back towards the Chieftain's corpse you pick up his weapon and notice a ring in his pocket. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+          "inventory_add": ["goblin_dagger","goblin_warhelm","flaming_axe","goblin_chieftain_ring","tome_of_abyss"],
+          "gold": 23,
+          "next": "stonehaven_camp_death_outcome"
+        }
+      }
+    },
+    "stonehaven_camp_death_outcome": {
+      "description": "The journey back to Stonehaven is quiet, the weight of recent events hanging heavy in the air. The goblin threat has been dealt with, and the once-dangerous camp now lies in ruins.\nAs you approach the gates, townsfolk gather, their faces a mixture of relief and curiosity. Whispers ripple through the crowd as they take in your battle-worn appearance and the grim trophies of your victory.\nIn the mayor’s office, Garrek waits, his expression tense but hopeful.\nMayor Garrek:\"You’ve returned. Tell me, is it done?\"\nYou recount the events—the confrontation, the battle, and the resolution. Garrek listens closely, nodding as you finish.\nMayor Garrek:\"You’ve done well. The town owes you more than words can express. As promised, here is your reward.\"\nHe hands you a pouch of gold.\nThe townsfolk cheer as you leave the office, their gratitude palpable. Though the danger has passed, a sense of unease lingers—this victory feels like the beginning of something greater.\n",
+      "choices": {
+        "1": {
+          "text": "Continue on your journey.",
+          "response": "You start making your way back towards the guild.",
+          "gold": 50,
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "stonehaven_camp_peace_outcome": {
+      "description": "You step into the mayor's office, where Mayor Garrek is pacing with a scowl on his face. The tension in the room is palpable.\nMayor Garrek: \"Well? What happened? I expect answers, not excuses.\"\nYou explain that the goblins took the gold and moved away without further conflict.\nMayor Garrek: \"You paid them? Gold? To those filthy thieves?\" His face reddens in disbelief. \"And you think that’s a victory? You’ve just encouraged them! Now they’ll know they can extort us whenever they please.\"\nHe turns away, clearly frustrated, muttering to himself before glaring at you.\nMayor Garrek: \"You had a chance to deal with this the right way, but instead, you bought them off like some merchant trying to make a deal. You’ve made us look weak. You’ve made me look weak!\"\nHe takes a deep breath, trying to regain control, but the anger is still evident.\nMayor Garrek: \"I’ll clean up this mess, but don’t think for a second that your actions haven’t consequences.\"\n",
+      "choices": {
+        "1": {
+          "text": "Continue on your journey.",
+          "response": "You start making your way back towards the guild.",
+          "gold": 50,
+          "next": "adventure_guild"
         }
       }
     }
