@@ -387,6 +387,13 @@ def loot(character, enemy):
                     print(f"Loot added: {item_name}")
                 else:
                     print(f"No loot found on {item_name}.")
+            elif item_rarity == "guaranteed":
+                guaranteed_loot_chance = random.randint(1, 100)
+                if guaranteed_loot_chance <= 100 + character.stats.luck:
+                    inventory.append(item_name)
+                    print(f"Loot added: {item_name}")
+                else:
+                    print(f"No loot found on {item_name}.")
             else:
                 print(f"No loot found on {item_name}.")
 

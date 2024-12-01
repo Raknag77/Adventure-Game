@@ -854,8 +854,8 @@
       "choices": {
         "1": {
           "text": "Loot the camp.",
-          "response": "You walk through the camp picking up anything that look useful. As you walk back towards the Chieftain's corpse you pick up his weapon and notice a ring in his pocket. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-          "inventory_add": ["goblin_dagger","goblin_warhelm","flaming_axe","goblin_chieftain_ring","tome_of_abyss"],
+          "response": "You walk through the camp picking up anything that look useful. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+          "inventory_add": ["goblin_dagger","goblin_warhelm""tome_of_abyss"],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
         }
@@ -866,8 +866,8 @@
       "choices": {
         "1": {
           "text": "Loot the camp.",
-          "response": "You walk through the camp picking up anything that look useful. As you walk back towards the Chieftain's corpse you pick up his weapon and notice a ring in his pocket. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-          "inventory_add": ["goblin_dagger","goblin_warhelm","flaming_axe","goblin_chieftain_ring","tome_of_abyss"],
+          "response": "You walk through the camp picking up anything that look useful. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+          "inventory_add": ["goblin_dagger","goblin_warhelm","tome_of_abyss"],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
         }

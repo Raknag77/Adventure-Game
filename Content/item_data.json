@@ -1,80 +1,92 @@
 {"items": {
     "weapons": {
-      "iron_sword": {
-        "name": "Sword",
-        "description": "A simple, well-used sword with a steel blade and a leather-wrapped hilt. It shows signs of wear but remains sharp and balanced, reliable for basic combat. A practical weapon for any adventurer.",
-        "stats": {
-          "attackDmg": 10,
-          "agility": 2
-        },
-        "rarity": "common",
-        "price": 3,
-        "attribute": "physical"
+  "swords": {
+    "iron_sword": {
+      "name": "Iron Sword",
+      "description": "A simple, well-used sword with a steel blade and a leather-wrapped hilt. It shows signs of wear but remains sharp and balanced, reliable for basic combat. A practical weapon for any adventurer.",
+      "stats": {
+        "attackDmg": 10,
+        "agility": 2
       },
-      "iron_lance": {
-        "name": "Lance",
-        "description": "A sturdy, well-balanced lance with a long wooden shaft and a steel tip. The wood is worn from use, but it remains strong and reliable. The blade is simple, practical, and effective for mounted combat or thrusting. A dependable weapon, ideal for soldiers or adventurers seeking a reliable polearm.",
-        "stats": {
-          "attackDmg": 15,
-          "critChance": 0.02
-        },
-        "rarity": "common",
-        "price": 3,
-        "attribute": "physical"
-      },
-      "iron_mace": {
-        "name": "Mace",
-        "description": "A heavy, blunt mace with a steel head and a wooden handle. The mace is well-crafted and sturdy, designed for crushing blows and armored opponents. The weight of the mace gives it considerable impact, making it a formidable weapon in close combat. A reliable choice for warriors or knights facing heavily armored foes.",
-        "stats": {
-          "attackDmg": 20
-        },
-        "rarity": "common",
-        "price": 3,
-        "attribute": "physical"
-      },
-      "iron_dagger": {
-        "name": "Iron Dagger",
-        "description": "A sturdier, well-balanced dagger with a sharp blade. It’s good for close combat or as a utility tool for cutting through ropes or small objects.",
-        "stats": {
-          "attackDmg": 7,
-          "agility": 2,
-          "critChance": 0.01
-        },
-        "rarity": "common",
-        "price": 2,
-        "attribute": "physical"
-      },
-      "wooden_torch": {
-        "name": "Wooden Torch",
-        "description": "A simple, unlit torch made from a stick wrapped in cloth. It can be lit to provide light for a short duration or used to start fires.",
-        "stats": {
-          "attackDmg": 8
-        },
-        "rarity": "common",
-        "price": 1,
-        "attribute": "fire"
-      },
-      "verdant": {
-        "name": "Bow of Verdant",
-        "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.",
-        "stats": {
-          "attackDmg": 150
-        },
-        "rarity": "exquisite",
-        "price": 80,
-        "attribute": "natural"
-      },
-      "excalibur": {
-        "name": "Excalibur",
-        "description": "The legendary sword of unmatched power. Its blade gleams with a radiant, otherworldly light, etched with ancient runes. The hilt is adorned with gold and precious gems, radiating an aura of divine authority. This is no ordinary weapon—its strike is destined to change the course of history.",
-        "stats": {
-          "attackDmg": 750
-        },
-        "rarity": "legendary",
-        "price": 1000000000,
-        "attribute": "holy"
-      }
+      "rarity": "common",
+      "price": 3,
+      "attribute": "physical"
     },
+    "excalibur": {
+      "name": "Excalibur",
+      "description": "The legendary sword of unmatched power. Its blade gleams with a radiant, otherworldly light, etched with ancient runes. The hilt is adorned with gold and precious gems, radiating an aura of divine authority. This is no ordinary weapon—its strike is destined to change the course of history.",
+      "stats": {
+        "attackDmg": 750
+      },
+      "rarity": "legendary",
+      "price": 1000000000,
+      "attribute": "holy"
+    }
+  },
+  "spears": {
+    "iron_lance": {
+      "name": "Iron Lance",
+      "description": "A sturdy, well-balanced lance with a long wooden shaft and a steel tip. The wood is worn from use, but it remains strong and reliable. The blade is simple, practical, and effective for mounted combat or thrusting. A dependable weapon, ideal for soldiers or adventurers seeking a reliable polearm.",
+      "stats": {
+        "attackDmg": 15,
+        "critChance": 0.02
+      },
+      "rarity": "common",
+      "price": 3,
+      "attribute": "physical"
+    }
+  },
+  "daggers": {
+    "iron_dagger": {
+      "name": "Iron Dagger",
+      "description": "A sturdier, well-balanced dagger with a sharp blade. It’s good for close combat or as a utility tool for cutting through ropes or small objects.",
+      "stats": {
+        "attackDmg": 7,
+        "agility": 2,
+        "critChance": 0.01
+      },
+      "rarity": "common",
+      "price": 2,
+      "attribute": "physical"
+    }
+  },
+  "blunt_weapons": {
+    "iron_mace": {
+      "name": "Iron Mace",
+      "description": "A heavy, blunt mace with a steel head and a wooden handle. The mace is well-crafted and sturdy, designed for crushing blows and armored opponents. The weight of the mace gives it considerable impact, making it a formidable weapon in close combat. A reliable choice for warriors or knights facing heavily armored foes.",
+      "stats": {
+        "attackDmg": 20
+      },
+      "rarity": "common",
+      "price": 3,
+      "attribute": "physical"
+    }
+  },
+  "miscellaneous_weapons": {
+    "wooden_torch": {
+      "name": "Wooden Torch",
+      "description": "A simple, unlit torch made from a stick wrapped in cloth. It can be lit to provide light for a short duration or used to start fires.",
+      "stats": {
+        "attackDmg": 8
+      },
+      "rarity": "common",
+      "price": 1,
+      "attribute": "fire"
+    }
+  },
+  "bows": {
+    "verdant": {
+      "name": "Bow of Verdant",
+      "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.",
+      "stats": {
+        "attackDmg": 150
+      },
+      "rarity": "exquisite",
+      "price": 80,
+      "attribute": "natural"
+    }
+  }
+},
     "helmets": {
       "thorn_crown": {
         "name": "Thorn Crown",
@@ -106,7 +118,19 @@
           "health": 12
         },
         "rarity": "rare",
+        "price": 50,
         "attribute": "fire"
+      },
+      "wraith_shroud": {
+        "name": "Wraith Shroud",
+        "description": "A dark, ethereal cloak woven from shadowy threads. It flickers as if alive, offering near-invisibility in the dark. Crafted by wraiths, it grants both concealment and an unsettling aura.\n",
+        "stats": {
+          "defense": 16,
+          "agility": 20
+        },
+        "rarity": "exquisite",
+        "price": 125,
+        "attribute": "necrotic"
       }
     },
     "leggings": {
@@ -140,6 +164,18 @@
         "rarity": "common",
         "price": 2,
         "attribute": "natural"
+      },
+      "small_quiver": {
+        "name": "Small Quiver",
+        "description": "A compact quiver designed to hold a small number of arrows or bolts. While not as sturdy or large as standard quivers, it is lightweight and easy to carry, making it perfect for quick engagements or long journeys.\n",
+        "stats": {
+          "agility": 7,
+          "defense": 3
+        },
+        "rarity": "common",
+        "price": 10,
+        "attribute": "physical",
+        "skill": "quiver"
       },
       "silver_chains": {
         "name": "Silver Chains",
@@ -200,23 +236,77 @@
         "rarity": "rare",
         "price": 50
       },
+      "abyssal_essence": {
+        "name": "Abyssal Essence",
+        "description": " A dark, viscous fluid pulsing with otherworldly energy. It seems to absorb light, emanating a faint, eerie glow from within. This essence is harvested from the deepest voids of the Abyss.\n",
+        "rarity": "legendary",
+        "price": 6100
+      },
+      "shadow_fibre": {
+        "name": "Shadow Fibre",
+        "description": "A thin, flexible thread spun from pure shadow. Its surface shimmers with a faint, otherworldly glow, making it perfect for crafting items that require stealth or shadow manipulation.\n",
+        "rarity": "exquisite",
+        "price": 100
+      },
+      "soulstone": {
+        "name": "Soulstone",
+        "description": "A small, smooth stone that pulses with an eerie light, as if it holds the essence of a soul within. The stone is cold to the touch, but it hums with a faint energy that resonates deep within the mind, stirring both fear and curiosity.\n",
+        "rarity": "exquisite",
+        "price": 115
+      },
+      "wolf_fang": {
+        "name": "Wolf Fang",
+        "description": "A sharp, elongated fang from a wolf, its surface slightly worn from use. The tooth is strong and jagged, a symbol of the wolf's ferocity and survival instincts.\n",
+        "rarity": "common",
+        "price": 4
+      },
+      "wolf_pelt": {
+        "name": "Wolf Pelt",
+        "description": "A thick, coarse pelt from a wolf, its fur is soft to the touch but tough and durable. The scent of the wild is still faintly present. A prized possession among hunters and craftsmen alike.\n",
+        "rarity": "common",
+        "price": 6
+      },
+      "goblin_tooth": {
+        "name": "Goblin Tooth",
+        "description": "A jagged, yellowed tooth from a goblin, sharp and crooked. The tooth is small but durable, a testament to the goblin's hardy nature and aggressive tendencies. A common item among scavengers and those who deal with goblinkind.",
+        "rarity": "common",
+        "price": 5
+      },
+      "goblin_arrowhead": {
+        "name": "Goblin Arrowhead",
+        "description": "A crude arrowhead made from sharpened stone or bone, often attached to a thin wooden shaft. It is lightweight but dangerous in the hands of a goblin archer, designed for quick, lethal strikes.\n",
+        "rarity": "common",
+        "price": 5
+      },
       "smooth_pebbles": {
         "name": "Smooth Pebbles",
         "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.",
         "rarity": "common",
-        "price": 10
+        "price": 4
       },
       "string": {
         "name": "String",
         "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.",
         "rarity": "common",
-        "price": 2
+        "price": 1
+      },
+      "iron_scrap": {
+        "name": "Iron Scrap",
+        "description": " small, jagged piece of iron scavenged from discarded weapons, armor, or tools. While it may seem insignificant, the iron scrap is still useful in crafting or reforging. It’s often found among wreckage or remnants of battles.\n",
+        "rarity": "common",
+        "price": 3
       },
       "shackled_choir_key": {
         "name": "Shackled Choir key",
         "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.",
         "rarity": "rare",
         "price": 200
+      },
+      "drakthul_heart": {
+        "name": "Heart of Drakthul",
+        "description": "A dark, pulsating organ that still beats with unnatural vitality, despite being severed from its host. The heart is wrapped in silver chains, and its surface shimmers with a faint, shadowy glow, radiating an aura of malice.\n",
+        "rarity": "legendary",
+        "price": 500000
       },
       "obsidian": {
         "name": "Obsidian",

@@ -25,19 +25,32 @@
           "defense": 10,
           "critChance": 0.05
         },
-        "attributes": "undead"
+        "attributes": "undead",
+        "loot": [
+    {"item": "wraith_shroud", "rarity": "rare"},
+    {"item": "soul_essence", "rarity": "common"},
+    {"item": "shadow_fiber", "rarity": "rare"}
+]
+
       },
       "drakthul": {
         "name": "Drakthul",
-        "description": "",
+        "description": "A fearsome wraith-like creature from the Abyss, Drakthul is bound by silver chains that hold his powerful and shadowy form. His presence is accompanied by an oppressive darkness, and his haunting whispers chill the soul. Once a mighty being of the Abyss, he was imprisoned in an altar to prevent his reign of terror. Now, only fragments of his original power remain, leaking from the cracks in his chains. Drakthul seeks freedom, and he will stop at nothing to break his chains and unleash the abyss upon the world.",
         "stats": {
-          "health": 250,
-          "attackDmg": 250,
-          "defense": 50,
-          "critChance": 0.04
+          "health": 200,
+          "attackDmg": 30,
+          "defense": 15,
+          "critChance": 0.15
         },
-        "attributes": "undead"
+        "attributes": "cursed",
+        "loot": [
+          {"item": "abyssal_essence", "rarity": "common"},
+          {"item": "wraith_shroud", "rarity": "rare"},
+          {"item": "drakthul_heart", "rarity": "guaranteed"},
+          {"item": "soulstone", "rarity": "rare"}
+        ]
       }
+
     },
     "beast": {
       "timber_wolf": {
@@ -49,7 +62,85 @@
           "defense": 2,
           "critChance": 0.1
         },
-        "attributes": "Natural"
+        "attributes": "natural",
+        "loot": [
+    {"item": "wolf_pelt", "rarity": "common"},
+    {"item": "wolf_fang", "rarity": "common"}
+]
+
+      }
+    },
+    "goblin": {
+      "goblin_guard": {
+        "name": "Goblin Guard",
+        "description": "A guardian wielding a greatshield and a sword or axe of the goblin race, have higher defence for a goblin.",
+        "stats": {
+          "health": 25,
+          "attackDmg": 5,
+          "defense": 10,
+          "critChance": 0.03
+        },
+        "attributes": "physical",
+        "loot": [
+    {"item": "bone", "rarity": "common"},
+    {"item": "iron_scrap", "rarity": "common"},
+    {"item": "goblin_tooth", "rarity": "common"},
+    {"item": "iron_sword", "rarity": "rare"}
+]
+
+      },
+      "goblin_archer": {
+        "name": "Goblin Archer",
+        "description": "A nimble goblin marksman equipped with a crude bow and poisoned arrows. Excels at ranged attacks but is frail in close combat.",
+        "stats": {
+          "health": 15,
+          "attackDmg": 7,
+          "defense": 3,
+          "critChance": 0.15
+        },
+        "attributes": "physical",
+        "skills": "poison",
+        "loot": [
+    {"item": "bone", "rarity": "common"},
+    {"item": "string", "rarity": "common"},
+    {"item": "goblin_arrowhead", "rarity": "common"},
+    {"item": "small_quiver", "rarity": "exquisite"}
+]
+      },
+      "goblin_barbarian": {
+        "name": "Goblin Barbarian",
+        "description": "A fierce and reckless goblin warrior wielding a heavy club or axe. Thrives in chaos, dealing high damage but with little regard for defense.",
+        "stats": {
+          "health": 30,
+          "attackDmg": 10,
+          "defense": 5,
+          "critChance": 0.05
+        },
+        "attributes": "physical",
+        "loot": [
+    {"item": "bone", "rarity": "common"},
+    {"item": "goblin_bloodstone", "rarity": "exquisite"},
+    {"item": "barbarian_war_medal", "rarity": "rare"}
+]
+
+      },
+      "goblin_chieftain_gruknar": {
+        "name": "Goblin Chieftain Gruknar",
+        "description": "The cunning and brutal leader of the goblins, Gruknar wields his authority with a mix of intimidation and raw strength. Armed with a massive, fiery axe, he is a fearsome opponent both in battle and strategy.",
+        "stats": {
+          "health": 50,
+          "attackDmg": 15,
+          "defense": 8,
+          "critChance": 0.1
+        },
+        "attributes": "fire",
+        "loot": [
+    {"item": "bone", "rarity": "common"},
+    {"item": "goblin_bloodstone", "rarity": "exquisite"},
+    {"item": "goblin_chieftain_ring", "rarity": "guaranteed"},
+    {"item": "fire_axe", "rarity": "guaranteed"}
+]
+
       }
     }
   }
