@@ -803,9 +803,9 @@
        },
        "3": {
          "text": "Attempt to intimidate the Goblin Chieftain.",
-         "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we’ll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You’re left to loot the camp without further resistance.\n",
-         "inventory_add": ["goblin_chestplate","goblin_dagger","goblin_helmet"],
-         "next": "stonehaven_camp_death_outcome"
+         "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we’ll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You’re left to loot the camp without further resistance. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+         "inventory_add": ["goblin_chestplate","goblin_dagger","goblin_helmet","tome_of_abyss"],
+         "next": "stonehaven_camp_intimidation_outcome"
        }
       }
     },
@@ -855,7 +855,7 @@
         "1": {
           "text": "Loot the camp.",
           "response": "You walk through the camp picking up anything that look useful. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-          "inventory_add": ["goblin_dagger","goblin_warhelm""tome_of_abyss"],
+          "inventory_add": ["goblin_dagger","goblin_helmet","tome_of_abyss"],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
         }
@@ -867,7 +867,7 @@
         "1": {
           "text": "Loot the camp.",
           "response": "You walk through the camp picking up anything that look useful. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-          "inventory_add": ["goblin_dagger","goblin_warhelm","tome_of_abyss"],
+          "inventory_add": ["goblin_dagger","goblin_bow","tome_of_abyss"],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
         }
@@ -886,6 +886,17 @@
     },
     "stonehaven_camp_peace_outcome": {
       "description": "You step into the mayor's office, where Mayor Garrek is pacing with a scowl on his face. The tension in the room is palpable.\nMayor Garrek: \"Well? What happened? I expect answers, not excuses.\"\nYou explain that the goblins took the gold and moved away without further conflict.\nMayor Garrek: \"You paid them? Gold? To those filthy thieves?\" His face reddens in disbelief. \"And you think that’s a victory? You’ve just encouraged them! Now they’ll know they can extort us whenever they please.\"\nHe turns away, clearly frustrated, muttering to himself before glaring at you.\nMayor Garrek: \"You had a chance to deal with this the right way, but instead, you bought them off like some merchant trying to make a deal. You’ve made us look weak. You’ve made me look weak!\"\nHe takes a deep breath, trying to regain control, but the anger is still evident.\nMayor Garrek: \"I’ll clean up this mess, but don’t think for a second that your actions haven’t consequences.\"\n",
+      "choices": {
+        "1": {
+          "text": "Continue on your journey.",
+          "response": "You start making your way back towards the guild.",
+          "gold": 50,
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "stonehaven_camp_intimidation_outcome": {
+      "description": "The journey back to Stonehaven is quiet, the weight of recent events heavy in the air. The goblin threat has been dealt with, but the camp still stands, its leader intimidated into submission rather than eradicated.\nAs you approach the gates, townsfolk gather, their faces a mix of relief and curiosity. Whispers ripple through the crowd as they take in your battle-worn appearance and the grim trophies of your victory.\nIn the mayor’s office, Garrek waits, his expression tense but hopeful.\nMayor Garrek: \"You’ve returned. Tell me, is it done?\"\nYou recount the events—the confrontation, the intimidation, and the outcome. Garrek listens closely, his brow furrowing.\nMayor Garrek: \"I see. You’ve done well, but… I had hoped for a more final resolution. The goblins still remain, after all.\"\nDespite his words, he hands you a pouch of gold.\nThe townsfolk cheer as you leave the office, their gratitude palpable. Though the danger has passed, a sense of unease lingers—this victory feels like the beginning of something greater, something still unresolved.\n",
       "choices": {
         "1": {
           "text": "Continue on your journey.",

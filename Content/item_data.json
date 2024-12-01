@@ -36,6 +36,19 @@
       "attribute": "physical"
     }
   },
+  "axes": {
+    "fire_axe": "Fire Axe",
+    "description": "A fearsome weapon with a blade perpetually engulfed in fiery flames. The axe's sturdy handle is wrapped in scorched leather, providing a firm grip. The flames flicker with an eerie intensity, making it both a tool and a weapon of destruction. It is said to have been forged in the heart of a volcano, giving it an unparalleled edge that can cut through wood, steel, and even stone with ease.\n",
+    "stats": {
+      "attackDmg": 30,
+      "critChance": 0.03,
+      "agility": 10
+    },
+    "rarity": "rare",
+    "price": 50,
+    "attribute": "fire",
+    "skills": "berserk"
+  },
   "daggers": {
     "iron_dagger": {
       "name": "Iron Dagger",
@@ -44,6 +57,18 @@
         "attackDmg": 7,
         "agility": 2,
         "critChance": 0.01
+      },
+      "rarity": "common",
+      "price": 2,
+      "attribute": "physical"
+    },
+    "goblin_dagger": {
+      "name": "Goblin Dagger",
+      "description": "A small, wickedly sharp dagger with a jagged, serrated edge. The handle is wrapped in rough leather, providing a decent grip for quick, precise strikes. This weapon is favored by goblins for its versatility, often used in stealth attacks or as a backup weapon. Its size and design make it ideal for stabbing between gaps in armor or slipping past guards unnoticed.\n",
+      "stats": {
+        "attackDmg": 5,
+        "agility": 3,
+        "critChance": 0.02
       },
       "rarity": "common",
       "price": 2,
@@ -72,27 +97,61 @@
       "rarity": "common",
       "price": 1,
       "attribute": "fire"
+    },
+    "pickaxe": {
+      "name": "Pickaxe",
+      "description": "A sturdy tool with a sharp, reinforced metal head designed for breaking through rock and stone. The wooden shaft is weathered from years of use but still holds strong. This pickaxe is invaluable for miners, adventurers, or anyone who needs to break through tough terrain. The head is balanced to provide both power and precision when striking, ensuring each swing counts.\n",
+      "stats": {
+        "attackDmg": 4,
+        "critChance": 0.02
+      },
+      "rarity": "common",
+      "price": 32,
+      "attribute": "physical",
+      "skill": "pierce"
     }
   },
   "bows": {
+    "goblin_bow": {
+      "name": "Goblin Bow",
+      "description": "A lightweight bow made of flexible wood with leather strings, favored by goblins for its quick draw and rapid-fire capability. Though not as powerful as larger bows, its arrows are often coated in poison, making even glancing hits dangerous. Ideal for stealth and hit-and-run tactics.\n",
+      "stats": {
+        "attackDmg": 7,
+        "critChance": 0.2
+      },
+      "rarity": "common",
+      "price": 20,
+      "attribute": "natural",
+      "skill": "poison"
+    },
     "verdant": {
       "name": "Bow of Verdant",
-      "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.",
+      "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.\n",
       "stats": {
         "attackDmg": 150
       },
       "rarity": "exquisite",
-      "price": 80,
+      "price": 180,
       "attribute": "natural"
     }
   }
 },
     "helmets": {
+      "goblin_helmet": {
+        "name": "Goblin Helmet",
+        "description": "A simple yet effective helmet made of rough metal, often scavenged from fallen enemies or looted from abandoned ruins. It provides basic protection to the head and is adorned with small spikes, giving it a fearsome appearance. While not the most durable, it offers protection from minor blows, making it a practical choice for goblin warriors who rely on speed rather than resilience.\n",
+        "stats": {
+          "defense": 5
+        },
+        "rarity": "common",
+        "price": 4,
+        "attribute": "physical"
+      },
       "thorn_crown": {
         "name": "Thorn Crown",
         "description": "A round wreath made of thorns bloodied by a saviour.",
         "stats": {
-          "defense": 5
+          "defense": 500
         },
         "rarity": "legendary",
         "price": 200000,
@@ -102,7 +161,7 @@
     "chestpieces": {
       "leather_tunic": {
         "name": "Leather Tunic",
-        "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.",
+        "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.\n",
         "stats": {
           "defense": 5
         },
@@ -110,9 +169,20 @@
         "price": 5,
         "attribute": "physical"
       },
+      "goblin_chestplate": {
+        "name": "Goblin Chestplate",
+        "description": "A crudely fashioned chestplate made from scavenged metal plates and reinforced with leather. It is lightweight but offers moderate protection against physical damage. Though it lacks the refinement of higher-grade armor, it is designed for agility rather than brute strength.\n",
+        "stats": {
+          "defense": 3,
+          "agility": 4
+        },
+        "rarity": "common",
+        "price": 6,
+        "attribute": "physical"
+      },
       "flameforged_breastplate": {
         "name": "Flameforged Breastplate",
-        "description": "A chestpiece of molten metal, glowing with a faint, fiery aura. Etched with flame-like patterns, it offers protection against fire while radiating warmth and strength. The heat seems to linger in the metal, enhancing the wearer’s resilience.",
+        "description": "A chestpiece of molten metal, glowing with a faint, fiery aura. Etched with flame-like patterns, it offers protection against fire while radiating warmth and strength. The heat seems to linger in the metal, enhancing the wearer’s resilience.\n",
         "stats": {
           "defense": 24,
           "health": 12
@@ -161,8 +231,21 @@
       "wood_charm": {
         "name": "Wooden Charm",
         "description": "A small wooden charm carved in the shape of a stag. It is smooth to the touch, with intricate details etched into the wood. The charm radiates a faint, comforting energy, as if connected to the natural world.",
+        "stats": {
+          "health": 5
+        },
         "rarity": "common",
-        "price": 2,
+        "price": 3,
+        "attribute": "natural"
+      },
+      "fox_grace_medallion": {
+        "name": "Fox Grace Medallion",
+        "description": "A delicate silver medallion engraved with the image of a leaping fox, surrounded by intricate patterns. The medallion glows faintly with an ethereal light, said to be imbued with the grace and agility of a fox. It is a token of swiftness, granting the wearer enhanced dexterity and reflexes.\n",
+        "stats": {
+          "agility": 10
+        },
+        "rarity": "common",
+        "price": 12,
         "attribute": "natural"
       },
       "small_quiver": {
@@ -187,13 +270,23 @@
       },
       "silver_cross": {
         "name": "Silver Cross",
-        "description": "A delicate, polished cross made of fine silver, its surface gleaming with a soft, reflective sheen. Intricate engravings trace the edges, depicting symbols of protection and faith.",
+        "description": "A delicate, polished cross made of fine silver, its surface gleaming with a soft, reflective sheen. Intricate engravings trace the edges, depicting symbols of protection and faith.\n",
         "stats": {
           "health": 10
         },
         "rarity": "common",
         "price": 10,
         "attribute": "holy"
+      },
+      "war_medal": {
+        "name": "War Medal",
+        "description": "A metal medal worn by a barbarian leader or hero, usually awarded for bravery in battle or for victories in clan wars. It is often engraved with symbols of strength or victory and is worn with pride.\n",
+        "stats": {
+          "attackDmg": 10,
+          "critChance": 0.1
+        },
+        "rarity": "rare",
+        "price": 42
       }
     },
     "rings": {
@@ -201,11 +294,10 @@
         "name": "Copper Ring",
         "description": "A small ring made of copper",
         "stats": {
-          "health": 20,
-          "defense": 1
+          "health": 2
         },
         "rarity": "common",
-        "price": 1
+        "price": 2
       },
       "silver_ring": {
         "name": "Silver Ring",
@@ -214,7 +306,7 @@
           "defense": 3
         },
         "rarity": "common",
-        "price": 2
+        "price": 3
       },
       "forgotten_ring": {
         "name": "Forgotten Ring",
@@ -227,12 +319,24 @@
         "price": 200,
         "attributes": "necrotic",
         "skills": "pierce"
+      },
+      "goblin_chieftain_ring": {
+        "name": "Goblin Chieftain's Ring",
+        "description": "A worn ring crafted from crude metal, adorned with a twisted symbol of goblin tribes. The ring is imbued with dark magic and represents the authority of a goblin chieftain, often passed down through generations.\n",
+        "stats": {
+          "defense": 25,
+          "agility": 10,
+          "critChance": 0.1
+        },
+        "rarity": "exquisite",
+        "price": 175,
+        "attributes": "physical"
       }
     },
     "materials": {
       "soul_essence": {
         "name": "Soul Essence",
-        "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.",
+        "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.\n",
         "rarity": "rare",
         "price": 50
       },
@@ -254,6 +358,12 @@
         "rarity": "exquisite",
         "price": 115
       },
+      "tome_of_abyss": {
+        "name": "Tome of the Abyss",
+        "description": "A forbidden tome bound in dark, otherworldly leather, its pages filled with arcane symbols and knowledge from the Abyss. The cover bears a unique, intricate symbol, glowing faintly in the dim light. The tome contains powerful insights into shadow magic and the dark arts, offering the reader access to dangerous but potent abilities. Though forbidden in many realms, those bold enough to study its contents may unlock powers that challenge the very fabric of reality.\n",
+        "rarity": "exquisite",
+        "price": 245
+      },
       "wolf_fang": {
         "name": "Wolf Fang",
         "description": "A sharp, elongated fang from a wolf, its surface slightly worn from use. The tooth is strong and jagged, a symbol of the wolf's ferocity and survival instincts.\n",
@@ -268,7 +378,7 @@
       },
       "goblin_tooth": {
         "name": "Goblin Tooth",
-        "description": "A jagged, yellowed tooth from a goblin, sharp and crooked. The tooth is small but durable, a testament to the goblin's hardy nature and aggressive tendencies. A common item among scavengers and those who deal with goblinkind.",
+        "description": "A jagged, yellowed tooth from a goblin, sharp and crooked. The tooth is small but durable, a testament to the goblin's hardy nature and aggressive tendencies. A common item among scavengers and those who deal with goblinkind.\n",
         "rarity": "common",
         "price": 5
       },
@@ -278,15 +388,27 @@
         "rarity": "common",
         "price": 5
       },
+      "goblin_peace_offering": {
+        "name": "Goblin Peace Offering",
+        "description": "A small bundle of items presented as a gesture of goodwill or appeasement, typically including a mix of trinkets, food, or simple crafts. While seemingly insignificant, this offering can be used to pacify an enemy or broker a temporary truce. It’s often used by goblins when they seek to avoid conflict or gain favor from a more powerful entity. Its value lies in the diplomacy it can bring rather than any inherent worth.\n",
+        "rarity": "exquisite",
+        "price": 200
+      },
+      "goblin_bloodstone": {
+        "name": "Goblin Bloodstone",
+        "description": "A small, blood-red gem with a faint glow that seems to pulse with the life force of its previous owner. The bloodstone is believed to be infused with the essence of a goblin, possibly from a sacrifice or ritualistic act.\n",
+        "rarity": "exquisite",
+        "price": 95
+      },
       "smooth_pebbles": {
         "name": "Smooth Pebbles",
-        "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.",
+        "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.\n",
         "rarity": "common",
         "price": 4
       },
       "string": {
         "name": "String",
-        "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.",
+        "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.\n",
         "rarity": "common",
         "price": 1
       },
@@ -298,7 +420,7 @@
       },
       "shackled_choir_key": {
         "name": "Shackled Choir key",
-        "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.",
+        "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.\n",
         "rarity": "rare",
         "price": 200
       },
@@ -310,13 +432,13 @@
       },
       "obsidian": {
         "name": "Obsidian",
-        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.",
+        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.\n",
         "rarity": "rare",
         "price": 30
       },
       "bone": {
         "name": "Bone",
-        "description": "A bone from a deceased corpse used to make up a skeleton.",
+        "description": "A bone from a deceased corpse used to make up a skeleton.\n",
         "rarity": "common",
         "price": 1
       }

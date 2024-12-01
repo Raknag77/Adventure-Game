@@ -220,7 +220,7 @@ def equipment_tab():
                       "Press [7] to change your ring\n"
                       )
     if equip_tab == "1":
-        owned_weapons = [item for item in inventory if item in item_data["items"]["weapons"]]
+        owned_weapons = [item for item in inventory if item in item_data["items"]["weapons"].values()]
         print("Owned weapons:", owned_weapons)
         equip_weapon_id = input("Select a weapon you wish to equip.\n")
         if equip_weapon_id not in owned_weapons:
@@ -493,7 +493,16 @@ def crit_enemy_hit(enemy) -> bool:
         return True
     return False
 
-def check_pierce(character: Character):
+def check_berserk(character: Character) ->bool:
+    if character.weapon is not None and character.weapon.skills == "berserk":
+        return True
+    elif character.charm is not None and character.charm.skills == "berserk":
+        return True
+    elif character.ring is not None and character.ring.skills == "berserk":
+        return True
+    return False
+
+def check_pierce(character: Character) -> bool:
     if character.weapon is not None and character.weapon.skills == "pierce":
         return True
     elif character.charm is not None and character.charm.skills == "pierce":
@@ -502,7 +511,7 @@ def check_pierce(character: Character):
         return True
     return False
 
-def check_doublehit(character: Character):
+def check_doublehit(character: Character) ->bool:
     if character.weapon is not None and character.weapon.skills == "doublehit":
         return True
     elif character.charm is not None and character.charm.skills == "doublehit":
@@ -619,11 +628,15 @@ def combat(character, enemy):
 
     while character.current_health > 0 and enemy.stats.health > 0:
         dodge = evasion(character)
+        berserk = check_berserk(character)
         damage_taken = calculate_damage_taken(enemy, character)
         if dodge:
             damage_taken = 0
 
         damage_dealt = calculate_damage_dealt(character, enemy)
+        if berserk:
+            if character.current_health < 0.33*character.base_health:
+                damage_dealt *= 1.5
         enemy.stats.health -= damage_dealt
         print(f"Damage dealt to {enemy.name}: {damage_dealt}")
         print(f"{enemy.name}'s remaining health: {max(enemy.stats.health, 0)}")
@@ -756,7 +769,6 @@ You turned to see an elf with silver hair and piercing green eyes. Her smile was
 
 Her voice grew softer as she studied your face. "Many come here seeking glory. But beyond these walls, there is a world on the brink of breaking. Tell me... what is your name?"\n
 """
-
     starting_story_2 = """
 "A fine name," Elara replied, her smile widening slightly. "Follow me, and I’ll show you where your journey begins."
 
@@ -782,42 +794,42 @@ Two weapons caught your eye: a sword, balanced and precise, and a lance, long an
         starting_weapon_choice = input("Do you choose the sword or the lance? ").lower()
 
         if starting_weapon_choice == "sword":
-            print(item_data["items"]["weapons"]["iron_sword"]["description"])
+            print(item_data["items"]["weapons"]["swords"]["iron_sword"]["description"])
 
             while True:
                 choice = input("Do you pick up this weapon? (yes/no) ").lower()
                 if choice == "yes":
                     player.weapon = Item("iron_sword", ItemTypeEnum.WEAPON)
                     print(f"You have picked up the Sword. Player's weapon: {player.weapon}")
-                    exit_choice = True  # Flag to break the outer loop
-                    break  # Exit the inner loop
+                    exit_choice = True
+                    break
                 elif choice == "no":
                     print("You decide not to pick up the Sword. Choose again.")
-                    break  # Exit the inner loop and return to weapon selection
+                    break
                 else:
                     print("Invalid input, please choose 'yes' or 'no'.")
 
             if "exit_choice" in locals() and exit_choice:
-                break  # Exit the outer loop after choosing a weapon
+                break
 
         elif starting_weapon_choice == "lance":
-            print(item_data["items"]["weapons"]["iron_lance"]["description"])
+            print(item_data["items"]["weapons"]["spears"]["iron_lance"]["description"])
 
             while True:
                 choice = input("Do you pick up this weapon? (yes/no) ").lower()
                 if choice == "yes":
                     player.weapon = Item("iron_lance", ItemTypeEnum.WEAPON)
                     print(f"You have picked up the Lance. Player's weapon: {player.weapon}")
-                    exit_choice = True  # Flag to break the outer loop
-                    break  # Exit the inner loop
+                    exit_choice = True
+                    break
                 elif choice == "no":
                     print("You decide not to pick up the Lance. Choose again.")
-                    break  # Exit the inner loop and return to weapon selection
+                    break
                 else:
                     print("Invalid input, please choose 'yes' or 'no'.")
 
             if "exit_choice" in locals() and exit_choice:
-                break  # Exit the outer loop after choosing a weapon
+                break
 
         else:
             print("Invalid input, please choose 'sword' or 'lance'.")
