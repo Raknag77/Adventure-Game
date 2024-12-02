@@ -4,8 +4,10 @@ import json
 
 from game_enums import EnemyTypeLiteral, ItemTypeEnum, EnemyTypeEnum, ItemTypeLiteral
 from typing import List, Optional
+from window import CustomConsole
+from objects import Stats
 
-from game_content_typing import GameContentType
+
 
 # with open('game_content.json', 'r') as file:
 #     game_content: GameContentType = json.load(file)
@@ -16,36 +18,13 @@ with open('Content/item_data.json', 'r') as file:
 with open('Content/enemy_data.json', 'r') as file:
     enemy_data = json.load(file)
 
+con: CustomConsole
+
 random_encounter_count = 0
 events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp"]
 
 inventory = ["excalibur"]
 
-class Stats:
-    def __init__(self,
-                 health: int = 0,
-                 defense: int = 0,
-                 agility: int = 0,
-                 attackDmg: int = 0,
-                 critChance: float = 0.00,
-                 luck:int = 0
-                 ):
-        self.health = health
-        self.defense = defense
-        self.agility = agility
-        self.attackDmg = attackDmg
-        self.critChance = critChance
-        self.luck = luck
-
-    def __str__(self):
-        return (
-            f"Health: {self.health}\n"
-            f"Defense: {self.defense}\n"
-            f"Agility: {self.agility}\n"
-            f"Attack Damage: {self.attackDmg}\n"
-            f"Critical Chance: {self.critChance * 100}%\n"
-            f"Luck: {self.luck}\n"
-        )
 
 class Item:
     def __init__(self, item_id: str, item_type: ItemTypeEnum):
@@ -53,27 +32,13 @@ class Item:
         self.item_type = item_type
 
         item_type_value: ItemTypeLiteral = item_type.value
-        item_data_category = item_data["items"].get(item_type_value, {})
-        if item_data_category:
-            for subcategory, items in item_data_category.items():
-                if item_id in items:
-                    item_info = items[item_id]
-                    self.name = item_info["name"]
-                    self.description = item_info["description"]
-                    self.stats = Stats(**item_info.get("stats", {}))
-                    self.attribute = item_info.get("attribute")
-                    self.rarity = item_info["rarity"]
-                    self.price = item_info.get("price")
-                    self.skills = item_info.get("skills", None)
-                    break
-        else:
-            self.name = item_data["items"][item_type_value][item_id]["name"]
-            self.description = item_data["items"][item_type_value][item_id]["description"]
-            self.stats = Stats(**item_data["items"][item_type_value][self._id].get("stats", {}))
-            self.attribute = item_data["items"][item_type_value][item_id].get("attribute")
-            self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
-            self.price = item_data["items"][item_type_value][item_id].get("price")
-            self.skills = item_data["items"][item_type_value][item_id].get("skills")
+        self.name = item_data["items"][item_type_value][item_id]["name"]
+        self.description = item_data["items"][item_type_value][item_id]["description"]
+        self.stats = Stats(**item_data["items"][item_type_value][self._id].get("stats", {}))
+        self.attribute = item_data["items"][item_type_value][item_id].get("attribute")
+        self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
+        self.price = item_data["items"][item_type_value][item_id].get("price")
+        self.skills = item_data["items"][item_type_value][item_id].get("skills")
 
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
@@ -130,7 +95,7 @@ def get_random_enemy_instance():
     category = enemy_data['enemies'][category_name]
     enemy_id = random.choice(list(category.keys()))
 
-    enemy_type_enum = EnemyTypeEnum[category_name.upper()]
+    enemy_type_enum = EnemyTypeEnum(category_name.upper())
     enemy_instance = Enemy(enemy_id=enemy_id, enemy_type=enemy_type_enum)
 
     return enemy_instance
@@ -234,7 +199,7 @@ def equipment_tab():
                       "Press [7] to change your ring\n"
                       )
     if equip_tab == "1":
-        owned_weapons = [item for item in inventory if item in item_data["items"]["weapons"].values()]
+        owned_weapons = [item for item in inventory if item in item_data["items"]["weapons"].keys()]
         print("Owned weapons:", owned_weapons)
         equip_weapon_id = input("Select a weapon you wish to equip.\n")
         if equip_weapon_id not in owned_weapons:
@@ -478,7 +443,7 @@ def random_event():
 
 
 def evasion(character) -> bool:
-    agility = (
+    agility = (  # noqa
             character.stats.agility +
             (character.weapon.stats.agility if character.weapon is not None else 0) +
             (character.charm.stats.agility if character.charm is not None else 0) +
@@ -490,7 +455,7 @@ def evasion(character) -> bool:
     return False
 
 def crit_hit(character) -> bool:
-    critChance = (
+    critChance = (  # noqa
             character.stats.critChance +
             (character.weapon.stats.critChance if character.weapon is not None else 0) +
             (character.charm.stats.critChance if character.charm is not None else 0) +
@@ -551,12 +516,11 @@ def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
         "arcane": ["physical", "natural", "undead", "ice"]
     }
 
-    if isinstance(enemy.attributes, (list, set)):
+    if isinstance(enemy.attributes, (list, set)):  # noqa
         result = any(attr in strong_combinations.get(character.weapon.attribute, []) for attr in enemy.attributes)
     else:
         result = enemy.attributes in strong_combinations.get(character.weapon.attribute, [])
 
-    print(f"is_attribute_strong result: {result}")
     return result
 
 def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
@@ -574,12 +538,10 @@ def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
         "natural": ["fire", "arcane", "undead", "ice"],
         "arcane": ["holy", "lightning", "cursed"]
     }
-    if isinstance(enemy.attributes, (list, set)):
+    if isinstance(enemy.attributes, (list, set)):  # noqa
         result = any(attr in weak_combinations.get(character.weapon.attribute, []) for attr in enemy.attributes)
     else:
         result = enemy.attributes in weak_combinations.get(character.weapon.attribute, [])
-
-    print(f"is_attribute_weak result: {result}")
     return result
 
 def apply_weapon_attribute_effect(character: Character, enemy: Enemy):
@@ -669,11 +631,9 @@ def combat(character, enemy):
 
     # Post-combat handling
     if character.current_health <= 0:
-        print("Game over! Reload your save or try again.")
         return False
     else:
         character.reset_health()
-        print("You have won the battle!")
         return True
 
 
@@ -771,7 +731,10 @@ def display_encounter(encounter_name):
         else:
             print("Invalid choice. Please try again.")
 
-def main():
+def main(_con: CustomConsole):
+    global con
+    con = _con
+
     starting_story_1 = """
 You stood before the Adventurers' Guild, heart racing with excitement. The guild, a symbol of unity in a world divided by kingdoms and races, was a beacon of hope for many. 
 The heavy wooden doors creaked as you pushed them open, revealing a room bathed in warm, amber light. The air smelled of leather and firewood, and a crackling fireplace to your right cast shadows across walls lined with banners of past conquests.
@@ -806,12 +769,13 @@ Two weapons caught your eye: a sword, balanced and precise, and a lance, long an
     print(player)
 
     print(starting_story_2)
+    exit_choice = False
 
     while True:
         starting_weapon_choice = input("Do you choose the sword or the lance? ").lower()
 
         if starting_weapon_choice == "sword":
-            print(item_data["items"]["weapons"]["swords"]["iron_sword"]["description"])
+            print(item_data["items"]["weapons"]["iron_sword"]["description"])
 
             while True:
                 choice = input("Do you pick up this weapon? (yes/no) ").lower()
@@ -826,11 +790,11 @@ Two weapons caught your eye: a sword, balanced and precise, and a lance, long an
                 else:
                     print("Invalid input, please choose 'yes' or 'no'.")
 
-            if "exit_choice" in locals() and exit_choice:
+            if exit_choice:
                 break
 
         elif starting_weapon_choice == "lance":
-            print(item_data["items"]["weapons"]["spears"]["iron_lance"]["description"])
+            print(item_data["items"]["weapons"]["iron_lance"]["description"])
 
             while True:
                 choice = input("Do you pick up this weapon? (yes/no) ").lower()
@@ -858,4 +822,6 @@ Two weapons caught your eye: a sword, balanced and precise, and a lance, long an
 
 
 
-main()
+if __name__ == "__main__":
+    main(None)  # noqa
+    # CustomConsole.run(main)

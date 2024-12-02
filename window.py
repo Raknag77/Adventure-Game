@@ -1,15 +1,15 @@
 import tkinter as tk
+from threading import Thread
 from tkinter.font import Font
-from typing import overload, Union, Protocol
-from dataclasses import dataclass
+from typing import Callable, Literal, overload, Union, Protocol
+from dataclasses import dataclass, field
 from enum import Enum
-import threading
+
 
 
 class AreaType(Enum):
     TEXT = "text"
     INSTRUCTION = "instruction"
-
 
 
 class Stringable(Protocol):
@@ -42,9 +42,38 @@ class Message:
     def text(self) -> str:
         return self._text
 
+@dataclass
+class _ConStatus:
+    areaLiteral = Literal["text", "inst"]
+
+    printing_text: bool = False
+    printing_inst: bool = False
+
+    # Use BooleanVars for synchronization
+    text_done_var: tk.BooleanVar = field(init=False)
+    inst_done_var: tk.BooleanVar = field(init=False)
+
+    input_ready_var: tk.BooleanVar = field(init=False)
+
+    skip_text_animation: bool = False
+    skip_inst_animation: bool = False
+
+    def __post_init__(self):
+        self.text_done_var = tk.BooleanVar(value=True)  # Default to True (nothing printing)
+        self.inst_done_var = tk.BooleanVar(value=True)
+        self.input_ready_var = tk.BooleanVar(value=False)  # Initially, input is not ready
+
+    def skip_animations(self):
+        self.skip_text_animation = True
+        self.skip_inst_animation = True
+
+    @property
+    def is_printing(self) -> bool:
+        return self.printing_text or self.printing_inst
+
 
 class CustomConsole:
-    def __init__(self, root_):
+    def __init__(self, root_: tk.Tk):
         self.root = root_
         self.root.title("Custom Console")
         self.root.geometry("800x600")
@@ -53,13 +82,17 @@ class CustomConsole:
         # Animation speed (characters per second)
         self.animation_speed = 0.05
         self._target_time = 10.0  # Default target time (seconds) for a message to print
-        self._is_printing_normal: bool = False
-        self._is_printing_instruction: bool = False
         self._normal_queue: list[Message] = []
         self._instruction_queue: list[Message] = []
-        self._skip_animation: bool = False  # Skip animation flag
         self._user_input = None  # Holds user input
-        self._input_ready_var = tk.BooleanVar(value=False)  # Variable to signal that the input is ready
+
+        self._status = _ConStatus()
+        # self._is_printing_normal: bool = False
+        # self._is_printing_instruction: bool = False
+        # self._skip_animation: bool = False  # Skip animation flag
+        # self._input_ready_var = tk.BooleanVar(value=False)  # Variable to signal that the input is ready
+        # self._instr_ready_var = tk.BooleanVar(value=False)  # Variable to signal that the instruction is ready
+        # self._print_ready_var = tk.BooleanVar(value=False)  # Variable to signal that the print is ready
 
         # Custom font
         self.console_font = Font(family="Courier New", size=12)
@@ -115,26 +148,22 @@ class CustomConsole:
 
     def input(self, prompt: str) -> str:
         """Block the input function until the user provides input."""
-
         # Print the prompt
         self.print("+GM: " + prompt)
 
-        # Wait for all animations to finish before activating the input box
-        while self._is_printing_normal or self._is_printing_instruction:
-            print("Waiting for animations to finish...")
-            self.root.update_idletasks()  # Process pending tasks
-            self.root.update()  # Keep the GUI responsive
-
+        # Wait for all animations to finish
+        if not self._status.text_done_var:
+            print("Waiting for prompt to finish printing..." + str(self._status.text_done_var.get()))
+            self.root.wait_variable(self._status.text_done_var)
+        print("Prompt finished printing.")
+        # Activate the input box
         self.input_box.configure(state="normal")  # Enable the input box
         self.input_box.focus_set()  # Focus the input box
 
-        # Block the loop until the input is provided
-        self._input_ready_var.set(False)  # Reset the variable
-        while not self._input_ready_var.get():
-            self.root.update_idletasks()  # Process pending tasks
-            self.root.update()  # Keep the GUI responsive
+        # Clear and wait for the input-ready variable
+        self._status.input_ready_var.set(False)
+        self.root.wait_variable(self._status.input_ready_var)
 
-        # Return the user's input
         return self._user_input
 
     def _submit_input(self, event: tk.Event):
@@ -157,6 +186,7 @@ class CustomConsole:
 
         # Notify that the input is ready
         self._user_input = user_input
+        self._status.input_ready_var.set(True)
 
     @property
     def target_time(self) -> float:
@@ -168,96 +198,120 @@ class CustomConsole:
             raise ValueError("Target time must be greater than 0.")
         self._target_time = new_time
 
-    def _process_next_message(self, area: tk.Text, queue: list[Message], is_printing_flag: str):
+    def _process_next_message(self, area: tk.Text, queue: list[Message], area_flag: _ConStatus.areaLiteral):
         """Process the next message in the queue."""
         if queue:
             next_message = queue[0]
-            self._write_to_area(area, next_message, is_printing_flag)
+            self._write_to_area(area, next_message, area_flag)
 
-    def _write_to_area(self, area: tk.Text, message: Message, is_printing_flag: str):
+    def _write_to_area(self, area: tk.Text, message: Message, area_flag: _ConStatus.areaLiteral):
         """Write a message to the selected area."""
         if message.animated:
-            self._animate_message(area, message, is_printing_flag)
+            self._animate_message(area, message, area_flag)
         else:
             area.configure(state="normal")
             area.insert("end", message.text + "\n")
             area.see("end")
             area.configure(state="disabled")
-            setattr(self, is_printing_flag, False)
+            setattr(self._status, f"printing_{area_flag}", False)
             self._remove_message_from_queue(message.type)
 
-    def _animate_message(self, area: tk.Text, message: Message, is_printing_flag: str):
+    def _animate_message(self, area: tk.Text, message: Message, area_flag: _ConStatus.areaLiteral):
         """Animate the message in the selected area."""
         area.configure(state="normal")
 
         # Calculate delay per character to fit within the target time
         dynamic_speed = min(self._target_time / max(len(message.text), 1), self.animation_speed)
 
-        animation_done = threading.Event()
+        def disable_area():
+            area.see("end")
+            area.configure(state="disabled")
+            setattr(self._status, f"printing_{area_flag}", False)
+
+            # Signal that the animation is complete
+            if area_flag == "text":
+                self._status.text_done_var.set(True)
+            elif area_flag == "inst":
+                self._status.inst_done_var.set(True)
+
+            self._remove_message_from_queue(message.type)
 
         def print_next_char(remaining_text: Union[str, Stringable]):
+            """Print the next character in the message."""
             if not remaining_text:  # If the message is fully printed
                 area.insert("end", "\n")
-                area.configure(state="disabled")
-                setattr(self, is_printing_flag, False)
-                self._remove_message_from_queue(message.type)
-                animation_done.set()  # Signal that the animation is done
+                disable_area()
                 return
 
-            if self._skip_animation:
+            if getattr(self._status, f"skip_{area_flag}_animation"):
                 area.insert("end", remaining_text)
-                area.see("end")
-                area.configure(state="disabled")
-                setattr(self, is_printing_flag, False)
-                self._remove_message_from_queue(message.type)
-                animation_done.set()  # Signal that the animation is done
-                self._skip_animation = False
+                disable_area()
+                setattr(self._status, f"skip_{area_flag}_animation", False)
                 return
+
             # Print the next character
             area.insert("end", remaining_text[0])
             area.see("end")
+
             # Schedule the next character to be printed
             self.root.after(int(dynamic_speed * 1000), lambda: print_next_char(remaining_text[1:]))
 
+        # Clear the variable and start the animation
+        if area_flag == "text":
+            self._status.text_done_var.set(False)
+        elif area_flag == "inst":
+            self._status.inst_done_var.set(False)
+
         print_next_char(message.text)
-        animation_done.wait()  # Wait for the animation to finish
 
     def _remove_message_from_queue(self, message_type: AreaType):
         """Remove a processed message from the appropriate queue."""
         if message_type == AreaType.TEXT:
             self._normal_queue.pop(0)
-            self._process_next_message(self.text_area, self._normal_queue, "_is_printing_normal")
+            self._process_next_message(self.text_area, self._normal_queue, "text")
         elif message_type == AreaType.INSTRUCTION:
             self._instruction_queue.pop(0)
-            self._process_next_message(self.instruction_area, self._instruction_queue, "_is_printing_instruction")
+            self._process_next_message(self.instruction_area, self._instruction_queue, "inst")
 
     def print(self,
-              message: Union[str, Stringable],
+              *message: Union[str, Stringable],
               animated: bool = True,
-              speed: Union[float, None] = None
-              ):
+              speed: Union[float, None] = None):
         """Print a message to the console, optionally animating it."""
+        message = " ".join(map(str, message))
         self._normal_queue.append(Message(text=message, animated=animated, speed=speed or self.animation_speed))
-        if not self._is_printing_normal:
-            self._is_printing_normal = True
-            self._process_next_message(self.text_area, self._normal_queue, "_is_printing_normal")
+        if not self._status.printing_text:
+            self._status.printing_text = True
+            self._process_next_message(self.text_area, self._normal_queue, "text")
+
+        # Wait for the animation to finish
+        self.root.wait_variable(self._status.text_done_var)
 
     def print_instruction(self,
-                          message: Union[str, Stringable],
+                          *message: Union[str, Stringable],
                           animated: bool = False,
                           speed: Union[float, None] = None
                           ):
         """Print a message to the instruction area, optionally animating it."""
+        message = " ".join(map(str, message))
         self._instruction_queue.append(Message(message, animated, speed or self.animation_speed, AreaType.INSTRUCTION))
-        if not self._is_printing_instruction:
-            self._is_printing_instruction = True
-            self._process_next_message(self.instruction_area, self._instruction_queue, "_is_printing_instruction")
+        if not self._status.printing_inst:
+            self._status.printing_inst = True
+            self._process_next_message(self.instruction_area, self._instruction_queue, "inst")
+
+        # Wait for the animation to finish
+        self.root.wait_variable(self._status.inst_done_var)
 
     def wait_and_exit(self):
         """Wait for all messages to finish printing before exiting."""
-        if self._is_printing_normal or self._is_printing_instruction:
+
+        if self._status.is_printing:
+            print(
+                f"Waiting... Is printing normal: {self._status.printing_text}, "
+                f"Is printing instruction: {self._status.printing_inst}")
             self.root.after(100, self.wait_and_exit)
         else:
+            print("Exiting the program.")
             self.root.destroy()
 
     def clear(self, area: AreaType):
@@ -270,8 +324,9 @@ class CustomConsole:
 
     def key_listener(self, event: tk.Event):
         """Handle key press events."""
-        if event.keysym == "space" and (self._is_printing_normal or self._is_printing_instruction):
-            self._skip_animation = True
+
+        if event.keysym == "space" and self._status.is_printing:
+            self._status.skip_animations()
         if event.char == "q":  # Quit on 'q'
             self.print("Exiting... Goodbye!", animated=True)
             self.print_instruction("Closing...", animated=True)
@@ -280,13 +335,24 @@ class CustomConsole:
             self.clear(AreaType.TEXT)
             self.clear(AreaType.INSTRUCTION)
 
+    @classmethod
+    def run(cls, func: Callable[["CustomConsole"], None]) -> None:
+        """
+        Run the GUI console with the provided function.
+        :param func: The main function from your script.
+        Note that it must take a CustomConsole as the first parameter.
+        E.g., def main (con: CustomConsole) -> None:
+        :return: None
+        """
+        root = tk.Tk()
+        _console = cls(root)
+        Thread(target=func, args=[_console]).start()
+        root.mainloop()
 
+def main(con: CustomConsole) -> None:
+    con.print("Welcome to the custom console!", animated=True)
+    con.print_instruction("Press 'q' to quit!", animated=True)
 
 # Run the console
 if __name__ == "__main__":
-    root = tk.Tk()
-    console = CustomConsole(root)
-    console.print("Welcome to the custom console!", animated=True)
-    console.print_instruction("Press 'q' to quit!", animated=True)
-    root.mainloop()
-
+    CustomConsole.run(main)

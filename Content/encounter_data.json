@@ -630,7 +630,7 @@
         "2": {
           "text": "A sturdy looking pickaxe.",
           "response": "You wonder why a pickaxe would be in the town's vault, nontheless its a good tool to have.",
-          "inventory_add": "pickaxe",
+          "inventory_add": ["pickaxe"],
           "next": "stonehaven_goblin_camp_outskirts"
         },
         "3": {
