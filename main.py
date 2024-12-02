@@ -17,7 +17,7 @@ with open('Content/enemy_data.json', 'r') as file:
     enemy_data = json.load(file)
 
 random_encounter_count = 0
-events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest"]
+events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp"]
 
 inventory = ["excalibur"]
 
@@ -53,13 +53,27 @@ class Item:
         self.item_type = item_type
 
         item_type_value: ItemTypeLiteral = item_type.value
-        self.name = item_data["items"][item_type_value][item_id]["name"]
-        self.description = item_data["items"][item_type_value][item_id]["description"]
-        self.stats = Stats(**item_data["items"][item_type_value][self._id].get("stats", {}))
-        self.attribute = item_data["items"][item_type_value][item_id].get("attribute")
-        self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
-        self.price = item_data["items"][item_type_value][item_id].get("price")
-        self.skills = item_data["items"][item_type_value][item_id].get("skills")
+        item_data_category = item_data["items"].get(item_type_value, {})
+        if item_data_category:
+            for subcategory, items in item_data_category.items():
+                if item_id in items:
+                    item_info = items[item_id]
+                    self.name = item_info["name"]
+                    self.description = item_info["description"]
+                    self.stats = Stats(**item_info.get("stats", {}))
+                    self.attribute = item_info.get("attribute")
+                    self.rarity = item_info["rarity"]
+                    self.price = item_info.get("price")
+                    self.skills = item_info.get("skills", None)
+                    break
+        else:
+            self.name = item_data["items"][item_type_value][item_id]["name"]
+            self.description = item_data["items"][item_type_value][item_id]["description"]
+            self.stats = Stats(**item_data["items"][item_type_value][self._id].get("stats", {}))
+            self.attribute = item_data["items"][item_type_value][item_id].get("attribute")
+            self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
+            self.price = item_data["items"][item_type_value][item_id].get("price")
+            self.skills = item_data["items"][item_type_value][item_id].get("skills")
 
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
@@ -717,9 +731,8 @@ def display_encounter(encounter_name):
                         if combat_result:  # Player won the combat
                             loot(player, enemy_name)
                         else:
-                            if "dmessage" in choice_details:
+                            if "death_msg" in choice_details:
                                 print("dmessage")
-                                print("Game over! Reload your save or try again.")
                                 exit()
                             else:
                                 print("Game over! Reload your save or try again.")
@@ -747,6 +760,10 @@ def display_encounter(encounter_name):
             if "gold" in choice_details:
                 player.gold += choice_details["gold"]
                 print(f"You have gained {choice_details['gold']} gold.")
+
+            if "death" in choice_details:
+                print("You have died!!!!!")
+                exit()
 
             if "next" in choice_details:
                 display_encounter(choice_details["next"])

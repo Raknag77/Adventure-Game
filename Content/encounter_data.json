@@ -231,10 +231,7 @@
         "3": {
           "text": "Perform the Ritual",
           "response": "You decide to perform the ancient ritual of communion with the forest spirit.",
-          "requirements": [
-            "bundle_of_sage",
-            "wood_charm"
-          ],
+          "requirements": ["bundle_of_sage", "wood_charm"],
           "next": "perform_ritual"
         },
         "4": {
@@ -253,56 +250,49 @@
         "1": {
           "text": "Ask for the stag's blessing.",
           "response": "You bow your head and request the stag's blessing. The stag steps forward, lowering its head, and with a graceful movement, breaks off a small shard of its antler. It gently places the fragment in your palm. As you grasp it, a surge of energy courses through you, filling you with vitality and clarity.",
-          "inventory_add": [
-            "silver_antler_shard"
-          ],
-          "next": "adventure_guild"
+          "inventory_add": "silver_antler_shard",
+          "next": "ritual_outcome"
         },
         "2": {
           "text": "Ask for the location of hidden treasure.",
           "response": "You ask about hidden riches within the forest. The stag tilts its head, its eyes gleaming with knowing. It stamps its hoof once, and a small wisp of light appears, darting through the trees. You follow it to a hidden hollow, where a chest lies buried beneath a blanket of moss.\n\nInside, you find ancient coins, a couple of gemstones, and a small silver ring with intricate carvings.",
-          "inventory_add": [
-            "sapphire",
-            "emerald",
-            "silver_ring"
-          ],
+          "inventory_add": ["sapphire", "emerald", "silver_ring"],
           "gold": 100,
-          "next": "adventure_guild"
+          "next": "ritual_outcome"
         },
         "3": {
           "text": "Ask for the forest's power.",
           "response": "You request the forest's ancient power. With a graceful nod, the Stag lowers its head, its antlers glowing with an ethereal light, and from the depths of the forest's heart, it presents Verdant, a bow symbolizing the ancient power of the woods, now entrusted to you.",
-          "inventory_add": [
-            "Verdant"
-          ],
-          "next": "adventure_guild"
+          "inventory_add": "verdant",
+          "next": "ritual_outcome"
         }
       }
     },
     "perform_advanced_ritual": {
-      "description": "You venture into the forest, ready to perform the advanced ritual using your Soul Essence. The forest feels different, more alive, and as you gather the required items, you feel an eerie connection to the spirits of the woods. Once you have everything, you head to the sacred glade to perform the advanced ritual.",
+      "description": "You venture into the forest, ready to perform the advanced ritual using your Soul Essence. The forest feels different, more alive, and as you gather the required items, you feel an eerie connection to the spirits of the woods. Once you have everything, you head to the sacred glade to perform the advanced ritual.\nHolding the Soul Essence aloft, you chant the incantation, each word resonating with an otherworldly power. The circle begins to glow, silver light spilling out and illuminating the trees. A pulse of energy ripples outward, and the forest falls silent.\nMoments later, a figure emerges from the light—a majestic stag, its silvery form shimmering like moonlight incarnate. Its eyes meet yours, ancient and wise, as it lowers its head in quiet acknowledgment of your call.\nThe ritual is complete.",
       "choices": {
         "1": {
-          "text": "Perform the Advanced Ritual",
-          "response": "You perform the advanced ritual, with the power of your Soul Essence. The consequences could be more severe—or more rewarding.",
+          "text": "Ask for the stag's blessing",
+          "response": "You bow your head and request the stag's blessing. The stag steps forward, lowering its head, and with a graceful movement, breaks off a small shard of its antler. It gently places the fragment in your palm. As you grasp it, a surge of energy courses through you, filling you with vitality and clarity.\n",
+          "inventory_add": "silver_antler_shard",
           "next": "advanced_ritual_outcome"
         },
         "2": {
           "text": "Ask for the location of hidden treasure.",
-          "response": "You ask about hidden riches within the forest. The stag tilts its head, its eyes gleaming with knowing. It stamps its hoof once, and a small wisp of light appears, darting through the trees. You follow it to a hidden hollow, where a chest lies buried beneath a blanket of moss.\n\nInside, you find a pristine enchanted dagger, its blade forged from a rare metal that hums with the power of the forest, and a cloak woven from moonlight and shadow, granting you the ability to blend into the surroundings as if part of the very woodland itself. These gifts are not merely material—they are tokens of the forest's deepest magic, a reward for your valor..",
+          "response": "You ask about hidden riches within the forest. The stag tilts its head, its eyes gleaming with knowing. It stamps its hoof once, and a small wisp of light appears, darting through the trees. You follow it to a hidden hollow, where a chest lies buried beneath a blanket of moss.\nInside, you find a crystalline dagger, its blade forged from a rare material that hums with the power of the forest, and a cloak woven from moonlight and shadow, granting you the ability to blend into the surroundings as if part of the very woodland itself.\n",
           "inventory_add": [
-            "pristine_dagger",
+            "fangroot_dagger",
             "moonlight_cloak"
           ],
-          "next": "adventure_guild"
+          "next": "advanced_ritual_outcome"
         },
         "3": {
           "text": "Ask for the forest's secrets.",
-          "response": "You request the forest's ancient secrets. The stag regards you solemnly before speaking in your mind:\n\n\"The trees whisper of paths lost to time. Seek the elder oak near the waterfall, and listen to its song. But beware—the deeper truths carry great risk.\"\n\nYou sense a surge of knowledge, visions of hidden groves and forgotten ruins flashing through your mind. You have gained the Knowledge of the Forest.",
+          "response": "You request the forest's ancient secrets. The stag regards you solemnly before speaking in your mind:\n\"The trees whisper of paths lost to time. Seek the elder oak near the waterfall, and listen to its song. But beware—the deeper truths carry great risk.\"\nYou sense a surge of knowledge, visions of hidden groves and forgotten ruins flashing through your mind. You have gained the Knowledge of the Forest.",
           "inventory_add": [
-            "Knowledge of the Forest"
+            "knowledge_of_the_forest"
           ],
-          "next": "adventure_guild"
+          "next": "advanced_ritual_outcome"
         }
       }
     },
@@ -844,7 +834,7 @@
           "text": "Duel",
           "response": "You charge towards the Chieftain, hoping to win.\n",
           "combat": "goblin_chieftain_gruknar",
-          "dmessage": "Goblin Chieftain (Gruknar):\"Hah! You’re strong, human, but not strong enough!\"\n",
+          "death_msg": "Goblin Chieftain (Gruknar):\"Hah! You’re strong, human, but not strong enough!\"\n",
           "next": "duel_outcome"
         }
       }

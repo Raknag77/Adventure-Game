@@ -73,6 +73,19 @@
       "rarity": "common",
       "price": 2,
       "attribute": "physical"
+    },
+    "fangroot_dagger": {
+      "name": "Fangroot Dagger",
+      "description": "This dagger seems to have grown rather than been forged, its blade formed from a crystalline root that gleams with a faint emerald hue. The hilt is wrapped in supple bark, and faint wisps of green mist emanate from the blade's edge. Each strike delivers a potent toxin, making the weapon as dangerous as it is beautiful.\n",
+      "stats": {
+        "attackDmg": 18,
+        "agility": 5,
+        "critChance": 0.02
+      },
+      "rarity": "rare",
+      "price": 75,
+      "attribute": "natural",
+      "skill": "poison"
     }
   },
   "blunt_weapons": {
@@ -190,6 +203,17 @@
         "rarity": "rare",
         "price": 50,
         "attribute": "fire"
+      },
+      "moonlight_cloak": {
+        "name": "Moonlight Cloak",
+        "description": "A flowing cloak woven from silvery fibers that catch the light like dew on leaves. It feels cool to the touch and seems to blend seamlessly with the natural world, offering its wearer a quiet harmony with the elements and a subtle, elusive grace under the night sky.\n",
+        "stats": {
+          "defense": 5,
+          "agility": 25
+        },
+        "rarity": "exquisite",
+        "price": 105,
+        "attribute": "natural"
       },
       "wraith_shroud": {
         "name": "Wraith Shroud",
@@ -334,6 +358,36 @@
       }
     },
     "materials": {
+      "knowledge_of_the_forest": {
+        "name": "Knowledge of the Forest",
+        "description": "A gift bestowed by the forest's ancient guardian, its wisdom unfolds not in words but in visions and whispers. You now perceive the world differently—the rustle of leaves and the song of water reveal hidden paths and long-lost truths.\nThe elder oak near the waterfall holds the first key, but the deeper you delve, the more perilous the journey becomes. This newfound knowledge is both a blessing and a burden, promising to guide the worthy toward a destiny entwined with the heart of the forest and the blade of legend.\n",
+        "rarity": "legendary",
+        "price": 10000000
+      },
+      "bundle_of_sage": {
+        "name": "Bundle of Sage",
+        "description": "A collection of dried sage leaves tied with twine. Used for rituals and purification, its calming aroma is believed to ward off evil spirits and cleanse negative energy.\n",
+        "rarity": "common",
+        "price": 3
+      },
+      "emerald": {
+        "name": "Emerald",
+        "description": "A vibrant green gemstone as lush as a forest in spring. Representing vitality and prosperity, it is cherished for its ability to bring balance and renewal.\n",
+        "rarity": "rare",
+        "price": 100
+      },
+      "ruby": {
+        "name": "Ruby",
+        "description": "A fiery red gemstone that seems to pulse with inner warmth. Revered as a symbol of passion and power, it is a favorite among those seeking strength and courage.\n",
+        "rarity": "rare",
+        "price": 100
+      },
+      "sapphire": {
+        "name": "Sapphire",
+        "description": "A deep blue gemstone that sparkles like the night sky. Often associated with wisdom and clarity, it is highly valued for its beauty and mystical properties.\n",
+        "rarity": "rare",
+        "price": 100
+      },
       "soul_essence": {
         "name": "Soul Essence",
         "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.\n",
@@ -363,6 +417,12 @@
         "description": "A forbidden tome bound in dark, otherworldly leather, its pages filled with arcane symbols and knowledge from the Abyss. The cover bears a unique, intricate symbol, glowing faintly in the dim light. The tome contains powerful insights into shadow magic and the dark arts, offering the reader access to dangerous but potent abilities. Though forbidden in many realms, those bold enough to study its contents may unlock powers that challenge the very fabric of reality.\n",
         "rarity": "exquisite",
         "price": 245
+      },
+      "silver_antler_shard": {
+        "name": "Silver Antler Shard",
+        "description": "A fragment of the Silver Stag’s majestic antlers, imbued with celestial energy. The shard gleams faintly in the light, said to bring protection and fortune to those who carry it.\n",
+        "rarity": "legendary",
+        "price": 5000
       },
       "wolf_fang": {
         "name": "Wolf Fang",
