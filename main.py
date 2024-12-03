@@ -21,7 +21,8 @@ with open('Content/enemy_data.json', 'r') as file:
 con: CustomConsole
 
 random_encounter_count = 0
-events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp"]
+# events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp","outside_tranquil_monastery"]
+events = ["outside_tranquil_monastery"]
 
 inventory = ["excalibur"]
 

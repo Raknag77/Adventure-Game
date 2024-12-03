@@ -385,11 +385,29 @@
         "rarity": "legendary",
         "price": 10000000
       },
+      "bundle_of_elderflower": {
+        "name": "Bundle of Elderflower",
+        "description": "A delicate bundle of creamy white blossoms gathered from the elder tree, tied together with a fine strip of bark. The tiny flowers emit a subtle, sweet fragrance reminiscent of fresh honey and wild meadows. This bundle is cherished for its soothing and restorative qualities, a natural remedy gifted by the forest.\n",
+        "rarity": "common",
+        "price": 4
+      },
+      "bundle_of_vervain": {
+        "name": "Bundle of Vervain",
+        "description": "A tightly wrapped bundle of slender, green stems adorned with delicate, pale purple flowers. The faint earthy aroma carries a hint of citrus, exuding a sense of calm. Revered for its soothing properties, this herb bundle is tied with simple twine, symbolizing its purity and humble nature.\n",
+        "rarity": "common",
+        "price": 4
+      },
+      "bundle_of_lavender": {
+        "name": "Bundle of Lavender",
+        "description": "A fragrant bundle of soft, purple blossoms atop slender silver-green stems. The calming floral scent wafts gently from the tightly tied stalks, evoking images of serene fields under a summer sky. Wrapped with a ribbon of dried grass, this bundle is both beautiful and restorative, perfect for relaxation or rituals.\n",
+        "rarity": "common",
+        "price": 4
+      },
       "bundle_of_sage": {
         "name": "Bundle of Sage",
         "description": "A collection of dried sage leaves tied with twine. Used for rituals and purification, its calming aroma is believed to ward off evil spirits and cleanse negative energy.\n",
         "rarity": "common",
-        "price": 3
+        "price": 4
       },
       "emerald": {
         "name": "Emerald",

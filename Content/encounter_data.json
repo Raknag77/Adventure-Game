@@ -896,10 +896,25 @@
         }
       }
     },
-    "tranquil_monastery": {
+    "outside_tranquil_monastery": {
       "description": "You see a serene monastery nestled in a peaceful valley, surrounded by flowering trees and babbling brooks. The gentle sound of bells rings in the distance, and monks in simple robes tend to the gardens. A sense of calm washes over you as you approach.\nThe monastery appears welcoming, with open gates and monks cheerfully tending to crops and animals. A kindly old monk greets you at the entrance. \"Welcome, traveler,\" he says with a warm smile. \"All are welcome here. Please, rest and partake in our humble offerings.\"\n",
       "choices": {
         "1": {
+          "text": "Walk inside.",
+          "response": "You take this chance to live in a bit of harmony and peace before heading back out to the tension hanging over every soul.\n",
+          "next": "tranquil_monastery"
+        },
+        "2": {
+          "text": "Leave the monastery behind.",
+          "response": "This is no time to rest, there is still danger out there.\n",
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "tranquil_monastery": {
+      "description": "You find yourself stepping into the monastery's central hall, a space that bridges all corners of its serene grounds. The hall welcomes you with its timeless presence. The air is cool and carries a faint trace of incense, mingling with the subtle scent of fresh herbs. Light pours through high-arched windows, illuminating the smooth stone walls and the simple yet elegant carvings that adorn them. The gentle hum of distant chanting blends with the soft creak of wood, creating an atmosphere of stillness and quiet purpose, no matter the path that brought you here.\n",
+      "choices": {
+          "1": {
           "text": "Rest and recuperate.",
           "response": "You are given a hearty meal and a comfortable place to sleep. Your health is fully restored, and you feel refreshed.\n",
           "health": 5,
@@ -958,7 +973,14 @@
       }
     },
     "monk_garden_outcome": {
-      "": ""
+      "description": "As you finish tending to the monastery’s garden, the monks approach you with warm smiles, their gratitude evident in their kind expressions.\nHead Monk: \"You’ve shown great care and respect for our sacred garden. Please accept these herbs as a token of our thanks.\"\nThey hand you a small pouch filled with freshly gathered herbs.\nHead Monk: \"These herbs carry the spirit of this garden. May they serve you well on your journey.\"\nWith the gifts in hand, you feel a renewed connection to nature and the peaceful energy of the monastery.\n",
+      "choices": {
+        "1": {
+          "text": "Return to the monastery.",
+          "response": "You make your way back towards the entrance of the monastery, passing a few already familiar faces along the way.\n",
+          "next": "tranquil_monastery"
+        }
+      }
     }
   }
 }
