@@ -216,7 +216,7 @@
       }
     },
     "ask_for_more_details": {
-      "description": "Mira looks around cautiously, her voice dropping to a whisper.\n\nMira: \n\"Well, I'll tell you what I know, but you've got to promise to be careful. It's not just the stag... there's more to this forest. A long time ago, there was an ancient ritual, a kind of communion with the forest's spirit, to keep the balance. But the ritual was lost over time, and now, those who seek the stag might be searching for more than they realize. They say that to perform the ritual correctly, you might need to sell your soul.\" You decide to head into the forest, hoping to find the elusive stag. The whispers of the tavern still linger in your mind as you venture down the trail, the shadows of the trees growing deeper with each step.",
+      "description": "Mira looks around cautiously, her voice dropping to a whisper.\nMira: \n\"Well, I'll tell you what I know, but you've got to promise to be careful. It's not just the stag... there's more to this forest. A long time ago, there was an ancient ritual, a kind of communion with the forest's spirit, to keep the balance. But the ritual was lost over time, and now, those who seek the stag might be searching for more than they realize. They say that to perform the ritual correctly, you might need to sell your soul.\" You decide to head into the forest, hoping to find the elusive stag. The whispers of the tavern still linger in your mind as you venture down the trail, the shadows of the trees growing deeper with each step.",
       "choices": {
         "1": {
           "text": "Meet the Stag and Perform the Trial",
@@ -593,7 +593,7 @@
       "choices": {
         "1": {
           "text": "Accept the Quest.",
-          "response": "Garrek's expression softens with relief. He retrieves a crudely drawn map from his desk and hands it to you.\nMayor Garrek:\"This will lead you to their camp. Be careful; goblins may be small, but they’re cunning. If there is a chieftain among them, he won’t go down easily. Deal with them, and I’ll see to it that you’re properly rewarded.\"\n",
+          "response": "Garrek's expression softens with relief. He retrieves a crudely drawn map from his desk and hands it to you.\nMayor Garrek:\"This will lead you to their camp. Be careful; goblins may be small, but they're cunning. If there is a chieftain among them, he won't go down easily. Deal with them, and I'll see to it that you're properly rewarded.\"\n",
           "next": "stonehaven_goblin_camp_outskirts"
         },
         "2": {
@@ -619,7 +619,7 @@
       }
     },
     "stonehaven_higher_reward": {
-      "description": "You follow the mayor’s guard down a narrow staircase leading to a small, dimly lit vault beneath the town hall. The air is cool and musty, and the faint sound of footsteps echoes off the stone walls. The guard stops in front of an unassuming wooden chest, secured with a heavy lock.\nGuard: \"The mayor has authorized you to take your pick from here. Choose wisely, as this is all he has to offer for your troubles.\"\nThe vault is filled with a few scattered items—gold coins, a handful of weapons, and a small collection of rare trinkets.\n",
+      "description": "You follow the mayor's guard down a narrow staircase leading to a small, dimly lit vault beneath the town hall. The air is cool and musty, and the faint sound of footsteps echoes off the stone walls. The guard stops in front of an unassuming wooden chest, secured with a heavy lock.\nGuard: \"The mayor has authorized you to take your pick from here. Choose wisely, as this is all he has to offer for your troubles.\"\nThe vault is filled with a few scattered items—gold coins, a handful of weapons, and a small collection of rare trinkets.\n",
       "choices": {
         "1": {
           "text": "Some gold coins.",
@@ -636,7 +636,7 @@
         "3": {
           "text": "A silver medallion with a fox depicted on it.",
           "response": "You open a small box within which lies a silver medallion with the image of a fox in mid-leap, surrounded by runes that shimmer faintly, on a bed of velvet.",
-          "inventory_add": "fox_grace_medallion",
+          "inventory_add": ["fox_grace_medallion"],
           "next": "stonehaven_goblin_camp_outskirts"
         }
       }
@@ -662,7 +662,7 @@
       }
     },
     "stonehave_camp_stealth": {
-      "description": "You crouch low, moving carefully through the shadows cast by flickering firelight. The goblins’ guttural chatter and the clinking of crude weapons mask your footsteps. You spot guards stationed near gaps in the palisade, their attention flickering between laziness and vigilance. One misstep could spell disaster.\nThree possible routes lead into the camp.\n",
+      "description": "You crouch low, moving carefully through the shadows cast by flickering firelight. The goblins' guttural chatter and the clinking of crude weapons mask your footsteps. You spot guards stationed near gaps in the palisade, their attention flickering between laziness and vigilance. One misstep could spell disaster.\nThree possible routes lead into the camp.\n",
       "choices": {
         "1": {
           "text": "The narrow ridge",
@@ -671,7 +671,7 @@
         },
         "2": {
           "text": "The dense thicket",
-          "response": "You push through the thorny brush, careful to avoid making noise. The goblins don’t seem to notice your movements.\n",
+          "response": "You push through the thorny brush, careful to avoid making noise. The goblins don't seem to notice your movements.\n",
           "next": "stonehave_camp_stealth_2"
         },
         "3": {
@@ -702,7 +702,7 @@
     }
   },
     "stonehave_camp_stealth_3": {
-      "description": "You’ve made it close to the heart of the camp, where the Goblin Chieftain’s tent stands. However, one last obstacle lies in your path—a lone goblin stands guard.\n",
+      "description": "You've made it close to the heart of the camp, where the Goblin Chieftain's tent stands. However, one last obstacle lies in your path—a lone goblin stands guard.\n",
       "choices": {
         "1": {
           "text": "Sneak up and take him Out silently.",
@@ -722,7 +722,7 @@
       }
     },
     "failed_stealth": {
-      "description": "The moment you’re shoved into the Chieftain’s hut, the door slams shut behind you with a heavy thud. The inside is dimly lit by the flickering glow of a fire in a stone pit, casting eerie shadows on the walls. Goblin warriors stand at attention, their eyes glinting with curiosity and malice.\n\nAt the far end of the hut sits Gruknar, the Goblin Chieftain, towering in his furs and armor. He raises a hand, signaling for the guards to release you. The goblins step back, their hands still on their weapons, watching the scene unfold with interest.\n\nGoblin Chieftain (Gruknar):\n\"You’re brave, human... or foolish. Tell me, why are you sneaking around my camp?\"\n",
+      "description": "The moment you're shoved into the Chieftain's hut, the door slams shut behind you with a heavy thud. The inside is dimly lit by the flickering glow of a fire in a stone pit, casting eerie shadows on the walls. Goblin warriors stand at attention, their eyes glinting with curiosity and malice.\n\nAt the far end of the hut sits Gruknar, the Goblin Chieftain, towering in his furs and armor. He raises a hand, signaling for the guards to release you. The goblins step back, their hands still on their weapons, watching the scene unfold with interest.\n\nGoblin Chieftain (Gruknar):\n\"You're brave, human... or foolish. Tell me, why are you sneaking around my camp?\"\n",
       "choices": {
         "1": {
           "text": "Bluff with confidence",
@@ -731,12 +731,12 @@
         },
         "2": {
           "text": "Plead for mercy",
-          "response": "Player: \"Please, I didn’t mean to intrude. I’ll leave. Just spare me.\"\nGoblin Chieftain: \"Mercy? We goblins don’t give mercy, human. But I may have use for you.\"",
+          "response": "Player: \"Please, I didn't mean to intrude. I'll leave. Just spare me.\"\nGoblin Chieftain: \"Mercy? We goblins don't give mercy, human. But I may have use for you.\"",
           "next": "stonehaven_camp_execution"
         },
         "3": {
-          "text": "Challenge the Chieftain’s authority",
-          "response": "Player: \"You think you can control me? Let me go, or I’ll make you regret it!\"\n",
+          "text": "Challenge the Chieftain's authority",
+          "response": "Player: \"You think you can control me? Let me go, or I'll make you regret it!\"\n",
           "next": "Gruknar_duel"
         }
       }
@@ -753,7 +753,7 @@
       }
     },
     "stealth_success": {
-      "description": "By the time you reach the Chieftain’s hut, you've managed to incapacitate several sentries without raising the alarm. The camp is quieter now, and the goblins are none the wiser to the danger lurking in their midst.\nYou enter the Chieftain’s hut undetected, finding Gruknar deep in thought, surrounded by maps and weapons. The goblin looks up in surprise but quickly masks his shock with a grin.\n\nGoblin Chieftain (Gruknar):\n\"You! Impressive... but foolish. You’ve come here to kill me, yes?\"\nA tense silence fills the air as Gruknar stands, gripping his flaming axe.\n",
+      "description": "By the time you reach the Chieftain's hut, you've managed to incapacitate several sentries without raising the alarm. The camp is quieter now, and the goblins are none the wiser to the danger lurking in their midst.\nYou enter the Chieftain's hut undetected, finding Gruknar deep in thought, surrounded by maps and weapons. The goblin looks up in surprise but quickly masks his shock with a grin.\n\nGoblin Chieftain (Gruknar):\n\"You! Impressive... but foolish. You've come here to kill me, yes?\"\nA tense silence fills the air as Gruknar stands, gripping his flaming axe.\n",
       "choices": {
         "1": {
           "text": "Challenge him to combat.",
@@ -768,7 +768,7 @@
       }
     },
     "stonehaven_camp_front_gate": {
-      "description": "You make your way toward the goblin camp, the night air thick with the smell of smoke and the sounds of distant laughter and shouting. As you near the entrance to the camp, you spot several goblin sentries standing at attention, their eyes scanning the surrounding woods for intruders. There’s no hiding now—they’ve seen you, and they’re ready to fight.\n",
+      "description": "You make your way toward the goblin camp, the night air thick with the smell of smoke and the sounds of distant laughter and shouting. As you near the entrance to the camp, you spot several goblin sentries standing at attention, their eyes scanning the surrounding woods for intruders. There's no hiding now—they've seen you, and they're ready to fight.\n",
       "choices": {
         "1": {
           "text": "Charge forward.",
@@ -779,7 +779,7 @@
       }
     },
     "combat_success": {
-      "description": "After defeating the initial wave of goblins, the camp falls eerily silent. As the last of the goblins retreat into the forest, a deep, guttural laugh echoes from the largest tent in the camp. The flap parts, and Gruknar, the Goblin Chieftain, emerges. Towering over his kin, he’s clad in a patchwork of stolen armor and wields a massive, flaming axe that glows ominously in the dim light of the campfires.\nGoblin Chieftain (Gruknar): \"Impressive, human. You’ve got guts. But if you think you can walk in here and take what’s mine, you’ve got another thing coming. Let’s settle this...like warriors.\"\n",
+      "description": "After defeating the initial wave of goblins, the camp falls eerily silent. As the last of the goblins retreat into the forest, a deep, guttural laugh echoes from the largest tent in the camp. The flap parts, and Gruknar, the Goblin Chieftain, emerges. Towering over his kin, he's clad in a patchwork of stolen armor and wields a massive, flaming axe that glows ominously in the dim light of the campfires.\nGoblin Chieftain (Gruknar): \"Impressive, human. You've got guts. But if you think you can walk in here and take what's mine, you've got another thing coming. Let's settle this...like warriors.\"\n",
       "choices": {
        "1": {
          "text": "Challenge him to a duel.",
@@ -788,19 +788,19 @@
        },
        "2": {
          "text": "Avoid bloodshed and attempt to strike a deal with the goblin leader.",
-         "response": "Goblin Chieftain (Gruknar): \"A deal, you say? Hmph. I’m listening, human, but I ain’t letting you walk away empty-handed.\"\n",
+         "response": "Goblin Chieftain (Gruknar): \"A deal, you say? Hmph. I'm listening, human, but I ain't letting you walk away empty-handed.\"\n",
          "next": "Gruknar_taken_offer"
        },
        "3": {
          "text": "Attempt to intimidate the Goblin Chieftain.",
-         "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we’ll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You’re left to loot the camp without further resistance. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+         "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we'll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You're left to loot the camp without further resistance. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
          "inventory_add": ["goblin_chestplate","goblin_dagger","goblin_helmet","tome_of_abyss"],
          "next": "stonehaven_camp_intimidation_outcome"
        }
       }
     },
     "stonehaven_camp_meeting": {
-      "decription": "You stride into the camp openly, hands raised to show you mean no harm. The goblins, initially startled, quickly form a defensive ring, their crude weapons aimed at you. From the largest tent, a guttural voice bellows:\nGoblin Chieftain (Gruknar): \"Who dares walk into my camp uninvited? Speak quickly before I carve you into pieces!\"\nA towering goblin steps out, his flaming axe resting casually on his shoulder. His yellow eyes narrow as he sizes you up.\n",
+      "description": "You stride into the camp openly, hands raised to show you mean no harm. The goblins, initially startled, quickly form a defensive ring, their crude weapons aimed at you. From the largest tent, a guttural voice bellows:\nGoblin Chieftain (Gruknar): \"Who dares walk into my camp uninvited? Speak quickly before I carve you into pieces!\"\nA towering goblin steps out, his flaming axe resting casually on his shoulder. His yellow eyes narrow as he sizes you up.\n",
       "choices": {
         "1": {
           "text": "Offer the goblins a deal.",
@@ -821,26 +821,26 @@
         "1": {
           "text": "Pay off the goblins.",
           "response": "You hand over a small pouch of gold to the chieftain.Goblin Chieftain (Gruknar):\"I like the look of your gold human, we will leave the forest by daylight tomorrow. We goblins keep our word, unlike those human leaders you follow. I will give you a small token of peace, to help you in the future, let other goblin tribes know you are a fair human.\"\n",
-          "inventory_add": "goblin_peace_offering",
+          "inventory_add": ["goblin_peace_offering"],
           "gold": -50,
           "next": "stonehaven_camp_offer_outcome"
         }
       }
     },
     "Gruknar_duel": {
-      "description": "The goblins form a wide circle around you and Gruknar, jeering and pounding their weapons against the ground in a steady rhythm. The air is thick with the stench of smoke and sweat, and the flickering light of the campfires casts long, shifting shadows across the crude battleground.\nGruknar steps forward, his flaming axe igniting with a roar as he swings it in a show of strength. His yellow eyes gleam with savage delight, and his sharp teeth glint as he grins menacingly.\nGoblin Chieftain (Gruknar): \"You wanted a fight, human? You’ll regret crossing me. Let’s see if you’re as brave as your words!\"\n",
+      "description": "The goblins form a wide circle around you and Gruknar, jeering and pounding their weapons against the ground in a steady rhythm. The air is thick with the stench of smoke and sweat, and the flickering light of the campfires casts long, shifting shadows across the crude battleground.\nGruknar steps forward, his flaming axe igniting with a roar as he swings it in a show of strength. His yellow eyes gleam with savage delight, and his sharp teeth glint as he grins menacingly.\nGoblin Chieftain (Gruknar): \"You wanted a fight, human? You'll regret crossing me. Let's see if you're as brave as your words!\"\n",
       "choices": {
         "1": {
           "text": "Duel",
           "response": "You charge towards the Chieftain, hoping to win.\n",
           "combat": "goblin_chieftain_gruknar",
-          "death_msg": "Goblin Chieftain (Gruknar):\"Hah! You’re strong, human, but not strong enough!\"\n",
+          "death_msg": "Goblin Chieftain (Gruknar):\"Hah! You're strong, human, but not strong enough!\"\n",
           "next": "duel_outcome"
         }
       }
     },
     "combat_outcome": {
-      "description": "Bodies of goblin warriors and shamans are strewn across the clearing, and the acrid scent of burning tents fills the air. The ground beneath your feet is scorched and littered with discarded weapons.\nAmid the wreckage, a few surviving goblins cower, their eyes wide with fear. They dare not attack, instead retreating into the shadows of the forest.\nYou stand victorious, bloodied but triumphant. As you survey the aftermath, your gaze falls upon the chieftain’s hut—a crude structure of bone and hide, still intact. A faint growl emanates from within, and you know the fight isn’t over yet.\n",
+      "description": "Bodies of goblin warriors and shamans are strewn across the clearing, and the acrid scent of burning tents fills the air. The ground beneath your feet is scorched and littered with discarded weapons.\nAmid the wreckage, a few surviving goblins cower, their eyes wide with fear. They dare not attack, instead retreating into the shadows of the forest.\nYou stand victorious, bloodied but triumphant. As you survey the aftermath, your gaze falls upon the chieftain's hut—a crude structure of bone and hide, still intact. A faint growl emanates from within, and you know the fight isn't over yet.\n",
       "choices": {
         "1": {
           "text": "Loot the camp.",
@@ -852,7 +852,7 @@
       }
     },
     "duel_outcome": {
-      "description": "With one final strike, you end Gruknar’s life. The goblins watch in stunned silence before dropping their weapons and fleeing into the woods.\nThe Goblin Chieftain’s reign of terror is over, and with his death, the camp is dismantled. The threat to Stonehaven is no more.\n",
+      "description": "With one final strike, you end Gruknar's life. The goblins watch in stunned silence before dropping their weapons and fleeing into the woods.\nThe Goblin Chieftain's reign of terror is over, and with his death, the camp is dismantled. The threat to Stonehaven is no more.\n",
       "choices": {
         "1": {
           "text": "Loot the camp.",
@@ -864,7 +864,7 @@
       }
     },
     "stonehaven_camp_death_outcome": {
-      "description": "The journey back to Stonehaven is quiet, the weight of recent events hanging heavy in the air. The goblin threat has been dealt with, and the once-dangerous camp now lies in ruins.\nAs you approach the gates, townsfolk gather, their faces a mixture of relief and curiosity. Whispers ripple through the crowd as they take in your battle-worn appearance and the grim trophies of your victory.\nIn the mayor’s office, Garrek waits, his expression tense but hopeful.\nMayor Garrek:\"You’ve returned. Tell me, is it done?\"\nYou recount the events—the confrontation, the battle, and the resolution. Garrek listens closely, nodding as you finish.\nMayor Garrek:\"You’ve done well. The town owes you more than words can express. As promised, here is your reward.\"\nHe hands you a pouch of gold.\nThe townsfolk cheer as you leave the office, their gratitude palpable. Though the danger has passed, a sense of unease lingers—this victory feels like the beginning of something greater.\n",
+      "description": "The journey back to Stonehaven is quiet, the weight of recent events hanging heavy in the air. The goblin threat has been dealt with, and the once-dangerous camp now lies in ruins.\nAs you approach the gates, townsfolk gather, their faces a mixture of relief and curiosity. Whispers ripple through the crowd as they take in your battle-worn appearance and the grim trophies of your victory.\nIn the mayor's office, Garrek waits, his expression tense but hopeful.\nMayor Garrek:\"You've returned. Tell me, is it done?\"\nYou recount the events—the confrontation, the battle, and the resolution. Garrek listens closely, nodding as you finish.\nMayor Garrek:\"You've done well. The town owes you more than words can express. As promised, here is your reward.\"\nHe hands you a pouch of gold.\nThe townsfolk cheer as you leave the office, their gratitude palpable. Though the danger has passed, a sense of unease lingers—this victory feels like the beginning of something greater.\n",
       "choices": {
         "1": {
           "text": "Continue on your journey.",
@@ -874,8 +874,8 @@
         }
       }
     },
-    "stonehaven_camp_peace_outcome": {
-      "description": "You step into the mayor's office, where Mayor Garrek is pacing with a scowl on his face. The tension in the room is palpable.\nMayor Garrek: \"Well? What happened? I expect answers, not excuses.\"\nYou explain that the goblins took the gold and moved away without further conflict.\nMayor Garrek: \"You paid them? Gold? To those filthy thieves?\" His face reddens in disbelief. \"And you think that’s a victory? You’ve just encouraged them! Now they’ll know they can extort us whenever they please.\"\nHe turns away, clearly frustrated, muttering to himself before glaring at you.\nMayor Garrek: \"You had a chance to deal with this the right way, but instead, you bought them off like some merchant trying to make a deal. You’ve made us look weak. You’ve made me look weak!\"\nHe takes a deep breath, trying to regain control, but the anger is still evident.\nMayor Garrek: \"I’ll clean up this mess, but don’t think for a second that your actions haven’t consequences.\"\n",
+    "stonehaven_camp_offer_outcome": {
+      "description": "You step into the mayor's office, where Mayor Garrek is pacing with a scowl on his face. The tension in the room is palpable.\nMayor Garrek: \"Well? What happened? I expect answers, not excuses.\"\nYou explain that the goblins took the gold and moved away without further conflict.\nMayor Garrek: \"You paid them? Gold? To those filthy thieves?\" His face reddens in disbelief. \"And you think that's a victory? You've just encouraged them! Now they'll know they can extort us whenever they please.\"\nHe turns away, clearly frustrated, muttering to himself before glaring at you.\nMayor Garrek: \"You had a chance to deal with this the right way, but instead, you bought them off like some merchant trying to make a deal. You've made us look weak. You've made me look weak!\"\nHe takes a deep breath, trying to regain control, but the anger is still evident.\nMayor Garrek: \"I'll clean up this mess, but don't think for a second that your actions haven't consequences.\"\n",
       "choices": {
         "1": {
           "text": "Continue on your journey.",
@@ -886,7 +886,7 @@
       }
     },
     "stonehaven_camp_intimidation_outcome": {
-      "description": "The journey back to Stonehaven is quiet, the weight of recent events heavy in the air. The goblin threat has been dealt with, but the camp still stands, its leader intimidated into submission rather than eradicated.\nAs you approach the gates, townsfolk gather, their faces a mix of relief and curiosity. Whispers ripple through the crowd as they take in your battle-worn appearance and the grim trophies of your victory.\nIn the mayor’s office, Garrek waits, his expression tense but hopeful.\nMayor Garrek: \"You’ve returned. Tell me, is it done?\"\nYou recount the events—the confrontation, the intimidation, and the outcome. Garrek listens closely, his brow furrowing.\nMayor Garrek: \"I see. You’ve done well, but… I had hoped for a more final resolution. The goblins still remain, after all.\"\nDespite his words, he hands you a pouch of gold.\nThe townsfolk cheer as you leave the office, their gratitude palpable. Though the danger has passed, a sense of unease lingers—this victory feels like the beginning of something greater, something still unresolved.\n",
+      "description": "The journey back to Stonehaven is quiet, the weight of recent events heavy in the air. The goblin threat has been dealt with, but the camp still stands, its leader intimidated into submission rather than eradicated.\nAs you approach the gates, townsfolk gather, their faces a mix of relief and curiosity. Whispers ripple through the crowd as they take in your battle-worn appearance and the grim trophies of your victory.\nIn the mayor's office, Garrek waits, his expression tense but hopeful.\nMayor Garrek: \"You've returned. Tell me, is it done?\"\nYou recount the events—the confrontation, the intimidation, and the outcome. Garrek listens closely, his brow furrowing.\nMayor Garrek: \"I see. You've done well, but… I had hoped for a more final resolution. The goblins still remain, after all.\"\nDespite his words, he hands you a pouch of gold.\nThe townsfolk cheer as you leave the office, their gratitude palpable. Though the danger has passed, a sense of unease lingers—this victory feels like the beginning of something greater, something still unresolved.\n",
       "choices": {
         "1": {
           "text": "Continue on your journey.",
@@ -895,6 +895,70 @@
           "next": "adventure_guild"
         }
       }
+    },
+    "tranquil_monastery": {
+      "description": "You see a serene monastery nestled in a peaceful valley, surrounded by flowering trees and babbling brooks. The gentle sound of bells rings in the distance, and monks in simple robes tend to the gardens. A sense of calm washes over you as you approach.\nThe monastery appears welcoming, with open gates and monks cheerfully tending to crops and animals. A kindly old monk greets you at the entrance. \"Welcome, traveler,\" he says with a warm smile. \"All are welcome here. Please, rest and partake in our humble offerings.\"\n",
+      "choices": {
+        "1": {
+          "text": "Rest and recuperate.",
+          "response": "You are given a hearty meal and a comfortable place to sleep. Your health is fully restored, and you feel refreshed.\n",
+          "health": 5,
+          "next": "tranquil_monastery"
+        },
+        "2": {
+          "text": "Help the monks.",
+          "response": "You offer your help to the monks.",
+          "next": "monk_help"
+        },
+        "3": {
+          "text": "Learn from the monks.",
+          "response": "You ask the monks to give you teachings that could be useful in your journey",
+          "next": "monk_teaching"
+        },
+        "4": {
+          "text": "Ask about the area.",
+          "response": "The monks mention a nearby village with a struggling market. They ask if you can deliver a small crate of food to help.",
+          "next": "monk_delivery"
+        },
+        "5": {
+          "text": "Say goodbye.",
+          "response": "You say your farewells to the friendly monks, as they bless your journey, hoping you find peace and a safe haven.",
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "monk_help": {
+      "description": "The monks graciously accept your offer, giving you a choice of tasks to complete alongside them. You could help in the garden, growing some magnificent herbs and flowers, or help bring wood from the nearby forest. They also mention tha you could join them in prayer, and mediate alongside them.\n",
+      "choices": {
+        "1": {
+          "text": "Gardening.",
+          "response": "You choose to help in the garden.\n",
+          "next": "monastery_garden"
+        },
+        "2": {
+          "text": "Wood gathering.",
+          "response": "You decide to help the monks bring in wood from forest.\n",
+          "next": "monastery_forest"
+        },
+        "3": {
+          "text": "Meditate.",
+          "response": "You decide to give prayer a go.\n",
+          "next": "monastery_prayer_room"
+        }
+      }
+    },
+    "monk_garden": {
+      "description": "A peaceful haven of greenery, the garden is alive with vibrant flowers lining stone paths and the soft hum of bees. Small fountains trickle gently, and monks tend to patches of herbs, vegetable plots, and fruit trees.\nSome monks water flowers with wooden cans, while others carefully weed or pick ripe fruit. Nearby, younger monks chase off playful rabbits nibbling the crops. In the center, a stone bench under a blooming arbor offers a quiet place to rest or watch the serene work unfold. The air is filled with calm, inviting you to join in or simply reflect.\n",
+      "choices": {
+        "1": {
+          "text": "Start your tasks.",
+          "response": "With a wooden watering can in hand, you move carefully along the flower beds, ensuring each vibrant bloom drinks deeply. The earthy scent of damp soil fills the air as you nurture the herbs and plants. Nearby, a monk points to a patch of stubborn weeds, and you crouch to carefully pluck them, avoiding the roots of nearby vegetables.\n\nAt the fruit trees, you steady a wooden ladder and reach for ripe, sun-warmed fruits, feeling the weight of each one as you place it gently into a basket. Occasionally, a mischievous rabbit darts by, and with a wave and a bit of stealth, you shoo it toward the edge of the garden without startling it.\n",
+          "next": "monk_garden_outcome"
+        }
+      }
+    },
+    "monk_garden_outcome": {
+      "": ""
     }
   }
 }

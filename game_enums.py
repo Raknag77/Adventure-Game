@@ -30,7 +30,8 @@ class EnemyTypeEnum(Enum):
 
 EnemyTypeLiteral = Literal[
     "undead",
-    "beast"
+    "beast",
+    "goblin"
 ]
 
 ItemTypeLiteral = Literal[

@@ -39,6 +39,7 @@ class Item:
         self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
         self.price = item_data["items"][item_type_value][item_id].get("price")
         self.skills = item_data["items"][item_type_value][item_id].get("skills")
+        self.type = item_data["items"][item_type_value][item_id].get("type")
 
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
@@ -75,11 +76,9 @@ class Item:
         return self._id
 
 def get_item_type(item_id):
-    # Check each category for the item_id
     for category, items in item_data["items"].items():
-        if item_id in items:  # If item_id exists in the category
-            return category  # Return the category (item_type) where the item_id was found
-    # If the item is not found in any category, raise an error
+        if item_id in items:
+            return category
     raise ValueError(f"Item ID '{item_id}' not found in any known category.")
 
 def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
@@ -90,14 +89,11 @@ def get_enemy_type(enemy_name: str) -> Optional[EnemyTypeEnum]:
     return None
 
 def get_random_enemy_instance():
-    category_name = random.choice(list(enemy_data['enemies'].keys()))
-
-    category = enemy_data['enemies'][category_name]
+    category_name = random.choice(list(enemy_data["enemies"].keys()))
+    category = enemy_data["enemies"][category_name]
     enemy_id = random.choice(list(category.keys()))
-
-    enemy_type_enum = EnemyTypeEnum(category_name.upper())
+    enemy_type_enum = EnemyTypeEnum(category_name.lower())
     enemy_instance = Enemy(enemy_id=enemy_id, enemy_type=enemy_type_enum)
-
     return enemy_instance
 
 class Enemy:
@@ -135,7 +131,7 @@ class Character:
         self.ring: Optional[Item] = None
 
         self.stats = Stats(
-            50, 0, 1, 10, 0.01,0
+            50, 0, 1, 10, 0.01,50
         )
         self.base_health: int = 50
         self.gold: int = 1000
@@ -329,55 +325,57 @@ def const_choices(input_value):
 def loot(character, enemy):
     loot_data = None
     for category in enemy_data['enemies'].values():
-        if enemy in category:
-            loot_data = category[enemy].get('loot', None)
+        if enemy._id in category:
+            loot_data = category[enemy._id].get('loot', None)
             break
 
     if loot_data:
         for item in loot_data:
-            item_name = item['item']
+            item_id = item['item']
+            item_name = item.get("name", item_id)
             item_rarity = item['rarity']
+            luck = getattr(character.stats, 'luck', 0)
 
             if item_rarity == "common":
                 common_loot_chance = random.randint(1, 100)
-                if common_loot_chance < 75 + character.stats.luck:
-                    inventory.append(item_name)
-                    print(f"Loot added: {item_name}")
+                if common_loot_chance < 75 + luck:
+                    inventory.append(item_id)
+                    print(f"Loot added: {item_id}")
                 else:
-                    print(f"No loot found on {item_name}.")
+                    print(f"No loot found.")
             elif item_rarity == "rare":
                 rare_loot_chance = random.randint(1, 100)
-                if rare_loot_chance < 40 + character.stats.luck:
-                    inventory.append(item_name)
+                if rare_loot_chance < 40 + luck:
+                    inventory.append(item_id)
                     print(f"Loot added: {item_name}")
                 else:
-                    print(f"No loot found on {item_name}.")
+                    print(f"No loot found.")
             elif item_rarity == "exquisite":
                 exquisite_loot_chance = random.randint(1, 100)
-                if exquisite_loot_chance < 15 + character.stats.luck:
-                    inventory.append(item_name)
+                if exquisite_loot_chance < 15 + luck:
+                    inventory.append(item_id)
                     print(f"Loot added: {item_name}")
                 else:
-                    print(f"No loot found on {item_name}.")
+                    print(f"No loot found.")
             elif item_rarity == "legendary":
                 legendary_loot_chance = random.randint(1, 100)
-                if legendary_loot_chance < 1 + character.stats.luck:
-                    inventory.append(item_name)
+                if legendary_loot_chance < 1 + luck:
+                    inventory.append(item_id)
                     print(f"Loot added: {item_name}")
                 else:
-                    print(f"No loot found on {item_name}.")
+                    print(f"No loot found.")
             elif item_rarity == "guaranteed":
                 guaranteed_loot_chance = random.randint(1, 100)
-                if guaranteed_loot_chance <= 100 + character.stats.luck:
+                if guaranteed_loot_chance <= 100 + luck:
                     inventory.append(item_name)
                     print(f"Loot added: {item_name}")
                 else:
-                    print(f"No loot found on {item_name}.")
+                    print(f"No loot found.")
             else:
-                print(f"No loot found on {item_name}.")
+                print(f"No loot found.")
 
     else:
-        print(f"No loot found on {enemy}")
+        print(f"No loot found on {enemy.name}")
 
 def shop(character: Character):
     shop_items: List[Item] = []
@@ -410,19 +408,15 @@ def shop(character: Character):
 
 def job_board():
     enemy_instance = get_random_enemy_instance()
-    print(f"Nearby village is being attacked by \n{enemy_instance.name}.")
+    print(f"Nearby village is being attacked by {enemy_instance.name}.")
     combat_result = combat(player, enemy_instance)
 
-    if not combat_result:  # Player lost
+    if not combat_result:
         print("Game over! Reload your save or try again.")
-        # Add logic for game-over scenario here (e.g., restart, quit, or reload).
-    else:  # Player won
+        exit()
+    else:
         print("Searching for loot...")
         loot(player,enemy_instance)
-        if loot:
-            print(f"You found: {loot}")
-        else:
-            print(f"No loot found on {enemy_instance.name}.")
 
 def random_event():
     global random_encounter_count
@@ -472,12 +466,27 @@ def crit_enemy_hit(enemy) -> bool:
         return True
     return False
 
+def check_quiver(character:Character) ->bool:
+    if character.charm is not None and character.weapon.skills == "quiver":
+        if character.weapon is not None and character.weapon.type == "bow":
+            return True
+    return False
+
 def check_berserk(character: Character) ->bool:
     if character.weapon is not None and character.weapon.skills == "berserk":
         return True
     elif character.charm is not None and character.charm.skills == "berserk":
         return True
     elif character.ring is not None and character.ring.skills == "berserk":
+        return True
+    return False
+
+def check_weakness(character:Character) ->bool:
+    if character.weapon is not None and character.weapon.skills == "weakness":
+        return True
+    elif character.charm is not None and character.charm.skills == "weakness":
+        return True
+    elif character.ring is not None and character.ring.skills == "weakness":
         return True
     return False
 
@@ -598,18 +607,18 @@ def calculate_damage_taken(enemy: Enemy, character: Character):
 
 
 def combat(character, enemy):
-    # Ensure combat starts with current health initialized
     character.current_health = character.health
     print(f"{character.name}'s starting health: {character.current_health}")
 
     while character.current_health > 0 and enemy.stats.health > 0:
+        weakness = check_weakness(character)
         dodge = evasion(character)
         berserk = check_berserk(character)
-        damage_taken = calculate_damage_taken(enemy, character)
-        if dodge:
-            damage_taken = 0
+        quiver= check_quiver(character)
 
         damage_dealt = calculate_damage_dealt(character, enemy)
+        if quiver:
+            damage_dealt *= 1.2
         if berserk:
             if character.current_health < 0.33*character.base_health:
                 damage_dealt *= 1.5
@@ -621,6 +630,12 @@ def combat(character, enemy):
             print(f"{enemy.name} is dead.")
             break
 
+        damage_taken = calculate_damage_taken(enemy, character)
+        if dodge:
+            damage_taken = 0
+        if weakness:
+            damage_taken *= 0.9
+
         character.current_health -= damage_taken
         print(f"Damage taken: {damage_taken}")
         print(f"{character.name}'s remaining health: {max(character.current_health, 0)}")
@@ -629,7 +644,6 @@ def combat(character, enemy):
             print(f"{character.name} is dead.")
             break
 
-    # Post-combat handling
     if character.current_health <= 0:
         return False
     else:
@@ -688,7 +702,7 @@ def display_encounter(encounter_name):
                 if isinstance(choice_details["combat"], list):
                     for enemy_name in choice_details["combat"]:
                         combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
-                        if combat_result:  # Player won the combat
+                        if combat_result:
                             loot(player, enemy_name)
                         else:
                             if "death_msg" in choice_details:
@@ -701,8 +715,13 @@ def display_encounter(encounter_name):
                     enemy_name = choice_details["combat"]
                     combat_result = combat(player, Enemy(enemy_name, get_enemy_type(enemy_name)))
                     if not combat_result:
-                        print("Game over.")
-                        exit()
+                        if "death_msg" in choice_details:
+                            death_msg = choice_details["death_msg"]
+                            print(death_msg)
+                            exit()
+                        else:
+                            print("Game over! Reload your save or try again.")
+                            exit()
                     loot(player, enemy_name)
 
             if "shop" in choice_details:
@@ -763,6 +782,11 @@ You examined the weapons carefully, running your fingers along the edges of blad
 Two weapons caught your eye: a sword, balanced and precise, and a lance, long and steadfast. You felt that your journey should begin with this first choice.\n
 """
 
+    player.helmet = Item("scout_hat",ItemTypeEnum.HELMET)
+    player.chestpiece = Item("leather_tunic",ItemTypeEnum.CHESTPIECE)
+    player.leggings = Item("leather_pants",ItemTypeEnum.LEGGINGS)
+    player.boots = Item("black_leather_boots",ItemTypeEnum.BOOTS)
+    player.charm = Item("adventure_badge",ItemTypeEnum.CHARM)
     player.ring = Item("copper_ring",ItemTypeEnum.RING)
     print(starting_story_1)
     player.name = input("What is your name? ").lower().title()

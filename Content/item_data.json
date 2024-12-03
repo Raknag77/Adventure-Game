@@ -151,6 +151,16 @@
       }
     },
     "helmets": {
+      "scout_hat": {
+        "name": "Scou's Hat",
+        "description": "A rugged leather hat with a wide brim for shade and a feather tucked into its band. Light and weather-resistant, it's a trusted companion for any explorer.\n",
+        "stats": {
+          "agility": 2
+        },
+        "rarity": "common",
+        "price": 2,
+        "attribute": "physical"
+      },
       "goblin_helmet": {
         "name": "Goblin Helmet",
         "description": "A simple yet effective helmet made of rough metal, often scavenged from fallen enemies or looted from abandoned ruins. It provides basic protection to the head and is adorned with small spikes, giving it a fearsome appearance. While not the most durable, it offers protection from minor blows, making it a practical choice for goblin warriors who rely on speed rather than resilience.\n",
@@ -253,6 +263,16 @@
       }
     },
     "charms": {
+      "adventure_badge": {
+        "name": "Adventure Guild Badge",
+        "description": "A polished bronze emblem etched with the symbol of the guild. Worn with pride, it marks the bearer as a true seeker of glory and fortune.\n",
+        "stats": {
+          "health": 1
+        },
+        "rarity": "common",
+        "price": 2,
+        "attribute": "physical"
+      },
       "wood_charm": {
         "name": "Wooden Charm",
         "description": "A small wooden charm carved in the shape of a stag. It is smooth to the touch, with intricate details etched into the wood. The charm radiates a faint, comforting energy, as if connected to the natural world.",
