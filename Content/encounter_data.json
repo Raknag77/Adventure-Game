@@ -962,22 +962,110 @@
         }
       }
     },
-    "monk_garden": {
+    "monastery_garden": {
       "description": "A peaceful haven of greenery, the garden is alive with vibrant flowers lining stone paths and the soft hum of bees. Small fountains trickle gently, and monks tend to patches of herbs, vegetable plots, and fruit trees.\nSome monks water flowers with wooden cans, while others carefully weed or pick ripe fruit. Nearby, younger monks chase off playful rabbits nibbling the crops. In the center, a stone bench under a blooming arbor offers a quiet place to rest or watch the serene work unfold. The air is filled with calm, inviting you to join in or simply reflect.\n",
       "choices": {
         "1": {
           "text": "Start your tasks.",
           "response": "With a wooden watering can in hand, you move carefully along the flower beds, ensuring each vibrant bloom drinks deeply. The earthy scent of damp soil fills the air as you nurture the herbs and plants. Nearby, a monk points to a patch of stubborn weeds, and you crouch to carefully pluck them, avoiding the roots of nearby vegetables.\n\nAt the fruit trees, you steady a wooden ladder and reach for ripe, sun-warmed fruits, feeling the weight of each one as you place it gently into a basket. Occasionally, a mischievous rabbit darts by, and with a wave and a bit of stealth, you shoo it toward the edge of the garden without startling it.\n",
-          "next": "monk_garden_outcome"
+          "inventory_add": ["bundle_vervain","bundle_elderflower","bundle_sage","bundle_lavender"],
+          "next": "monastery_garden_outcome"
         }
       }
     },
-    "monk_garden_outcome": {
+    "monastery_garden_outcome": {
       "description": "As you finish tending to the monastery’s garden, the monks approach you with warm smiles, their gratitude evident in their kind expressions.\nHead Monk: \"You’ve shown great care and respect for our sacred garden. Please accept these herbs as a token of our thanks.\"\nThey hand you a small pouch filled with freshly gathered herbs.\nHead Monk: \"These herbs carry the spirit of this garden. May they serve you well on your journey.\"\nWith the gifts in hand, you feel a renewed connection to nature and the peaceful energy of the monastery.\n",
       "choices": {
         "1": {
           "text": "Return to the monastery.",
           "response": "You make your way back towards the entrance of the monastery, passing a few already familiar faces along the way.\n",
+          "next": "tranquil_monastery"
+        }
+      }
+    },
+    "monastery_forest": {
+      "description": "As you walk through the forest, the monks’ wood-gathering path weaves through mossy trees and misty air. The task seems simple—retrieve logs and return to the monastery—but an eerie stillness overtakes the area as you venture deeper.\nA shadow moves in the mist ahead, almost imperceptible but enough to draw your attention. Emerging silently from the fog is an ashveil lynx, its smoky gray fur blending seamlessly with the misty surroundings. The creature’s amber eyes meet yours, glimmering with quiet intensity. Its movements are slow, almost cautious, as if testing your intent.\n",
+      "choices": {
+        "1": {
+          "text": "Attempt to calm the creature.",
+          "response": "You carefully lower your posture, avoiding sudden movements. Perhaps the lynx only seeks to protect its territory, and showing respect might ease its tension.\n",
+          "next": "calming_lynx"
+        },
+        "2": {
+          "text": "Offer a ration.",
+          "response": "Search your pack for something edible. Animals of the forest are known to appreciate food offerings, though you wonder if this mystical creature would accept it.\n",
+          "requirements": ["meat"],
+          "next": "feeding_lynx"
+        },
+        "3": {
+          "text": "Prepare to defend yourself.",
+          "response": "Reach for your weapon. While the lynx shows no signs of aggression yet, its powerful frame and piercing gaze suggest it would be a dangerous opponent if it attacks.\n",
+          "next": "attacking_lynx"
+        },
+        "4": {
+          "text": "Retreat carefully.",
+          "response": "Take slow steps back toward the monastery. If the lynx is only observing, leaving its territory might avoid conflict entirely.\n",
+          "next": "retreating_lynx"
+        }
+      }
+    },
+    "calming_lynx": {
+      "description": "You manage to calm the lynx, the creature relaxes and vanishes into the mist as silently as it appeared.\nThe monks later tell you the Ashveil Lynx is a guardian spirit of the forest, and your respectful actions might earn you favor in future endeavors.\n",
+      "choices": {
+        "1": {
+          "text": "Return to the hall.",
+          "response": "You start heading back to the centre of the monastery, briefly conversing with a monk on the way.\n",
+          "next": "tranquil_monastery"
+        }
+      }
+    },
+    "feeding_lynx": {
+      "description": "You take out a piece of meat and extend your are out with it, bowing your head down as a sign of peace. The feline slowly makes its way towards you and relaxes as it takes the meat from your hand.\n You watch it move a small way away before it starts feasting on your treat. It eats the meat clean off the bones before gibing you a little growl of appreciation and returning back into the forest. You notice something small and glowing left in the bone, a small grey faintly glowing fang. You pick it up and return to the monastery where the monks tell you the Ashveil Lynx is a guardian spirit of the forest, and your respectful actions might earn you favor in future endeavors.\n",
+      "choices": {
+        "1": {
+          "text": "Return to the hall.",
+          "response": "You statr making your way through the slowly familiar structure of the monastery.\n",
+          "next": "tranquil_monastery"
+        }
+      }
+    },
+    "attacking_lynx": {
+      "description": "Taking your movements as a sign of aggression, the lynx attacks with graceful ferocity, testing your mettle in combat.\n",
+      "choices": {
+        "1": {
+          "text": "Attack the Lynx.",
+          "combat": ["ashveil_lynx"],
+          "response": "You duel with the sacred forest guardian.",
+          "next": "attacking_lynx_outcome"
+        }
+      }
+    },
+    "attacking_lynx_outcome": {
+      "description": "After the battle, you return to the monastery, he monks gather solemnly, their expressions heavy with disappointment.\n\"You’ve slain a guardian of this forest,\" the head monk says, his voice filled with quiet sorrow. \"The Ashveil Lynx is sacred, a protector, not a foe. We cannot condone this act.\"\nDespite your attempts to explain, their decision is final. They gather your belongings, offering a simple blessing for safety, and escort you to the gates. The doors close behind you with a mournful creak, leaving you alone under the forest’s shadow.\n",
+      "choices": {
+        "1": {
+          "text": "Leave the monastery behind.",
+          "response": "You walk back through the forest in a deep sorrow, perhaps your choices this time were not the best ones.\n",
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "retreating_lynx": {
+      "description": "You take slow, measured steps backward, your eyes never leaving the lynx. The forest seems to hold its breath, the only sound the faint crunch of leaves underfoot. The Ashveil Lynx watches you intently, its amber eyes glowing softly in the mist. It makes no move to follow, but its presence lingers, a quiet reminder of the forest's power. Once you feel you’re at a safe distance, you turn and make your way back toward the monastery, the tension gradually fading with each step away from the encounter.\n",
+      "choices": {
+        "1": {
+          "text": "Head into the monastery.",
+          "response": "You walk into the monastery leaving the curious lynx behind. You get the feeling it wasn't a malicious creature however.\n",
+          "next": "tranquil_monastery"
+        }
+      }
+    },
+    "monastery_prayer_room": {
+      "description": "you are guided down a quiet corridor lit by the soft glow of oil lamps. The faint scent of incense grows stronger as you approach the prayer room, a space steeped in reverence.\n\nInside, the room is humble but striking—a simple altar adorned with candles and a worn, sacred tome sits at the far end. The walls are etched with intricate carvings of ancient symbols, stories of peace, and unity.\nYou are shown a place to sit, and the elder monk at the altar begins to chant, his voice resonating with an almost otherworldly calm. The other monks join in, their voices weaving together in a harmonious rhythm that seems to fill not only the room but your very soul. The chant's cadence lulls you into a meditative state, a sense of warmth and connection spreading through you.\n",
+      "choices": {
+        "1": {
+          "text": "Fully embrace the ritual.",
+          "response": "You close your eyes and allow yourself to be swept away by the chant, surrendering to the peace of the moment. A vivid vision of radiant light and a serene meadow fills your mind.\n",
           "next": "tranquil_monastery"
         }
       }

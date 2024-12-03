@@ -64,9 +64,10 @@
         },
         "attributes": "natural",
         "loot": [
-    {"item": "wolf_pelt", "rarity": "common"},
-    {"item": "wolf_fang", "rarity": "common"}
-]
+          {"item": "meat", "rarity": "common"},
+          {"item": "wolf_pelt", "rarity": "rare"},
+          {"item": "wolf_fang", "rarity": "common"}
+      ]
 
       }
     },

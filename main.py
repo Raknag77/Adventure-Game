@@ -194,6 +194,7 @@ def equipment_tab():
                       "Press [5] to change your boots\n"
                       "Press [6] to change your charm\n"
                       "Press [7] to change your ring\n"
+                      "Press [8] to keep current equipment\n"
                       )
     if equip_tab == "1":
         owned_weapons = [item for item in inventory if item in item_data["items"]["weapons"].keys()]
@@ -293,6 +294,8 @@ def equipment_tab():
             inventory.append(player.ring.get_id())
             player.ring = equip_ring
             inventory.remove(equip_ring_id)
+    elif equip_tab == "8":
+        return
     else:
         print("Invalid input, returning.")
         return
@@ -685,7 +688,7 @@ def display_encounter(encounter_name):
                 for item_id in new_items:
                     inventory.append(item_id)
                     print(
-                        f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id)))) for item_id in inventory[-len(new_items):]])} to inventory.")
+                        f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id))))])} to inventory.")
 
             if "requirements" in choice_details:
                 required_items = choice_details["requirements"]
