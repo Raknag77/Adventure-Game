@@ -11,6 +11,8 @@ from objects import Stats
 
 # with open('game_content.json', 'r') as file:
 #     game_content: GameContentType = json.load(file)
+with open('Content/crafting_data.json', 'r') as file:
+    crafting_data = json.load(file)
 with open('Content/encounter_data.json', 'r') as file:
     encounter_data = json.load(file)
 with open('Content/item_data.json', 'r') as file:
@@ -25,8 +27,18 @@ random_encounter_count = 0
 events = ["outside_tranquil_monastery"]
 
 library = ["bow_recipe"]
-inventory = ["excalibur"]
+inventory = ["excalibur","string","stick"]
 
+class Recipe:
+    def __init__(self,recipe_id):
+        self.id = recipe_id
+        self.name = crafting_data["recipes"][recipe_id]["name"]
+        self.input = crafting_data["recipes"][recipe_id]["input"]
+        self.output = crafting_data["recipes"][recipe_id]["output"]
+
+    def __repr__(self):
+        return (f"{self.name}\n"
+                f"{self.input}\n")
 
 class Item:
     def __init__(self, item_id: str, item_type: ItemTypeEnum):
@@ -184,8 +196,37 @@ class Character:
 
 player = Character()
 
+
 def craft():
-    print
+    known_recipes = [item for item in library if item in crafting_data["recipes"].keys()]
+
+    if not known_recipes:
+        print("You don't know any recipes yet!")
+        return
+    print("Known recipes:")
+    for recipe in known_recipes:
+        print(f"- {recipe}")
+
+    recipe_input = input("Choose an item to craft: ").strip().lower()
+
+    if recipe_input not in known_recipes:
+        print("Invalid choice. Please choose a valid recipe.")
+        return
+    recipe_name = next(item for item in known_recipes if item.lower() == recipe_input)
+    craft_input = Recipe(recipe_name)
+
+    missing_items = [item for item in craft_input.input if item not in inventory]
+    if missing_items:
+        print(f"You are missing: {', '.join(missing_items)}.")
+        return
+
+    for item in craft_input.input:
+        inventory.remove(item)
+    inventory.append(craft_input.output)
+
+    print(f"You crafted {craft_input.output} using {', '.join(craft_input.input)}!")
+    print(f"{craft_input.output} has been added to your inventory.")
+
 
 def equipment_tab():
     print("This is your current equipment:\n")
@@ -324,6 +365,9 @@ def const_choices(input_value):
 
     elif input_value == "e":
         equipment_tab()
+
+    elif input_value == "c":
+        craft()
 
     else:
         print("Invalid input. Please choose again.")
@@ -678,7 +722,7 @@ def display_encounter(encounter_name):
 
     while True:
         player_choice = input("What do you do? ")
-        if player_choice in ["i", "e"]:
+        if player_choice in ["i", "e","c"]:
             const_choices(player_choice)
             continue
 

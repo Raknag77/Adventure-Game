@@ -1,7 +1,9 @@
 {
   "recipes": {
     "bow_recipe": {
-      "material": ["stick","string"]
+      "name": "Bow Recipe",
+      "input": ["stick","string"],
+      "output": "goblin_bow"
     }
   }
 }
