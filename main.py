@@ -24,6 +24,7 @@ random_encounter_count = 0
 # events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp","outside_tranquil_monastery"]
 events = ["outside_tranquil_monastery"]
 
+library = ["bow_recipe"]
 inventory = ["excalibur"]
 
 
@@ -183,6 +184,8 @@ class Character:
 
 player = Character()
 
+def craft():
+    print
 
 def equipment_tab():
     print("This is your current equipment:\n")

@@ -1,0 +1,7 @@
+{
+  "recipes": {
+    "bow_recipe": {
+      "material": ["stick","string"]
+    }
+  }
+}

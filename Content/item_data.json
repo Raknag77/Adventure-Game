@@ -511,6 +511,12 @@
         "rarity": "common",
         "price": 4
       },
+      "stick": {
+        "name": "Stick",
+        "description": "A smaller log.",
+        "rarity": "common",
+        "price": "2"
+      },
       "string": {
         "name": "String",
         "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.\n",
