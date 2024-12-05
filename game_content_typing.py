@@ -52,7 +52,7 @@ class Item(TypedDict, total=False):
     rarity: str
     price: int
     attribute: Optional[str]
-    skills: Optional[Union[str, List[str]]]
+    traits: Optional[Union[str, List[str]]]
 
 class Material(TypedDict):
     name: str

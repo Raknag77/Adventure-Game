@@ -100,7 +100,7 @@
           "critChance": 0.15
         },
         "attributes": "physical",
-        "skills": "poison",
+        "traits": "poison",
         "loot": [
     {"item": "bone", "rarity": "common"},
     {"item": "string", "rarity": "common"},

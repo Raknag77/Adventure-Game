@@ -47,7 +47,7 @@
         "rarity": "rare",
         "price": 50,
         "attribute": "fire",
-        "skills": "berserk",
+        "traits": "berserk",
         "type": "axe"
       },
       "iron_dagger": {
@@ -87,7 +87,7 @@
         "rarity": "rare",
         "price": 75,
         "attribute": "natural",
-        "skill": "poison",
+        "traits": "poison",
         "type": "dagger"
       },
       "iron_mace": {
@@ -122,7 +122,7 @@
         "rarity": "common",
         "price": 32,
         "attribute": "physical",
-        "skill": "pierce",
+        "traits": "pierce",
         "type": "miscellaneous"
       },
       "goblin_bow": {
@@ -135,7 +135,7 @@
         "rarity": "common",
         "price": 20,
         "attribute": "natural",
-        "skill": "poison",
+        "traits": "poison",
         "type": "bow"
       },
       "verdant": {
@@ -303,7 +303,7 @@
         "rarity": "common",
         "price": 10,
         "attribute": "physical",
-        "skill": "quiver"
+        "traits": "quiver"
       },
       "silver_chains": {
         "name": "Silver Chains",
@@ -311,7 +311,7 @@
         "rarity": "rare",
         "price": 50,
         "attribute": "necrotic",
-        "skills": "weakness"
+        "traits": "weakness"
       },
       "silver_cross": {
         "name": "Silver Cross",
@@ -363,7 +363,7 @@
         "rarity": "exquisite",
         "price": 200,
         "attributes": "necrotic",
-        "skills": "pierce"
+        "traits": "pierce"
       },
       "goblin_chieftain_ring": {
         "name": "Goblin Chieftain's Ring",

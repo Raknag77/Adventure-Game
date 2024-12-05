@@ -26,7 +26,7 @@ random_encounter_count = 0
 # events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp","outside_tranquil_monastery"]
 events = ["outside_tranquil_monastery"]
 
-library = ["bow_recipe"]
+library = ["goblin_bow_recipe"]
 inventory = ["excalibur","string","stick"]
 
 class Recipe:
@@ -38,7 +38,7 @@ class Recipe:
 
     def __repr__(self):
         return (f"{self.name}\n"
-                f"{self.input}\n")
+                f"Requirements: {self.input}\n")
 
 class Item:
     def __init__(self, item_id: str, item_type: ItemTypeEnum):
@@ -52,7 +52,7 @@ class Item:
         self.attribute = item_data["items"][item_type_value][item_id].get("attribute")
         self.rarity = item_data["items"][item_type_value][item_id]["rarity"]
         self.price = item_data["items"][item_type_value][item_id].get("price")
-        self.skills = item_data["items"][item_type_value][item_id].get("skills")
+        self.traits = item_data["items"][item_type_value][item_id].get("traits")
         self.type = item_data["items"][item_type_value][item_id].get("type")
 
     def __repr__(self):
@@ -62,7 +62,7 @@ class Item:
                     f"      Critical Chance: {self.stats.critChance}\n"
                     f"      Attribute: {self.attribute}\n"
                     f"      Rarity: {self.rarity}\n"
-                    f"      Skills: {self.skills}\n")
+                    f"      traits: {self.traits}\n")
         if self.item_type == ItemTypeEnum.CHARM or self.item_type == ItemTypeEnum.RING:
             return (f"{self.name}- Price: {self.price} gold\n"
                     f"      Attack Damage: {self.stats.attackDmg}\n"
@@ -73,7 +73,7 @@ class Item:
                     f"      Luck: {self.stats.luck}\n"
                     f"      Attribute: {self.attribute}\n"
                     f"      Rarity: {self.rarity}\n"
-                    f"      Skills: {self.skills}\n")
+                    f"      traits: {self.traits}\n")
         if self.item_type == ItemTypeEnum.MATERIAL:
             return (f"{self.name}- Price: {self.price} gold\n"
                     f"      Attribute: {self.attribute}\n"
@@ -84,7 +84,7 @@ class Item:
                 f"      Agility: {self.stats.agility}\n"
                 f"      Attribute: {self.attribute}\n"
                 f"      Rarity: {self.rarity}\n"
-                f"      Skills: {self.skills}\n")
+                f"      traits: {self.traits}\n")
 
     def get_id(self):
         return self._id
@@ -363,6 +363,18 @@ def const_choices(input_value):
             print("Your inventory is empty.")
         print()
 
+    elif input_value == "l":
+        print("Here is your Library of Recipes:")
+        print()
+
+        if not library:
+            print("Your library is empty. Find more books to expand your knowledge!")
+        else:
+            for recipe_id in library:
+                recipe_instance = Recipe(recipe_id)
+                print(f"{recipe_instance}")
+        print()
+
     elif input_value == "e":
         equipment_tab()
 
@@ -518,44 +530,44 @@ def crit_enemy_hit(enemy) -> bool:
     return False
 
 def check_quiver(character:Character) ->bool:
-    if character.charm is not None and character.weapon.skills == "quiver":
+    if character.charm is not None and character.weapon.traits == "quiver":
         if character.weapon is not None and character.weapon.type == "bow":
             return True
     return False
 
 def check_berserk(character: Character) ->bool:
-    if character.weapon is not None and character.weapon.skills == "berserk":
+    if character.weapon is not None and character.weapon.traits == "berserk":
         return True
-    elif character.charm is not None and character.charm.skills == "berserk":
+    elif character.charm is not None and character.charm.traits == "berserk":
         return True
-    elif character.ring is not None and character.ring.skills == "berserk":
+    elif character.ring is not None and character.ring.traits == "berserk":
         return True
     return False
 
 def check_weakness(character:Character) ->bool:
-    if character.weapon is not None and character.weapon.skills == "weakness":
+    if character.weapon is not None and character.weapon.traits == "weakness":
         return True
-    elif character.charm is not None and character.charm.skills == "weakness":
+    elif character.charm is not None and character.charm.traits == "weakness":
         return True
-    elif character.ring is not None and character.ring.skills == "weakness":
+    elif character.ring is not None and character.ring.traits == "weakness":
         return True
     return False
 
 def check_pierce(character: Character) -> bool:
-    if character.weapon is not None and character.weapon.skills == "pierce":
+    if character.weapon is not None and character.weapon.traits == "pierce":
         return True
-    elif character.charm is not None and character.charm.skills == "pierce":
+    elif character.charm is not None and character.charm.traits == "pierce":
         return True
-    elif character.ring is not None and character.ring.skills == "pierce":
+    elif character.ring is not None and character.ring.traits == "pierce":
         return True
     return False
 
 def check_doublehit(character: Character) ->bool:
-    if character.weapon is not None and character.weapon.skills == "doublehit":
+    if character.weapon is not None and character.weapon.traits == "doublehit":
         return True
-    elif character.charm is not None and character.charm.skills == "doublehit":
+    elif character.charm is not None and character.charm.traits == "doublehit":
         return True
-    elif character.ring is not None and character.ring.skills == "doublehit":
+    elif character.ring is not None and character.ring.traits == "doublehit":
         return True
     return False
 
@@ -722,7 +734,7 @@ def display_encounter(encounter_name):
 
     while True:
         player_choice = input("What do you do? ")
-        if player_choice in ["i", "e","c"]:
+        if player_choice in ["i", "e","c","l"]:
             const_choices(player_choice)
             continue
 
@@ -734,15 +746,23 @@ def display_encounter(encounter_name):
                 new_items = choice_details["inventory_add"]
                 for item_id in new_items:
                     inventory.append(item_id)
-                    print(
-                        f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id))))])} to inventory.")
+                    print(f"Added {', '.join([str(Item(item_id, ItemTypeEnum(get_item_type(item_id))))])} to inventory.\n")
+
+            if "library_add" in choice_details:
+                new_recipes = choice_details["library_add"]
+                for recipe_id in new_recipes:
+                    if recipe_id in library:
+                        print(f"{', '.join([str(Recipe(recipe_id).name)])} already in library.\n")
+                    else:
+                        library.append(recipe_id)
+                        print(f"Added {', '.join([str(Recipe(recipe_id))])} to library.\n")
 
             if "requirements" in choice_details:
                 required_items = choice_details["requirements"]
                 missing_items = [item for item in required_items if item not in inventory]
 
                 if missing_items:
-                    print(f"You do not have {', '.join(missing_items)} in your inventory.")
+                    print(f"You do not have {', '.join(missing_items)} in your inventory.\n")
                     continue
 
                 for item in required_items:

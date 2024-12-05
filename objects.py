@@ -36,14 +36,14 @@ class ItemInfo:
 
 
 class EquippableMixin:
-    def __init__(self, stats: Stats, attribute: str, skills: Optional[list[str]] = None):
+    def __init__(self, stats: Stats, attribute: str, traits: Optional[list[str]] = None):
         self.stats: Stats = stats
         self.attribute: str = attribute
-        self.skills: Optional[list[str]] = skills
+        self.traits: Optional[list[str]] = traits
 
 
 class Weapon(EquippableMixin):
     def __init__(self, info: ItemInfo, data: dict):
-        super().__init__(Stats(**data.get("stats", {})), data["attribute"], data.get("skills", []))
+        super().__init__(Stats(**data.get("stats", {})), data["attribute"], data.get("traits", []))
         self.info: ItemInfo = info
 

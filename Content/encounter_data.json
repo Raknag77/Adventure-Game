@@ -928,7 +928,7 @@
         "3": {
           "text": "Learn from the monks.",
           "response": "You ask the monks to give you teachings that could be useful in your journey",
-          "next": "monk_teaching"
+          "next": "monastery_teaching"
         },
         "4": {
           "text": "Ask about the area.",
@@ -1066,6 +1066,29 @@
         "1": {
           "text": "Fully embrace the ritual.",
           "response": "You close your eyes and allow yourself to be swept away by the chant, surrendering to the peace of the moment. A vivid vision of radiant light and a serene meadow fills your mind.\n",
+          "next": "tranquil_monastery"
+        }
+      }
+    },
+    "monastery_teaching": {
+      "description": "After completing your tasks, the monks guide you to a grand library within the monastery. The room is vast, its walls lined with shelves of ancient tomes and scrolls. A gentle light filters in through the high windows, casting a warm glow on the polished wooden floor.\nA monk gestures to a collection of books laid out on a central table. \"Each of these tomes holds knowledge that may aid you in your journey.\"\n",
+      "choices": {
+        "1": {
+          "text": "Herbalist's Grimoire.",
+          "response": "You open the book and go through all the pages, taking notes of important recipes.\n",
+          "library_add": [""],
+          "next": "tranquil_monastery"
+        },
+        "2": {
+          "text": "Beasts and Monsters",
+          "response": "You open the book, reading through various ways to deal with nature's forces.\n",
+          "library_add": [""],
+          "next": "tranquil_monastery"
+        },
+        "3": {
+          "text": "Ancient Blacksmith's Biography",
+          "response": "You read through the tales of a blacksmith.\n",
+          "library_add": [""],
           "next": "tranquil_monastery"
         }
       }

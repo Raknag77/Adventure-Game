@@ -1,9 +1,14 @@
 {
   "recipes": {
-    "bow_recipe": {
+    "goblin_bow_recipe": {
       "name": "Bow Recipe",
       "input": ["stick","string"],
       "output": "goblin_bow"
+    },
+    "elven_bow_recipe": {
+      "name": "Bow Recipe",
+      "input": ["stick","string","mythril"],
+      "output": "verdant"
     }
   }
 }
