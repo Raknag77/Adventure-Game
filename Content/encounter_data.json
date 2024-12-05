@@ -932,8 +932,8 @@
         },
         "4": {
           "text": "Ask about the area.",
-          "response": "The monks mention a nearby village with a struggling market. They ask if you can deliver a small crate of food to help.",
-          "next": "monk_delivery"
+          "response": "The elder monk mentions a nearby village with a struggling market. He asks if you can deliver a small crate of food to help.",
+          "next": "monastery_delivery"
         },
         "5": {
           "text": "Say goodbye.",
@@ -1025,6 +1025,7 @@
         "1": {
           "text": "Return to the hall.",
           "response": "You statr making your way through the slowly familiar structure of the monastery.\n",
+          "inventory_add": ["ashveil_fang"],
           "next": "tranquil_monastery"
         }
       }
@@ -1034,8 +1035,8 @@
       "choices": {
         "1": {
           "text": "Attack the Lynx.",
-          "combat": ["ashveil_lynx"],
           "response": "You duel with the sacred forest guardian.",
+          "combat": ["ashveil_lynx"],
           "next": "attacking_lynx_outcome"
         }
       }
@@ -1076,19 +1077,30 @@
         "1": {
           "text": "Herbalist's Grimoire.",
           "response": "You open the book and go through all the pages, taking notes of important recipes.\n",
-          "library_add": [""],
+          "library_add": ["withering_rose_recipe","healing_salve_recipe"],
           "next": "tranquil_monastery"
         },
         "2": {
           "text": "Beasts and Monsters",
           "response": "You open the book, reading through various ways to deal with nature's forces.\n",
-          "library_add": [""],
+          "library_add": ["lionheart_axe_recipe","sevang_spear_recipe","bone_claymore_recipe"],
           "next": "tranquil_monastery"
         },
         "3": {
-          "text": "Ancient Blacksmith's Biography",
-          "response": "You read through the tales of a blacksmith.\n",
-          "library_add": [""],
+          "text": "Codex of the Elements",
+          "response": "You read through the tales of the elements.\n",
+          "library_add": ["ember_ring_recipe","coral_amulet_recipe","grounded_boots_recipe","skybound_talisman_recipe"],
+          "next": "tranquil_monastery"
+        }
+      }
+    },
+    "monastery_delivery": {
+      "description": "They hand you a wooden crate filled with dried herbs, grains, and preserved fruits. You set off down the winding trail, the sound of birds and rustling leaves filling the air. The path is peaceful, and the sun filters through the trees in golden beams. After a few hours of walking, you arrive at the village. The market square is quieter than usual, and you spot a few villagers huddled together, discussing how the recent harvest was poor.\nUpon seeing the crate, their faces light up with relief. They thank you for your timely arrival and begin unloading the food.\nYou leave the village with a sense of fulfillment, knowing the monks’ kindness has made a difference. The journey back to the monastery is calm, and the evening sun casts a warm glow over the land as you return with a small gift and a story of gratitude to share.\n",
+      "choices": {
+        "1": {
+          "text": "Tell the elder monk about the successful delivery.",
+          "response": "He thanks you for your held gives you a coin for the troubles you went though.\n",
+          "gold": 1,
           "next": "tranquil_monastery"
         }
       }

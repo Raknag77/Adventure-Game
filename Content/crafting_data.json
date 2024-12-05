@@ -8,7 +8,22 @@
     "elven_bow_recipe": {
       "name": "Bow Recipe",
       "input": ["stick","string","mythril"],
-      "output": "verdant"
+      "output": "elven_bow"
+    },
+    "withering_rose_recipe": {
+      "name": "Withering Rose Recipe",
+      "input": ["rose","bundle_nightshade","ash","silk","obsidian"],
+      "output": "withering_rose"
+    },
+    "healing_salve_recipe": {
+      "name": "Healing Salve Recipe",
+      "input": ["bundle_lavender","honey","aloe_vera"],
+      "output": "healing_salve"
+    },
+    "lionheart_axe_recipe": {
+      "name": "Lionheart Axe Recipe",
+      "input": [],
+      "output": "lionheart_axe"
     }
   }
 }

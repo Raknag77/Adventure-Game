@@ -391,6 +391,18 @@
         "rarity": "common",
         "price": 10
       },
+      "bundle_nightshade": {
+        "name": "Bundle of Nightshade",
+        "description": "Dark, glossy leaves with bell-shaped purple flowers, nightshade is both beautiful and deadly. Its sweet fragrance masks its toxic properties, used sparingly for medicinal or alchemical purposes.\n",
+        "rarity": "rare",
+        "price": 40
+      },
+      "bundle_wolfsbane": {
+        "name": "Bundle of Wolfsbane",
+        "description": "Green leaves with striking yellow flowers, wolfsbane exudes a sharp, metallic scent. Known for its poisonous nature, it is handled with care, often used in potions or as a deterrent against creatures of the night.\n",
+        "rarity": "rare",
+        "price": 40
+      },
       "bundle_elderflower": {
         "name": "Bundle of Elderflower",
         "description": "A delicate bundle of creamy white blossoms gathered from the elder tree, tied together with a fine strip of bark. The tiny flowers emit a subtle, sweet fragrance reminiscent of fresh honey and wild meadows. This bundle is cherished for its soothing and restorative qualities, a natural remedy gifted by the forest.\n",
@@ -432,6 +444,18 @@
         "description": "A deep blue gemstone that sparkles like the night sky. Often associated with wisdom and clarity, it is highly valued for its beauty and mystical properties.\n",
         "rarity": "rare",
         "price": 100
+      },
+      "ash": {
+        "name": "Ash",
+        "description": "The fine, dark gray powder left behind after a fire has consumed wood or other organic matter. It has a slightly sooty texture and a faint, lingering smell of burnt earth. Often used in alchemy, it can be mixed with other ingredients to enhance potions or rituals. \n",
+        "rarity": "common",
+        "price": 2
+      },
+      "ashveil_fang": {
+        "name": "Ashveil Fang",
+        "description": "A sturdy, slightly curved fang from the Ashveil Lynx. Its surface is smooth with a natural sheen, and the tip is sharp, perfect for crafting or as a tool. Its grayish hue blends well with the misty forests the lynx roams.\n",
+        "rarity": "rare",
+        "price": 72
       },
       "soul_essence": {
         "name": "Soul Essence",
@@ -497,7 +521,7 @@
         "name": "Goblin Peace Offering",
         "description": "A small bundle of items presented as a gesture of goodwill or appeasement, typically including a mix of trinkets, food, or simple crafts. While seemingly insignificant, this offering can be used to pacify an enemy or broker a temporary truce. It’s often used by goblins when they seek to avoid conflict or gain favor from a more powerful entity. Its value lies in the diplomacy it can bring rather than any inherent worth.\n",
         "rarity": "exquisite",
-        "price": 200
+        "price": 250
       },
       "goblin_bloodstone": {
         "name": "Goblin Bloodstone",

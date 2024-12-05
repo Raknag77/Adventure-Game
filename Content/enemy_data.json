@@ -69,6 +69,40 @@
           {"item": "wolf_fang", "rarity": "common"}
       ]
 
+      },
+      "ashveil_lynx": {
+        "name": "Ashveil Lynx",
+        "description": "A mysterious, smoky-gray creature with amber eyes that glow faintly in the mist. It moves with grace and quiet intensity, blending seamlessly with the fog of the forest. As an ancient guardian spirit, it watches over the woods, evoking both awe and reverence in those who encounter it.\n",
+        "stats": {
+          "health": 100,
+          "attackDmg": 25,
+          "defense": 12,
+          "critChance": 0.1
+        },
+        "attributes": "natural",
+        "loot": [
+          {"item": "meat", "rarity": "common"},
+          {"item": "ash", "rarity": "common"},
+          {"item": "ashveil_fang", "rarity": "guaranteed"}
+        ]
+      },
+      "sunmane_lion": {
+        "name": "Sunmane Lion",
+        "description": " a majestic, lion-like creature with a golden, glowing mane that seems to shimmer like the sun at dawn. Its fur is a mixture of amber and gold, with faint streaks of light that ripple as it moves, almost like the rays of sunlight filtering through trees. The creature's eyes are deep, radiant pools of amber, and its tail is adorned with tufts of golden fur, resembling a comet's tail.\n",
+        "stats": {
+          "health": 250,
+          "attackDmg": 40,
+          "defense": 30,
+          "critChance": 0.04
+        },
+        "attributes": "holy",
+        "loot": [
+          {"item": "meat", "rarity": "common"},
+          {"item": "sunmane_fur", "rarity": "exquisite"},
+          {"item": "gold_claw", "rarity": "rare"},
+          {"item": "solar_essence", "rarity": "rare"},
+          {"item": "lion_heart", "rarity": "guaranteed"}
+        ]
       }
     },
     "goblin": {
@@ -83,12 +117,11 @@
         },
         "attributes": "physical",
         "loot": [
-    {"item": "bone", "rarity": "common"},
-    {"item": "iron_scrap", "rarity": "common"},
-    {"item": "goblin_tooth", "rarity": "common"},
-    {"item": "iron_sword", "rarity": "rare"}
-]
-
+          {"item": "bone", "rarity": "common"},
+          {"item": "iron_scrap", "rarity": "common"},
+          {"item": "goblin_tooth", "rarity": "common"},
+          {"item": "iron_sword", "rarity": "rare"}
+      ]
       },
       "goblin_archer": {
         "name": "Goblin Archer",
