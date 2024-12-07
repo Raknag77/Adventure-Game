@@ -1077,7 +1077,7 @@
         "1": {
           "text": "Herbalist's Grimoire.",
           "response": "You open the book and go through all the pages, taking notes of important recipes.\n",
-          "library_add": ["withering_rose_recipe","healing_salve_recipe"],
+          "library_add": ["withering_rose_recipe","healing_salve_recipe","poison_recipe"],
           "next": "tranquil_monastery"
         },
         "2": {

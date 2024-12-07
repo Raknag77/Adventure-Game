@@ -1,13 +1,13 @@
 {
   "recipes": {
     "goblin_bow_recipe": {
-      "name": "Bow Recipe",
-      "input": ["stick","string"],
+      "name": "Goblin Bow Recipe",
+      "input": ["ashwood","string"],
       "output": "goblin_bow"
     },
     "elven_bow_recipe": {
-      "name": "Bow Recipe",
-      "input": ["stick","string","mythril"],
+      "name": "Elven Bow Recipe",
+      "input": ["ashwood","string","mythril"],
       "output": "elven_bow"
     },
     "withering_rose_recipe": {
@@ -17,13 +17,48 @@
     },
     "healing_salve_recipe": {
       "name": "Healing Salve Recipe",
-      "input": ["bundle_lavender","honey","aloe_vera"],
+      "input": ["bundle_lavender","honey","bundle_spiritbloom"],
       "output": "healing_salve"
+    },
+    "poison_recipe": {
+      "name": "Poison Recipe",
+      "input": ["snake_venom","spider_venom","bundle_nightshade"],
+      "output": "poison"
     },
     "lionheart_axe_recipe": {
       "name": "Lionheart Axe Recipe",
-      "input": [],
+      "input": ["lion_heart","gold","silver"],
       "output": "lionheart_axe"
+    },
+    "sevang_spear_recipe": {
+      "name": "Savang Spear Recipe",
+      "input": ["iron","wolf_pelt","ashwood","darkhawk_feather"],
+      "output": "savang_spear"
+    },
+    "bone_claymore_recipe": {
+      "name": "Bone Claymore Recipe",
+      "input": ["bone","bone","bone","ashwood","soul_essence"],
+      "output": "bone_claymore"
+    },
+    "ember_ring_recipe": {
+      "name": "Ember Ring Recipe",
+      "input": ["ember","bronze"],
+      "output": "ember_ring"
+    },
+    "coral_amulet_recipe": {
+      "name": "Coral Amulet Recipe",
+      "input": ["gold","sapphire","coral"],
+      "output": "coral_amulet"
+    },
+    "grounded_boots_recipe": {
+      "name": "Grounded Boots Recipe",
+      "input": ["obsidian","wolf_pelt","boar_hide","snake_skin"],
+      "output": "grounded_boots"
+    },
+    "skybound_talisman_recipe": {
+      "name": "Skybound Talisman Recipe",
+      "input": ["quartz","feather","feather","eagle_talon"],
+      "output": "skybound_talisman"
     }
   }
 }

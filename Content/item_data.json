@@ -403,6 +403,12 @@
         "rarity": "rare",
         "price": 40
       },
+      "bundle_spiritbloom": {
+        "name": "Bundle of Spiritbloom",
+        "description": "A bundle of ethereal flowers with translucent petals that faintly shimmer in moonlight. Their sweet, woodland-like fragrance is calming, and they are prized for cleansing auras and healing up wounds.\n",
+        "rarity": "rare",
+        "price": 40
+      },
       "bundle_elderflower": {
         "name": "Bundle of Elderflower",
         "description": "A delicate bundle of creamy white blossoms gathered from the elder tree, tied together with a fine strip of bark. The tiny flowers emit a subtle, sweet fragrance reminiscent of fresh honey and wild meadows. This bundle is cherished for its soothing and restorative qualities, a natural remedy gifted by the forest.\n",
@@ -426,6 +432,18 @@
         "description": "A collection of dried sage leaves tied with twine. Used for rituals and purification, its calming aroma is believed to ward off evil spirits and cleanse negative energy.\n",
         "rarity": "common",
         "price": 4
+      },
+      "obsidian": {
+        "name": "Obsidian",
+        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.\n",
+        "rarity": "common",
+        "price": 30
+      },
+      "quartz": {
+        "name": "Quartz",
+        "description": "A translucent crystal with a cool, smooth texture and a faint inner glow that refracts light into subtle rainbows. Quartz is versatile, found in various hues and shapes, often used in crafting magical foci, enchanting rituals, or as a conduit for storing and channeling energy.\n",
+        "rarity": "rare",
+        "price": 75
       },
       "emerald": {
         "name": "Emerald",
@@ -535,11 +553,11 @@
         "rarity": "common",
         "price": 4
       },
-      "stick": {
-        "name": "Stick",
-        "description": "A smaller log.",
+      "ashwood": {
+        "name": "Ashwood",
+        "description": "A dense and resilient wood with a pale, ashen hue and a faint grain that resembles rising smoke. Known for its natural resistance to fire and decay, it is often sought after by craftsmen for making durable tools, weapons, and magical artifacts.\n",
         "rarity": "common",
-        "price": "2"
+        "price": 6
       },
       "string": {
         "name": "String",
@@ -549,13 +567,13 @@
       },
       "iron_scrap": {
         "name": "Iron Scrap",
-        "description": " small, jagged piece of iron scavenged from discarded weapons, armor, or tools. While it may seem insignificant, the iron scrap is still useful in crafting or reforging. It’s often found among wreckage or remnants of battles.\n",
+        "description": "Small, jagged piece of iron scavenged from discarded weapons, armor, or tools. While it may seem insignificant, the iron scrap is still useful in crafting or reforging. It’s often found among wreckage or remnants of battles.\n",
         "rarity": "common",
         "price": 3
       },
       "shackled_choir_key": {
         "name": "Shackled Choir key",
-        "description": "This rusted iron key, twisted and jagged, is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.\n",
+        "description": "This rusted iron key is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.\n",
         "rarity": "rare",
         "price": 200
       },
@@ -565,17 +583,59 @@
         "rarity": "legendary",
         "price": 500000
       },
-      "obsidian": {
-        "name": "Obsidian",
-        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.\n",
-        "rarity": "rare",
-        "price": 30
-      },
       "bone": {
         "name": "Bone",
         "description": "A bone from a deceased corpse used to make up a skeleton.\n",
         "rarity": "common",
         "price": 1
+      },
+      "iron": {
+        "name": "Iron",
+        "description": "A versatile and durable metal, known for its strength and utility. Commonly used in tools, weapons, and armor, iron is the backbone of most civilizations, forming the foundation of practical craftsmanship.\n",
+        "rarity": "common",
+        "price": 10
+      },
+      "bronze": {
+        "name": "Bronze",
+        "description": "An alloy of copper and tin, bronze is celebrated for its warm golden-brown hue and resistance to corrosion. Often used for decorative artifacts, early weapons, and ceremonial items, it carries a sense of tradition and artistry.\n",
+        "rarity": "common",
+        "price": 35
+      },
+      "silver": {
+        "name": "Silver",
+        "description": "A gleaming, precious metal with a pure white sheen. Silver is revered for its connection to purity and mysticism, often used in jewelry, charms, and weapons to combat supernatural creatures.\n",
+        "rarity": "rare",
+        "price": 95
+      },
+      "gold": {
+        "name": "Gold",
+        "description": "A brilliant and malleable metal, treasured for its luster and rarity. Gold is used in crafting intricate ornaments, ceremonial weapons, and coinage, symbolizing wealth and power.\n",
+        "rarity": "rare",
+        "price": 125
+      },
+      "adamantium": {
+        "name": "Adamantium",
+        "description": "A nearly indestructible metal with a dark, metallic sheen. Adamantium is valued for its immense durability, often used in crafting legendary weapons and armor designed to withstand even the harshest battles.\n",
+        "rarity": "exquisite",
+        "price": 300
+      },
+      "mythril": {
+        "name": "Mythril",
+        "description": "A lightweight and radiant silver-like metal imbued with inherent magical properties. Mythril is highly coveted for creating enchanted armor, delicate yet unyielding weapons, and powerful relics.\n",
+        "rarity": "exquisite",
+        "price": 300
+      },
+      "astralite": {
+        "name": "Astralite",
+        "description": "A rare and ethereal metal with a faint, shimmering glow resembling starlight. Known to resonate with celestial energy, astralite is often used in divine artifacts, magical staffs, and ornaments imbued with protective powers.\n",
+        "rarity": "legendary",
+        "price": 600
+      },
+      "netheryte": {
+        "name": "Netheryte",
+        "description": "A dark, enigmatic metal with an ominous purple or black hue, exuding a faint otherworldly energy. Netheryte is associated with demonic or void magic, often used to forge cursed weapons, ritualistic tools, and powerful charms.\n",
+        "rarity": "legendary",
+        "price": 600
       }
     }
   }
