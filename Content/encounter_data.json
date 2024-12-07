@@ -1089,7 +1089,7 @@
         "3": {
           "text": "Codex of the Elements",
           "response": "You read through the tales of the elements.\n",
-          "library_add": ["ember_ring_recipe","coral_amulet_recipe","grounded_boots_recipe","skybound_talisman_recipe"],
+          "library_add": ["amber_ring_recipe","coral_amulet_recipe","grounded_boots_recipe","skybound_talisman_recipe"],
           "next": "tranquil_monastery"
         }
       }
@@ -1102,6 +1102,46 @@
           "response": "He thanks you for your held gives you a coin for the troubles you went though.\n",
           "gold": 1,
           "next": "tranquil_monastery"
+        }
+      }
+    },
+    "anchor_event_1": {
+      "description": "Elara greets you with her characteristic warm yet cautious smile, her green eyes seeming to pierce through to your very thoughts. \"Ah, you're here,\" she says, her voice calm yet purposeful. \"A royal quest has come in, and it's of the utmost importance. The quest will be led by a seasoned mage, you must help him in any way possible.\"\nShe gestures toward the hearth, where a human mage sits, his cloak slightly singed and a tome open on his lap. \"Your destination is an old church on the outskirts. Strange reports have reached the crown, and your task is to uncover the truth. Be prepared; trust in your skill... and in each other.\"\nAs she finishes, her eyes linger on you with a quiet seriousness, and a sense of foreboding settles over the room.\n",
+      "choices": {
+        "1": {
+          "text": "Ask more Questions",
+          "response": "You linger around Elara still, wanting to gain more information.",
+          "next": "anchor_event_1_details"
+        },
+        "2": {
+          "text": "Meet with the Mage",
+          "response": "You walk towards where the mage is sitting ready",
+          "next": "melior_meeting"
+        }
+      }
+    },
+    "anchor_event_1_qs": {
+      "description": "With measured confidence, you clear your throat and speak, \"I have a few more questions. I need to know everything I can about this mission and what might lie ahead.\"\nHer smile remains warm yet cautious as she leans back slightly, hands clasping together as though weighing her response. The firelight dances across her silver hair, giving her an almost ethereal glow as she considers your words.\n",
+      "choices": {
+        "1": {
+          "text": "\"Is there anything I should know about the area itself—local inhabitants, weather, or terrain?\"",
+          "response": "Elara: \"The church lies on the Whispering Plains, vast flat grasslands that can become muddy and treacherous after rain. Strange winds and whispers are common at night. The nearby village is small and wary of strangers, but they may know more about the area and its secrets. Approach with respect.\"\n",
+          "next": "anchor_event_1_qs"
+        },
+        "2": {
+          "text": "\"Has Melior been on many royal assignments? How should I approach working with him?\"",
+          "response": "Elara: \"Melior has served the Adventurers Guild for over a decade and is highly respected for his calm nature and deep knowledge. He values teamwork but can be reserved. Trust in his expertise, be honest, and show him respect. He’s a steady ally and a strong resource.\"\n",
+          "next": "anchor_event_1_qs"
+        },
+        "3": {
+          "text": "\"Has the crown uncovered any hints of what we might face in the church itself, or are we going in blind?\"",
+          "response": "Elara: \"The crown has received reports of strange rituals, symbols, and disappearances near the church. Details remain vague, and much is speculation. You’ll uncover the truth as you investigate and gather information.\"\n",
+          "next": "anchor_event_1_qs"
+        },
+        "4": {
+          "text": "Meet Melior.",
+          "response": "You thank Elara for all the information she gave you and make a start towards your partner.\n",
+          "next": "melior_meeting"
         }
       }
     }

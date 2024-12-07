@@ -9,8 +9,20 @@
           "agility": 2
         },
         "rarity": "common",
-        "price": 3,
+        "price": 15,
         "attribute": "physical",
+        "type": "sword"
+      },
+      "bone_claymore": {
+        "name": "Bone Claymore",
+        "description": "Forged from ancient bone and empowered with soul essence, the Bone Claymore is a weapon of dark power and brute strength. Its massive, jagged blade absorbs the essence of its victims, granting it an unholy edge. Etched with ancient runes that pulse with faint, ethereal light, this two-handed sword strikes with relentless force, embodying death and the grip of shadowy power.",
+        "stats": {
+          "attackDmg": 40
+        },
+        "rarity": "rare",
+        "price": 35,
+        "attribute": "necrotic",
+        "traits": "beastslayer",
         "type": "sword"
       },
       "excalibur": {
@@ -32,13 +44,26 @@
           "critChance": 0.02
         },
         "rarity": "common",
-        "price": 3,
+        "price": 15,
         "attribute": "physical",
+        "type": "spear"
+      },
+      "savang_spear": {
+        "name": "Savang Spear",
+        "description": "Crafted by the skilled hunters of the Savang Tribe, this spear is a symbol of primal strength and precision. Made from hardened iron and dark ashwood, its sharp, single-edged tip is designed for both thrusting and throwing. Decorated with feathers and tribal carvings, the Savang Spear carries the spirit of the hunt, granting its wielder the focus and instinct needed to strike with deadly accuracy.",
+        "stats": {
+          "attackDmg": 40,
+          "critChance": 0.25
+        },
+        "rarity": "rare",
+        "price": 45,
+        "attribute": "natural",
+        "traits": "beastslayer",
         "type": "spear"
       },
       "fire_axe": {
         "name": "Fire Axe",
-        "description": "A fearsome weapon with a blade perpetually engulfed in fiery flames. The axe's sturdy handle is wrapped in scorched leather, providing a firm grip. The flames flicker with an eerie intensity, making it both a tool and a weapon of destruction. It is said to have been forged in the heart of a volcano, giving it an unparalleled edge that can cut through wood, steel, and even stone with ease.\n",
+        "description": "A fearsome weapon with a blade perpetually engulfed in fiery flames. The axe's sturdy handle is wrapped in scorched leather, providing a firm grip. The flames flicker with an eerie intensity, making it both a tool and a weapon of destruction. It is said to have been forged in the heart of a volcano, giving it an unparalleled edge that can cut through wood, steel, and even stone with ease.",
         "stats": {
           "attackDmg": 30,
           "critChance": 0.03,
@@ -50,6 +75,19 @@
         "traits": "berserk",
         "type": "axe"
       },
+      "lionheart_axe": {
+        "name": "Lionheart Axe",
+        "description": "Forged using a harmonic mix of gold and silver, the Lionheart Axe embodies strength and courage. Its double-bladed design is both deadly and balanced, with runic engravings that glow faintly in battle. Designed for powerful strikes, this axe channels the spirit of the mighty lion, empowering its wielder with unmatched bravery and ferocity.",
+        "stats": {
+          "attackDmg": 75,
+          "critChance": 0.06
+        },
+        "rarity": "rare",
+        "price": 120,
+        "attribute": "physical",
+        "traits": "beastslayer",
+        "type": "axe"
+      },
       "iron_dagger": {
         "name": "Iron Dagger",
         "description": "A sturdier, well-balanced dagger with a sharp blade. It’s good for close combat or as a utility tool for cutting through ropes or small objects.",
@@ -59,26 +97,26 @@
           "critChance": 0.01
         },
         "rarity": "common",
-        "price": 2,
+        "price": 10,
         "attribute": "physical",
         "type": "dagger"
       },
       "goblin_dagger": {
         "name": "Goblin Dagger",
-        "description": "A small, wickedly sharp dagger with a jagged, serrated edge. The handle is wrapped in rough leather, providing a decent grip for quick, precise strikes. This weapon is favored by goblins for its versatility, often used in stealth attacks or as a backup weapon. Its size and design make it ideal for stabbing between gaps in armor or slipping past guards unnoticed.\n",
+        "description": "A small, wickedly sharp dagger with a jagged, serrated edge. The handle is wrapped in rough leather, providing a decent grip for quick, precise strikes. This weapon is favored by goblins for its versatility, often used in stealth attacks or as a backup weapon. Its size and design make it ideal for stabbing between gaps in armor or slipping past guards unnoticed.",
         "stats": {
           "attackDmg": 5,
           "agility": 3,
           "critChance": 0.02
         },
         "rarity": "common",
-        "price": 2,
+        "price": 10,
         "attribute": "physical",
         "type": "dagger"
       },
       "fangroot_dagger": {
         "name": "Fangroot Dagger",
-        "description": "This dagger seems to have grown rather than been forged, its blade formed from a crystalline root that gleams with a faint emerald hue. The hilt is wrapped in supple bark, and faint wisps of green mist emanate from the blade's edge. Each strike delivers a potent toxin, making the weapon as dangerous as it is beautiful.\n",
+        "description": "This dagger seems to have grown rather than been forged, its blade formed from a crystalline root that gleams with a faint emerald hue. The hilt is wrapped in supple bark, and faint wisps of green mist emanate from the blade's edge. Each strike delivers a potent toxin, making the weapon as dangerous as it is beautiful.",
         "stats": {
           "attackDmg": 18,
           "agility": 5,
@@ -97,7 +135,7 @@
           "attackDmg": 20
         },
         "rarity": "common",
-        "price": 3,
+        "price": 15,
         "attribute": "physical",
         "type": "blunt"
       },
@@ -108,26 +146,26 @@
           "attackDmg": 8
         },
         "rarity": "common",
-        "price": 1,
+        "price": 5,
         "attribute": "fire",
         "type": "miscellaneous"
       },
       "pickaxe": {
         "name": "Pickaxe",
-        "description": "A sturdy tool with a sharp, reinforced metal head designed for breaking through rock and stone. The wooden shaft is weathered from years of use but still holds strong. This pickaxe is invaluable for miners, adventurers, or anyone who needs to break through tough terrain. The head is balanced to provide both power and precision when striking, ensuring each swing counts.\n",
+        "description": "A sturdy tool with a sharp, reinforced metal head designed for breaking through rock and stone. The wooden shaft is weathered from years of use but still holds strong. This pickaxe is invaluable for miners, adventurers, or anyone who needs to break through tough terrain. The head is balanced to provide both power and precision when striking, ensuring each swing counts.",
         "stats": {
           "attackDmg": 4,
           "critChance": 0.02
         },
         "rarity": "common",
-        "price": 32,
+        "price": 30,
         "attribute": "physical",
         "traits": "pierce",
         "type": "miscellaneous"
       },
       "goblin_bow": {
         "name": "Goblin Bow",
-        "description": "A lightweight bow made of flexible wood with leather strings, favored by goblins for its quick draw and rapid-fire capability. Though not as powerful as larger bows, its arrows are often coated in poison, making even glancing hits dangerous. Ideal for stealth and hit-and-run tactics.\n",
+        "description": "A lightweight bow made of flexible wood with leather strings, favored by goblins for its quick draw and rapid-fire capability. Though not as powerful as larger bows, its arrows are often coated in poison, making even glancing hits dangerous. Ideal for stealth and hit-and-run tactics.",
         "stats": {
           "attackDmg": 7,
           "critChance": 0.2
@@ -138,9 +176,21 @@
         "traits": "poison",
         "type": "bow"
       },
+      "elven_bow": {
+        "name": "Elven Bow",
+        "description": "Crafted using ancient Whispering Sylvans techniques and legendary mythril, the Elven Bow is lightweight, durable, and enchanted to enhance precision and connection to nature. Intricate leaf-like carvings shimmer under moonlight, and its string hums with ancient magic, making it a symbol of elven grace and mastery.",
+        "stats": {
+          "attackDmg": 110,
+          "critChance": 0.1
+        },
+        "rarity": "exquisite",
+        "price": 200,
+        "attribute": "natural",
+        "type": "bow"
+      },
       "verdant": {
         "name": "Bow of Verdant",
-        "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.\n",
+        "description": "A beautifully crafted longbow, entwined with glowing vines. Forged in an ancient forest, it channels the power of nature, enhancing accuracy and imbuing arrows with the forest's energy. Ideal for those attuned to nature, it strikes with precision to strike down enemies with the force of the wild.",
         "stats": {
           "attackDmg": 150
         },
@@ -153,7 +203,7 @@
     "helmets": {
       "scout_hat": {
         "name": "Scou's Hat",
-        "description": "A rugged leather hat with a wide brim for shade and a feather tucked into its band. Light and weather-resistant, it's a trusted companion for any explorer.\n",
+        "description": "A rugged leather hat with a wide brim for shade and a feather tucked into its band. Light and weather-resistant, it's a trusted companion for any explorer.",
         "stats": {
           "agility": 2
         },
@@ -163,7 +213,7 @@
       },
       "goblin_helmet": {
         "name": "Goblin Helmet",
-        "description": "A simple yet effective helmet made of rough metal, often scavenged from fallen enemies or looted from abandoned ruins. It provides basic protection to the head and is adorned with small spikes, giving it a fearsome appearance. While not the most durable, it offers protection from minor blows, making it a practical choice for goblin warriors who rely on speed rather than resilience.\n",
+        "description": "A simple yet effective helmet made of rough metal, often scavenged from fallen enemies or looted from abandoned ruins. It provides basic protection to the head and is adorned with small spikes, giving it a fearsome appearance. While not the most durable, it offers protection from minor blows, making it a practical choice for goblin warriors who rely on speed rather than resilience.",
         "stats": {
           "defense": 5
         },
@@ -185,7 +235,7 @@
     "chestpieces": {
       "leather_tunic": {
         "name": "Leather Tunic",
-        "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.\n",
+        "description": "A simple tunic made of supple leather, reinforced with metal studs. It offers basic protection against cuts and scrapes, ideal for light combat or travel. The tunic is comfortable and flexible, allowing for ease of movement and breathability.",
         "stats": {
           "defense": 5
         },
@@ -195,7 +245,7 @@
       },
       "goblin_chestplate": {
         "name": "Goblin Chestplate",
-        "description": "A crudely fashioned chestplate made from scavenged metal plates and reinforced with leather. It is lightweight but offers moderate protection against physical damage. Though it lacks the refinement of higher-grade armor, it is designed for agility rather than brute strength.\n",
+        "description": "A crudely fashioned chestplate made from scavenged metal plates and reinforced with leather. It is lightweight but offers moderate protection against physical damage. Though it lacks the refinement of higher-grade armor, it is designed for agility rather than brute strength.",
         "stats": {
           "defense": 3,
           "agility": 4
@@ -206,7 +256,7 @@
       },
       "flameforged_breastplate": {
         "name": "Flameforged Breastplate",
-        "description": "A chestpiece of molten metal, glowing with a faint, fiery aura. Etched with flame-like patterns, it offers protection against fire while radiating warmth and strength. The heat seems to linger in the metal, enhancing the wearer’s resilience.\n",
+        "description": "A chestpiece of molten metal, glowing with a faint, fiery aura. Etched with flame-like patterns, it offers protection against fire while radiating warmth and strength. The heat seems to linger in the metal, enhancing the wearer’s resilience.",
         "stats": {
           "defense": 24,
           "health": 12
@@ -217,7 +267,7 @@
       },
       "moonlight_cloak": {
         "name": "Moonlight Cloak",
-        "description": "A flowing cloak woven from silvery fibers that catch the light like dew on leaves. It feels cool to the touch and seems to blend seamlessly with the natural world, offering its wearer a quiet harmony with the elements and a subtle, elusive grace under the night sky.\n",
+        "description": "A flowing cloak woven from silvery fibers that catch the light like dew on leaves. It feels cool to the touch and seems to blend seamlessly with the natural world, offering its wearer a quiet harmony with the elements and a subtle, elusive grace under the night sky.",
         "stats": {
           "defense": 5,
           "agility": 25
@@ -228,7 +278,7 @@
       },
       "wraith_shroud": {
         "name": "Wraith Shroud",
-        "description": "A dark, ethereal cloak woven from shadowy threads. It flickers as if alive, offering near-invisibility in the dark. Crafted by wraiths, it grants both concealment and an unsettling aura.\n",
+        "description": "A dark, ethereal cloak woven from shadowy threads. It flickers as if alive, offering near-invisibility in the dark. Crafted by wraiths, it grants both concealment and an unsettling aura.",
         "stats": {
           "defense": 16,
           "agility": 20
@@ -258,14 +308,25 @@
           "defense": 5
         },
         "rarity": "common",
-        "price": 2,
+        "price": 10,
         "attribute": "physical"
+      },
+      "grounded_boots": {
+        "name": "Grounded Boots",
+        "description": "Crafted from rugged leather and reinforced with stone-infused soles, the Grounded Boots provide unwavering stability and protection. Perfect for traversing rough terrain, these boots anchor their wearer with unmatched balance and resilience.",
+        "stats": {
+          "defense": 24
+        },
+        "rarity": "rare",
+        "price": 35,
+        "attribute": "earth",
+        "traits": "earth_resistance"
       }
     },
     "charms": {
       "adventure_badge": {
         "name": "Adventure Guild Badge",
-        "description": "A polished bronze emblem etched with the symbol of the guild. Worn with pride, it marks the bearer as a true seeker of glory and fortune.\n",
+        "description": "A polished bronze emblem etched with the symbol of the guild. Worn with pride, it marks the bearer as a true seeker of glory and fortune.",
         "stats": {
           "health": 1
         },
@@ -285,7 +346,7 @@
       },
       "fox_grace_medallion": {
         "name": "Fox Grace Medallion",
-        "description": "A delicate silver medallion engraved with the image of a leaping fox, surrounded by intricate patterns. The medallion glows faintly with an ethereal light, said to be imbued with the grace and agility of a fox. It is a token of swiftness, granting the wearer enhanced dexterity and reflexes.\n",
+        "description": "A delicate silver medallion engraved with the image of a leaping fox, surrounded by intricate patterns. The medallion glows faintly with an ethereal light, said to be imbued with the grace and agility of a fox. It is a token of swiftness, granting the wearer enhanced dexterity and reflexes.",
         "stats": {
           "agility": 10
         },
@@ -295,7 +356,7 @@
       },
       "small_quiver": {
         "name": "Small Quiver",
-        "description": "A compact quiver designed to hold a small number of arrows or bolts. While not as sturdy or large as standard quivers, it is lightweight and easy to carry, making it perfect for quick engagements or long journeys.\n",
+        "description": "A compact quiver designed to hold a small number of arrows or bolts. While not as sturdy or large as standard quivers, it is lightweight and easy to carry, making it perfect for quick engagements or long journeys.",
         "stats": {
           "agility": 7,
           "defense": 3
@@ -315,7 +376,7 @@
       },
       "silver_cross": {
         "name": "Silver Cross",
-        "description": "A delicate, polished cross made of fine silver, its surface gleaming with a soft, reflective sheen. Intricate engravings trace the edges, depicting symbols of protection and faith.\n",
+        "description": "A delicate, polished cross made of fine silver, its surface gleaming with a soft, reflective sheen. Intricate engravings trace the edges, depicting symbols of protection and faith.",
         "stats": {
           "health": 10
         },
@@ -325,13 +386,47 @@
       },
       "war_medal": {
         "name": "War Medal",
-        "description": "A metal medal worn by a barbarian leader or hero, usually awarded for bravery in battle or for victories in clan wars. It is often engraved with symbols of strength or victory and is worn with pride.\n",
+        "description": "A metal medal worn by a barbarian leader or hero, usually awarded for bravery in battle or for victories in clan wars. It is often engraved with symbols of strength or victory and is worn with pride.",
         "stats": {
           "attackDmg": 10,
           "critChance": 0.1
         },
+        "rarity": "common",
+        "price": 19,
+        "attribute": "physical"
+      },
+      "withering_rose": {
+        "name": "Withering Rose",
+        "description": "A mysterious black rose with petals that appear perpetually withered, yet they never fall. It radiates a faint, ominous aura, as though imbued with ancient magic. The rose’s dark energy drains vitality from its surroundings, making it a powerful charm for those who seek to harness the forces of decay.",
+        "stats": {
+          "critChance": 0.1
+        },
         "rarity": "rare",
-        "price": 42
+        "price": 28,
+        "attribute": "cursed"
+      },
+      "coral_amulet": {
+        "name": "Coral Amulet",
+        "description": "Crafted from deep-sea coral and a smooth sapphire, the Coral Amulet embodies the power of the sea. Its intricate patterns mimic the waves and tides, granting the wearer protection against water-based attacks and improved affinity with aquatic creatures. Glowing faintly with a soft, blue-green light, it captures the mysterious beauty of the ocean depths.",
+        "stats": {
+          "health": 5,
+          "defense": 15
+        },
+        "rarity": "rare",
+        "price": 35,
+        "attribute": "water",
+        "traits": "water_resistance"
+      },
+      "skybound_talisman": {
+        "name": "Skybound Talisman",
+        "description": "The Skybound Talisman is a delicate yet powerful charm, crafted from silver and set with a crystal that glimmers like the open sky. Infused with air magic, it grants its wearer enhanced agility, resistance to wind-based attacks, and the ability to move with unmatched grace. A faint breeze seems to follow its bearer, lifting their spirit and steps.",
+        "stats": {
+          "agility": 12
+        },
+        "rarity": "rare",
+        "price": 45,
+        "attribute": "air",
+        "traits": "air_resistance"
       }
     },
     "rings": {
@@ -342,7 +437,8 @@
           "health": 2
         },
         "rarity": "common",
-        "price": 2
+        "price": 2,
+        "attribute": "physical"
       },
       "silver_ring": {
         "name": "Silver Ring",
@@ -351,7 +447,8 @@
           "defense": 3
         },
         "rarity": "common",
-        "price": 3
+        "price": 3,
+        "attribute": "physical"
       },
       "forgotten_ring": {
         "name": "Forgotten Ring",
@@ -362,12 +459,24 @@
         },
         "rarity": "exquisite",
         "price": 200,
-        "attributes": "necrotic",
+        "attribute": "necrotic",
         "traits": "pierce"
+      },
+      "amber_ring": {
+        "name": "Amber Ring",
+        "description": "This elegant Amber Ring radiates the warm glow of a flickering flame. Set with a radiant, golden-hued amber, it pulses with heat and ancient energy, granting its wearer resistance to flames and the ability to harness fiery power. Its smooth, golden band fits comfortably, embodying both beauty and raw elemental might.",
+        "stats": {
+          "defense": 10,
+          "attackDmg": 10
+        },
+        "rarity": "rare",
+        "price": 75,
+        "attribute": "fire",
+        "traits": "fire_resistance"
       },
       "goblin_chieftain_ring": {
         "name": "Goblin Chieftain's Ring",
-        "description": "A worn ring crafted from crude metal, adorned with a twisted symbol of goblin tribes. The ring is imbued with dark magic and represents the authority of a goblin chieftain, often passed down through generations.\n",
+        "description": "A worn ring crafted from crude metal, adorned with a twisted symbol of goblin tribes. The ring is imbued with dark magic and represents the authority of a goblin chieftain, often passed down through generations.",
         "stats": {
           "defense": 25,
           "agility": 10,
@@ -375,267 +484,357 @@
         },
         "rarity": "exquisite",
         "price": 175,
-        "attributes": "physical"
+        "attribute": "physical"
       }
     },
     "materials": {
       "knowledge_of_the_forest": {
         "name": "Knowledge of the Forest",
-        "description": "A gift bestowed by the forest's ancient guardian, its wisdom unfolds not in words but in visions and whispers. You now perceive the world differently—the rustle of leaves and the song of water reveal hidden paths and long-lost truths.\nThe elder oak near the waterfall holds the first key, but the deeper you delve, the more perilous the journey becomes. This newfound knowledge is both a blessing and a burden, promising to guide the worthy toward a destiny entwined with the heart of the forest and the blade of legend.\n",
+        "description": "A gift bestowed by the forest's ancient guardian, its wisdom unfolds not in words but in visions and whispers. You now perceive the world differently—the rustle of leaves and the song of water reveal hidden paths and long-lost truths.\nThe elder oak near the waterfall holds the first key, but the deeper you delve, the more perilous the journey becomes. This newfound knowledge is both a blessing and a burden, promising to guide the worthy toward a destiny entwined with the heart of the forest and the blade of legend.",
         "rarity": "legendary",
         "price": 10000000
       },
+      "shackled_choir_key": {
+        "name": "Shackled Choir key",
+        "description": "This rusted iron key is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.",
+        "rarity": "rare",
+        "price": 200
+      },
       "meat": {
         "name": "Meat",
-        "description": "A hearty cut of fresh meat, slightly marbled with fat and rich in its natural aroma. Wrapped carefully to preserve its quality, it’s suitable for cooking or as an offering to creatures of the wild. Hunters and travelers alike value it for its sustenance and utility.\n",
+        "description": "A hearty cut of fresh meat, slightly marbled with fat and rich in its natural aroma. Wrapped carefully to preserve its quality, it’s suitable for cooking or as an offering to creatures of the wild. Hunters and travelers alike value it for its sustenance and utility.",
         "rarity": "common",
         "price": 10
       },
+      "bone": {
+        "name": "Bone",
+        "description": "A bone from a deceased corpse used to make up a skeleton.",
+        "rarity": "common",
+        "price": 1
+      },
       "bundle_nightshade": {
         "name": "Bundle of Nightshade",
-        "description": "Dark, glossy leaves with bell-shaped purple flowers, nightshade is both beautiful and deadly. Its sweet fragrance masks its toxic properties, used sparingly for medicinal or alchemical purposes.\n",
+        "description": "Dark, glossy leaves with bell-shaped purple flowers, nightshade is both beautiful and deadly. Its sweet fragrance masks its toxic properties, used sparingly for medicinal or alchemical purposes.",
         "rarity": "rare",
         "price": 40
       },
       "bundle_wolfsbane": {
         "name": "Bundle of Wolfsbane",
-        "description": "Green leaves with striking yellow flowers, wolfsbane exudes a sharp, metallic scent. Known for its poisonous nature, it is handled with care, often used in potions or as a deterrent against creatures of the night.\n",
+        "description": "Green leaves with striking yellow flowers, wolfsbane exudes a sharp, metallic scent. Known for its poisonous nature, it is handled with care, often used in potions or as a deterrent against creatures of the night.",
         "rarity": "rare",
         "price": 40
       },
       "bundle_spiritbloom": {
         "name": "Bundle of Spiritbloom",
-        "description": "A bundle of ethereal flowers with translucent petals that faintly shimmer in moonlight. Their sweet, woodland-like fragrance is calming, and they are prized for cleansing auras and healing up wounds.\n",
+        "description": "A bundle of ethereal flowers with translucent petals that faintly shimmer in moonlight. Their sweet, woodland-like fragrance is calming, and they are prized for cleansing auras and healing up wounds.",
         "rarity": "rare",
         "price": 40
       },
       "bundle_elderflower": {
         "name": "Bundle of Elderflower",
-        "description": "A delicate bundle of creamy white blossoms gathered from the elder tree, tied together with a fine strip of bark. The tiny flowers emit a subtle, sweet fragrance reminiscent of fresh honey and wild meadows. This bundle is cherished for its soothing and restorative qualities, a natural remedy gifted by the forest.\n",
+        "description": "A delicate bundle of creamy white blossoms gathered from the elder tree, tied together with a fine strip of bark. The tiny flowers emit a subtle, sweet fragrance reminiscent of fresh honey and wild meadows. This bundle is cherished for its soothing and restorative qualities, a natural remedy gifted by the forest.",
         "rarity": "common",
         "price": 4
       },
       "bundle_vervain": {
         "name": "Bundle of Vervain",
-        "description": "A tightly wrapped bundle of slender, green stems adorned with delicate, pale purple flowers. The faint earthy aroma carries a hint of citrus, exuding a sense of calm. Revered for its soothing properties, this herb bundle is tied with simple twine, symbolizing its purity and humble nature.\n",
+        "description": "A tightly wrapped bundle of slender, green stems adorned with delicate, pale purple flowers. The faint earthy aroma carries a hint of citrus, exuding a sense of calm. Revered for its soothing properties, this herb bundle is tied with simple twine, symbolizing its purity and humble nature.",
         "rarity": "common",
         "price": 4
       },
       "bundle_lavender": {
         "name": "Bundle of Lavender",
-        "description": "A fragrant bundle of soft, purple blossoms atop slender silver-green stems. The calming floral scent wafts gently from the tightly tied stalks, evoking images of serene fields under a summer sky. Wrapped with a ribbon of dried grass, this bundle is both beautiful and restorative, perfect for relaxation or rituals.\n",
+        "description": "A fragrant bundle of soft, purple blossoms atop slender silver-green stems. The calming floral scent wafts gently from the tightly tied stalks, evoking images of serene fields under a summer sky. Wrapped with a ribbon of dried grass, this bundle is both beautiful and restorative, perfect for relaxation or rituals.",
         "rarity": "common",
         "price": 4
       },
       "bundle_sage": {
         "name": "Bundle of Sage",
-        "description": "A collection of dried sage leaves tied with twine. Used for rituals and purification, its calming aroma is believed to ward off evil spirits and cleanse negative energy.\n",
+        "description": "A collection of dried sage leaves tied with twine. Used for rituals and purification, its calming aroma is believed to ward off evil spirits and cleanse negative energy.",
         "rarity": "common",
         "price": 4
       },
-      "obsidian": {
-        "name": "Obsidian",
-        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.\n",
+      "rose": {
+        "name": "Rose",
+        "description": "A vivid crimson rose with delicate, velvety petals that exude a sweet, enchanting fragrance. Symbolic of passion and beauty, the rose has been cherished for centuries in art, rituals, and celebrations, as well as for its practical uses in alchemy and perfumery.",
         "rarity": "common",
+        "price": 5
+      },
+      "coral": {
+        "name": "Coral",
+        "description": "A hardened fragment of sea coral, ranging from pale pink to vibrant crimson. Often polished and crafted into jewelry, it is valued not only for its beauty but also for its mystical association with oceanic energy and protection.",
+        "rarity": "rare",
         "price": 30
       },
-      "quartz": {
-        "name": "Quartz",
-        "description": "A translucent crystal with a cool, smooth texture and a faint inner glow that refracts light into subtle rainbows. Quartz is versatile, found in various hues and shapes, often used in crafting magical foci, enchanting rituals, or as a conduit for storing and channeling energy.\n",
+      "honey": {
+        "name": "Honey",
+        "description": "Golden and thick, honey is harvested from the hives of bees. It holds a natural sweetness and subtle floral notes, prized for culinary and medicinal uses alike. Its antimicrobial properties make it as vital for treating wounds as for sweetening a traveler’s tea.",
         "rarity": "rare",
-        "price": 75
+        "price": 28
       },
-      "emerald": {
-        "name": "Emerald",
-        "description": "A vibrant green gemstone as lush as a forest in spring. Representing vitality and prosperity, it is cherished for its ability to bring balance and renewal.\n",
+      "healing_salve": {
+        "name": "Healing Salve",
+        "description": "A fragrant, herbal balm that blends medicinal plants, oils, and honey into a soothing remedy. When applied to wounds, it relieves pain and accelerates healing, an essential item for any adventurer venturing into the unknown.",
         "rarity": "rare",
-        "price": 100
+        "price": 42
       },
-      "ruby": {
-        "name": "Ruby",
-        "description": "A fiery red gemstone that seems to pulse with inner warmth. Revered as a symbol of passion and power, it is a favorite among those seeking strength and courage.\n",
+      "poison": {
+        "name": "Poison",
+        "description": "A dark, viscous liquid with an acrid, bitter scent, designed to incapacitate or kill. Crafted with precision and care, it is favored by assassins for coating weapons or sabotaging enemies, but its preparation is as perilous as its application.",
         "rarity": "rare",
-        "price": 100
-      },
-      "sapphire": {
-        "name": "Sapphire",
-        "description": "A deep blue gemstone that sparkles like the night sky. Often associated with wisdom and clarity, it is highly valued for its beauty and mystical properties.\n",
-        "rarity": "rare",
-        "price": 100
-      },
-      "ash": {
-        "name": "Ash",
-        "description": "The fine, dark gray powder left behind after a fire has consumed wood or other organic matter. It has a slightly sooty texture and a faint, lingering smell of burnt earth. Often used in alchemy, it can be mixed with other ingredients to enhance potions or rituals. \n",
-        "rarity": "common",
-        "price": 2
-      },
-      "ashveil_fang": {
-        "name": "Ashveil Fang",
-        "description": "A sturdy, slightly curved fang from the Ashveil Lynx. Its surface is smooth with a natural sheen, and the tip is sharp, perfect for crafting or as a tool. Its grayish hue blends well with the misty forests the lynx roams.\n",
-        "rarity": "rare",
-        "price": 72
-      },
-      "soul_essence": {
-        "name": "Soul Essence",
-        "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.\n",
-        "rarity": "rare",
-        "price": 50
-      },
-      "abyssal_essence": {
-        "name": "Abyssal Essence",
-        "description": " A dark, viscous fluid pulsing with otherworldly energy. It seems to absorb light, emanating a faint, eerie glow from within. This essence is harvested from the deepest voids of the Abyss.\n",
-        "rarity": "legendary",
-        "price": 6100
-      },
-      "shadow_fibre": {
-        "name": "Shadow Fibre",
-        "description": "A thin, flexible thread spun from pure shadow. Its surface shimmers with a faint, otherworldly glow, making it perfect for crafting items that require stealth or shadow manipulation.\n",
-        "rarity": "exquisite",
-        "price": 100
-      },
-      "soulstone": {
-        "name": "Soulstone",
-        "description": "A small, smooth stone that pulses with an eerie light, as if it holds the essence of a soul within. The stone is cold to the touch, but it hums with a faint energy that resonates deep within the mind, stirring both fear and curiosity.\n",
-        "rarity": "exquisite",
-        "price": 115
-      },
-      "tome_of_abyss": {
-        "name": "Tome of the Abyss",
-        "description": "A forbidden tome bound in dark, otherworldly leather, its pages filled with arcane symbols and knowledge from the Abyss. The cover bears a unique, intricate symbol, glowing faintly in the dim light. The tome contains powerful insights into shadow magic and the dark arts, offering the reader access to dangerous but potent abilities. Though forbidden in many realms, those bold enough to study its contents may unlock powers that challenge the very fabric of reality.\n",
-        "rarity": "exquisite",
-        "price": 245
-      },
-      "silver_antler_shard": {
-        "name": "Silver Antler Shard",
-        "description": "A fragment of the Silver Stag’s majestic antlers, imbued with celestial energy. The shard gleams faintly in the light, said to bring protection and fortune to those who carry it.\n",
-        "rarity": "legendary",
-        "price": 5000
-      },
-      "wolf_fang": {
-        "name": "Wolf Fang",
-        "description": "A sharp, elongated fang from a wolf, its surface slightly worn from use. The tooth is strong and jagged, a symbol of the wolf's ferocity and survival instincts.\n",
-        "rarity": "common",
-        "price": 4
-      },
-      "wolf_pelt": {
-        "name": "Wolf Pelt",
-        "description": "A thick, coarse pelt from a wolf, its fur is soft to the touch but tough and durable. The scent of the wild is still faintly present. A prized possession among hunters and craftsmen alike.\n",
-        "rarity": "common",
-        "price": 6
-      },
-      "goblin_tooth": {
-        "name": "Goblin Tooth",
-        "description": "A jagged, yellowed tooth from a goblin, sharp and crooked. The tooth is small but durable, a testament to the goblin's hardy nature and aggressive tendencies. A common item among scavengers and those who deal with goblinkind.\n",
-        "rarity": "common",
-        "price": 5
-      },
-      "goblin_arrowhead": {
-        "name": "Goblin Arrowhead",
-        "description": "A crude arrowhead made from sharpened stone or bone, often attached to a thin wooden shaft. It is lightweight but dangerous in the hands of a goblin archer, designed for quick, lethal strikes.\n",
-        "rarity": "common",
-        "price": 5
-      },
-      "goblin_peace_offering": {
-        "name": "Goblin Peace Offering",
-        "description": "A small bundle of items presented as a gesture of goodwill or appeasement, typically including a mix of trinkets, food, or simple crafts. While seemingly insignificant, this offering can be used to pacify an enemy or broker a temporary truce. It’s often used by goblins when they seek to avoid conflict or gain favor from a more powerful entity. Its value lies in the diplomacy it can bring rather than any inherent worth.\n",
-        "rarity": "exquisite",
-        "price": 250
-      },
-      "goblin_bloodstone": {
-        "name": "Goblin Bloodstone",
-        "description": "A small, blood-red gem with a faint glow that seems to pulse with the life force of its previous owner. The bloodstone is believed to be infused with the essence of a goblin, possibly from a sacrifice or ritualistic act.\n",
-        "rarity": "exquisite",
-        "price": 95
+        "price": 42
       },
       "smooth_pebbles": {
         "name": "Smooth Pebbles",
-        "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.\n",
+        "description": "Small, rounded stones with a polished texture, often used for skipping across water or as a calming tactile object.",
         "rarity": "common",
         "price": 4
       },
       "ashwood": {
         "name": "Ashwood",
-        "description": "A dense and resilient wood with a pale, ashen hue and a faint grain that resembles rising smoke. Known for its natural resistance to fire and decay, it is often sought after by craftsmen for making durable tools, weapons, and magical artifacts.\n",
+        "description": "A dense and resilient wood with a pale, ashen hue and a faint grain that resembles rising smoke. Known for its natural resistance to fire and decay, it is often sought after by craftsmen for making durable tools, weapons, and magical artifacts.",
         "rarity": "common",
         "price": 6
       },
       "string": {
         "name": "String",
-        "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.\n",
+        "description": "A simple yet durable length of thread, versatile for crafting, binding, or repairs. Perfect for any adventurer's toolkit.",
         "rarity": "common",
         "price": 1
       },
       "iron_scrap": {
         "name": "Iron Scrap",
-        "description": "Small, jagged piece of iron scavenged from discarded weapons, armor, or tools. While it may seem insignificant, the iron scrap is still useful in crafting or reforging. It’s often found among wreckage or remnants of battles.\n",
+        "description": "Small, jagged piece of iron scavenged from discarded weapons, armor, or tools. While it may seem insignificant, the iron scrap is still useful in crafting or reforging. It’s often found among wreckage or remnants of battles.",
         "rarity": "common",
         "price": 3
       },
-      "shackled_choir_key": {
-        "name": "Shackled Choir key",
-        "description": "This rusted iron key is a relic of the cursed Shackled Choir, a cult bound by chains and driven by maddening hymns. The key is engraved with shackles and broken chains, symbols of their eternal torment. It's said to hold the power to unlock long-forgotten secrets, with the faint echoes of their haunting voices still lingering in the air.\n",
-        "rarity": "rare",
-        "price": 200
-      },
-      "drakthul_heart": {
-        "name": "Heart of Drakthul",
-        "description": "A dark, pulsating organ that still beats with unnatural vitality, despite being severed from its host. The heart is wrapped in silver chains, and its surface shimmers with a faint, shadowy glow, radiating an aura of malice.\n",
-        "rarity": "legendary",
-        "price": 500000
-      },
-      "bone": {
-        "name": "Bone",
-        "description": "A bone from a deceased corpse used to make up a skeleton.\n",
-        "rarity": "common",
-        "price": 1
-      },
       "iron": {
         "name": "Iron",
-        "description": "A versatile and durable metal, known for its strength and utility. Commonly used in tools, weapons, and armor, iron is the backbone of most civilizations, forming the foundation of practical craftsmanship.\n",
+        "description": "A versatile and durable metal, known for its strength and utility. Commonly used in tools, weapons, and armor, iron is the backbone of most civilizations, forming the foundation of practical craftsmanship.",
         "rarity": "common",
         "price": 10
       },
       "bronze": {
         "name": "Bronze",
-        "description": "An alloy of copper and tin, bronze is celebrated for its warm golden-brown hue and resistance to corrosion. Often used for decorative artifacts, early weapons, and ceremonial items, it carries a sense of tradition and artistry.\n",
+        "description": "An alloy of copper and tin, bronze is celebrated for its warm golden-brown hue and resistance to corrosion. Often used for decorative artifacts, early weapons, and ceremonial items, it carries a sense of tradition and artistry.",
         "rarity": "common",
         "price": 35
       },
       "silver": {
         "name": "Silver",
-        "description": "A gleaming, precious metal with a pure white sheen. Silver is revered for its connection to purity and mysticism, often used in jewelry, charms, and weapons to combat supernatural creatures.\n",
+        "description": "A gleaming, precious metal with a pure white sheen. Silver is revered for its connection to purity and mysticism, often used in jewelry, charms, and weapons to combat supernatural creatures.",
         "rarity": "rare",
         "price": 95
       },
       "gold": {
         "name": "Gold",
-        "description": "A brilliant and malleable metal, treasured for its luster and rarity. Gold is used in crafting intricate ornaments, ceremonial weapons, and coinage, symbolizing wealth and power.\n",
+        "description": "A brilliant and malleable metal, treasured for its luster and rarity. Gold is used in crafting intricate ornaments, ceremonial weapons, and coinage, symbolizing wealth and power.",
         "rarity": "rare",
         "price": 125
       },
       "adamantium": {
         "name": "Adamantium",
-        "description": "A nearly indestructible metal with a dark, metallic sheen. Adamantium is valued for its immense durability, often used in crafting legendary weapons and armor designed to withstand even the harshest battles.\n",
+        "description": "A nearly indestructible metal with a dark, metallic sheen. Adamantium is valued for its immense durability, often used in crafting legendary weapons and armor designed to withstand even the harshest battles.",
         "rarity": "exquisite",
         "price": 300
       },
       "mythril": {
         "name": "Mythril",
-        "description": "A lightweight and radiant silver-like metal imbued with inherent magical properties. Mythril is highly coveted for creating enchanted armor, delicate yet unyielding weapons, and powerful relics.\n",
+        "description": "A lightweight and radiant silver-like metal imbued with inherent magical properties. Mythril is highly coveted for creating enchanted armor, delicate yet unyielding weapons, and powerful relics.",
         "rarity": "exquisite",
         "price": 300
       },
       "astralite": {
         "name": "Astralite",
-        "description": "A rare and ethereal metal with a faint, shimmering glow resembling starlight. Known to resonate with celestial energy, astralite is often used in divine artifacts, magical staffs, and ornaments imbued with protective powers.\n",
+        "description": "A rare and ethereal metal with a faint, shimmering glow resembling starlight. Known to resonate with celestial energy, astralite is often used in divine artifacts, magical staffs, and ornaments imbued with protective powers.",
         "rarity": "legendary",
         "price": 600
       },
       "netheryte": {
         "name": "Netheryte",
-        "description": "A dark, enigmatic metal with an ominous purple or black hue, exuding a faint otherworldly energy. Netheryte is associated with demonic or void magic, often used to forge cursed weapons, ritualistic tools, and powerful charms.\n",
+        "description": "A dark, enigmatic metal with an ominous purple or black hue, exuding a faint otherworldly energy. Netheryte is associated with demonic or void magic, often used to forge cursed weapons, ritualistic tools, and powerful charms.",
         "rarity": "legendary",
         "price": 600
+      },
+      "obsidian": {
+        "name": "Obsidian",
+        "description": "A dark, glass-like volcanic rock known for its sharp edges and smooth surface. It’s often used for crafting tools or weapons due to its natural ability to fracture into razor-sharp shards.",
+        "rarity": "common",
+        "price": 30
+      },
+      "quartz": {
+        "name": "Quartz",
+        "description": "A translucent crystal with a cool, smooth texture and a faint inner glow that refracts light into subtle rainbows. Quartz is versatile, found in various hues and shapes, often used as a conduit for storing and channeling energy.",
+        "rarity": "rare",
+        "price": 75
+      },
+      "emerald": {
+        "name": "Emerald",
+        "description": "A vibrant green gemstone as lush as a forest in spring. Representing vitality and prosperity, it is cherished for its ability to bring balance and renewal.",
+        "rarity": "rare",
+        "price": 100
+      },
+      "ruby": {
+        "name": "Ruby",
+        "description": "A fiery red gemstone that seems to pulse with inner warmth. Revered as a symbol of passion and power, it is a favorite among those seeking strength and courage.",
+        "rarity": "rare",
+        "price": 100
+      },
+      "sapphire": {
+        "name": "Sapphire",
+        "description": "A deep blue gemstone that sparkles like the night sky. Often associated with wisdom and clarity, it is highly valued for its beauty and mystical properties.",
+        "rarity": "rare",
+        "price": 100
+      },
+      "amber": {
+        "name": "Amber",
+        "description": "A smooth, golden-brown gemstone formed from ancient tree sap that has naturally hardened over thousands of years. Its warm color catches the light beautifully, making it a popular choice for adornments and decorative items. Amber is lightweight, durable, and valued for its natural beauty.",
+        "rarity": "rare",
+        "price": 100
+      },
+      "silk": {
+        "name": "Silk",
+        "description": "A shimmering fabric renowned for its unparalleled softness and elegance. Its luxurious texture makes it a prized material for garments and fine crafts, often associated with nobility and sophistication.",
+        "rarity": "common",
+        "price": 12
+      },
+      "ash": {
+        "name": "Ash",
+        "description": "The fine, dark gray powder left behind after a fire has consumed wood or other organic matter. It has a slightly sooty texture and a faint, lingering smell of burnt earth. Often used in alchemy, it can be mixed with other ingredients to enhance potions or rituals.",
+        "rarity": "common",
+        "price": 2
+      },
+      "soul_essence": {
+        "name": "Soul Essence",
+        "description": "A shimmering, ethereal substance that glows with an inner light. It is said to contain the essence of a soul, a fragment of life's energy. Soul Essence is a rare and powerful material, sought after for its mystical properties.",
+        "rarity": "rare",
+        "price": 50
+      },
+      "abyssal_essence": {
+        "name": "Abyssal Essence",
+        "description": " A dark, viscous fluid pulsing with otherworldly energy. It seems to absorb light, emanating a faint, eerie glow from within. This essence is harvested from the deepest voids of the Abyss.",
+        "rarity": "legendary",
+        "price": 6100
+      },
+      "shadow_fibre": {
+        "name": "Shadow Fibre",
+        "description": "A thin, flexible thread spun from pure shadow. Its surface shimmers with a faint, otherworldly glow, making it perfect for crafting items that require stealth or shadow manipulation.",
+        "rarity": "exquisite",
+        "price": 100
+      },
+      "soulstone": {
+        "name": "Soulstone",
+        "description": "A small, smooth stone that pulses with an eerie light, as if it holds the essence of a soul within. The stone is cold to the touch, but it hums with a faint energy that resonates deep within the mind, stirring both fear and curiosity.",
+        "rarity": "exquisite",
+        "price": 115
+      },
+      "tome_of_abyss": {
+        "name": "Tome of the Abyss",
+        "description": "A forbidden tome bound in dark, otherworldly leather, its pages filled with arcane symbols and knowledge from the Abyss. The cover bears a unique, intricate symbol, glowing faintly in the dim light. The tome contains powerful insights into shadow magic and the dark arts, offering the reader access to dangerous but potent abilities. Though forbidden in many realms, those bold enough to study its contents may unlock powers that challenge the very fabric of reality",
+        "rarity": "exquisite",
+        "price": 245
+      },
+      "silver_antler_shard": {
+        "name": "Silver Antler Shard",
+        "description": "A fragment of the Silver Stag’s majestic antlers, imbued with celestial energy. The shard gleams faintly in the light, said to bring protection and fortune to those who carry it.",
+        "rarity": "legendary",
+        "price": 5000
+      },
+      "wolf_fang": {
+        "name": "Wolf Fang",
+        "description": "A sharp, elongated fang from a wolf, its surface slightly worn from use. The tooth is strong and jagged, a symbol of the wolf's ferocity and survival instincts.",
+        "rarity": "common",
+        "price": 4
+      },
+      "wolf_pelt": {
+        "name": "Wolf Pelt",
+        "description": "A thick, coarse pelt from a wolf, its fur is soft to the touch but tough and durable. The scent of the wild is still faintly present. A prized possession among hunters and craftsmen alike.",
+        "rarity": "common",
+        "price": 6
+      },
+      "goblin_tooth": {
+        "name": "Goblin Tooth",
+        "description": "A jagged, yellowed tooth from a goblin, sharp and crooked. The tooth is small but durable, a testament to the goblin's hardy nature and aggressive tendencies. A common item among scavengers and those who deal with goblinkind.",
+        "rarity": "common",
+        "price": 5
+      },
+      "goblin_arrowhead": {
+        "name": "Goblin Arrowhead",
+        "description": "A crude arrowhead made from sharpened stone or bone, often attached to a thin wooden shaft. It is lightweight but dangerous in the hands of a goblin archer, designed for quick, lethal strikes.",
+        "rarity": "common",
+        "price": 5
+      },
+      "goblin_peace_offering": {
+        "name": "Goblin Peace Offering",
+        "description": "A small bundle of items presented as a gesture of goodwill or appeasement, typically including a mix of trinkets, food, or simple crafts. While seemingly insignificant, this offering can be used to pacify an enemy or broker a temporary truce. It’s often used by goblins when they seek to avoid conflict or gain favor from a more powerful entity. Its value lies in the diplomacy it can bring rather than any inherent worth.",
+        "rarity": "exquisite",
+        "price": 250
+      },
+      "goblin_bloodstone": {
+        "name": "Goblin Bloodstone",
+        "description": "A small, blood-red gem with a faint glow that seems to pulse with the life force of its previous owner. The bloodstone is believed to be infused with the essence of a goblin, possibly from a sacrifice or ritualistic act.",
+        "rarity": "exquisite",
+        "price": 95
+      },
+      "ashveil_fang": {
+        "name": "Ashveil Fang",
+        "description": "A sturdy, slightly curved fang from the Ashveil Lynx. Its surface is smooth with a natural sheen, and the tip is sharp, perfect for crafting or as a tool. Its grayish hue blends well with the misty forests the lynx roams.",
+        "rarity": "rare",
+        "price": 72
+      },
+      "snake_venom": {
+        "name": "Snake Venom",
+        "description": "A clear, glossy fluid extracted from a serpent’s fangs, known for its swift lethality. When concentrated, it can paralyze or kill with ease, though skilled alchemists might refine it into antidotes or use it in potent concoctions.",
+        "rarity": "common",
+        "price": 6
+      },
+      "snake_skin": {
+        "name": "Snake Skin",
+        "description": "A flexible, scaly material shed by serpents. Its lightweight nature and resilience make it a favorite for crafting supple leather armor and exotic accessories with a distinct, reptilian aesthetic.",
+        "rarity": "common",
+        "price": 9
+      },
+      "spider_venom": {
+        "name": "Spider Venom",
+        "description": "A pale, syrupy liquid harvested from a spider’s venom sac. It carries potent paralytic and corrosive properties, making it a sought-after ingredient for poisons and experimental medicines alike.",
+        "rarity": "common",
+        "price": 6
+      },
+      "lion_heart": {
+        "name": "Lion Heart",
+        "description": "The robust heart of a lion-like beast, warm and still faintly pulsating with primal energy. A symbol of unmatched bravery and strength, it is said to imbue its bearer with extraordinary courage and vitality, making it a rare and treasured find.",
+        "rarity": "rare",
+        "price": 48
+      },
+      "darkhawk_feather": {
+        "name": "Darkhawk Feather",
+        "description": "A sleek, jet-black feather from a rare shadowy bird. Its surface shimmers faintly in the light, hinting at its mystical origins. Revered as a token of swiftness and stealth, it is often used in rituals or as a component in crafting items of speed and agility.",
+        "rarity": "rare",
+        "price": 45
+      },
+      "boar_hide": {
+        "name": "Boar Hide",
+        "description": "A coarse, rugged hide from a wild boar, imbued with natural toughness. Its dense texture makes it ideal for crafting durable armor and shields, capable of withstanding harsh conditions and powerful strikes.",
+        "rarity": "common",
+        "price": 6
+      },
+      "feather": {
+        "name": "Feather",
+        "description": "A soft, lightweight plume from a common bird, often used in crafting arrows, quills, or simple decorative items. Despite its simplicity, it is a versatile material with practical and artistic applications.",
+        "rarity": "common",
+        "price": 3
+      },
+      "eagle_talon": {
+        "name": "Eagle Talon",
+        "description": "A curved and razor-sharp talon from a mighty eagle, renowned for its strength and precision. Often carried as a token of valor or used in crafting weapons, it symbolizes keen focus and deadly accuracy.",
+        "rarity": "common",
+        "price": 10
+      },
+      "drakthul_heart": {
+        "name": "Heart of Drakthul",
+        "description": "A dark, pulsating organ that still beats with unnatural vitality, despite being severed from its host. The heart is wrapped in silver chains, and its surface shimmers with a faint, shadowy glow, radiating an aura of malice.",
+        "rarity": "legendary",
+        "price": 500000
       }
     }
   }

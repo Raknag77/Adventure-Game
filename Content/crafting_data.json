@@ -40,10 +40,10 @@
       "input": ["bone","bone","bone","ashwood","soul_essence"],
       "output": "bone_claymore"
     },
-    "ember_ring_recipe": {
-      "name": "Ember Ring Recipe",
-      "input": ["ember","bronze"],
-      "output": "ember_ring"
+    "amber_ring_recipe": {
+      "name": "Amber Ring Recipe",
+      "input": ["amber","bronze"],
+      "output": "amber_ring"
     },
     "coral_amulet_recipe": {
       "name": "Coral Amulet Recipe",
@@ -57,7 +57,7 @@
     },
     "skybound_talisman_recipe": {
       "name": "Skybound Talisman Recipe",
-      "input": ["quartz","feather","feather","eagle_talon"],
+      "input": ["quartz","feather","feather","silver"],
       "output": "skybound_talisman"
     }
   }

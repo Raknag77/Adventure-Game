@@ -7,8 +7,6 @@ from typing import List, Optional
 from window import CustomConsole
 from objects import Stats
 
-
-
 # with open('game_content.json', 'r') as file:
 #     game_content: GameContentType = json.load(file)
 with open('Content/crafting_data.json', 'r') as file:
@@ -23,10 +21,10 @@ with open('Content/enemy_data.json', 'r') as file:
 con: CustomConsole
 
 random_encounter_count = 0
-# events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp","outside_tranquil_monastery"]
-events = ["outside_tranquil_monastery"]
+events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church","burnt_forest","stonehaven_goblin_camp","outside_tranquil_monastery"]
+#events = ["outside_tranquil_monastery"]
 
-library = ["goblin_bow_recipe"]
+library = ["goblin_bow_recipe","lionheart_axe_recipe"]
 inventory = ["excalibur","string","stick"]
 
 class Recipe:
@@ -58,13 +56,15 @@ class Item:
     def __repr__(self):
         if self.item_type == ItemTypeEnum.WEAPON:
             return (f"{self.name}- Price: {self.price} gold\n"
+                    f"      Description: {self.description}\n"
                     f"      Attack Damage: {self.stats.attackDmg}\n"
                     f"      Critical Chance: {self.stats.critChance}\n"
                     f"      Attribute: {self.attribute}\n"
                     f"      Rarity: {self.rarity}\n"
-                    f"      traits: {self.traits}\n")
+                    f"      Traits: {self.traits}\n")
         if self.item_type == ItemTypeEnum.CHARM or self.item_type == ItemTypeEnum.RING:
             return (f"{self.name}- Price: {self.price} gold\n"
+                    f"      Description: {self.description}\n"
                     f"      Attack Damage: {self.stats.attackDmg}\n"
                     f"      Critical Chance: {self.stats.critChance}\n"
                     f"      Health: {self.stats.health}\n"
@@ -73,18 +73,19 @@ class Item:
                     f"      Luck: {self.stats.luck}\n"
                     f"      Attribute: {self.attribute}\n"
                     f"      Rarity: {self.rarity}\n"
-                    f"      traits: {self.traits}\n")
+                    f"      Traits: {self.traits}\n")
         if self.item_type == ItemTypeEnum.MATERIAL:
             return (f"{self.name}- Price: {self.price} gold\n"
-                    f"      Attribute: {self.attribute}\n"
+                    f"      Description: {self.description}\n"
                     f"      Rarity: {self.rarity}\n")
         return (f"{self.name}- Price: {self.price} gold\n"
+                f"      Description: {self.description}\n"
                 f"      Health: {self.stats.health}\n"
                 f"      Defense: {self.stats.defense}\n"
                 f"      Agility: {self.stats.agility}\n"
                 f"      Attribute: {self.attribute}\n"
                 f"      Rarity: {self.rarity}\n"
-                f"      traits: {self.traits}\n")
+                f"      Traits: {self.traits}\n")
 
     def get_id(self):
         return self._id
@@ -483,19 +484,20 @@ def job_board():
 
 def random_event():
     global random_encounter_count
-    while random_encounter_count < 15:
+    while random_encounter_count < 5:
+        random_encounter = random.choice(events)
+        events.remove(random_encounter)
+        print(random_encounter_count)
+        display_encounter(random_encounter)
+        random_encounter_count += 1
+
+    display_encounter("anchor_event_1")
+
+    while random_encounter_count < 30:
         random_encounter = random.choice(events)
         events.remove(random_encounter)
         display_encounter(random_encounter)
         random_encounter_count += 1
-
-    # anchor_event_1()
-    #
-    # while random_encounter_count < 30:
-    #     random_encounter = random.choice(events)
-    #     events.remove(random_encounter)
-    #     display_encounter(random_encounter)
-    #     random_encounter_count += 1
 
 
 
@@ -577,15 +579,17 @@ def is_attribute_strong(character: Character, enemy: Enemy) -> bool:
 
     strong_combinations = {
         "fire": ["ice", "undead", "natural", "cursed"],
-        "ice": ["natural", "lightning"],
+        "ice": ["natural", "earth"],
         "holy": ["undead", "cursed"],
-        "water": ["fire"],
+        "water": ["fire","earth"],
         "lightning": ["water", "natural", "arcane"],
         "cursed": ["natural", "arcane"],
         "necrotic": ["natural", "water"],
         "physical": ["lightning"],
         "natural": ["water", "physical"],
-        "arcane": ["physical", "natural", "undead", "ice"]
+        "arcane": ["physical", "natural", "undead", "ice","air"],
+        "air": ["fire","lightning"],
+        "earth": ["lightning","arcane","air"]
     }
 
     if isinstance(enemy.attributes, (list, set)):  # noqa
@@ -599,16 +603,18 @@ def is_attribute_weak(character: Character, enemy: Enemy) -> bool:
     if character.weapon is None or character.weapon.attribute is None:
         return False
     weak_combinations = {
-        "fire": ["water"],
+        "fire": ["water","air"],
         "ice": ["fire", "arcane"],
         "holy": ["arcane"],
         "water": ["lightning", "natural", "undead"],
-        "lightning": ["ice"],
+        "lightning": ["air","earth"],
         "cursed": ["holy"],
         "necrotic": ["arcane", "holy"],
         "physical": ["arcane", "natural"],
         "natural": ["fire", "arcane", "undead", "ice"],
-        "arcane": ["holy", "lightning", "cursed"]
+        "arcane": ["holy", "lightning", "cursed","earth"],
+        "air": ["earth","arcane"],
+        "earth": ["ice","water"]
     }
     if isinstance(enemy.attributes, (list, set)):  # noqa
         result = any(attr in weak_combinations.get(character.weapon.attribute, []) for attr in enemy.attributes)
