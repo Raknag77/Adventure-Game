@@ -1111,7 +1111,7 @@
         "1": {
           "text": "Ask more Questions",
           "response": "You linger around Elara still, wanting to gain more information.",
-          "next": "anchor_event_1_details"
+          "next": "anchor_event_1_qs"
         },
         "2": {
           "text": "Meet with the Mage",
@@ -1141,6 +1141,16 @@
         "4": {
           "text": "Meet Melior.",
           "response": "You thank Elara for all the information she gave you and make a start towards your partner.\n",
+          "next": "melior_meeting"
+        }
+      }
+    },
+    "melior_meeting": {
+      "description": "Melior is a tall man with a commanding presence, his dark robe faintly embroidered with ember-like patterns. His graying hair and focused steel-blue eyes exude the wisdom of someone who has faced countless dangers and emerged stronger.\n“You must be the one Elara mentioned,” he greets, his voice steady and inviting. He beckons you to sit, sweeping a few loose maps aside to make room. “I’m Melior Vaelith. It seems we’ve been chosen for a rather delicate mission.”\nAs he speaks, his calm authority puts you at ease, even as he describes the unsettling rumors surrounding your destination. His words are methodical, laced with a deep understanding of magic, the land, and its many threats. You notice his hands are scarred—marks of countless battles fought in the pursuit of knowledge and protection.n“I won’t lie to you,” Melior says, leaning forward. “This mission could prove dangerous. But I trust you wouldn’t have been chosen if you weren’t capable.”\n\nWith a nod, he stands and gathers the scrolls, ready to guide you toward the unknown. His confidence is infectious, and you find yourself eager to take the first steps of this perilous journey with him.\n",
+      "choices": {
+        "1": {
+          "text": "Ask about Melior’s past.",
+          "response": "Melior shares glimpses of his life as a scholar and his decision to leave academia to take a more active role in protecting others. This reveals his motivations and strengthens the bond of trust between you.\n",
           "next": "melior_meeting"
         }
       }
