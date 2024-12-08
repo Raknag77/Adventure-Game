@@ -7,6 +7,12 @@ from typing import List, Optional
 from window import CustomConsole
 from objects import Stats
 
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::NOTES::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#Add blind stat
+#Add alliance attribute to character class
+#Add enemy types(Minor, Skilled, Elite, Apex, Unique, Elder/Boss/Titan)
+
+
 # with open('game_content.json', 'r') as file:
 #     game_content: GameContentType = json.load(file)
 with open('Content/crafting_data.json', 'r') as file:

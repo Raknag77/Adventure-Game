@@ -1125,7 +1125,7 @@
       "choices": {
         "1": {
           "text": "\"Is there anything I should know about the area itself—local inhabitants, weather, or terrain?\"",
-          "response": "Elara: \"The church lies on the Whispering Plains, vast flat grasslands that can become muddy and treacherous after rain. Strange winds and whispers are common at night. The nearby village is small and wary of strangers, but they may know more about the area and its secrets. Approach with respect.\"\n",
+          "response": "Elara: \"The church lies on the Whispering Plains, far towards the East. It is just vast flat grasslands that can become muddy and treacherous after rain. Strange winds and whispers are common at night. The nearby village is small and wary of strangers, but they may know more about the area and its secrets. Approach with respect.\"\n",
           "next": "anchor_event_1_qs"
         },
         "2": {
@@ -1149,9 +1149,77 @@
       "description": "Melior is a tall man with a commanding presence, his dark robe faintly embroidered with ember-like patterns. His graying hair and focused steel-blue eyes exude the wisdom of someone who has faced countless dangers and emerged stronger.\n“You must be the one Elara mentioned,” he greets, his voice steady and inviting. He beckons you to sit, sweeping a few loose maps aside to make room. “I’m Melior Vaelith. It seems we’ve been chosen for a rather delicate mission.”\nAs he speaks, his calm authority puts you at ease, even as he describes the unsettling rumors surrounding your destination. His words are methodical, laced with a deep understanding of magic, the land, and its many threats. You notice his hands are scarred—marks of countless battles fought in the pursuit of knowledge and protection.n“I won’t lie to you,” Melior says, leaning forward. “This mission could prove dangerous. But I trust you wouldn’t have been chosen if you weren’t capable.”\n\nWith a nod, he stands and gathers the scrolls, ready to guide you toward the unknown. His confidence is infectious, and you find yourself eager to take the first steps of this perilous journey with him.\n",
       "choices": {
         "1": {
+          "text": "Ask more questions.",
+          "response": "After the conversation with Melior you wish to ask more questions to help you understand what is happening.\n",
+          "next": "melior_meeting_qs"
+        },
+        "2": {
+          "text": "Leave Immediately.",
+          "response": "You make your way outside leaving behind Elara and the rest of the busy inn.",
+          "next": "whispering_plains"
+        }
+      }
+    },
+    "melior_meeting_qs": {
+      "description": "You still have doubts, so you present Melior with a question.",
+      "choices": {
+        "1": {
           "text": "Ask about Melior’s past.",
           "response": "Melior shares glimpses of his life as a scholar and his decision to leave academia to take a more active role in protecting others. This reveals his motivations and strengthens the bond of trust between you.\n",
-          "next": "melior_meeting"
+          "next": "melior_meeting_qs"
+        },
+        "2": {
+          "text": "Request more details about the Mission.",
+          "response": "Melior elaborates on the church’s unsettling history, and the potential dangers. You gain deeper insight into what to expect and prepare for.\n",
+          "next": "melior_meeting_qs"
+        },
+        "3": {
+          "text": "Agree to Leave immediately.",
+          "response": "Without further discussion, you both prepare to set off immediately, diving straight into the heart of the adventure.\n",
+          "next": "whispering_plains"
+        }
+      }
+    },
+    "whispering_plains": {
+      "description": "he Whispering Plains stretch across the eastern frontier of the Dominion, a tranquil expanse of golden grasslands and gentle hills. The soft rustle of the wind through the tall grass is the only sound, a calming murmur that gives the plains their name. Scattered wildflowers bring touches of color to the serene landscape, and the occasional grove of trees offers shade and quiet respite for travelers.\nThe openness of the plains is soothing, almost disarming, with its vast skies and unbroken horizon. Small creeks meander through the area, their crystal-clear waters reflecting the gentle sunlight. Villages dot the edges of the plains, their simple lives blending seamlessly into the natural beauty of the land.\nChoose the first area to explore.\n",
+      "choices": {
+        "1": {
+          "text": "The Church.",
+          "response": "Nestled amidst a grove of young ashwood trees, this unassuming chapel appears abandoned, its exterior worn but cared for by unseen hands. There is nothing about it that hints at its hidden importance, however this is the ultimate location of your quest.\n",
+          "next": "quest_church"
+        },
+        "2": {
+          "text": "Willow’s Rest Village.",
+          "response": "A small, idyllic settlement on the edge of the plains, its stone cottages surrounded by carefully tended gardens. The villagers are friendly and welcoming, their lives unremarkable on the surface.\n",
+          "next": "willow_rest"
+        },
+        "3": {
+          "text": "The Gloomwood Forest",
+          "response": "This dense patch of woodland lies just beyond the plains to the north, its twisted trees standing in defiance of the windswept openness. The underbrush is thick, and the air feels oppressive, filled with the scent of damp earth.\n",
+          "next": "gloomwood_forest"
+        },
+        "4": {
+          "text": "The Eastern Wilds.",
+          "response": "The eastern edge of the Whispering Plains stretches into rolling hills and open meadows, with small clusters of ancient oaks dotting the horizon. The air is calm here, carrying the scent of wildflowers and distant streams.\n",
+          "next": "eastern_wilds"
+        }
+      }
+    },
+    "gloomwood_forest": {
+      "description": ""
+    },
+    "eastern_wilds": {
+      "description": "The eastern wilds mark the beginning of the untamed borderlands, where the grasslands give way to ancient groves and winding rivers. This region holds secrets of old pacts and forgotten ruins, remnants of ancient civilizations and ancient magical practices. The tension here stems from its proximity to the Wildkin Kingdom and lingering strife between humans and elves—struggles for land, power, and ancient knowledge. Many ancient relics lie buried beneath the earth, their presence a quiet reminder of the power and mystery of the old world.\n",
+      "choices": {
+        "1": {
+          "text": "Head back towards the central area of the plains.",
+          "response": "You treck back to a nice higher hill from where you can see the whole expanse.\n",
+          "next": "whispering_plains"
+        },
+        "2": {
+          "text": "Head deeper.",
+          "response": "Melior: \"That's a bad idea kid we have no bussiness with the Wildkin. We must remain focused on the task at hand or we shall became rather tardy.\"\n",
+          "next": "whispering_plains"
         }
       }
     }
