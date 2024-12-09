@@ -1205,20 +1205,76 @@
         }
       }
     },
+    "willow_rest": {
+      "description": "As you approach Willow Rest, the village emerges like a quiet whisper against the sprawling valley. Its cottages, modest and worn, are scattered amidst patches of wildflowers, their thatched roofs blending with the surrounding greenery. A gentle breeze carries the faint scent of blooming meadows and woodsmoke, though the distant silhouette of the church looms as a shadowed reminder of its presence.\nThe cobbled path beneath your feet narrows as it leads into the heart of the village, where the muffled rhythm of daily life unfolds. Villagers pause briefly at your arrival, their gazes a mix of curiosity and caution before they return to their tasks.\n",
+      "choices": {
+        "1": {
+          "text": "Head to the Village Inn.",
+          "response": "Seek out rest or information among the travelers and locals who gather here.\n",
+          "next": "willow_rest_inn"
+        },
+        "2": {
+          "text": "Talk to the Village Elder.",
+          "response": "Approach the elder’s home, a slightly larger and sturdier cottage at the village’s center, to learn more about the area and its troubles.\n",
+          "next": "willow_rest_elder"
+        },
+        "3": {
+          "text": "Visit the Local Bakery.",
+          "response": "Follow the inviting aroma of fresh bread to a small bakery where you might uncover tales alongside treats.\n",
+          "next": "wilow_rest_bakery"
+        },
+        "4": {
+          "text": "Leave the village.",
+          "response": "You head back towards the Whispering Plains.\n",
+          "next": "whispering_plains_alt"
+        }
+      }
+    },
+    "willow_rest_inn": {
+      "description": "The Willow Hearth Inn stands modestly on the edge of the village square, its wooden sign swaying gently in the breeze. Inside, the warmth of a crackling hearth greets you, along with the chatter of a few patrons gathered around weathered tables. The innkeeper, a middle-aged woman with a sharp eye and a welcoming smile, greets you from behind the counter.\n",
+      "choices": {
+        "1": {
+          "text": "Ask the innkeeper about the village and its recent troubles.\n",
+          "response": "",
+          "next": "willow_rest_innkeeper"
+        },
+        "2": {
+          "text": "Chat with a lone traveler nursing a drink by the window.",
+          "response": "",
+          "next": "willow_rest_loner"
+        },
+        "3": {
+          "text": "Request a room for rest.",
+          "response": "",
+          "next": ""
+        }
+      }
+    },
     "gloomwood_forest": {
-      "description": ""
+      "description": "You step into the Gloomwood Forest, its dense canopy casting long shadows across the forest floor. The twisted trees loom overhead like ancient guardians, their gnarled branches blocking out most of the light and creating an eerie twilight. The underbrush is thick and tangled. The air is damp and cold, carrying the scent of wet earth, moss, and the faint trace of something ancient and unseen.\nYou hear the distant sound of birds, their calls sharp and haunting in the stillness.\n",
+      "choices": {
+        "1": {
+          "text": "Get back to the mission.",
+          "response": "You trek back to a nice higher hill from where you can see the whole expanse.\n",
+          "next": "whispering_plains"
+        },
+        "2": {
+          "text": "Head deeper.",
+          "response": "Melior: \"We can't delay our business any further, we have to focus on the church kid.\"\n",
+          "next": "whispering_plains"
+      }
     },
     "eastern_wilds": {
       "description": "The eastern wilds mark the beginning of the untamed borderlands, where the grasslands give way to ancient groves and winding rivers. This region holds secrets of old pacts and forgotten ruins, remnants of ancient civilizations and ancient magical practices. The tension here stems from its proximity to the Wildkin Kingdom and lingering strife between humans and elves—struggles for land, power, and ancient knowledge. Many ancient relics lie buried beneath the earth, their presence a quiet reminder of the power and mystery of the old world.\n",
       "choices": {
         "1": {
           "text": "Head back towards the central area of the plains.",
-          "response": "You treck back to a nice higher hill from where you can see the whole expanse.\n",
+          "response": "You trek back to a nice higher hill from where you can see the whole expanse.\n",
           "next": "whispering_plains"
         },
         "2": {
           "text": "Head deeper.",
-          "response": "Melior: \"That's a bad idea kid we have no bussiness with the Wildkin. We must remain focused on the task at hand or we shall became rather tardy.\"\n",
+          "response": "Melior: \"That's a bad idea kid we have no business with the Wildkin. We must remain focused on the task at hand or we shall became rather tardy.\"\n",
           "next": "whispering_plains"
         }
       }
