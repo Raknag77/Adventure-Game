@@ -14,7 +14,8 @@
         "loot": [
     {"item": "bone", "rarity": "common"},
     {"item": "string", "rarity": "common"}
-]
+],
+        "level": "minor"
       },
       "wraith": {
         "name": "Wraith",
@@ -30,8 +31,8 @@
     {"item": "wraith_shroud", "rarity": "rare"},
     {"item": "soul_essence", "rarity": "common"},
     {"item": "shadow_fiber", "rarity": "rare"}
-]
-
+],
+        "level": "minor"
       },
       "drakthul": {
         "name": "Drakthul",
@@ -48,7 +49,8 @@
           {"item": "wraith_shroud", "rarity": "rare"},
           {"item": "drakthul_heart", "rarity": "guaranteed"},
           {"item": "soulstone", "rarity": "rare"}
-        ]
+        ],
+        "level": "unique"
       }
 
     },
@@ -67,8 +69,8 @@
           {"item": "meat", "rarity": "common"},
           {"item": "wolf_pelt", "rarity": "rare"},
           {"item": "wolf_fang", "rarity": "common"}
-      ]
-
+      ],
+        "level": "minor"
       },
       "ashveil_lynx": {
         "name": "Ashveil Lynx",
@@ -84,7 +86,8 @@
           {"item": "meat", "rarity": "common"},
           {"item": "ash", "rarity": "common"},
           {"item": "ashveil_fang", "rarity": "guaranteed"}
-        ]
+        ],
+        "level": "skilled"
       },
       "sunmane_lion": {
         "name": "Sunmane Lion",
@@ -102,7 +105,8 @@
           {"item": "gold_claw", "rarity": "rare"},
           {"item": "solar_essence", "rarity": "rare"},
           {"item": "lion_heart", "rarity": "guaranteed"}
-        ]
+        ],
+        "level": "elite"
       }
     },
     "goblin": {
@@ -121,7 +125,8 @@
           {"item": "iron_scrap", "rarity": "common"},
           {"item": "goblin_tooth", "rarity": "common"},
           {"item": "iron_sword", "rarity": "rare"}
-      ]
+      ],
+        "level": "minor"
       },
       "goblin_archer": {
         "name": "Goblin Archer",
@@ -139,7 +144,8 @@
     {"item": "string", "rarity": "common"},
     {"item": "goblin_arrowhead", "rarity": "common"},
     {"item": "small_quiver", "rarity": "exquisite"}
-]
+],
+        "level": "minor"
       },
       "goblin_barbarian": {
         "name": "Goblin Barbarian",
@@ -155,8 +161,8 @@
     {"item": "bone", "rarity": "common"},
     {"item": "goblin_bloodstone", "rarity": "exquisite"},
     {"item": "barbarian_war_medal", "rarity": "rare"}
-]
-
+],
+        "level": "minor"
       },
       "goblin_chieftain_gruknar": {
         "name": "Goblin Chieftain Gruknar",
@@ -173,8 +179,8 @@
     {"item": "goblin_bloodstone", "rarity": "exquisite"},
     {"item": "goblin_chieftain_ring", "rarity": "guaranteed"},
     {"item": "fire_axe", "rarity": "guaranteed"}
-]
-
+],
+        "level": "unique"
       }
     }
   }
