@@ -10,8 +10,6 @@ from objects import Stats
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::NOTES::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #Add blind stat
 #Add alliance attribute to character class
-#Add home base type area to class
-#Add enemy types(Minor, Skilled, Elite, Apex, Unique, Elder/Boss/Titan)
 
 
 # with open('game_content.json', 'r') as file:
@@ -21,7 +19,7 @@ with open('Content/crafting_data.json', 'r') as file:
 with open('Content/encounter_data.json', 'r') as file:
     encounter_data = json.load(file)
 with open('Content/item_data.json', 'r') as file:
-        item_data = json.load(file)
+    item_data = json.load(file)
 with open('Content/enemy_data.json', 'r') as file:
     enemy_data = json.load(file)
 
@@ -128,6 +126,7 @@ class Enemy:
         self.description = enemy_data["enemies"][enemy_type_value][enemy_id]["description"]
         self.stats = Stats(**enemy_data["enemies"][enemy_type_value][enemy_id].get("stats", {}))
         self.attributes = enemy_data["enemies"][enemy_type_value][enemy_id]["attributes"]
+        self.level = enemy_data["enemies"][enemy_type_value][enemy_id]["level"]
 
     def __repr__(self):
         return (
@@ -479,15 +478,17 @@ def shop(character: Character):
 
 def job_board():
     enemy_instance = get_random_enemy_instance()
-    print(f"Nearby village is being attacked by {enemy_instance.name}.")
-    combat_result = combat(player, enemy_instance)
+    while enemy_instance.level != "unique" or "boss":
+        print(f"Nearby village is being attacked by {enemy_instance.name}.")
+        combat_result = combat(player, enemy_instance)
 
-    if not combat_result:
-        print("Game over! Reload your save or try again.")
-        exit()
-    else:
-        print("Searching for loot...")
-        loot(player,enemy_instance)
+        if not combat_result:
+            print("Game over! Reload your save or try again.")
+            exit()
+        else:
+            print("Searching for loot...")
+            loot(player,enemy_instance)
+            break
 
 def random_event():
     global random_encounter_count

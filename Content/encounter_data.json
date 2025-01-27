@@ -1222,7 +1222,7 @@
       }
     },
     "melior_meeting": {
-      "description": "Melior is a tall man with a commanding presence, his dark robe faintly embroidered with ember-like patterns. His graying hair and focused steel-blue eyes exude the wisdom of someone who has faced countless dangers and emerged stronger.\n“You must be the one Elara mentioned,” he greets, his voice steady and inviting. He beckons you to sit, sweeping a few loose maps aside to make room. “I’m Melior Vaelith. It seems we’ve been chosen for a rather delicate mission.”\nAs he speaks, his calm authority puts you at ease, even as he describes the unsettling rumors surrounding your destination. His words are methodical, laced with a deep understanding of magic, the land, and its many threats. You notice his hands are scarred—marks of countless battles fought in the pursuit of knowledge and protection.n“I won’t lie to you,” Melior says, leaning forward. “This mission could prove dangerous. But I trust you wouldn’t have been chosen if you weren’t capable.”\n\nWith a nod, he stands and gathers the scrolls, ready to guide you toward the unknown. His confidence is infectious, and you find yourself eager to take the first steps of this perilous journey with him.\n",
+      "description": "Melior is a tall man with a commanding presence, his dark robe faintly embroidered with ember-like patterns. His graying hair and focused steel-blue eyes exude the wisdom of someone who has faced countless dangers and emerged stronger.\n\"You must be the one Elara mentioned,” he greets, his voice steady and inviting. He beckons you to sit, sweeping a few loose maps aside to make room. \"I’m Melior Vaelith. It seems we’ve been chosen for a rather delicate mission.”\nAs he speaks, his calm authority puts you at ease, even as he describes the unsettling rumors surrounding your destination. His words are methodical, laced with a deep understanding of magic, the land, and its many threats. You notice his hands are scarred—marks of countless battles fought in the pursuit of knowledge and protection.n\"I won’t lie to you,” Melior says, leaning forward. \"This mission could prove dangerous. But I trust you wouldn’t have been chosen if you weren’t capable.”\n\nWith a nod, he stands and gathers the scrolls, ready to guide you toward the unknown. His confidence is infectious, and you find yourself eager to take the first steps of this perilous journey with him.\n",
       "choices": {
         "1": {
           "text": "Ask more questions.",
@@ -1291,8 +1291,8 @@
         },
         "2": {
           "text": "Talk to the Village Elder.",
-          "response": "Approach the elder’s home, a slightly larger and sturdier cottage at the village’s center, to learn more about the area and its troubles.\n",
-          "next": "willow_rest_elder"
+          "response": "Approach the elder’s home, a small, stone cottage surrounded by a carefully tended garden, to learn more about the area and its troubles.\n",
+          "next": "willow_rest_elderhouse"
         },
         "3": {
           "text": "Visit the Local Bakery.",
@@ -1311,18 +1311,181 @@
       "choices": {
         "1": {
           "text": "Ask the innkeeper about the village and its recent troubles.\n",
-          "response": "",
+          "response": "You walk towards the innkeeper.",
           "next": "willow_rest_innkeeper"
         },
         "2": {
-          "text": "Chat with a lone traveler nursing a drink by the window.",
-          "response": "",
-          "next": "willow_rest_loner"
+          "text": "Listen to the rumours spread by people around the bar.",
+          "response": "You order a drink and sit down.\n",
+          "next": "willow_rest_rumours"
         },
         "3": {
           "text": "Request a room for rest.",
-          "response": "",
-          "next": ""
+          "response": "Melior walks towards the innkeeper and requests a place to spend the night. The innkeeper nods and hands him a key with a carved wooden tag. Innkeeper: \"Room’s upstairs, second on the left. Fresh bedding and a lock on the door—should be safe enough.\"\nThe room is small but comfortable, with two single beds and a table just large enough to gather around. Outside, the village hums with quiet life as the day wanes into evening, lanterns flickering to life one by one.\n Morning light streams through the window as you gather your things. Downstairs, the innkeeper greets you with a nod. \"Five gold for the room,\" she says, wiping down the counter.\nMelior pays the coins, and with a small smile, she waves you off. As you walk away Melior lowers towards you: \"You me a gold coin for your share, I was already charitable enough to knock one off\". You murmur something in your breath as you hand him a single gold coin.",
+          "gold": -1,
+          "health": 3,
+          "next": "willow_rest"
+        },
+        "4": {
+          "text": "Leave the inn.",
+          "response": "You walk outside the inn with Melior, though you may need to return to get a good night's sleep.\n",
+          "next": "willow_rest"
+        }
+      }
+    },
+    "willow_rest_innkeeper": {
+      "description": "Her graying hair is tied back loosely, and her movements are practiced, a sign of years spent tending to weary travelers. The smell of stew and freshly baked bread fills the air, mingling with the warmth of the hearth.\nMelior: \"Let's see how you handle this kid, I'll let you talk to her.\"\n",
+      "choices": {
+        "1": {
+          "text": "\"How long has this village been here?\"",
+          "response": "She pauses her work and looks up with a soft chuckle. \"Longer than I’ve been alive, that’s for sure. Willow Rest’s roots run deep, though folk have grown quieter over the years. Life here moves slow—most prefer it that way.\"\n",
+          "next": "willow_rest_innkeeper"
+        },
+        "2": {
+          "text": "\"Any news or rumors worth hearing?\"",
+          "response": "The innkeeper’s smile falters slightly. \"Travelers talk, as they do. Some whisper about odd lights flickering in the woods at night, others about strangers lurking just out of sight. Hard to say what’s truth and what’s just road gossip.\"\n",
+          "next": "willow_rest_innkeeper"
+        },
+        "3": {
+          "text": "\"What’s good to eat here?\"",
+          "response": "She grins proudly, wiping her hands on her apron. \"You won’t find better stew in the region, I’ll promise you that. Fresh vegetables, tender meat, and a bit of my own seasoning. Pair it with warm bread and honeyed tea, and you’ll sleep well tonight.\"\n",
+          "next": "willow_rest_innkeeper"
+        },
+        "4": {
+          "text": "\"Who should I speak to about this village?\"",
+          "response": "She nods thoughtfully. \"That’d be Elder Marek. You’ll find him in the village square most mornings. Knows everyone and everything about Willow Rest, though he’s not one for idle chatter.\"\n",
+          "next": "willow_rest_innkeeper"
+        },
+        "5": {
+          "text": "\"That's all for now.\"",
+          "response": "You walk back towards Melior telling him any new information you gathered.\n",
+          "next": "willow_rest_inn"
+        }
+      }
+    },
+    "willow_rest_rumours": {
+      "description": "The bar hums with quiet conversation, punctuated by the clink of mugs and the crackle of the hearth. Patrons sit scattered across the room—travelers, farmers, and the occasional hunter, each nursing their drinks. The innkeeper moves about, tending to guests, while the air carries snippets of murmured gossip and idle chatter. You lean against the bar, letting the sounds of the room wash over you as you pick out fragments of conversation.\n",
+      "choices": {
+        "1": {
+          "text": "A pair of travelers discuss an upcoming festival in a distant town.",
+          "response": "\"They say the lantern festival in Alden’s Reach is the best,” one traveler says, his eyes lighting up. \"Music, food, and the sky covered in glowing lanterns. I hear it’s worth the trip.” His companion nods eagerly. \"If the roads clear up, maybe we’ll make it this year.”\n",
+          "next": "willow_rest_rumours"
+        },
+        "2": {
+          "text": "An old man tells a wild fishing story.",
+          "response": "\"…And I swear to you, the fish was this big!” the old man exclaims, holding his arms out comically wide. Laughter erupts from his tablemates, one of them clapping him on the back. \"Sure, old man, and the fish told you its name, too!”\n",
+          "next": "willow_rest_rumours"
+        },
+        "3": {
+          "text": "A low voice mutters about strange noises heard near the woods.",
+          "response": "\"…Didn’t see anything, but I heard it,” a man murmurs, his face pale. \"Something moving—big, and just outside the torchlight. Couldn’t sleep a wink after that.”\n",
+          "next": "willow_rest_rumours"
+        },
+        "4": {
+          "text": "A merchant gripes about broken wagons and bad luck on the road.",
+          "response": "\"Two busted wheels in one week! Can you believe it?” the merchant grumbles, waving a hand in frustration. \"I’m starting to think the gods have it out for me. I’ll never reach Eryndor at this rate.”\n",
+          "next": "willow_rest_rumours"
+        },
+        "5": {
+          "text": "Enough rumours for now.",
+          "response": "You finish your drink and walk out towards the front area of the inn.\n",
+          "next": "willow_rest_inn"
+        }
+      }
+    },
+    "willow_rest_elderhouse": {
+      "description": "As you knock on the weathered door, it swings open to reveal Elder Marek — a tall, lean man with a gaze that has seen more years than most. His face is lined with wisdom, and despite his age, there is an unmistakable sharpness to his eyes.\n",
+      "choices": {
+        "1": {
+          "text": "Enter the house.",
+          "response": "Melior nods in acknowledgment, and you follow his lead, entering the humble home. Inside, Elder Marek gestures toward a nearby table, inviting you both to sit.\n",
+          "next": "willow_rest_elder"
+        },
+        "2": {
+          "text": "Change your mind last minute.",
+          "response": "Feeling a sudden change of heart you decide not to bother the old man. However Melior doesn't notice your fleeing heart and enters the home of the elder, looks like you have no choices but to go in.\n",
+          "next": "willow_rest_elder"
+        }
+      }
+    },
+    "willow_rest_elder": {
+      "description": "You and Melior sit down at the simple wooden table in the elder’s home. The room feels warm and inviting, with the light of the morning sun filtering through the small windows. The elder, a weathered man with a thoughtful expression, looks at you both as you settle in. The crackle of a nearby fire breaks the silence as Melior begins to speak, his voice calm but focused.\n",
+      "choices": {
+        "1": {
+          "text": "Melior inquires about the situation in the village.",
+          "response": "Elder Marek strokes his chin thoughtfully. \"Things have been steady, all things considered,\" he says, his voice calm. \"The harvests are a bit lean this year, but nothing too out of the ordinary. Folks have been talking about odd noises in the woods lately, but it's probably just the usual wildlife stirring. Still, it's something we keep an eye on, just in case. Nothing to worry about for now.\"\n",
+          "next": "willow_rest_elder"
+        },
+        "2": {
+          "text": "Melior asks about the history of the church nearby.",
+          "response": "Elder Marek leans back slightly, his eyes narrowing as he reflects on the past. \"You know,\" he begins, his voice low, \"I was the one who first raised concerns about that church. Years ago, when the disturbances began, I sent word to the royals. Strange symbols started appearing on the walls, and there were whispers of shadowy gatherings in the dead of night. At first, they dismissed it as mere village superstition, but I couldn’t shake the feeling that something darker was brewing.\"\nHe pauses, his gaze drifting to the window. \"There’s an old storage building near the church, long abandoned. I recall a side entrance to the church that can be accessed from there—one that most have forgotten about. If you’re heading in, that might help you avoid drawing too much attention.\"\nThe elder’s expression grows thoughtful. \"There should be a key for that entrance somewhere. It’s been years, but I’ll search for it and get it to you before you go. If there’s truly something hidden in that place, you’ll need every advantage you can get.\"\n",
+          "inventory_add": [
+            "elder_marek_key"
+          ],
+          "next": "willow_rest_elder"
+        },
+        "3": {
+          "text": "Melior asks about the Wildkin territory near the village.",
+          "response": "The elder’s face darkens at the mention of the Wildkin. \"The Wildkin? They’re not far from here, but there’s an uneasy truce between us. They’ve always kept to their lands, but they don’t take kindly to outsiders, and their territory is not one to wander into without caution. If you're headed that way, be prepared to deal with both the land and its people.\"\n",
+          "next": "willow_rest_elder"
+        },
+        "4": {
+          "text": "Time to say goodbye.",
+          "response": "Melior shakes the hand of Elder Marek and wishes him a healthy life.\nElder Marek: \"You be careful now with that old church, I do not want to be responsible for the death's of two young men.\n",
+          "next": "willow_rest"
+        }
+      }
+    },
+    "willow_rest_bakery": {
+      "description": "The bakery feels warm and inviting, sunlight streaming through small, paned windows. The wooden walls, adorned with simple carvings, give the shop a cozy, home-like atmosphere. Shelves along the walls hold neatly arranged loaves of bread and small, delicate cakes displayed on wooden platters. A faint, comforting aroma of baked goods fills the air. In one corner, a pair of small tables with simple chairs invites visitors to sit and enjoy their treats.\n",
+      "choices": {
+        "1": {
+          "text": "Go up to the counter.",
+          "response": "A cheerful baker greets you with a warm smile. \"Welcome,\" he says, his voice rich and friendly.\n",
+          "next": "willow_rest_counter"
+        },
+        "2": {
+          "text": "Leave the Bakery.",
+          "response": "You walk back outside, leaving Melior to enjoy a small piece of pastry he bought inside. You meet up later in the town square.\n",
+          "next": "willow_rest"
+        }
+      }
+    },
+    "willow_rest_counter": {
+      "description": "The baker, a stout man with flour dusting his arms and apron, greets you with a hearty nod. He gestures to the neatly arranged display of goods. \"Fresh bread and cakes, all made this morning. What’ll it be?\" The air smells of warm dough and a hint of spice, and the soft clatter of utensils comes from the back room.\n",
+      "choices": {
+        "1": {
+          "text": "Buy bread.",
+          "response": "The baker picks up a warm loaf and wraps it in paper. \"This one’s a favorite around here. That’ll be a few coins,\" he says with a small grin.\n",
+          "gold": -2,
+          "inventory_add": [
+            "bread"
+          ],
+          "next": "willow_rest_counter"
+        },
+        "2": {
+          "text": "Buy cake.",
+          "response": "The baker motions to the cakes, each carefully crafted. \"Sweet tooth, eh? Just a few coins, and you’ll have a slice of the best this side of the plains.\"\n",
+          "gold": 10,
+          "inventory_add": [
+            "simple_cake"
+          ],
+          "next": "willow_rest_counter"
+        },
+        "3": {
+          "text": "Ask about business.",
+          "response": "The baker leans on the counter, scratching his chin. \"Business isn’t bad. People always need bread, but times are tough. Not as many smiles in the village these days.\"\n",
+          "next": "willow_rest_counter"
+        },
+        "4": {
+          "text": "Ask about any local rumors.",
+          "response": "The baker lowers his voice, his brow furrowing slightly. \"Rumors? Folks whisper about odd things happening near the old church, and I’ve seen fewer hunters in the woods lately. Could be something, could be nothing.\"\n",
+          "next": "willow_rest_counter"
+        },
+        "5": {
+          "text": "Walk back outside.",
+          "response": "You walk outside the bakery, bumping into a lean man on the way out. Some people really don't like strangers.\n",
+          "next": "willow_rest"
         }
       }
     },
@@ -1355,6 +1518,265 @@
           }
         }
       }
+    },
+    "whispering_plains_alt": {
+      "description": "The Whispering Plains stretch across the eastern frontier of the Dominion, a tranquil expanse of golden grasslands and gentle hills. The soft rustle of the wind through the tall grass is the only sound, a calming murmur that gives the plains their name. Scattered wildflowers bring touches of color to the serene landscape, and the occasional grove of trees offers shade and quiet respite for travelers.\nThe openness of the plains is soothing, almost disarming, with its vast skies and unbroken horizon. Small creeks meander through the area, their crystal-clear waters reflecting the gentle sunlight. Villages dot the edges of the plains, their simple lives blending seamlessly into the natural beauty of the land.\nChoose the first area to explore.\n",
+      "choices": {
+        "1": {
+          "text": "The Church.",
+          "response": "Nestled amidst a grove of young ashwood trees, this unassuming chapel appears abandoned, its exterior worn but cared for by unseen hands. There is nothing about it that hints at its hidden importance, however this is the ultimate location of your quest.\n",
+          "next": "quest_church_alt"
+        },
+        "2": {
+          "text": "Willow’s Rest Village.",
+          "response": "A small, idyllic settlement on the edge of the plains, its stone cottages surrounded by carefully tended gardens. The villagers are friendly and welcoming, their lives unremarkable on the surface.\n",
+          "next": "willow_rest_alt"
+        },
+        "3": {
+          "text": "The Gloomwood Forest",
+          "response": "This dense patch of woodland lies just beyond the plains to the north, its twisted trees standing in defiance of the windswept openness. The underbrush is thick, and the air feels oppressive, filled with the scent of damp earth.\n",
+          "next": "gloomwood_forest_alt"
+        },
+        "4": {
+          "text": "The Eastern Wilds.",
+          "response": "The eastern edge of the Whispering Plains stretches into rolling hills and open meadows, with small clusters of ancient oaks dotting the horizon. The air is calm here, carrying the scent of wildflowers and distant streams.\n",
+          "next": "eastern_wilds_alt"
+        }
+      }
+    },
+    "willow_rest_alt": {
+      "description": "As you approach Willow Rest, the village emerges like a quiet whisper against the sprawling valley. Its cottages, modest and worn, are scattered amidst patches of wildflowers, their thatched roofs blending with the surrounding greenery. A gentle breeze carries the faint scent of blooming meadows and woodsmoke, though the distant silhouette of the church looms as a shadowed reminder of its presence.\nThe cobbled path beneath your feet narrows as it leads into the heart of the village, where the muffled rhythm of daily life unfolds. Villagers pause briefly at your arrival, their gazes a mix of curiosity and caution before they return to their tasks.\n",
+      "choices": {
+        "1": {
+          "text": "Head to the Village Inn.",
+          "response": "Seek out rest or information among the travelers and locals who gather here.\n",
+          "next": "willow_rest_inn_alt"
+        },
+        "2": {
+          "text": "Talk to the Village Elder.",
+          "response": "Approach the elder’s home, a small, stone cottage surrounded by a carefully tended garden, to learn more about the area and its troubles.\n",
+          "next": "willow_rest_elderhouse_alt"
+        },
+        "3": {
+          "text": "Visit the Local Bakery.",
+          "response": "Follow the inviting aroma of fresh bread to a small bakery where you might uncover tales alongside treats.\n",
+          "next": "willow_rest_bakery_alt"
+        },
+        "4": {
+          "text": "Leave the village.",
+          "response": "You head back towards the Whispering Plains.\n",
+          "next": "whispering_plains_alt"
+        }
+      }
+    },
+    "willow_rest_inn_alt": {
+      "description": "The Willow Hearth Inn stands modestly on the edge of the village square, its wooden sign swaying gently in the breeze. Inside, the warmth of a crackling hearth greets you, along with the chatter of a few patrons gathered around weathered tables. The innkeeper, a middle-aged woman with a sharp eye and a welcoming smile, greets you from behind the counter.\n",
+      "choices": {
+        "1": {
+          "text": "Ask the innkeeper about the village and its recent troubles.\n",
+          "response": "You walk towards the innkeeper.",
+          "next": "willow_rest_innkeeper_alt"
+        },
+        "2": {
+          "text": "Listen to the rumours spread by people around the bar.",
+          "response": "You order a drink and sit down.\n",
+          "next": "willow_rest_rumours_alt"
+        },
+        "3": {
+          "text": "Request a room for rest.",
+          "response": "Melior walks towards the innkeeper and requests a place to spend the night. The innkeeper nods and hands him a key with a carved wooden tag. Innkeeper: \"Room’s upstairs, second on the left. Fresh bedding and a lock on the door—should be safe enough.\"\nThe room is small but comfortable, with two single beds and a table just large enough to gather around. Outside, the village hums with quiet life as the day wanes into evening, lanterns flickering to life one by one.\n Morning light streams through the window as you gather your things. Downstairs, the innkeeper greets you with a nod. \"Five gold for the room,\" she says, wiping down the counter.\nMelior pays the coins, and with a small smile, she waves you off. As you walk away Melior lowers towards you: \"You me a gold coin for your share, I was already charitable enough to knock one off\". You murmur something in your breath as you hand him a single gold coin.",
+          "gold": -1,
+          "health": 3,
+          "next": "willow_rest_alt"
+        },
+        "4": {
+          "text": "Leave the inn.",
+          "response": "You walk outside the inn with Melior, though you may need to return to get a good night's sleep.\n",
+          "next": "willow_rest_alt"
+        }
+      }
+    },
+    "willow_rest_innkeeper_alt": {
+      "description": "Her graying hair is tied back loosely, and her movements are practiced, a sign of years spent tending to weary travelers. The smell of stew and freshly baked bread fills the air, mingling with the warmth of the hearth.\nMelior: \"Let's see how you handle this kid, I'll let you talk to her.\"\n",
+      "choices": {
+        "1": {
+          "text": "\"How long has this village been here?\"",
+          "response": "She pauses her work and looks up with a soft chuckle. \"Longer than I’ve been alive, that’s for sure. Willow Rest’s roots run deep, though folk have grown quieter over the years. Life here moves slow—most prefer it that way.\"\n",
+          "next": "willow_rest_innkeeper_alt"
+        },
+        "2": {
+          "text": "\"Any news or rumors worth hearing?\"",
+          "response": "The innkeeper’s smile falters slightly. \"Travelers talk, as they do. Some whisper about odd lights flickering in the woods at night, others about strangers lurking just out of sight. Hard to say what’s truth and what’s just road gossip.\"\n",
+          "next": "willow_rest_innkeeper_alt"
+        },
+        "3": {
+          "text": "\"What’s good to eat here?\"",
+          "response": "She grins proudly, wiping her hands on her apron. \"You won’t find better stew in the region, I’ll promise you that. Fresh vegetables, tender meat, and a bit of my own seasoning. Pair it with warm bread and honeyed tea, and you’ll sleep well tonight.\"\n",
+          "next": "willow_rest_innkeeper_alt"
+        },
+        "4": {
+          "text": "\"Who should I speak to about this village?\"",
+          "response": "She nods thoughtfully. \"That’d be Elder Marek. You’ll find him in the village square most mornings. Knows everyone and everything about Willow Rest, though he’s not one for idle chatter.\"\n",
+          "next": "willow_rest_innkeeper_alt"
+        },
+        "5": {
+          "text": "\"That's all for now.\"",
+          "response": "You walk back towards Melior telling him any new information you gathered.\n",
+          "next": "willow_rest_inn_alt"
+        }
+      }
+    },
+    "willow_rest_rumours_alt": {
+      "description": "The bar hums with quiet conversation, punctuated by the clink of mugs and the crackle of the hearth. Patrons sit scattered across the room—travelers, farmers, and the occasional hunter, each nursing their drinks. The innkeeper moves about, tending to guests, while the air carries snippets of murmured gossip and idle chatter. You lean against the bar, letting the sounds of the room wash over you as you pick out fragments of conversation.\n",
+      "choices": {
+        "1": {
+          "text": "A pair of travelers discuss an upcoming festival in a distant town.",
+          "response": "\"They say the lantern festival in Alden’s Reach is the best,” one traveler says, his eyes lighting up. \"Music, food, and the sky covered in glowing lanterns. I hear it’s worth the trip.” His companion nods eagerly. \"If the roads clear up, maybe we’ll make it this year.”\n",
+          "next": "willow_rest_rumours_alt"
+        },
+        "2": {
+          "text": "An old man tells a wild fishing story.",
+          "response": "\"…And I swear to you, the fish was this big!” the old man exclaims, holding his arms out comically wide. Laughter erupts from his tablemates, one of them clapping him on the back. \"Sure, old man, and the fish told you its name, too!”\n",
+          "next": "willow_rest_rumours_alt"
+        },
+        "3": {
+          "text": "A low voice mutters about strange noises heard near the woods.",
+          "response": "\"…Didn’t see anything, but I heard it,” a man murmurs, his face pale. \"Something moving—big, and just outside the torchlight. Couldn’t sleep a wink after that.”\n",
+          "next": "willow_rest_rumours_alt"
+        },
+        "4": {
+          "text": "A merchant gripes about broken wagons and bad luck on the road.",
+          "response": "\"Two busted wheels in one week! Can you believe it?” the merchant grumbles, waving a hand in frustration. \"I’m starting to think the gods have it out for me. I’ll never reach Eryndor at this rate.”\n",
+          "next": "willow_rest_rumours_alt"
+        },
+        "5": {
+          "text": "Enough rumours for now.",
+          "response": "You finish your drink and walk out towards the front area of the inn.\n",
+          "next": "willow_rest_inn_alt"
+        }
+      }
+    },
+    "willow_rest_elderhouse_alt": {
+      "description": "As you knock on the weathered door, it swings open to reveal Elder Marek — a tall, lean man with a gaze that has seen more years than most. His face is lined with wisdom, and despite his age, there is an unmistakable sharpness to his eyes.\n",
+      "choices": {
+        "1": {
+          "text": "Enter the house.",
+          "response": "Melior nods in acknowledgment, and you follow his lead, entering the humble home. Inside, Elder Marek gestures toward a nearby table, inviting you both to sit.\n",
+          "next": "willow_rest_elder_alt"
+        },
+        "2": {
+          "text": "Change your mind last minute.",
+          "response": "Feeling a sudden change of heart you decide not to bother the old man. However Melior doesn't notice your fleeing heart and enters the home of the elder, looks like you have no choices but to go in.\n",
+          "next": "willow_rest_elder_alt"
+        }
+      }
+    },
+    "willow_rest_elder_alt": {
+      "description": "You and Melior sit down at the simple wooden table in the elder’s home. The room feels warm and inviting, with the light of the morning sun filtering through the small windows. The elder, a weathered man with a thoughtful expression, looks at you both as you settle in. The crackle of a nearby fire breaks the silence as Melior begins to speak, his voice calm but focused.\n",
+      "choices": {
+        "1": {
+          "text": "Melior inquires about the situation in the village.",
+          "response": "Elder Marek strokes his chin thoughtfully. \"Things have been steady, all things considered,\" he says, his voice calm. \"The harvests are a bit lean this year, but nothing too out of the ordinary. Folks have been talking about odd noises in the woods lately, but it's probably just the usual wildlife stirring. Still, it's something we keep an eye on, just in case. Nothing to worry about for now.\"\n",
+          "next": "willow_rest_elder_alt"
+        },
+        "2": {
+          "text": "Melior asks about the history of the church nearby.",
+          "response": "Elder Marek leans back slightly, his eyes narrowing as he reflects on the past. \"You know,\" he begins, his voice low, \"I was the one who first raised concerns about that church. Years ago, when the disturbances began, I sent word to the royals. Strange symbols started appearing on the walls, and there were whispers of shadowy gatherings in the dead of night. At first, they dismissed it as mere village superstition, but I couldn’t shake the feeling that something darker was brewing.\"\nHe pauses, his gaze drifting to the window. \"There’s an old storage building near the church, long abandoned. I recall a side entrance to the church that can be accessed from there—one that most have forgotten about. If you’re heading in, that might help you avoid drawing too much attention.\"\nThe elder’s expression grows thoughtful. \"There should be a key for that entrance somewhere. It’s been years, but I’ll search for it and get it to you before you go. If there’s truly something hidden in that place, you’ll need every advantage you can get.\"\n",
+          "inventory_add": [
+            "elder_marek_key"
+          ],
+          "next": "willow_rest_elder_alt"
+        },
+        "3": {
+          "text": "Melior asks about the Wildkin territory near the village.",
+          "response": "The elder’s face darkens at the mention of the Wildkin. \"The Wildkin? They’re not far from here, but there’s an uneasy truce between us. They’ve always kept to their lands, but they don’t take kindly to outsiders, and their territory is not one to wander into without caution. If you're headed that way, be prepared to deal with both the land and its people.\"\n",
+          "next": "willow_rest_elder_alt"
+        },
+        "4": {
+          "text": "Time to say goodbye.",
+          "response": "Melior shakes the hand of Elder Marek and wishes him a healthy life.\nElder Marek: \"You be careful now with that old church, I do not want to be responsible for the death's of two young men.\n",
+          "next": "willow_rest_alt"
+        }
+      }
+    },
+    "willow_rest_bakery_alt": {
+      "description": "The bakery feels warm and inviting, sunlight streaming through small, paned windows. The wooden walls, adorned with simple carvings, give the shop a cozy, home-like atmosphere. Shelves along the walls hold neatly arranged loaves of bread and small, delicate cakes displayed on wooden platters. A faint, comforting aroma of baked goods fills the air. In one corner, a pair of small tables with simple chairs invites visitors to sit and enjoy their treats.\n",
+      "choices": {
+        "1": {
+          "text": "Go up to the counter.",
+          "response": "A cheerful baker greets you with a warm smile. \"Welcome,\" he says, his voice rich and friendly.\n",
+          "next": "willow_rest_counter_alt"
+        },
+        "2": {
+          "text": "Leave the Bakery.",
+          "response": "You walk back outside, leaving Melior to enjoy a small piece of pastry he bought inside. You meet up later in the town square.\n",
+          "next": "willow_rest_alt"
+        }
+      }
+    },
+    "willow_rest_counter_alt": {
+      "description": "The baker, a stout man with flour dusting his arms and apron, greets you with a hearty nod. He gestures to the neatly arranged display of goods. \"Fresh bread and cakes, all made this morning. What’ll it be?\" The air smells of warm dough and a hint of spice, and the soft clatter of utensils comes from the back room.\n",
+      "choices": {
+        "1": {
+          "text": "Buy bread.",
+          "response": "The baker picks up a warm loaf and wraps it in paper. \"This one’s a favorite around here. That’ll be a few coins,\" he says with a small grin.\n",
+          "gold": -2,
+          "inventory_add": ["bread"],
+          "next": "willow_rest_counter_alt"
+        },
+        "2": {
+          "text": "Buy cake.",
+          "response": "The baker motions to the cakes, each carefully crafted. \"Sweet tooth, eh? Just a few coins, and you’ll have a slice of the best this side of the plains.\"\n",
+          "gold": 10,
+          "inventory_add": ["simple_cake"],
+          "next": "willow_rest_counter_alt"
+        },
+        "3": {
+          "text": "Ask about business.",
+          "response": "The baker leans on the counter, scratching his chin. \"Business isn’t bad. People always need bread, but times are tough. Not as many smiles in the village these days.\"\n",
+          "next": "willow_rest_counter_alt"
+        },
+        "4": {
+          "text": "Ask about any local rumors.",
+          "response": "The baker lowers his voice, his brow furrowing slightly. \"Rumors? Folks whisper about odd things happening near the old church, and I’ve seen fewer hunters in the woods lately. Could be something, could be nothing.\"\n",
+          "next": "willow_rest_counter_alt"
+        },
+        "5": {
+          "text": "Walk back outside.",
+          "response": "You walk outside the bakery, bumping into a lean man on the way out. Some people really don't like strangers.\n",
+          "next": "willow_rest_alt"
+        }
+      }
+    },
+    "gloomwood_forest_alt": {
+      "description": "You step into the Gloomwood Forest, its dense canopy casting long shadows across the forest floor. The twisted trees loom overhead like ancient guardians, their gnarled branches blocking out most of the light and creating an eerie twilight. The underbrush is thick and tangled. The air is damp and cold, carrying the scent of wet earth, moss, and the faint trace of something ancient and unseen.\nYou hear the distant sound of birds, their calls sharp and haunting in the stillness.\n",
+      "choices": {
+        "1": {
+          "text": "Get back to the mission.",
+          "response": "You trek back to a nice higher hill from where you can see the whole expanse.\n",
+          "next": "whispering_plains_alt"
+        },
+        "2": {
+          "text": "Head deeper.",
+          "response": "Melior: \"We can't delay our business any further, we have to focus on the church kid.\"\n",
+          "next": "whispering_plains_alt"
+        }
+      },
+    "eastern_wilds_alt": {
+      "description": "The eastern wilds mark the beginning of the untamed borderlands, where the grasslands give way to ancient groves and winding rivers. This region holds secrets of old pacts and forgotten ruins, remnants of ancient civilizations and ancient magical practices. The tension here stems from its proximity to the Wildkin Kingdom and lingering strife between humans and elves—struggles for land, power, and ancient knowledge. Many ancient relics lie buried beneath the earth, their presence a quiet reminder of the power and mystery of the old world.\n",
+      "choices": {
+        "1": {
+          "text": "Head back towards the central area of the plains.",
+          "response": "You trek back to a nice higher hill from where you can see the whole expanse.\n",
+          "next": "whispering_plains_alt"
+        },
+        "2": {
+          "text": "Head deeper.",
+          "response": "Melior: \"That's a bad idea kid we have no business with the Wildkin. We must remain focused on the task at hand or we shall became rather tardy.\"\n",
+          "next": "whispering_plains_alt"
+        }
+      }
+    }
     }
   }
 }
