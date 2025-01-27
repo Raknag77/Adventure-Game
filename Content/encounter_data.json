@@ -231,7 +231,10 @@
         "3": {
           "text": "Perform the Ritual",
           "response": "You decide to perform the ancient ritual of communion with the forest spirit.",
-          "requirements": ["bundle_of_sage", "wood_charm"],
+          "requirements": [
+            "bundle_of_sage",
+            "wood_charm"
+          ],
           "next": "perform_ritual"
         },
         "4": {
@@ -256,7 +259,11 @@
         "2": {
           "text": "Ask for the location of hidden treasure.",
           "response": "You ask about hidden riches within the forest. The stag tilts its head, its eyes gleaming with knowing. It stamps its hoof once, and a small wisp of light appears, darting through the trees. You follow it to a hidden hollow, where a chest lies buried beneath a blanket of moss.\n\nInside, you find ancient coins, a couple of gemstones, and a small silver ring with intricate carvings.",
-          "inventory_add": ["sapphire", "emerald", "silver_ring"],
+          "inventory_add": [
+            "sapphire",
+            "emerald",
+            "silver_ring"
+          ],
           "gold": 100,
           "next": "ritual_outcome"
         },
@@ -302,7 +309,10 @@
         "1": {
           "text": "Prove Your Worth in the Trial",
           "response": "You take the stag's challenge, determined to prove yourself.",
-          "combat": ["wraith","wraith"],
+          "combat": [
+            "wraith",
+            "wraith"
+          ],
           "next": "trial_outcome"
         },
         "2": {
@@ -480,114 +490,125 @@
       }
     },
     "burnt_forest": {
-            "description": "You step into the remains of a forest, the air heavy with the acrid scent of ash. Blackened tree trunks rise around you like charred skeletons, their brittle remains crunching underfoot. The silence is deafening, broken only by the faint whisper of wind through the ruins.\nIn the distance, a faint shape emerges from the haze, a solitary shrine, untouched by the devastation, standing like a ghostly sentinel amidst the destruction.\n",
-            "choices": {
-                "1": {
-                  "text": "Explore the charred forest.",
-                  "response": "You decide to explore the forest.\n",
-                  "next": "charred_forest_exploration"
-                },
-                "2": {
-                  "text": "Leave the forest.",
-                  "response": "You decide to leave the forest behind.\n",
-                  "next": "adventure_guild"
-                },
-                "3": {
-                  "text": "Walk towards the shrine.",
-                  "response": "You walk toward the mysterious shrine.\n",
-                  "next": "burnt_shrine"
-                }
-            }
+      "description": "You step into the remains of a forest, the air heavy with the acrid scent of ash. Blackened tree trunks rise around you like charred skeletons, their brittle remains crunching underfoot. The silence is deafening, broken only by the faint whisper of wind through the ruins.\nIn the distance, a faint shape emerges from the haze, a solitary shrine, untouched by the devastation, standing like a ghostly sentinel amidst the destruction.\n",
+      "choices": {
+        "1": {
+          "text": "Explore the charred forest.",
+          "response": "You decide to explore the forest.\n",
+          "next": "charred_forest_exploration"
         },
-    "charred_forest_exploration": {
-            "description": "Walking through a burnt forest feels like crossing an ancient, forgotten world. The trees, stripped of their leaves and covered in soot. The scent of smoke still lingers in the air, mixing with the earthy scent of charred wood. The ground is soft, powdery with ash, and every step seems to stir up a ghostly silence. In the distance, a small burrow is nestled at the base of a burnt tree, a quiet reminder that, despite the destruction, life still finds a way to shelter itself.\n",
-            "choices": {
-                "1": {
-                  "text": "Explore the burrow.",
-                  "response": "You crouch down and crawl into the burrow.\n",
-                  "next": "burnt_burrow"
-                },
-                "2": {
-                  "text": "Explore the shrine.",
-                  "response": "You turn toward the shrine in the distance.\n",
-                  "next": "burnt_shrine"
-                }
-            }
+        "2": {
+          "text": "Leave the forest.",
+          "response": "You decide to leave the forest behind.\n",
+          "next": "adventure_guild"
         },
-    "burnt_burrow": {
-            "description": "The burrow is tucked away beneath the gnarled roots of a charred tree, the entrance framed by dark, twisted wood. The ground around it is soft, the earth disturbed, and small paw prints lead in and out, suggesting frequent visits. Inside, the space is cramped but cozy, lined with dried leaves and soft moss. As you crouch down to peer inside, something catches your eye—a small, worn wooden charm, intricately carved with delicate swirls, resting near the entrance. A few gold coins glint softly in the dim light, their surface tarnished but still bright enough to catch your attention.\n",
-            "choices": {
-                "1": {
-                  "text": "Take the items.",
-                  "response": "You collect the coins and the charm.\n",
-                  "inventory_add": ["wood_charm"],
-                  "gold": 2,
-                  "next": "burnt_shrine"
-                },
-                "2": {
-                  "text": "Leave the items and explore the shrine.",
-                  "response": "You leave the items untouched and head toward the shrine.\n",
-                  "next": "burnt_shrine"
-                }
-            }
-        },
-    "burnt_shrine": {
-            "description": "The shrine is a small, weathered stone alcove, its edges covered in soot and ash from the surrounding burn. At the center, there's a painting of a human figure—dressed in simple, tattered robes—offering something to a divine figure depicted in flames. The god is rendered in vivid, fiery colors, with swirling orange and red hues surrounding their form, creating a halo of intense light. The human figure is kneeling, eyes lowered, holding out a small bundle of herbs and flowers, which smolder with wisps of smoke. The painting captures a moment of devotion and reverence, despite the harsh conditions of the forest. The heat from the nearby fire offering seems to shimmer against the painting's surface, adding to the mystical aura of the scene.\n",
-            "choices": {
-                "1": {
-                  "text": "Pay your offerings to the god.",
-                  "response": "You decide to make an offering to the god.\n",
-                  "next": "fire_offering"
-                },
-                "2": {
-                  "text": "Ramshackle the shrine for any loot left behind.",
-                  "response": "You search the shrine and find a little gold and a silver cross.\n",
-                  "inventory_add": ["silver_cross"],
-                  "gold": 10,
-                  "next": "adventure_guild"
-                },
-                "3": {
-                  "text": "Turn around and leave.",
-                  "response": "You decide to leave the shrine behind.\n",
-                  "next": "adventure_guild"
-                }
-            }
-        },
-    "fire_offering": {
-        "description":
-            "You decide to build a bonfire from the surrounding wood. Now, you must decide the time for your offering.",
-        "choices": {
-            "1": {
-              "text": "Dusk.",
-              "response": "You decide to wait until dawn. As the first light of dawn touches the remains of the fire, the smoke clears to reveal a wooden torch.\n",
-              "inventory_add": ["wooden_torch"],
-              "next": "adventure_guild"
-            },
-            "2": {
-              "text": "Noon.",
-              "response": "You decide to wait until noon. As the flames of the offering reach their peak, the fire intensifies and a breastplate with intricate details materializes from the embers, its molten surface glowing faintly, as if it had been shaped by the very heat of the ritual.\n",
-              "inventory_add": ["flameforged_breastplate"],
-              "next": "adventure_guild"
-            },
-            "3": {
-              "text": "Late afternoon.",
-              "response": "You decide to wait until later in the afternoon. As the last embers of the offering die down, a shard of obsidian emerges from the ashes, its dark surface gleaming with an unnatural sheen, as if forged by the very flames that consumed the offering.\n",
-              "inventory_add": ["obsidian"],
-              "next": "adventure_guild"
-            },
-            "4": {
-              "text": "Dawn.",
-              "response": "You decide to wait until dusk. As the sun dips below the horizon and the last embers of the offering flicker in the fire, the flames rise higher, and from the heart of the blaze, an iron dagger materializes, its blade forged from the fire itself, still glowing faintly with heat.\n",
-              "inventory_add": ["iron_dagger"],
-              "next": "adventure_guild"
-            },
-            "5": {
-              "text": "Midnight.",
-              "response": "You decide to wait until midnight. The fire flickers out with a cold hiss, leaving the air heavy and still. Instead of a blessing, the shadows grow deeper, and an unsettling silence fills the clearing. The offering has been rejected, and a dark presence seems to linger in the air.\n",
-              "next": "adventure_guild"
-            }
+        "3": {
+          "text": "Walk towards the shrine.",
+          "response": "You walk toward the mysterious shrine.\n",
+          "next": "burnt_shrine"
         }
+      }
+    },
+    "charred_forest_exploration": {
+      "description": "Walking through a burnt forest feels like crossing an ancient, forgotten world. The trees, stripped of their leaves and covered in soot. The scent of smoke still lingers in the air, mixing with the earthy scent of charred wood. The ground is soft, powdery with ash, and every step seems to stir up a ghostly silence. In the distance, a small burrow is nestled at the base of a burnt tree, a quiet reminder that, despite the destruction, life still finds a way to shelter itself.\n",
+      "choices": {
+        "1": {
+          "text": "Explore the burrow.",
+          "response": "You crouch down and crawl into the burrow.\n",
+          "next": "burnt_burrow"
         },
+        "2": {
+          "text": "Explore the shrine.",
+          "response": "You turn toward the shrine in the distance.\n",
+          "next": "burnt_shrine"
+        }
+      }
+    },
+    "burnt_burrow": {
+      "description": "The burrow is tucked away beneath the gnarled roots of a charred tree, the entrance framed by dark, twisted wood. The ground around it is soft, the earth disturbed, and small paw prints lead in and out, suggesting frequent visits. Inside, the space is cramped but cozy, lined with dried leaves and soft moss. As you crouch down to peer inside, something catches your eye—a small, worn wooden charm, intricately carved with delicate swirls, resting near the entrance. A few gold coins glint softly in the dim light, their surface tarnished but still bright enough to catch your attention.\n",
+      "choices": {
+        "1": {
+          "text": "Take the items.",
+          "response": "You collect the coins and the charm.\n",
+          "inventory_add": [
+            "wood_charm"
+          ],
+          "gold": 2,
+          "next": "burnt_shrine"
+        },
+        "2": {
+          "text": "Leave the items and explore the shrine.",
+          "response": "You leave the items untouched and head toward the shrine.\n",
+          "next": "burnt_shrine"
+        }
+      }
+    },
+    "burnt_shrine": {
+      "description": "The shrine is a small, weathered stone alcove, its edges covered in soot and ash from the surrounding burn. At the center, there's a painting of a human figure—dressed in simple, tattered robes—offering something to a divine figure depicted in flames. The god is rendered in vivid, fiery colors, with swirling orange and red hues surrounding their form, creating a halo of intense light. The human figure is kneeling, eyes lowered, holding out a small bundle of herbs and flowers, which smolder with wisps of smoke. The painting captures a moment of devotion and reverence, despite the harsh conditions of the forest. The heat from the nearby fire offering seems to shimmer against the painting's surface, adding to the mystical aura of the scene.\n",
+      "choices": {
+        "1": {
+          "text": "Pay your offerings to the god.",
+          "response": "You decide to make an offering to the god.\n",
+          "next": "fire_offering"
+        },
+        "2": {
+          "text": "Ramshackle the shrine for any loot left behind.",
+          "response": "You search the shrine and find a little gold and a silver cross.\n",
+          "inventory_add": [
+            "silver_cross"
+          ],
+          "gold": 10,
+          "next": "adventure_guild"
+        },
+        "3": {
+          "text": "Turn around and leave.",
+          "response": "You decide to leave the shrine behind.\n",
+          "next": "adventure_guild"
+        }
+      }
+    },
+    "fire_offering": {
+      "description": "You decide to build a bonfire from the surrounding wood. Now, you must decide the time for your offering.",
+      "choices": {
+        "1": {
+          "text": "Dusk.",
+          "response": "You decide to wait until dawn. As the first light of dawn touches the remains of the fire, the smoke clears to reveal a wooden torch.\n",
+          "inventory_add": [
+            "wooden_torch"
+          ],
+          "next": "adventure_guild"
+        },
+        "2": {
+          "text": "Noon.",
+          "response": "You decide to wait until noon. As the flames of the offering reach their peak, the fire intensifies and a breastplate with intricate details materializes from the embers, its molten surface glowing faintly, as if it had been shaped by the very heat of the ritual.\n",
+          "inventory_add": [
+            "flameforged_breastplate"
+          ],
+          "next": "adventure_guild"
+        },
+        "3": {
+          "text": "Late afternoon.",
+          "response": "You decide to wait until later in the afternoon. As the last embers of the offering die down, a shard of obsidian emerges from the ashes, its dark surface gleaming with an unnatural sheen, as if forged by the very flames that consumed the offering.\n",
+          "inventory_add": [
+            "obsidian"
+          ],
+          "next": "adventure_guild"
+        },
+        "4": {
+          "text": "Dawn.",
+          "response": "You decide to wait until dusk. As the sun dips below the horizon and the last embers of the offering flicker in the fire, the flames rise higher, and from the heart of the blaze, an iron dagger materializes, its blade forged from the fire itself, still glowing faintly with heat.\n",
+          "inventory_add": [
+            "iron_dagger"
+          ],
+          "next": "adventure_guild"
+        },
+        "5": {
+          "text": "Midnight.",
+          "response": "You decide to wait until midnight. The fire flickers out with a cold hiss, leaving the air heavy and still. Instead of a blessing, the shadows grow deeper, and an unsettling silence fills the clearing. The offering has been rejected, and a dark presence seems to linger in the air.\n",
+          "next": "adventure_guild"
+        }
+      }
+    },
     "stonehaven_goblin_camp": {
       "description": "You arrive in Stonehaven, a bustling mining town nestled in the shadow of the mountains. As they wander through the cobbled streets, they are approached by a stern-looking guard in the mayor's colors.\n\"You're an adventurer, aren't you?\" he asks. \"Mayor Garrek has a task of utmost importance and little time to waste. Follow me.\"\nInside the mayor's chambers, the room is dominated by a large oak desk, maps and ledgers strewn across its surface. Mayor Garrek, a stout man with a bristling beard, looks up, his face lined with worry.\n\nMayor Garrek: \"Adventurer, our town is under siege—not by an army, but by those blasted goblins. They've set up a camp in the woods just north of here and have been raiding our caravans. We can't send the militia; they're already stretched too thin guarding the mines. That's where you come in.\"",
       "choices": {
@@ -630,13 +651,17 @@
         "2": {
           "text": "A sturdy looking pickaxe.",
           "response": "You wonder why a pickaxe would be in the town's vault, nontheless its a good tool to have.",
-          "inventory_add": ["pickaxe"],
+          "inventory_add": [
+            "pickaxe"
+          ],
           "next": "stonehaven_goblin_camp_outskirts"
         },
         "3": {
           "text": "A silver medallion with a fox depicted on it.",
           "response": "You open a small box within which lies a silver medallion with the image of a fox in mid-leap, surrounded by runes that shimmer faintly, on a bed of velvet.",
-          "inventory_add": ["fox_grace_medallion"],
+          "inventory_add": [
+            "fox_grace_medallion"
+          ],
           "next": "stonehaven_goblin_camp_outskirts"
         }
       }
@@ -645,9 +670,9 @@
       "description": "The air grows tense as you near the goblin camp. Twisted trees loom overhead, their branches clawing at the gray sky. The acrid smell of smoke and decay hangs thick, mingled with the faint sound of guttural voices and raucous laughter.\nCrude bone totems mark the boundary, and a rickety wooden palisade surrounds the camp, dotted with gaps and poorly built watchtowers. Beyond the walls, flickering firelight reveals the shadowy outlines of goblins bustling about in chaotic disarray.\n You take a moment to decide on the best approach to complete this quest.\n",
       "choices": {
         "1": {
-        "text": "Stealth approach",
-        "response": "You decide to sneak into the camp.\n",
-        "next": "stonehave_camp_stealth"
+          "text": "Stealth approach",
+          "response": "You decide to sneak into the camp.\n",
+          "next": "stonehave_camp_stealth"
         },
         "2": {
           "text": "Direct approach",
@@ -684,23 +709,23 @@
     "stonehave_camp_stealth_2": {
       "description": "As you close in, you spot two goblins chatting near the campfire. Another patrol circles the area. You need to pick the right distraction to slip by.\n",
       "choices": {
-      "1": {
-        "text": "Throw a rock to distract them",
-        "response": "The goblins hear the noise but investigate cautiously, catching sight of you as you move. You are dragged back towards the chieftain's hut.\n",
-        "next": "failed_stealth"
-      },
-      "2": {
-        "text": "Stay motionless and hidden until the patrol cycles away.",
-        "response": "You stay still and silent, watching as the patrol moves away. The path ahead is clear.\n",
-        "next": "stonehave_camp_stealth_3"
-      },
-      "3": {
-        "text": "Mimic the sound of an animal to lure them away.",
-        "response": "They look toward the sound but remain suspicious, increasing their alertness and spotting you when you move. You are dragged back towards the chieftain's hut.\n",
-        "next": "failed_stealth"
+        "1": {
+          "text": "Throw a rock to distract them",
+          "response": "The goblins hear the noise but investigate cautiously, catching sight of you as you move. You are dragged back towards the chieftain's hut.\n",
+          "next": "failed_stealth"
+        },
+        "2": {
+          "text": "Stay motionless and hidden until the patrol cycles away.",
+          "response": "You stay still and silent, watching as the patrol moves away. The path ahead is clear.\n",
+          "next": "stonehave_camp_stealth_3"
+        },
+        "3": {
+          "text": "Mimic the sound of an animal to lure them away.",
+          "response": "They look toward the sound but remain suspicious, increasing their alertness and spotting you when you move. You are dragged back towards the chieftain's hut.\n",
+          "next": "failed_stealth"
+        }
       }
-    }
-  },
+    },
     "stonehave_camp_stealth_3": {
       "description": "You've made it close to the heart of the camp, where the Goblin Chieftain's tent stands. However, one last obstacle lies in your path—a lone goblin stands guard.\n",
       "choices": {
@@ -773,7 +798,13 @@
         "1": {
           "text": "Charge forward.",
           "response": "Without hesitation, you draw your weapon and charge forward, your boots crunching on the dry ground as you break from cover and charge directly into the heart of the goblin camp. Your sudden approach sends shockwaves through the camp, and within moments, several goblins are rushing to meet you, weapons drawn and war cries echoing into the night.\n",
-          "combat": ["goblin_guard","goblin_guard","goblin_archer","goblin_archer","goblin_barbarian"],
+          "combat": [
+            "goblin_guard",
+            "goblin_guard",
+            "goblin_archer",
+            "goblin_archer",
+            "goblin_barbarian"
+          ],
           "next": "combat_success"
         }
       }
@@ -781,22 +812,27 @@
     "combat_success": {
       "description": "After defeating the initial wave of goblins, the camp falls eerily silent. As the last of the goblins retreat into the forest, a deep, guttural laugh echoes from the largest tent in the camp. The flap parts, and Gruknar, the Goblin Chieftain, emerges. Towering over his kin, he's clad in a patchwork of stolen armor and wields a massive, flaming axe that glows ominously in the dim light of the campfires.\nGoblin Chieftain (Gruknar): \"Impressive, human. You've got guts. But if you think you can walk in here and take what's mine, you've got another thing coming. Let's settle this...like warriors.\"\n",
       "choices": {
-       "1": {
-         "text": "Challenge him to a duel.",
-         "response": "You agree to the Chieftain's duel, walking up towards him as he readies his axe.\n",
-         "next": "Gruknar_duel"
-       },
-       "2": {
-         "text": "Avoid bloodshed and attempt to strike a deal with the goblin leader.",
-         "response": "Goblin Chieftain (Gruknar): \"A deal, you say? Hmph. I'm listening, human, but I ain't letting you walk away empty-handed.\"\n",
-         "next": "Gruknar_taken_offer"
-       },
-       "3": {
-         "text": "Attempt to intimidate the Goblin Chieftain.",
-         "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we'll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You're left to loot the camp without further resistance. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-         "inventory_add": ["goblin_chestplate","goblin_dagger","goblin_helmet","tome_of_abyss"],
-         "next": "stonehaven_camp_intimidation_outcome"
-       }
+        "1": {
+          "text": "Challenge him to a duel.",
+          "response": "You agree to the Chieftain's duel, walking up towards him as he readies his axe.\n",
+          "next": "Gruknar_duel"
+        },
+        "2": {
+          "text": "Avoid bloodshed and attempt to strike a deal with the goblin leader.",
+          "response": "Goblin Chieftain (Gruknar): \"A deal, you say? Hmph. I'm listening, human, but I ain't letting you walk away empty-handed.\"\n",
+          "next": "Gruknar_taken_offer"
+        },
+        "3": {
+          "text": "Attempt to intimidate the Goblin Chieftain.",
+          "response": "Goblin Chieftain (Gruknar): \"Bah! Fine! You win this time, human. But we'll meet again!\"\nThe chieftain retreats with his tribe, abandoning the camp. You're left to loot the camp without further resistance. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
+          "inventory_add": [
+            "goblin_chestplate",
+            "goblin_dagger",
+            "goblin_helmet",
+            "tome_of_abyss"
+          ],
+          "next": "stonehaven_camp_intimidation_outcome"
+        }
       }
     },
     "stonehaven_camp_meeting": {
@@ -810,7 +846,13 @@
         "2": {
           "text": "Attack Gruknar without warning.",
           "response": "Without warning you strike at the Chieftain's throat, and manage to kill him somehow. In their grief the rest of the goblins attack you.\n",
-          "combat": ["goblin_guard","goblin_archer","goblin_guard","goblin_barbarian","goblin_archer"],
+          "combat": [
+            "goblin_guard",
+            "goblin_archer",
+            "goblin_guard",
+            "goblin_barbarian",
+            "goblin_archer"
+          ],
           "next": "combat_outcome"
         }
       }
@@ -821,7 +863,9 @@
         "1": {
           "text": "Pay off the goblins.",
           "response": "You hand over a small pouch of gold to the chieftain.Goblin Chieftain (Gruknar):\"I like the look of your gold human, we will leave the forest by daylight tomorrow. We goblins keep our word, unlike those human leaders you follow. I will give you a small token of peace, to help you in the future, let other goblin tribes know you are a fair human.\"\n",
-          "inventory_add": ["goblin_peace_offering"],
+          "inventory_add": [
+            "goblin_peace_offering"
+          ],
           "gold": -50,
           "next": "stonehaven_camp_offer_outcome"
         }
@@ -845,7 +889,11 @@
         "1": {
           "text": "Loot the camp.",
           "response": "You walk through the camp picking up anything that look useful. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-          "inventory_add": ["goblin_dagger","goblin_helmet","tome_of_abyss"],
+          "inventory_add": [
+            "goblin_dagger",
+            "goblin_helmet",
+            "tome_of_abyss"
+          ],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
         }
@@ -857,7 +905,11 @@
         "1": {
           "text": "Loot the camp.",
           "response": "You walk through the camp picking up anything that look useful. You walk back and enter the Chieftain's tent, there in the corner lies a small chest. You open it to find a small amount of gold and a black book, with a symbol on the front you've never seen before.\n",
-          "inventory_add": ["goblin_dagger","goblin_bow","tome_of_abyss"],
+          "inventory_add": [
+            "goblin_dagger",
+            "goblin_bow",
+            "tome_of_abyss"
+          ],
           "gold": 23,
           "next": "stonehaven_camp_death_outcome"
         }
@@ -914,7 +966,7 @@
     "tranquil_monastery": {
       "description": "You find yourself stepping into the monastery's central hall, a space that bridges all corners of its serene grounds. The hall welcomes you with its timeless presence. The air is cool and carries a faint trace of incense, mingling with the subtle scent of fresh herbs. Light pours through high-arched windows, illuminating the smooth stone walls and the simple yet elegant carvings that adorn them. The gentle hum of distant chanting blends with the soft creak of wood, creating an atmosphere of stillness and quiet purpose, no matter the path that brought you here.\n",
       "choices": {
-          "1": {
+        "1": {
           "text": "Rest and recuperate.",
           "response": "You are given a hearty meal and a comfortable place to sleep. Your health is fully restored, and you feel refreshed.\n",
           "health": 5,
@@ -968,7 +1020,12 @@
         "1": {
           "text": "Start your tasks.",
           "response": "With a wooden watering can in hand, you move carefully along the flower beds, ensuring each vibrant bloom drinks deeply. The earthy scent of damp soil fills the air as you nurture the herbs and plants. Nearby, a monk points to a patch of stubborn weeds, and you crouch to carefully pluck them, avoiding the roots of nearby vegetables.\n\nAt the fruit trees, you steady a wooden ladder and reach for ripe, sun-warmed fruits, feeling the weight of each one as you place it gently into a basket. Occasionally, a mischievous rabbit darts by, and with a wave and a bit of stealth, you shoo it toward the edge of the garden without startling it.\n",
-          "inventory_add": ["bundle_vervain","bundle_elderflower","bundle_sage","bundle_lavender"],
+          "inventory_add": [
+            "bundle_vervain",
+            "bundle_elderflower",
+            "bundle_sage",
+            "bundle_lavender"
+          ],
           "next": "monastery_garden_outcome"
         }
       }
@@ -994,7 +1051,9 @@
         "2": {
           "text": "Offer a ration.",
           "response": "Search your pack for something edible. Animals of the forest are known to appreciate food offerings, though you wonder if this mystical creature would accept it.\n",
-          "requirements": ["meat"],
+          "requirements": [
+            "meat"
+          ],
           "next": "feeding_lynx"
         },
         "3": {
@@ -1025,7 +1084,9 @@
         "1": {
           "text": "Return to the hall.",
           "response": "You statr making your way through the slowly familiar structure of the monastery.\n",
-          "inventory_add": ["ashveil_fang"],
+          "inventory_add": [
+            "ashveil_fang"
+          ],
           "next": "tranquil_monastery"
         }
       }
@@ -1036,7 +1097,9 @@
         "1": {
           "text": "Attack the Lynx.",
           "response": "You duel with the sacred forest guardian.",
-          "combat": ["ashveil_lynx"],
+          "combat": [
+            "ashveil_lynx"
+          ],
           "next": "attacking_lynx_outcome"
         }
       }
@@ -1077,19 +1140,32 @@
         "1": {
           "text": "Herbalist's Grimoire.",
           "response": "You open the book and go through all the pages, taking notes of important recipes.\n",
-          "library_add": ["withering_rose_recipe","healing_salve_recipe","poison_recipe"],
+          "library_add": [
+            "withering_rose_recipe",
+            "healing_salve_recipe",
+            "poison_recipe"
+          ],
           "next": "tranquil_monastery"
         },
         "2": {
           "text": "Beasts and Monsters",
           "response": "You open the book, reading through various ways to deal with nature's forces.\n",
-          "library_add": ["lionheart_axe_recipe","sevang_spear_recipe","bone_claymore_recipe"],
+          "library_add": [
+            "lionheart_axe_recipe",
+            "sevang_spear_recipe",
+            "bone_claymore_recipe"
+          ],
           "next": "tranquil_monastery"
         },
         "3": {
           "text": "Codex of the Elements",
           "response": "You read through the tales of the elements.\n",
-          "library_add": ["amber_ring_recipe","coral_amulet_recipe","grounded_boots_recipe","skybound_talisman_recipe"],
+          "library_add": [
+            "amber_ring_recipe",
+            "coral_amulet_recipe",
+            "grounded_boots_recipe",
+            "skybound_talisman_recipe"
+          ],
           "next": "tranquil_monastery"
         }
       }
@@ -1262,20 +1338,21 @@
           "text": "Head deeper.",
           "response": "Melior: \"We can't delay our business any further, we have to focus on the church kid.\"\n",
           "next": "whispering_plains"
-      }
-    },
-    "eastern_wilds": {
-      "description": "The eastern wilds mark the beginning of the untamed borderlands, where the grasslands give way to ancient groves and winding rivers. This region holds secrets of old pacts and forgotten ruins, remnants of ancient civilizations and ancient magical practices. The tension here stems from its proximity to the Wildkin Kingdom and lingering strife between humans and elves—struggles for land, power, and ancient knowledge. Many ancient relics lie buried beneath the earth, their presence a quiet reminder of the power and mystery of the old world.\n",
-      "choices": {
-        "1": {
-          "text": "Head back towards the central area of the plains.",
-          "response": "You trek back to a nice higher hill from where you can see the whole expanse.\n",
-          "next": "whispering_plains"
-        },
-        "2": {
-          "text": "Head deeper.",
-          "response": "Melior: \"That's a bad idea kid we have no business with the Wildkin. We must remain focused on the task at hand or we shall became rather tardy.\"\n",
-          "next": "whispering_plains"
+        }
+      },
+      "eastern_wilds": {
+        "description": "The eastern wilds mark the beginning of the untamed borderlands, where the grasslands give way to ancient groves and winding rivers. This region holds secrets of old pacts and forgotten ruins, remnants of ancient civilizations and ancient magical practices. The tension here stems from its proximity to the Wildkin Kingdom and lingering strife between humans and elves—struggles for land, power, and ancient knowledge. Many ancient relics lie buried beneath the earth, their presence a quiet reminder of the power and mystery of the old world.\n",
+        "choices": {
+          "1": {
+            "text": "Head back towards the central area of the plains.",
+            "response": "You trek back to a nice higher hill from where you can see the whole expanse.\n",
+            "next": "whispering_plains"
+          },
+          "2": {
+            "text": "Head deeper.",
+            "response": "Melior: \"That's a bad idea kid we have no business with the Wildkin. We must remain focused on the task at hand or we shall became rather tardy.\"\n",
+            "next": "whispering_plains"
+          }
         }
       }
     }

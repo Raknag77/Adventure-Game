@@ -10,6 +10,7 @@ from objects import Stats
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::NOTES::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #Add blind stat
 #Add alliance attribute to character class
+#Add home base type area to class
 #Add enemy types(Minor, Skilled, Elite, Apex, Unique, Elder/Boss/Titan)
 
 
