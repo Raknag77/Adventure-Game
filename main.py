@@ -10,7 +10,7 @@ from objects import Stats
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::NOTES::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #Add blind stat
 #Add alliance attribute to character class
-
+#Add home base type to class
 
 # with open('game_content.json', 'r') as file:
 #     game_content: GameContentType = json.load(file)
