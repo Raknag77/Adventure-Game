@@ -1682,9 +1682,7 @@
         "2": {
           "text": "Melior asks about the history of the church nearby.",
           "response": "Elder Marek leans back slightly, his eyes narrowing as he reflects on the past. \"You know,\" he begins, his voice low, \"I was the one who first raised concerns about that church. Years ago, when the disturbances began, I sent word to the royals. Strange symbols started appearing on the walls, and there were whispers of shadowy gatherings in the dead of night. At first, they dismissed it as mere village superstition, but I couldn’t shake the feeling that something darker was brewing.\"\nHe pauses, his gaze drifting to the window. \"There’s an old storage building near the church, long abandoned. I recall a side entrance to the church that can be accessed from there—one that most have forgotten about. If you’re heading in, that might help you avoid drawing too much attention.\"\nThe elder’s expression grows thoughtful. \"There should be a key for that entrance somewhere. It’s been years, but I’ll search for it and get it to you before you go. If there’s truly something hidden in that place, you’ll need every advantage you can get.\"\n",
-          "inventory_add": [
-            "elder_marek_key"
-          ],
+          "inventory_add": ["elder_marek_key"],
           "next": "willow_rest_elder_alt"
         },
         "3": {
@@ -1761,7 +1759,8 @@
           "response": "Melior: \"We can't delay our business any further, we have to focus on the church kid.\"\n",
           "next": "whispering_plains_alt"
         }
-      },
+      }
+    },
     "eastern_wilds_alt": {
       "description": "The eastern wilds mark the beginning of the untamed borderlands, where the grasslands give way to ancient groves and winding rivers. This region holds secrets of old pacts and forgotten ruins, remnants of ancient civilizations and ancient magical practices. The tension here stems from its proximity to the Wildkin Kingdom and lingering strife between humans and elves—struggles for land, power, and ancient knowledge. Many ancient relics lie buried beneath the earth, their presence a quiet reminder of the power and mystery of the old world.\n",
       "choices": {
@@ -1776,7 +1775,48 @@
           "next": "whispering_plains_alt"
         }
       }
-    }
+    },
+    "quest_church": {
+      "description": "The church looms ahead, its once-proud stone walls dulled by time and neglect. The tall, arched windows are clouded with grime, their stained glass barely visible beneath years of dirt. Faded banners, tattered and worn, cling stubbornly to the outer walls, their insignias too faded to recognize. Vines creep up the foundation, twisting through cracks in the stone, as if nature itself is reclaiming what was left behind. The heavy wooden doors remain shut, their iron hinges rusted but intact. A solemn stillness lingers in the air, neither eerie nor inviting, just forgotten.",
+      "choices": {
+        "1": {
+          "text": "Approach the front doors.",
+          "response": "You try and see if the doors still work.\n",
+          "next": "church_entrance"
+        },
+        "2": {
+          "text": "Circle around the building.",
+          "response": "You circle the church, but there’s nothing—just weathered stone, overgrown vines, and grime-covered windows too high to see through. Near the back, a collapsed fence and tangled roots bar the way, but no doors or openings reveal themselves. The small outer building sits in the shadow of the church, its door firmly locked, the faintest scrape of rust audible as the wind pushes against it. No other way in presents itself\n",
+          "next": "quest_church"
+        },
+        "3": {
+          "text": "Inspect the surroundings.",
+          "response": "As you scan the overgrown churchyard, something bright catches your eye amid the tangle of weeds—a pumpkin, slightly misshapen but intact. It sits alone near the base of the outer wall, its surface dulled by dirt but otherwise untouched.\n",
+          "inventory_add": ["pumpkin"],
+          "next": "quest_church"
+        }
+      }
+    },
+    "quest_church_alt": {
+      "description": "The church looms ahead, its once-proud stone walls dulled by time and neglect. The tall, arched windows are clouded with grime, their stained glass barely visible beneath years of dirt. Faded banners, tattered and worn, cling stubbornly to the outer walls, their insignias too faded to recognize. Vines creep up the foundation, twisting through cracks in the stone, as if nature itself is reclaiming what was left behind. The heavy wooden doors remain shut, their iron hinges rusted but intact. A small, dilapidated building stands off to the side, its roof sagging under the weight of age. A solemn stillness lingers in the air, neither eerie nor inviting—just forgotten.\n",
+        "1": {
+          "text": "Approach the front doors.",
+          "response": "You try and see if the doors still work.\n",
+          "next": "church_entrance_alt"
+        },
+        "2": {
+          "text": "Circle around the building.",
+          "response": "You circle the church, but there’s nothing—just weathered stone, overgrown vines, and grime-covered windows too high to see through. Near the back, a collapsed fence and tangled roots bar the way, but no doors or openings reveal themselves. The small outer building sits in the shadow of the church, its door locked but now accessible with the key Elder Marek entrusted to you. The metal creaks as you turn the key, and with a soft click, the door swings open, revealing the darkness within.\n",
+          "requirements": ["elder_marek_key"],
+          "next": "marek_church_entrance"
+        },
+        "3": {
+          "text": "Inspect the surroundings.",
+          "response": "As you scan the overgrown churchyard, something bright catches your eye amid the tangle of weeds—a pumpkin, slightly misshapen but intact. It sits alone near the base of the outer wall, its surface dulled by dirt but otherwise untouched.\n",
+          "inventory_add": ["pumpkin"],
+          "next": "quest_church_alt"
+        }
+      }
     }
   }
 }

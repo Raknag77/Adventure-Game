@@ -11,6 +11,7 @@ from objects import Stats
 #Add blind stat
 #Add alliance attribute to character class
 #Add home base type to class
+#add consumables to combat
 
 
 # with open('game_content.json', 'r') as file:
@@ -32,7 +33,7 @@ events = ["farmer_help", "haunted_mill", "silver_stag_tale", "abandoned_church",
 
 library = ["goblin_bow_recipe","lionheart_axe_recipe"]
 inventory = ["excalibur","string","stick"]
-
+ 
 class Recipe:
     def __init__(self,recipe_id):
         self.id = recipe_id
